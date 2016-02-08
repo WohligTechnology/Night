@@ -13,13 +13,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
 
     $stateProvider
 
-    .state('home', {
-        url: "/home",
+    .state('dashboard', {
+        url: "/dashboard",
         templateUrl: "views/template.html",
-        controller: 'HomeCtrl'
+        controller: 'DashboardCtrl'
     });
 
-    $urlRouterProvider.otherwise("/home");
+    $urlRouterProvider.otherwise("/dashboard");
 
 });
 
