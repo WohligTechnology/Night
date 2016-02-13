@@ -5,9 +5,7 @@
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
 @import "../bower_components/flexslider/flexslider.css";
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
-
 /* Bootstrap Variables Goes Here */
-
 $brand-primary: #0d9dff !default;
 $brand-success: #84ce3c !default;
 $brand-warning: #ffec39 !default;
@@ -16,48 +14,51 @@ $brand-info: #000072 !default;
 $brand-base: #939393 !default;
 $border-color: #e7e7e7 !default;
 $white-color: #fff !default;
-
 $font-family-sans-serif: "Lato", "Montserrat","Voyage Fantastique","Kenyan Coffee", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif: "Lato", "Montserrat", "Voyage Fantastique ","Kenyan Coffee", "Advent Pro", Georgia, "Times New Roman", Times, serif !default;
-
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
-
 @font-face {
   font-family: "Montserrat";
-  src: url(../fonts/Montserrat-Bold.ttf);
-  src: url(../fonts/Montserrat-Bold.eot#iefix) format("embedded-opentype"), url(../fonts/Montserrat-Bold.ttf) format("truetype"), url(../fonts/Montserrat-Bold.svg) format("svg");
-    font-weight: bold;
+  src: url("../fonts/Montserrat-Bold.ttf");
+  src: url("../fonts/Montserrat-Bold.eot#iefix") format("embedded-opentype"), url("../fonts/Montserrat-Bold.ttf") format("truetype"), url("../fonts/Montserrat-Bold.svg") format("svg");
+  font-weight: bold;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url(../fonts/Montserrat-Regular.ttf);
-  src: url(../fonts/Montserrat-Regular.eot#iefix) format("embedded-opentype"), url(../fonts/Montserrat-Regular.ttf) format("truetype"), url(../fonts/Montserrat-Regular.svg) format("svg");
-    font-weight: normal;
+  src: url("../fonts/Montserrat-Regular.ttf");
+  src: url("../fonts/Montserrat-Regular.eot#iefix") format("embedded-opentype"), url("../fonts/Montserrat-Regular.ttf") format("truetype"), url("../fonts/Montserrat-Regular.svg") format("svg");
+  font-weight: normal;
 }
 @font-face {
   font-family: "Lato";
-  src: url(../fonts/Lato-Light.ttf);
-  src: url(../fonts/Lato-Light.eot#iefix) format("embedded-opentype"), url(../fonts/Lato-Light.ttf) format("truetype"), url(../fonts/Lato-Light.svg) format("svg");
-    font-weight: 300;
+  src: url("../fonts/Lato-Light.ttf");
+  src: url("../fonts/Lato-Light.eot#iefix") format("embedded-opentype"), url("../fonts/Lato-Light.ttf") format("truetype"), url("../fonts/Lato-Light.svg") format("svg");
+  font-weight: 300;
 }
 @font-face {
   font-family: "Lato";
-  src: url(../fonts/Lato-Regular.ttf);
-  src: url(../fonts/Lato-Regular.eot#iefix) format("embedded-opentype"), url(../fonts/Lato-Regular.ttf) format("truetype"), url(../fonts/Lato-Regular.svg) format("svg");
-    font-weight: normal;
+  src: url("../fonts/Lato-Regular.ttf");
+  src: url("../fonts/Lato-Regular.eot#iefix") format("embedded-opentype"), url("../fonts/Lato-Regular.ttf") format("truetype"), url("../fonts/Lato-Regular.svg") format("svg");
+  font-weight: normal;
 }
 @font-face {
   font-family: "Lato";
-  src: url(../fonts/Lato-Bold.ttf);
-  src: url(../fonts/Lato-Bold.eot#iefix) format("embedded-opentype"), url(../fonts/Lato-Bold.ttf) format("truetype"), url(../fonts/Montserrat-Regular.svg) format("svg");
-    font-weight: bold;
+  src: url("../fonts/Lato-Bold.ttf");
+  src: url("../fonts/Lato-Bold.eot#iefix") format("embedded-opentype"), url("../fonts/Lato-Bold.ttf") format("truetype"), url("../fonts/Montserrat-Regular.svg") format("svg");
+  font-weight: bold;
 }
-
-
+@mixin transition($transition...) {
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
 body {
   padding-top: 100px;
-  font-family: 'Montserrat','Lato';
-    font-weight: normal;
+  font-family: 'Lato','Montserrat';
+  font-weight: normal;
+  background-color: #F2F2F2;
+  color: $brand-base;
 }
 img.loading {
   text-align: center;
@@ -75,134 +76,195 @@ img.doneLoading {
 nav li:hover .dropdown-menu {
   display: block;
 }
-a{
+a {
   text-decoration: none;
-  &:hover{
+  &:hover {
     text-decoration: none;
     outline: 0;
   }
-  &:focus{
+  &:focus {
     text-decoration: none;
     outline: 0;
   }
 }
-
 /* Start writing sass here */
-
 // Header;
-
 .display-inline {
   display: inline-block;
 }
-.float-right{
-  float:right;
+.float-right {
+  float: right;
 }
-.pt10{
+.pt10 {
   padding-top: 10px;
-
 }
-.logo{
-
-  img{
+.logo {
+  img {
     display: inherit;
   }
 }
-.logo-name{
-  span{
+.logo-name {
+  span {
     position: absolute;
     font-size: 20px;
-    color:$brand-base;
+    color: $brand-base;
     font-family: lato;
     top: 32px;
     font-weight: 300;
   }
 }
-
 .navbar-default {
-    background-color:$white-color;
-    border-color: $border-color;
+  background-color: $white-color;
+  border-color: $border-color;
 }
-.head-font{
+.head-font {
   color: $brand-base;
-font-size: 13px;
-text-transform: uppercase;
+  font-size: 13px;
+  text-transform: uppercase;
 }
-.icon-pad{
-      padding: 0px 5px;
+.icon-pad {
+  padding: 0 5px;
 }
-.padding0{
-  padding: 0px;
+.padding0 {
+  padding: 0;
 }
-.margin0{
-  margin: 0px;
+.margin0 {
+  margin: 0;
 }
-.profile-pic{
+.profile-pic {
   border-radius: 100%;
-height: 50px;
-width: 50px;
-overflow: hidden;
-img{
-  max-width: 100%;
-  max-height: 105%;
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+  img {
+    max-width: 100%;
+    max-height: 105%;
+  }
 }
-}
-.custom-li{
-  ul{
+.custom-li {
+  ul {
     display: block;
     list-style: none;
-    li{
-      display:inline-block;
+    li {
+      display: inline-block;
     }
   }
 }
-.pr30{
+.pr30 {
   padding-right: 30px;
-
 }
-.pl30{
+.pl30 {
   padding-left: 30px;
 }
-.pt15{
+.pt15 {
   padding-top: 15px;
-
 }
-.pb15{
+.pb15 {
   padding-bottom: 15px;
 }
-.user-setting{
-  ul{
-    li{
+.user-setting {
+  ul {
+    li {
       vertical-align: middle;
+      font-family: 'Montserrat';
     }
   }
 }
-.search{
-  .input-group{
-    .form-control{
+.search {
+  .input-group {
+    .form-control {
       width: 98%;
-  height: 60px;
-  border-radius: 0px;
-  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
-
+      height: 60px;
+      border-radius: 0;
+      -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+      box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+      font-family: 'Montserrat';
     }
-    .btn{
+    .btn {
       padding: 19px 50px;
-font-size: 14px;
-border-radius: 0;
-
+      font-size: 14px;
+      border-radius: 0;
     }
     .btn-default {
-    color: #FFF;
-    background-color: #C7C7C7;
-    border-color: #C7C7C7;
-}
-.icon{
-  padding-left: 10px;
-font-size: 16px;
-vertical-align: inherit;
-}
+      color: #FFF;
+      background-color: #C7C7C7;
+      border-color: #C7C7C7;
+      font-family: 'Montserrat';
+    }
+    .icon {
+      padding-left: 10px;
+      font-size: 16px;
+      vertical-align: inherit;
+    }
   }
-
+}
+.app-box {
+  text-align: center;
+  border: 1px solid #fff;
+  background: #fff;
+  padding: 10px 15px 25px;
+  min-height: 230px;
+    @include transition(all 300ms ease);
+    cursor: pointer;
+  .app-info {
+    text-align: right;
+    i {
+      background-color: #4bae4f;
+      border-radius: 100%;
+      color: #4bae4f;
+    }
+  }
+  .app-icon {
+    height: 80px;
+    overflow: hidden;
+    display: block;
+    margin-top: 25px;
+    img {
+      margin: 0 auto;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  .app-name {
+    padding-top: 15px;
+    font-family: 'lato';
+    font-size: 16px;
+    padding-bottom: 4px;
+    color: #939393;
+    text-transform: capitalize;
+  }
+  .app-date {
+    p {
+      font-family: 'lato';
+      span {
+        color: #000;
+      }
+    }
+  }
+  .new-app {
+    margin-top: 25px;
+    span {
+      font-size: 50px;
+      background: #D9D9D9;
+      border-radius: 100%;
+      height: 80px;
+      width: 80px;
+      display: block;
+      margin: 0 auto;
+      color: #fff;
+      padding: 0;
+      border-style: double;
+    }
+  }
+  &:hover{
+    transform: scale(1.1);
+border: 1px solid #00bbd3;
+  }
+}
+.mt30{
+  margin-top: 30px;
+}
+.mt60{
+  margin-top: 60px;
 }
 @import "mahesh";
