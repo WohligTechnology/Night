@@ -7,13 +7,14 @@
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
 /* Bootstrap Variables Goes Here */
 $brand-primary: #0d9dff !default;
-$brand-success: #84ce3c !default;
+$brand-success: #4bae4f !default;
 $brand-warning: #ffec39 !default;
 $brand-danger: #fc483f !default;
 $brand-info: #000072 !default;
 $brand-base: #939393 !default;
 $border-color: #e7e7e7 !default;
 $white-color: #fff !default;
+$hover-color: #00bbd3!default;
 $font-family-sans-serif: "Lato", "Montserrat","Voyage Fantastique","Kenyan Coffee", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif: "Lato", "Montserrat", "Voyage Fantastique ","Kenyan Coffee", "Advent Pro", Georgia, "Times New Roman", Times, serif !default;
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
@@ -162,6 +163,17 @@ a {
 .pb15 {
   padding-bottom: 15px;
 }
+.btn {
+  &:focus,
+  &.focus,
+  &:active:focus,
+  &:active.focus,
+  &.active:focus,
+  &.active.focus {
+    outline-width:0px;
+    outline-offset: 0px;
+  }
+}
 .user-setting {
   ul {
     li {
@@ -204,14 +216,14 @@ a {
   background: #fff;
   padding: 10px 15px 25px;
   min-height: 230px;
-    @include transition(all 300ms ease);
-    cursor: pointer;
+  @include transition(all 300ms ease);
+  cursor: pointer;
   .app-info {
     text-align: right;
     i {
-      background-color: #4bae4f;
+      background-color: $brand-success;
       border-radius: 100%;
-      color: #4bae4f;
+      color: $brand-success;
     }
   }
   .app-icon {
@@ -256,15 +268,15 @@ a {
       border-style: double;
     }
   }
-  &:hover{
+  &:hover {
     transform: scale(1.1);
-border: 1px solid #00bbd3;
+    border: 1px solid $hover-color;
   }
 }
-.mt30{
+.mt30 {
   margin-top: 30px;
 }
-.mt60{
+.mt60 {
   margin-top: 60px;
 }
 @import "mahesh";

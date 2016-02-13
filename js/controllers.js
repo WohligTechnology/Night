@@ -13,6 +13,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   //   'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
   //   'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg'
   // ];
+
+//   $scope.apps={
+//     [
+//     id="";
+//
+//   ],
+// }
 })
 
 .controller('headerctrl', function($scope, TemplateService) {
