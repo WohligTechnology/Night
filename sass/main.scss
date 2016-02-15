@@ -279,4 +279,33 @@ a {
 .mt60 {
   margin-top: 60px;
 }
+.upload-app {
+    border: 1px solid $border-color;
+    display: inline-flex;
+    padding: 5px;
+}
+.mt45{
+  margin-top: 45px !important;
+}
+.upload-btn{
+  margin-top: 15px;
+  .btn{
+    color: #fff;
+border-radius: 0px;
+background: #c7c7c7;
+  }
+}
+.name-submit {
+  span {
+      display: block;
+      padding-bottom: 10px;
+  }
+  .form-control{
+    border-radius: 0px;
+  }
+}
+.modal-footer{
+  @extend .upload-btn;
+
+}
 @import "mahesh";
