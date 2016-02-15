@@ -15,7 +15,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   //
   // })
   $scope.animationsEnabled = true;
-
   $scope.open = function (size) {
 
     var modalInstance = $uibModal.open({
