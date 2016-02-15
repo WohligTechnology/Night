@@ -7,19 +7,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 
-  // $scope.mySlides = [
-  //   'http://flexslider.woothemes.com/images/kitchen_adventurer_cheesecake_brownie.jpg',
-  //   'http://flexslider.woothemes.com/images/kitchen_adventurer_lemon.jpg',
-  //   'http://flexslider.woothemes.com/images/kitchen_adventurer_donut.jpg',
-  //   'http://flexslider.woothemes.com/images/kitchen_adventurer_caramel.jpg'
-  // ];
+  // var modalInstance = $uibModal.open({
+  //   animation: true,
+  //   templateUrl: 'views/modal/new-app.html',
+  //   controller: 'NewappCtrl',
+  //   scope: $scope,
+  //
+  // })
+})
+.controller('NewappCtrl', function($scope, TemplateService, NavigationService, $timeout,  $uibModal) {
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("new-app");
+  $scope.menutitle = NavigationService.makeactive("New app");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
 
-//   $scope.apps={
-//     [
-//     id="";
-//
-//   ],
-// }
 })
 
 .controller('headerctrl', function($scope, TemplateService) {
