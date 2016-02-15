@@ -15,6 +15,8 @@ $brand-base: #939393 !default;
 $border-color: #e7e7e7 !default;
 $white-color: #fff !default;
 $hover-color: #00bbd3!default;
+$grey-color: #c7c7c7!default;
+
 $font-family-sans-serif: "Lato", "Montserrat","Voyage Fantastique","Kenyan Coffee", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif: "Lato", "Montserrat", "Voyage Fantastique ","Kenyan Coffee", "Advent Pro", Georgia, "Times New Roman", Times, serif !default;
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
@@ -199,8 +201,8 @@ a {
     }
     .btn-default {
       color: #FFF;
-      background-color: #C7C7C7;
-      border-color: #C7C7C7;
+      background-color: $grey-color;
+      border-color: $grey-color;
       font-family: 'Montserrat';
     }
     .icon {
@@ -212,8 +214,8 @@ a {
 }
 .app-box {
   text-align: center;
-  border: 1px solid #fff;
-  background: #fff;
+  border: 1px solid $white-color;
+  background: $white-color;
   padding: 10px 15px 25px;
   min-height: 230px;
   @include transition(all 300ms ease);
@@ -242,7 +244,7 @@ a {
     font-family: 'lato';
     font-size: 16px;
     padding-bottom: 4px;
-    color: #939393;
+    color:$brand-base;
     text-transform: capitalize;
   }
   .app-date {
@@ -292,7 +294,7 @@ a {
   .btn{
     color: #fff;
 border-radius: 0px;
-background: #c7c7c7;
+background:$grey-color;
   }
 }
 .name-submit {
