@@ -34,6 +34,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   };
 
 })
+
 .controller('ThemeCtrl', function($scope, TemplateService, NavigationService, $timeout,  $uibModal, $log) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("theme");
@@ -72,10 +73,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('NewappCtrl', function($scope, TemplateService) {
   $scope.template = TemplateService;
-  $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-    $(window).scrollTop(0);
-  });
+
 })
+
 .controller('headerctrl', function($scope, TemplateService) {
   $scope.template = TemplateService;
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
