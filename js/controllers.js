@@ -7,13 +7,40 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 
-  // var modalInstance = $uibModal.open({
-  //   animation: true,
-  //   templateUrl: 'views/modal/new-app.html',
-  //   controller: 'NewappCtrl',
-  //   scope: $scope,
-  //
-  // })
+  $scope.animationsEnabled = true;
+  $scope.open = function (size) {
+
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'views/modal/new-app.html',
+      controller: 'NewappCtrl',
+      size: size,
+      resolve: {
+        items: function () {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+
+  $scope.toggleAnimation = function () {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
+
+})
+.controller('ThemeCtrl', function($scope, TemplateService, NavigationService, $timeout,  $uibModal, $log) {
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("theme");
+  $scope.menutitle = NavigationService.makeactive("Theme");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+
   $scope.animationsEnabled = true;
   $scope.open = function (size) {
 

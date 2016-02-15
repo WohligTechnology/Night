@@ -17,6 +17,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
         url: "/dashboard",
         templateUrl: "views/template.html",
         controller: 'DashboardCtrl'
+    })
+    .state('theme', {
+        url: "/theme",
+        templateUrl: "views/template.html",
+        controller: 'ThemeCtrl'
     });
 
     $urlRouterProvider.otherwise("/dashboard");
