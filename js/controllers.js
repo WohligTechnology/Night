@@ -1,6 +1,6 @@
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider'])
 
-.controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout,  $uibModal) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("dashboard");
   $scope.menutitle = NavigationService.makeactive("Dashboard");
