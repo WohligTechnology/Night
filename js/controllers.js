@@ -6,7 +6,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Dashboard");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
-
+  TemplateService.sidemenu = "";
   $scope.animationsEnabled = true;
   $scope.open = function (size) {
 
