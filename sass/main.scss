@@ -17,8 +17,14 @@ $white-color: #fff !default;
 $hover-color: #00bbd3!default;
 $grey-color: #c7c7c7!default;
 
+
 $font-family-sans-serif: "Lato", "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif: "Lato", "Montserrat", "Advent Pro", Georgia, "Times New Roman", Times, serif !default;
+
+$head-font: 10px;
+$font-family-sans-serif: "Lato", "Montserrat","Voyage Fantastique","Kenyan Coffee", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-serif: "Lato", "Montserrat", "Voyage Fantastique ","Kenyan Coffee", "Advent Pro", Georgia, "Times New Roman", Times, serif !default;
+
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 
 
@@ -113,7 +119,7 @@ a,
 }
 .head-font {
   color: $brand-base;
-  font-size: 13px;
+  font-size: $head-font;
   text-transform: uppercase;
 }
 .icon-pad {
@@ -181,6 +187,9 @@ a,
     height: 50px;
     border-radius: 0;
     width: 98%;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+    box-shadow: none;
   }
   .input-group {
     .btn {
@@ -192,6 +201,7 @@ a,
     }
   }
 }
+<<<<<<< HEAD
 
 
   .sidemenu {
@@ -201,6 +211,14 @@ a,
 padding-top: 26px;
   }
 
+
+
+.sidemenu {
+  width: 250px;
+  float: left;
+  background: #fff;
+  padding-top: 15px;
+}
 
 .app-box {
   text-align: center;
@@ -319,6 +337,7 @@ padding-top: 26px;
     }
   }
 }
+
 .list-unstyled{
     li{
       margin: 4px 0px;
@@ -339,7 +358,22 @@ color:$grey-color;
     padding-top: 8px;
     padding-right: 0px !important;
 }
+
+.list-unstyled {
+  li {
+    margin: 4px 0;
+    a {
+      color: $brand-base;
+      font-family: 'Montserrat';
+      font-size: $head-font;
+      cursor: pointer;
+      i {
+        font-size: 20px;
+        padding-right: 10px;
+        vertical-align: sub;
+
       }
     }
+  }
 }
 @import "mahesh";
