@@ -196,6 +196,11 @@ a,
     .btn {
       padding: 12px 21px;
       font-size: 18px;
+      border: 0;
+      &:hover{
+        background: #fff;
+        box-shadow: none;
+      }
       i {
         color: #B2B2B2;
       }
@@ -385,7 +390,6 @@ color:$grey-color;
 .template-box{
 
   .template-des {
-      height: 360px;
       width: auto;
       overflow: hidden;
       display: block;
@@ -429,13 +433,15 @@ font-weight: 300;
 }
 .preivew {
     text-align: center;
-    margin-top: 95px;
+    margin-top: 50px;
     .app-prview{
     background: url(../img/device.png) no-repeat center center;
-    width: 300px;
-    height: 597px;
+    width: 251px;
+    height: 500px;
     background-size: 100% 100%;
     margin: 0 auto;
+    position: fixed;
+    right: 5%;
     }
 }
 
