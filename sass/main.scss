@@ -1,5 +1,5 @@
-// @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
-// @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
@@ -16,39 +16,16 @@ $border-color: #e7e7e7 !default;
 $white-color: #fff !default;
 $hover-color: #00bbd3!default;
 $grey-color: #c7c7c7!default;
-$font-family-sans-serif: "Lato", "Montserrat","Voyage Fantastique","Kenyan Coffee", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-$font-family-serif: "Lato", "Montserrat", "Voyage Fantastique ","Kenyan Coffee", "Advent Pro", Georgia, "Times New Roman", Times, serif !default;
+
+$font-family-sans-serif: "Lato", "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-serif: "Lato", "Montserrat", "Advent Pro", Georgia, "Times New Roman", Times, serif !default;
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat-Bold.ttf");
-  src: url("../fonts/Montserrat-Bold.eot#iefix") format("embedded-opentype"), url("../fonts/Montserrat-Bold.ttf") format("truetype"), url("../fonts/Montserrat-Bold.svg") format("svg");
-  font-weight: bold;
-}
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat-Regular.ttf");
-  src: url("../fonts/Montserrat-Regular.eot#iefix") format("embedded-opentype"), url("../fonts/Montserrat-Regular.ttf") format("truetype"), url("../fonts/Montserrat-Regular.svg") format("svg");
-  font-weight: normal;
-}
-@font-face {
-  font-family: "Lato";
-  src: url("../fonts/Lato-Light.ttf");
-  src: url("../fonts/Lato-Light.eot#iefix") format("embedded-opentype"), url("../fonts/Lato-Light.ttf") format("truetype"), url("../fonts/Lato-Light.svg") format("svg");
-  font-weight: 300;
-}
-@font-face {
-  font-family: "Lato";
-  src: url("../fonts/Lato-Regular.ttf");
-  src: url("../fonts/Lato-Regular.eot#iefix") format("embedded-opentype"), url("../fonts/Lato-Regular.ttf") format("truetype"), url("../fonts/Lato-Regular.svg") format("svg");
-  font-weight: normal;
-}
-@font-face {
-  font-family: "Lato";
-  src: url("../fonts/Lato-Bold.ttf");
-  src: url("../fonts/Lato-Bold.eot#iefix") format("embedded-opentype"), url("../fonts/Lato-Bold.ttf") format("truetype"), url("../fonts/Montserrat-Regular.svg") format("svg");
-  font-weight: bold;
-}
+
+
+// custom variable
+$navbar-padding-horizontal:        0px !important;
+$nav-link-padding:                 10px 15px 10px 20px ;
+
 @mixin transition($transition...) {
   -moz-transition: $transition;
   -o-transition: $transition;
@@ -77,6 +54,10 @@ img.doneLoading {
 }
 nav li:hover .dropdown-menu {
   display: block;
+}
+.navbar-collapse{
+  padding-right:$navbar-padding-horizontal;
+  padding-left:$navbar-padding-horizontal;
 }
 a,
 .form-control,
@@ -122,6 +103,13 @@ a,
 .navbar-default {
   background-color: $white-color;
   border-color: $border-color;
+}
+.nav{
+  li{
+    a{
+      padding:$nav-link-padding !important;
+    }
+  }
 }
 .head-font {
   color: $brand-base;
@@ -207,7 +195,7 @@ a,
 
 
   .sidemenu {
-    width: 250px;
+    width: 225px;
     float: left;
     background: $white-color;
 padding-top: 26px;
@@ -343,6 +331,13 @@ i{
   font-size: 24px;
 padding-right: 15px;
 vertical-align: sub;
+color:$grey-color;
+}
+.right-arrow{
+  float: right;
+    font-size: 15px !important;
+    padding-top: 8px;
+    padding-right: 0px !important;
 }
       }
     }
