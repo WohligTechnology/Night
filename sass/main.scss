@@ -427,5 +427,16 @@ padding-top: 6px;
 font-weight: 300;
   }
 }
+.preivew {
+    text-align: center;
+    margin-top: 95px;
+    .app-prview{
+    background: url(../img/device.png) no-repeat center center;
+    width: 300px;
+    height: 597px;
+    background-size: 100% 100%;
+    margin: 0 auto;
+    }
+}
 
 // @import "mahesh";
