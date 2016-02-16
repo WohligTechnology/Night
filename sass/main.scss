@@ -16,6 +16,7 @@ $border-color: #e7e7e7 !default;
 $white-color: #fff !default;
 $hover-color: #00bbd3!default;
 $grey-color: #c7c7c7!default;
+$head-color: #767676!default;
 
 
 $font-family-sans-serif: "Lato", "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
@@ -381,4 +382,50 @@ color:$grey-color;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: $grey-color;
 }
+.template-box{
+
+  .template-des {
+      height: 360px;
+      width: auto;
+      overflow: hidden;
+      display: block;
+      border: 1px solid #969696;
+      padding: 5px;
+      img{
+        max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+      }
+  }
+}
+
+.ionic-template{
+  h4{
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+    margin-top: 32px;
+    color: $head-color;
+    font-size:20px;
+        margin-bottom: 40px;
+  }
+}
+.templat-bk {
+    background: #fff;
+    padding: 5px;
+    cursor:pointer;
+    @include transition(all 300ms ease);
+    &:hover{
+      transform: scale(1.1);
+    }
+}
+.template-name{
+  min-height: 35px;
+  span{
+    font-size: 17px;
+display: inline-block;
+padding-top: 6px;
+font-weight: 300;
+  }
+}
+
 // @import "mahesh";
