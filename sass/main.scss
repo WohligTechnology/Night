@@ -56,7 +56,7 @@ $font-family-serif: "Lato", "Montserrat", "Voyage Fantastique ","Kenyan Coffee",
   transition: $transition;
 }
 body {
-  padding-top: 100px;
+  padding-top: 80px;
   font-family: 'Lato','Montserrat';
   font-weight: normal;
   background-color: #F2F2F2;
@@ -205,10 +205,14 @@ a,
   }
 }
 
-section.sidemenu {
-  width: 250px;
-  float: left;
-}
+
+  .sidemenu {
+    width: 250px;
+    float: left;
+    background: $white-color;
+padding-top: 26px;
+  }
+
 
 .app-box {
   text-align: center;
@@ -326,5 +330,21 @@ section.sidemenu {
       outline: 0;
     }
   }
+}
+.list-unstyled{
+    li{
+      margin: 4px 0px;
+      a{
+        color: $brand-base;
+font-family: 'Montserrat';
+font-size: 13px;
+cursor: pointer;
+i{
+  font-size: 24px;
+padding-right: 15px;
+vertical-align: sub;
+}
+      }
+    }
 }
 @import "mahesh";
