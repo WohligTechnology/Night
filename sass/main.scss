@@ -16,7 +16,6 @@ $border-color: #e7e7e7 !default;
 $white-color: #fff !default;
 $hover-color: #00bbd3!default;
 $grey-color: #c7c7c7!default;
-
 $font-family-sans-serif: "Lato", "Montserrat","Voyage Fantastique","Kenyan Coffee", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif: "Lato", "Montserrat", "Voyage Fantastique ","Kenyan Coffee", "Advent Pro", Georgia, "Times New Roman", Times, serif !default;
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
@@ -79,7 +78,9 @@ img.doneLoading {
 nav li:hover .dropdown-menu {
   display: block;
 }
-a,.form-control, .btn {
+a,
+.form-control,
+.btn {
   text-decoration: none;
   &:hover {
     text-decoration: none;
@@ -88,8 +89,8 @@ a,.form-control, .btn {
   &:focus {
     text-decoration: none;
     outline: 0;
-    box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
-        border-color: #ccc;
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075), 0 0 0 rgba(102, 175, 233, 0.6);
+    border-color: #ccc;
   }
 }
 /* Start writing sass here */
@@ -174,8 +175,8 @@ a,.form-control, .btn {
   &:active.focus,
   &.active:focus,
   &.active.focus {
-    outline-width:0px;
-    outline-offset: 0px;
+    outline-width: 0;
+    outline-offset: 0;
   }
 }
 .user-setting {
@@ -186,22 +187,27 @@ a,.form-control, .btn {
     }
   }
 }
-.search-head{
+.search-head {
   margin-top: 14px;
-  .form-control{
+  .form-control {
     height: 50px;
-border-radius: 0px;
-width: 98%;
+    border-radius: 0;
+    width: 98%;
   }
-  .input-group{
-    .btn{
+  .input-group {
+    .btn {
       padding: 12px 21px;
-font-size: 18px;
-i{
-  color: #B2B2B2;
-}
+      font-size: 18px;
+      i {
+        color: #B2B2B2;
+      }
     }
   }
+}
+
+section.sidemenu {
+  width: 250px;
+  float: left;
 }
 
 .app-box {
@@ -236,7 +242,7 @@ i{
     font-family: 'lato';
     font-size: 16px;
     padding-bottom: 4px;
-    color:$brand-base;
+    color: $brand-base;
     text-transform: capitalize;
   }
   .app-date {
@@ -274,50 +280,49 @@ i{
   margin-top: 60px;
 }
 .upload-app {
-    border: 1px solid $border-color;
-    display: inline-flex;
-    padding: 5px;
+  border: 1px solid $border-color;
+  display: inline-flex;
+  padding: 5px;
 }
-.mt45{
+.mt45 {
   margin-top: 45px !important;
 }
-.upload-btn{
+.upload-btn {
   margin-top: 15px;
-  .btn{
+  .btn {
     color: #fff;
-border-radius: 0px;
-background:$grey-color;
+    border-radius: 0;
+    background: $grey-color;
   }
 }
 .name-submit {
   span {
-      display: block;
-      padding-bottom: 10px;
+    display: block;
+    padding-bottom: 10px;
   }
-  .form-control{
-    border-radius: 0px;
+  .form-control {
+    border-radius: 0;
   }
 }
 .modal-dialog {
-    position: absolute;
-    margin: 10px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%)!important;
+  position: absolute;
+  margin: 10px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%)!important;
 }
-.modal-footer{
+.modal-footer {
   @extend .upload-btn;
-
 }
-.modal-header{
+.modal-header {
   .close {
     outline: 0;
-    &:focus{
+    &:focus {
       outline: 0;
     }
-}
-  span{
-    &:focus{
+  }
+  span {
+    &:focus {
       outline: 0;
     }
   }
