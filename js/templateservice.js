@@ -8,12 +8,13 @@ templateservicemod.service('TemplateService', function() {
     this.year = d.getFullYear();
 
     this.init = function() {
-        this.headermenu = "views/headermenu.html";
         this.header = "views/header.html";
         this.menu = "views/menu.html";
         this.slider = "views/slider.html";
         this.content = "views/content/content.html";
         this.sidemenu = "views/sidemenu.html";
+        this.preview = "views/preview.html";
+        this.contentside = "views/contentside.html";
         this.footer = "views/footer.html";
     };
 

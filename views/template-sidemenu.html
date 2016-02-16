@@ -1,7 +1,13 @@
 <div class="container-fluid">
   <section ng-include="template.header" class="template header"></section>
   <section ng-include="template.sidemenu" class="template sidemenu"></section>
-  <section ng-include="template.content" class="template content"></section>
-  <section ng-include="template.preview" class="template preview"></section>
+  <div class="row main">
+    <div class="col-md-7">
+      <section ng-include="template.content-side" class="template content-side main"></section>
+    </div>
+    <div class="col-md-5">
+      <section ng-include="template.preview" class="template preview"></section>
+    </div>
+  </div>
   <section ng-include="template.footer" class="template footer"></section>
 </div>
