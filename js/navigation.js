@@ -22,7 +22,7 @@ var navigationservice = angular.module('navigationservice', [])
     link: "#/navigation",
     icon: "ln-compass",
   },{
-    name: "Login/Signup",
+    name: "Login & Signup",
     classis: "active",
     link: "#/login/signup",
     icon: "ln-unlock",
