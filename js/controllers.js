@@ -1,6 +1,6 @@
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider'])
 
-.controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout,  $uibModal, $log) {
+.controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("dashboard");
   $scope.menutitle = NavigationService.makeactive("Dashboard");
@@ -8,7 +8,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
   TemplateService.sidemenu = "";
   $scope.animationsEnabled = true;
-  $scope.open = function (size) {
+  $scope.open = function(size) {
 
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
@@ -16,59 +16,73 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       controller: 'NewappCtrl',
       size: size,
       resolve: {
-        items: function () {
+        items: function() {
           return $scope.items;
         }
       }
     });
 
-    modalInstance.result.then(function (selectedItem) {
+    modalInstance.result.then(function(selectedItem) {
       $scope.selected = selectedItem;
-    }, function () {
+    }, function() {
       $log.info('Modal dismissed at: ' + new Date());
     });
   };
 
-  $scope.toggleAnimation = function () {
+  $scope.toggleAnimation = function() {
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
 
 })
 
-.controller('ThemeCtrl', function($scope, TemplateService, NavigationService, $timeout,  $uibModal, $log) {
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("theme");
-  $scope.menutitle = NavigationService.makeactive("Theme");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
+.controller('ThemeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("theme");
+    $scope.menutitle = NavigationService.makeactive("Theme");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
 
-  $scope.animationsEnabled = true;
-  $scope.open = function (size) {
+    $scope.animationsEnabled = true;
+    $scope.open = function(size) {
 
-    var modalInstance = $uibModal.open({
-      animation: $scope.animationsEnabled,
-      templateUrl: 'views/modal/new-app.html',
-      controller: 'NewappCtrl',
-      size: size,
-      resolve: {
-        items: function () {
-          return $scope.items;
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'views/modal/new-app.html',
+        controller: 'NewappCtrl',
+        size: size,
+        resolve: {
+          items: function() {
+            return $scope.items;
+          }
         }
-      }
-    });
+      });
 
-    modalInstance.result.then(function (selectedItem) {
-      $scope.selected = selectedItem;
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
-  };
+      modalInstance.result.then(function(selectedItem) {
+        $scope.selected = selectedItem;
+      }, function() {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+    };
 
-  $scope.toggleAnimation = function () {
-    $scope.animationsEnabled = !$scope.animationsEnabled;
-  };
+    $scope.toggleAnimation = function() {
+      $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
 
-})
+  })
+  .controller('FormsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("form");
+    $scope.menutitle = NavigationService.makeactive("Forms");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+  })
+  .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("home");
+    $scope.menutitle = NavigationService.makeactive("Home");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+  })
 
 
 .controller('NewappCtrl', function($scope, TemplateService) {
