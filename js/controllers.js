@@ -71,7 +71,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   })
   .controller('FormsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file
-    $scope.template = TemplateService.changecontent("form");
+    $scope.template = TemplateService.changecontent("forms");
     $scope.menutitle = NavigationService.makeactive("Forms");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
