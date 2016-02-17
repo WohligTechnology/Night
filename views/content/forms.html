@@ -15,7 +15,11 @@
                         <h4>Forms to Refer</h4>
                       </div>
                       <div class="forms">
-                        <input type="file"/>
+                        <input type="file" accept="image/*" image="image" />File
+                        <img ng-show="image" ng-src="{{image.url}}" type="{{image.file.type}}" />
+                      </div>
+                      <div class="upload-img">
+
                       </div>
                     </div>
                   </div>
