@@ -433,16 +433,15 @@ font-weight: 300;
 }
 .preivew {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 15px;
     .app-prview{
     background: url(../img/device.png) no-repeat center center;
-    width: 251px;
-    height: 500px;
+    width: 276px;
+    height: 560px;
     background-size: 100% 100%;
     margin: 0 auto;
     position: fixed;
-    right: 0%;
-  transform: translateX(-50%);
+    right: 5%;
     }
 }
 .naming{
