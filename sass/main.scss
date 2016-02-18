@@ -6,7 +6,6 @@
 @import "../bower_components/flexslider/flexslider.css";
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
 @import "blazen";
-
 /* Bootstrap Variables Goes Here */
 $brand-primary: #0d9dff !default;
 $brand-success: #4bae4f !default;
@@ -19,21 +18,15 @@ $white-color: #fff !default;
 $hover-color: #00bbd3!default;
 $grey-color: #c7c7c7!default;
 $head-color: #767676!default;
-
 $font-family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif: "Lato", Georgia, "Times New Roman", Times, serif !default;
-
 $head-font: 12px;
 $font-family-sans-serif: "Lato", "Montserrat","Voyage Fantastique","Kenyan Coffee", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif: "Lato", "Montserrat", "Voyage Fantastique ","Kenyan Coffee", "Advent Pro", Georgia, "Times New Roman", Times, serif !default;
-
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
-
-
 /* Custom Variable */
-$navbar-padding-horizontal:        0px !important;
-$nav-link-padding:                 10px 15px 10px 20px ;
-
+$navbar-padding-horizontal: 0 !important;
+$nav-link-padding: 10px 15px 10px 20px;
 @mixin transition($transition...) {
   -moz-transition: $transition;
   -o-transition: $transition;
@@ -63,9 +56,9 @@ img.doneLoading {
 nav li:hover .dropdown-menu {
   display: block;
 }
-.navbar-collapse{
-  padding-right:$navbar-padding-horizontal;
-  padding-left:$navbar-padding-horizontal;
+.navbar-collapse {
+  padding-right: $navbar-padding-horizontal;
+  padding-left: $navbar-padding-horizontal;
 }
 a,
 .form-control,
@@ -120,7 +113,7 @@ a,
       }
     }
     a {
-      padding:$nav-link-padding !important;
+      padding: $nav-link-padding !important;
     }
   }
 }
@@ -182,7 +175,7 @@ a,
   }
 }
 .btn.btn-clear {
-    background-color: transparent;
+  background-color: transparent;
 }
 .user-setting {
   ul {
@@ -207,7 +200,7 @@ a,
       padding: 12px 21px;
       font-size: 18px;
       border: 0;
-      &:hover{
+      &:hover {
         background: #fff;
         box-shadow: none;
       }
@@ -217,7 +210,6 @@ a,
     }
   }
 }
-
 .sidemenu {
   width: 225px;
   background: #fff;
@@ -235,7 +227,6 @@ a,
 footer {
   padding-left: 250px;
 }
-
 .app-box {
   text-align: center;
   border: 1px solid $white-color;
@@ -353,109 +344,134 @@ footer {
     }
   }
 }
-
 .list-unstyled {
-    li {
-      margin: 6px 0px;
-      a {
-        color: $brand-base;
-        font-size: 14px;
-        cursor: pointer;
+  li {
+    margin: 6px 0;
+    a {
+      color: $brand-base;
+      font-size: 14px;
+      cursor: pointer;
       i {
         font-size: 24px;
         padding-right: 15px;
         vertical-align: sub;
-        color:$grey-color;
+        color: $grey-color;
       }
     }
   }
 }
 .right-arrow {
   float: right;
-    font-size: 15px !important;
-    padding-top: 8px;
-    padding-right: 0px !important;
+  font-size: 15px !important;
+  padding-top: 8px !important;
+  padding-right: 0 !important;
 }
 // scrollbar
-
 .sidemenu::-webkit-scrollbar-track {
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color:$border-color;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: $border-color;
 }
-
 .sidemenu::-webkit-scrollbar {
-	width: 7px;
-	background-color: $border-color;
+  width: 7px;
+  background-color: $border-color;
 }
-
 .sidemenu::-webkit-scrollbar-thumb {
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: $grey-color;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: $grey-color;
 }
 .template-box {
-
   .template-des {
-      width: auto;
-      overflow: hidden;
-      display: block;
-      border: 1px solid #969696;
-      padding: 5px;
-      img {
-        max-width: 100%;
-        max-height: 100%;
-        margin: 0 auto;
-      }
+    width: auto;
+    overflow: hidden;
+    display: block;
+    border: 1px solid #969696;
+    padding: 5px;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0 auto;
+    }
   }
 }
-
-.ionic-template{
+.ionic-template {
   h4 {
     font-family: 'Montserrat';
     text-transform: uppercase;
     margin-top: 32px;
     color: $head-color;
-    font-size:20px;
-        margin-bottom: 40px;
+    font-size: 20px;
+    margin-bottom: 40px;
   }
 }
 .templat-bk {
-    background: #fff;
-    padding: 5px;
-    cursor:pointer;
-    @include transition(all 300ms ease);
-    &:hover {
-      transform: scale(1.1);
-    }
+  background: #fff;
+  padding: 5px;
+  cursor: pointer;
+  @include transition(all 300ms ease);
+  &:hover {
+    transform: scale(1.1);
+  }
 }
-.template-name{
+.template-name {
   min-height: 35px;
   span {
     font-size: 17px;
-display: inline-block;
-padding-top: 6px;
-font-weight: 300;
+    display: inline-block;
+    padding-top: 6px;
+    font-weight: 300;
   }
 }
 .preivew {
-    text-align: center;
-    margin-top: 50px;
-    .app-prview{
-    background: url(../img/device.png) no-repeat center center;
+  text-align: center;
+  margin-top: 50px;
+  .app-prview {
+    background: url("../img/device.png") no-repeat center center;
     width: 251px;
     height: 500px;
     background-size: 100% 100%;
     margin: 0 auto;
     position: fixed;
-    right: 0%;
-  transform: translateX(-50%);
-    }
+    right: 0;
+    transform: translateX(-50%);
+  }
 }
-.naming{
+.naming {
   h4 {
     font-size: 16px;
   }
 }
-@import "toggle"
-// @import "mahesh";
+// .grouplist {
+//   .items {
+//     min-height: 84px;
+//     position: relative;
+//     background: #fff;
+//     padding: 10px 20px;
+//     min-height: 60px;
+//     .circle {
+//       position: absolute;
+//       border: 1px solid #ddd;
+//       border-radius: 50%;
+//       height: 40px;
+//       width: 40px;
+//       text-align: center;
+//       font-size: 23px;
+//       line-height: 1.4;
+//       margin-top: 5px;
+//     }
+//     .pad-left {
+//       padding-left: 51px;
+//     }
+//     .nav-name {
+//       padding-top: 0;
+//       font-size: 16px;
+//       font-weight: 700;
+//       h5 {
+//         font-size: 16px;
+//         font-weight: 700;
+//       }
+//     }
+//   }
+// }
+@import "toggle"// @import "mahesh";
