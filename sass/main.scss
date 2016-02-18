@@ -56,9 +56,14 @@ img.doneLoading {
 nav li:hover .dropdown-menu {
   display: block;
 }
-.navbar-collapse {
-  padding-right: $navbar-padding-horizontal;
-  padding-left: $navbar-padding-horizontal;
+
+.navbar {
+  margin-bottom: 0;
+}
+.navbar-collapse{
+  padding-right:$navbar-padding-horizontal;
+  padding-left:$navbar-padding-horizontal;
+
 }
 a,
 .form-control,
