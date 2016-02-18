@@ -22,11 +22,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       }
     });
 
-    modalInstance.result.then(function(selectedItem) {
-      $scope.selected = selectedItem;
-    }, function() {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
   };
 
   $scope.toggleAnimation = function() {
@@ -42,6 +37,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 })
+
 
 .controller('ThemeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
   //Used to name the .html file
@@ -77,12 +73,35 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   };
 })
 
-.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("home");
   $scope.menutitle = NavigationService.makeactive("Home");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+
+  $scope.open = function(size) {
+
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'views/modal/slider-link.html',
+      size: size,
+      resolve: {
+        items: function() {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstance.result.then(function(selectedItem) {
+      $scope.selected = selectedItem;
+    }, function() {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+  $scope.toggleAnimation = function() {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
 })
 
 .controller('NavigationCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
@@ -93,13 +112,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 })
 
-.controller('NavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("navigationdetail");
-  $scope.menutitle = NavigationService.makeactive("Navigation");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
-})
 
 .controller('LoginSignupCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
   //Used to name the .html file
@@ -109,21 +121,39 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 })
 
-.controller('NotificationsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('NotificationsCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("notifications");
   $scope.menutitle = NavigationService.makeactive("Notifications");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+
+  $scope.animationsEnabled = true;
+
+    $scope.open = function (size) {
+
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'views/modal/notificationdetail.html',
+        controller: 'NotificationsCtrl',
+        size: size,
+        resolve: {
+          items: function () {
+            return $scope.items;
+          }
+        }
+      });
+    };
+
+    $scope.toggleAnimation = function () {
+      $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
 })
 
 .controller('NotificationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("notificationdetail");
-  $scope.menutitle = NavigationService.makeactive("Notifications");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
+
 })
+
 
 .controller('EventsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
   //Used to name the .html file
@@ -185,6 +215,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("photogallerydetail");
   $scope.menutitle = NavigationService.makeactive("Photo Galleries");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+
+.controller('VideoGalleriesCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("videogalleries");
+  $scope.menutitle = NavigationService.makeactive("Video Galleries");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 })
@@ -299,5 +337,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $(window).scrollTop(0);
   });
+  $scope.searchBar = false;
+$scope.showBar = function() {
+  $scope.searchBar = !$scope.searchBar;
+  console.log($scope.showBar);
+};
 })
 ;
