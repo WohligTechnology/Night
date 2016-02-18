@@ -14,45 +14,63 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $stateProvider
 
     .state('allapps', {
-      url: "/",
-      templateUrl: "views/template.html",
-      controller: 'AllAppsCtrl'
-    })
-    .state('dashboard', {
-      url: "/dashboard",
-      templateUrl: "views/template.html",
-      controller: 'DashboardCtrl'
-    })
-    .state('theme', {
-      url: "/theme",
-      templateUrl: "views/template.html",
-      controller: 'ThemeCtrl'
-    })
-    .state('home', {
-      url: "/home",
-      templateUrl: "views/template.html",
-      controller: 'HomeCtrl'
-    })
-    .state('navigation', {
-      url: "/navigation",
-      templateUrl: "views/template.html",
-      controller: 'NavigationCtrl'
-    })
-    .state('login-signup', {
-      url: "/login-signup",
-      templateUrl: "views/template.html",
-      controller: 'LoginSignupCtrl'
-    })
-    .state('notifications', {
-      url: "/notifications",
-      templateUrl: "views/template.html",
-      controller: 'NotificationsCtrl'
-    })
+    url: "/",
+    templateUrl: "views/template.html",
+    controller: 'AllAppsCtrl'
+  })
+
+  .state('dashboard', {
+    url: "/dashboard",
+    templateUrl: "views/template.html",
+    controller: 'DashboardCtrl'
+  })
+
+  .state('theme', {
+    url: "/theme",
+    templateUrl: "views/template.html",
+    controller: 'ThemeCtrl'
+  })
+
+  .state('home', {
+    url: "/home",
+    templateUrl: "views/template.html",
+    controller: 'HomeCtrl'
+  })
+
+  .state('navigation', {
+    url: "/navigation",
+    templateUrl: "views/template.html",
+    controller: 'NavigationCtrl'
+  })
+
+  .state('navigationdetail', {
+    url: "/navigation/:id",
+    templateUrl: "views/template.html",
+    controller: 'NavigationDetailCtrl'
+  })
+
+  .state('login-signup', {
+    url: "/login-signup",
+    templateUrl: "views/template.html",
+    controller: 'LoginSignupCtrl'
+  })
+
+  .state('notifications', {
+    url: "/notifications",
+    templateUrl: "views/template.html",
+    controller: 'NotificationsCtrl'
+  })
 
   .state('events', {
     url: "/events",
     templateUrl: "views/template.html",
     controller: 'EventsCtrl'
+  })
+
+  .state('eventdetail', {
+    url: "/event/:id",
+    templateUrl: "views/template.html",
+    controller: 'EventDetailCtrl'
   })
 
   .state('blogs', {
@@ -61,60 +79,109 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     controller: "BlogsCtrl"
   })
 
+  .state('blogdetail', {
+    url: "/blogs",
+    templateUrl: "views/template.html",
+    controller: "BlogsCtrl"
+  })
+
   .state('articles', {
-      url: "/articles",
-      templateUrl: "views/template.html",
-      controller: "ArticlesCtrl"
-    })
-    .state('photo-galleries', {
-      url: "/photogalleries",
-      templateUrl: "views/template.html",
-      controller: "PhotoGalleriesCtrl"
-    })
+    url: "/articles",
+    templateUrl: "views/template.html",
+    controller: "ArticlesCtrl"
+  })
 
-  .state('video-galleries', {
-      url: "/videogalleries",
-      templateUrl: "views/template.html",
-      controller: "VideoGalleriesCtrl"
-    })
-    .state('contact', {
-      url: "/contact",
-      templateUrl: "views/template.html",
-      controller: "ContactCtrl"
-    })
-    .state('search', {
-      url: "/search",
-      templateUrl: "views/template.html",
-      controller: "SearchCtrl"
-    })
-    .state('audio-galleries', {
-      url: "/audio-galleries",
-      templateUrl: "views/template.html",
-      controller: "AudioGalleriesCtrl"
-    })
-    .state('intro-slider', {
-      url: "/intro-slider",
-      templateUrl: "views/template.html",
-      controller: "IntroSliderCtrl"
-    })
-    .state('social-feeds', {
-      url: "/social-feeds",
-      templateUrl: "views/template.html",
-      controller: "SocialFeedsCtrl"
-    })
-    .state('forms', {
-      url: "/forms",
-      templateUrl: "views/template.html",
-      controller: 'FormsCtrl'
-    })
-    .state('users', {
-      url: "/users",
-      templateUrl: "views/template.html",
-      controller: 'UsersCtrl'
-    })
+  .state('articledetail', {
+    url: "/article/:id",
+    templateUrl: "views/template.html",
+    controller: "ArticleDetailCtrl"
+  })
 
+  .state('photo-galleries', {
+    url: "/photogalleries",
+    templateUrl: "views/template.html",
+    controller: "PhotoGalleriesCtrl"
+  })
 
-  ;
+  .state('photo-gallerydetail', {
+    url: "/photogallery/:id",
+    templateUrl: "views/template.html",
+    controller: "PhotoGalleryDetailCtrl"
+  })
+
+  .state('video-gallery', {
+    url: "/videogallery",
+    templateUrl: "views/template.html",
+    controller: "VideoGalleryCtrl"
+  })
+  .state('video-gallerydetail', {
+    url: "/videogallery/:id",
+    templateUrl: "views/template.html",
+    controller: "VideoGalleryDetailCtrl"
+  })
+
+  .state('contact', {
+    url: "/contact",
+    templateUrl: "views/template.html",
+    controller: "ContactCtrl"
+  })
+
+  .state('contactdetail', {
+    url: "/contact/:id",
+    templateUrl: "views/template.html",
+    controller: "ContactDetailCtrl"
+  })
+
+  .state('search', {
+    url: "/search",
+    templateUrl: "views/template.html",
+    controller: "SearchCtrl"
+  })
+
+  .state('audio-galleries', {
+    url: "/audio-galleries",
+    templateUrl: "views/template.html",
+    controller: "AudioGalleriesCtrl"
+  })
+  .state('audio-gallerydetail', {
+    url: "/audio-gallery/:id",
+    templateUrl: "views/template.html",
+    controller: "AudioGalleryDetailCtrl"
+  })
+
+  .state('intro-slider', {
+    url: "/intro-slider",
+    templateUrl: "views/template.html",
+    controller: "IntroSliderCtrl"
+  })
+
+  .state('social-feeds', {
+    url: "/social-feeds",
+    templateUrl: "views/template.html",
+    controller: "SocialFeedsCtrl"
+  })
+
+  .state('forms', {
+    url: "/forms",
+    templateUrl: "views/template.html",
+    controller: 'FormsCtrl'
+  })
+  .state('formdetail', {
+    url: "/form/:id",
+    templateUrl: "views/template.html",
+    controller: 'FormDetailCtrl'
+  })
+
+  .state('users', {
+    url: "/users",
+    templateUrl: "views/template.html",
+    controller: 'UsersCtrl'
+  })
+  .state('userdetail', {
+    url: "/user/:id",
+    templateUrl: "views/template.html",
+    controller: 'UserDetailCtrl'
+  });
 
   $urlRouterProvider.otherwise("/");
 
