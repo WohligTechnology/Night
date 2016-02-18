@@ -1,153 +1,155 @@
 // JavaScript Document
 var firstapp = angular.module('firstapp', [
-    'ui.router',
-    'phonecatControllers',
-    'templateservicemod',
-    'navigationservice'
+  'ui.router',
+  'phonecatControllers',
+  'templateservicemod',
+  'navigationservice'
 ]);
 
-firstapp.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
+firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
-    // for http request with session
-    $httpProvider.defaults.withCredentials = true;
+  // for http request with session
+  $httpProvider.defaults.withCredentials = true;
 
-    $stateProvider
+  $stateProvider
 
+    .state('allapps', {
+      url: "/",
+      templateUrl: "views/template.html",
+      controller: 'AllAppsCtrl'
+    })
     .state('dashboard', {
-        url: "/dashboard",
-        templateUrl: "views/template.html",
-        controller: 'DashboardCtrl'
+      url: "/dashboard",
+      templateUrl: "views/template.html",
+      controller: 'DashboardCtrl'
     })
     .state('theme', {
-        url: "/theme",
-        templateUrl: "views/template.html",
-        controller: 'ThemeCtrl'
+      url: "/theme",
+      templateUrl: "views/template.html",
+      controller: 'ThemeCtrl'
     })
     .state('home', {
-        url: "/home",
-        templateUrl: "views/template.html",
-        controller: 'HomeCtrl'
+      url: "/home",
+      templateUrl: "views/template.html",
+      controller: 'HomeCtrl'
     })
     .state('navigation', {
-        url: "/navigation",
-        templateUrl: "views/template.html",
-        controller: 'NavigationCtrl'
+      url: "/navigation",
+      templateUrl: "views/template.html",
+      controller: 'NavigationCtrl'
     })
     .state('login-signup', {
-        url: "/login-signup",
-        templateUrl: "views/template.html",
-        controller: 'LoginSignupCtrl'
+      url: "/login-signup",
+      templateUrl: "views/template.html",
+      controller: 'LoginSignupCtrl'
     })
     .state('notifications', {
-        url: "/notifications",
-        templateUrl: "views/template.html",
-        controller: 'NotificationsCtrl'
+      url: "/notifications",
+      templateUrl: "views/template.html",
+      controller: 'NotificationsCtrl'
     })
 
-    .state('events', {
-        url: "/events",
-        templateUrl: "views/template.html",
-        controller: 'EventsCtrl'
-    })
+  .state('events', {
+    url: "/events",
+    templateUrl: "views/template.html",
+    controller: 'EventsCtrl'
+  })
 
-    .state('blogs', {
-        url: "/blogs",
-        templateUrl: "views/template.html",
-        controller: "BlogsCtrl"
-    })
+  .state('blogs', {
+    url: "/blogs",
+    templateUrl: "views/template.html",
+    controller: "BlogsCtrl"
+  })
 
-    .state('articles', {
-        url: "/articles",
-        templateUrl: "views/template.html",
-        controller: "ArticlesCtrl"
+  .state('articles', {
+      url: "/articles",
+      templateUrl: "views/template.html",
+      controller: "ArticlesCtrl"
     })
     .state('photo-galleries', {
-        url: "/photogalleries",
-        templateUrl: "views/template.html",
-        controller: "PhotoGalleriesCtrl"
+      url: "/photogalleries",
+      templateUrl: "views/template.html",
+      controller: "PhotoGalleriesCtrl"
     })
 
-    .state('video-galleries', {
-        url: "/videogalleries",
-        templateUrl: "views/template.html",
-        controller: "VideoGalleriesCtrl"
+  .state('video-galleries', {
+      url: "/videogalleries",
+      templateUrl: "views/template.html",
+      controller: "VideoGalleriesCtrl"
     })
     .state('contact', {
-        url: "/contact",
-        templateUrl: "views/template.html",
-        controller: "ContactCtrl"
+      url: "/contact",
+      templateUrl: "views/template.html",
+      controller: "ContactCtrl"
     })
     .state('search', {
-        url: "/search",
-        templateUrl: "views/template.html",
-        controller: "SearchCtrl"
+      url: "/search",
+      templateUrl: "views/template.html",
+      controller: "SearchCtrl"
     })
-    .state('audio-players', {
-        url: "/audio-players",
-        templateUrl: "views/template.html",
-        controller: "AudioPlayersCtrl"
+    .state('audio-galleries', {
+      url: "/audio-galleries",
+      templateUrl: "views/template.html",
+      controller: "AudioGalleriesCtrl"
     })
     .state('intro-slider', {
-        url: "/intro-slider",
-        templateUrl: "views/template.html",
-        controller: "IntroSliderCtrl"
+      url: "/intro-slider",
+      templateUrl: "views/template.html",
+      controller: "IntroSliderCtrl"
     })
     .state('social-feeds', {
-        url: "/social-feeds",
-        templateUrl: "views/template.html",
-        controller: "SocialFeedsCtrl"
+      url: "/social-feeds",
+      templateUrl: "views/template.html",
+      controller: "SocialFeedsCtrl"
     })
     .state('forms', {
-        url: "/forms",
-        templateUrl: "views/template.html",
-        controller: 'FormsCtrl'
+      url: "/forms",
+      templateUrl: "views/template.html",
+      controller: 'FormsCtrl'
     })
     .state('users', {
-        url: "/users",
-        templateUrl: "views/template.html",
-        controller: 'UsersCtrl'
+      url: "/users",
+      templateUrl: "views/template.html",
+      controller: 'UsersCtrl'
     })
 
 
-    ;
+  ;
 
-    $urlRouterProvider.otherwise("/dashboard");
+  $urlRouterProvider.otherwise("/");
 
 });
 
 firstapp.directive('autoHeight', function($compile, $parse) {
-    return {
-        restrict: 'EA',
-        replace: false,
-        link: function($scope, element, attrs) {
-            var $element = $(element);
-            var windowHeight = $(window).height();
-            var addHeight = function() {
-                $element.css("min-height", windowHeight);
-            };
-            addHeight();
-        }
-    };
+  return {
+    restrict: 'EA',
+    replace: false,
+    link: function($scope, element, attrs) {
+      var $element = $(element);
+      var windowHeight = $(window).height();
+      var addHeight = function() {
+        $element.css("min-height", windowHeight);
+      };
+      addHeight();
+    }
+  };
 });
 firstapp.directive('img', function($compile, $parse) {
-    return {
-        restrict: 'E',
-        replace: false,
-        link: function($scope, element, attrs) {
-            var $element = $(element);
-            if(!attrs.noloading)
-            {
-                $element.after("<img src='img/loading.gif' class='loading' />");
-                var $loading = $element.next(".loading");
-                $element.load(function() {
-                    $loading.remove();
-                    $(this).addClass("doneLoading");
-                });
-            }
-            else
-            {
-                $($element).addClass("doneLoading");
-            }
-        }
-    };
+  return {
+    restrict: 'E',
+    replace: false,
+    link: function($scope, element, attrs) {
+      var $element = $(element);
+      if (!attrs.noloading) {
+        $element.after("<img src='img/loading.gif' class='loading' />");
+        var $loading = $element.next(".loading");
+        $element.load(function() {
+          $loading.remove();
+          $(this).addClass("doneLoading");
+        });
+      } else {
+        $($element).addClass("doneLoading");
+      }
+    }
+  };
 });

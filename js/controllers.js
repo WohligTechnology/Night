@@ -1,9 +1,9 @@
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider'])
 
-.controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
+.controller('AllAppsCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
   //Used to name the .html file
-  $scope.template = TemplateService.changecontent("dashboard");
-  $scope.menutitle = NavigationService.makeactive("Dashboard");
+  $scope.template = TemplateService.changecontent("allapps");
+  $scope.menutitle = NavigationService.makeactive("All Apps");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
   TemplateService.sidemenu = "";
@@ -33,6 +33,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
 
+})
+
+.controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("dashboard");
+  $scope.menutitle = NavigationService.makeactive("Dashboard");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
 })
 
 .controller('ThemeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
@@ -168,10 +176,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 })
 
-.controller('AudioPlayersCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('AudioGalleriesCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
   //Used to name the .html file
-  $scope.template = TemplateService.changecontent("audioplayers");
-  $scope.menutitle = NavigationService.makeactive("Audio Players");
+  $scope.template = TemplateService.changecontent("audiogalleries");
+  $scope.menutitle = NavigationService.makeactive("Audio Galleries");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 })
