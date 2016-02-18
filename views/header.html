@@ -1,4 +1,4 @@
-<header>
+<header ng-controller="headerctrl">
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <div class="row">
@@ -12,14 +12,14 @@
         </div>
         <div class="col-md-9">
           <div class="user-setting text-right custom-li pt15">
-            <div class="search-head display-inline" ng-hide="">
+            <div class="search-head display-inline" ng-show="searchBar">
               <form ng-submit="">
                 <input type="search" class="form-control" placeholder="Search your app...">
               </form>
             </div>
             <ul class="padding0">
             <li>
-              <button class="btn btn-clear" ng-><i class="fa fa-search"></i></button>
+              <button class="btn btn-clear" ng-click="showBar()"><i class="fa fa-search"></i></button>
             </li>
               <li>
                 <a href="">
