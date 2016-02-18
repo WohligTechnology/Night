@@ -18,26 +18,98 @@ firstapp.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
         templateUrl: "views/template.html",
         controller: 'DashboardCtrl'
     })
+    .state('theme', {
+        url: "/theme",
+        templateUrl: "views/template.html",
+        controller: 'ThemeCtrl'
+    })
     .state('home', {
         url: "/home",
         templateUrl: "views/template.html",
         controller: 'HomeCtrl'
+    })
+    .state('navigations', {
+        url: "/navigations",
+        templateUrl: "views/template.html",
+        controller: 'NavigationsCtrl'
+    })
+    .state('login-signup', {
+        url: "/login-signup",
+        templateUrl: "views/template.html",
+        controller: 'LoginSignupCtrl'
+    })
+    .state('notifications', {
+        url: "/notifications",
+        templateUrl: "views/template.html",
+        controller: 'NotificationsCtrl'
+    })
+
+    .state('events', {
+        url: "/events",
+        templateUrl: "views/template.html",
+        controller: 'EventsCtrl'
+    })
+
+    .state('blogs', {
+        url: "/blogs",
+        templateUrl: "views/template.html",
+        controller: "BlogsCtrl"
+    })
+
+    .state('articles', {
+        url: "/articles",
+        templateUrl: "views/template.html",
+        controller: "ArticlesCtrl"
+    })
+    .state('photogalleries', {
+        url: "/photogalleries",
+        templateUrl: "views/template.html",
+        controller: "PhotoGalleriesCtrl"
+    })
+
+    .state('videogalleries', {
+        url: "/videogalleries",
+        templateUrl: "views/template.html",
+        controller: "VideoGalleriesCtrl"
+    })
+    .state('contact', {
+        url: "/contact",
+        templateUrl: "views/template.html",
+        controller: "ContactCtrl"
+    })
+    .state('search', {
+        url: "/search",
+        templateUrl: "views/template.html",
+        controller: "SearchCtrl"
+    })
+    .state('audio-players', {
+        url: "/audio-players",
+        templateUrl: "views/template.html",
+        controller: "AudioPlayersCtrl"
+    })
+    .state('intro-slider', {
+        url: "/intro-slider",
+        templateUrl: "views/template.html",
+        controller: "IntroSliderCtrl"
+    })
+    .state('social-feeds', {
+        url: "/social-feeds",
+        templateUrl: "views/template.html",
+        controller: "SocialFeedsCtrl"
     })
     .state('forms', {
         url: "/forms",
         templateUrl: "views/template.html",
         controller: 'FormsCtrl'
     })
-    .state('login-signup', {
-        url: "/login-signup",
+    .state('users', {
+        url: "/users",
         templateUrl: "views/template.html",
-        controller: 'LoginsignupCtrl'
+        controller: 'UsersCtrl'
     })
-    .state('theme', {
-        url: "/theme",
-        templateUrl: "views/template.html",
-        controller: 'ThemeCtrl'
-    });
+
+
+    ;
 
     $urlRouterProvider.otherwise("/dashboard");
 

@@ -76,7 +76,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
-  .controller('LoginsignupCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+  .controller('LoginSignupCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("login-signup");
     $scope.menutitle = NavigationService.makeactive("Login & Signup");
@@ -92,10 +92,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   })
 
 
+
 .controller('NewappCtrl', function($scope, TemplateService) {
   $scope.template = TemplateService;
 
 })
+
 
 .controller('headerctrl', function($scope, TemplateService) {
   $scope.template = TemplateService;

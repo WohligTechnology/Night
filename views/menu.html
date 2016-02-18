@@ -1,9 +1,9 @@
 <ul class="list-unstyled nav">
     <li ng-repeat="menu in navigation" class="{{menu.classis}}">
-        <a ui-sref="{{menu.link}}"><i class="{{menu.icon}}"></i>{{menu.name}}<i class="ln-chevron-right right-arrow"></i></a>
+        <a ui-sref="{{menu.anchor}}"><i class="{{menu.icon}}"></i>{{menu.name}}<i class="ln-chevron-right right-arrow"></i></a>
         <ul class="dropdown-menu" ng-if="menu.subnav!='';">
             <li ng-repeat="submenu in menu.subnav">
-                <a ui-sref="{{submenu.link}}"><i class="{{submenu.icon}}"></i>{{submenu.name}}</a>
+                <a ui-sref="{{submenu.anchor}}"><i class="{{submenu.icon}}"></i>{{submenu.name}}</a>
             </li>
         </ul>
     </li>
