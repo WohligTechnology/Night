@@ -19,7 +19,7 @@
         <div class="col-md-3">
           <div class="uploaded-img">
             <div class="edit-btn pull-right">
-              <i class="ln-edit2"></i>
+              <a href=""><i class="ln-edit2"></i></a>
             </div>
             <div class="slider-box">
               <img src="img/slider/s1.jpg" class="img-responsive">
@@ -28,6 +28,52 @@
               <div class="form-group">
                 <label for="exampleInputName2">Title </label>
                 <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+              </div>
+            </div>
+            <div class="link-slider">
+              <button class="btn btn-primary" ng-click="open()">Link</button>
+            </div>
+            <div class="status-slider">
+              <span>Status</span>
+              <div class="display-inline">
+                <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                    <label class="onoffswitch-label" for="myonoffswitch">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="uploaded-img">
+            <div class="edit-btn pull-right">
+              <a href=""><i class="ln-edit2"></i></a>
+            </div>
+            <div class="slider-box">
+              <img src="img/slider/s1.jpg" class="img-responsive">
+            </div>
+            <div class="slider-title">
+              <div class="form-group">
+                <label for="exampleInputName2">Title </label>
+                <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+              </div>
+            </div>
+            <div class="link-slider">
+              <button class="btn btn-primary" ng-click="open()">Link</button>
+            </div>
+            <div class="status-slider">
+              <span>Status</span>
+              <div class="display-inline">
+                <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                    <label class="onoffswitch-label" for="myonoffswitch">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
               </div>
             </div>
           </div>
@@ -45,6 +91,7 @@
     </div>
     <div class="fill-content">
       <span>Content</span>
+      <textarea class="form-control" rows="3"></textarea>
     </div>
   </div>
 </div>

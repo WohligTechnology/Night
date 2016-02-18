@@ -43,6 +43,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 })
 
+
 .controller('ThemeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("theme");
@@ -77,12 +78,35 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   };
 })
 
-.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("home");
   $scope.menutitle = NavigationService.makeactive("Home");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+
+  $scope.open = function(size) {
+
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'views/modal/slider-link.html',
+      size: size,
+      resolve: {
+        items: function() {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstance.result.then(function(selectedItem) {
+      $scope.selected = selectedItem;
+    }, function() {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+  $scope.toggleAnimation = function() {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
 })
 
 .controller('NavigationCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
