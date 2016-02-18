@@ -61,13 +61,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
         templateUrl: "views/template.html",
         controller: "ArticlesCtrl"
     })
-    .state('photogalleries', {
+    .state('photo-galleries', {
         url: "/photogalleries",
         templateUrl: "views/template.html",
         controller: "PhotoGalleriesCtrl"
     })
 
-    .state('videogalleries', {
+    .state('video-galleries', {
         url: "/videogalleries",
         templateUrl: "views/template.html",
         controller: "VideoGalleriesCtrl"
