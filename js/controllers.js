@@ -183,7 +183,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('PhotoGalleryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
   //Used to name the .html file
-  $scope.template = TemplateService.changecontent("photogallerdetail");
+  $scope.template = TemplateService.changecontent("photogallerydetail");
   $scope.menutitle = NavigationService.makeactive("Photo Galleries");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
@@ -199,7 +199,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('VideoGalleryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
   //Used to name the .html file
-  $scope.template = TemplateService.changecontent("videogalleydetail");
+  $scope.template = TemplateService.changecontent("videogallerydetail");
   $scope.menutitle = NavigationService.makeactive("Video Galleries");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();

@@ -80,7 +80,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   })
 
   .state('blogdetail', {
-    url: "/blogs",
+    url: "/blog/:id",
     templateUrl: "views/template.html",
     controller: "BlogsCtrl"
   })
@@ -109,10 +109,10 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     controller: "PhotoGalleryDetailCtrl"
   })
 
-  .state('video-gallery', {
-    url: "/videogallery",
+  .state('video-galleries', {
+    url: "/videogalleries",
     templateUrl: "views/template.html",
-    controller: "VideoGalleryCtrl"
+    controller: "VideoGalleriesCtrl"
   })
   .state('video-gallerydetail', {
     url: "/videogallery/:id",
