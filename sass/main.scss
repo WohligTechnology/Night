@@ -12,7 +12,7 @@ $brand-success: #4bae4f !default;
 $brand-warning: #ffec39 !default;
 $brand-danger: #fc483f !default;
 $brand-info: #000072 !default;
-$brand-base: #939393 !default;
+$brand-base: #666 !default;
 $border-color: #e7e7e7 !default;
 $white-color: #fff !default;
 $hover-color: #00bbd3!default;
@@ -56,9 +56,14 @@ img.doneLoading {
 nav li:hover .dropdown-menu {
   display: block;
 }
-
 .navbar {
   margin-bottom: 0;
+  height: 80px;
+}
+.logo {
+    font-size: 24px;
+    line-height: 80px;
+    color: $brand-primary;
 }
 .navbar-collapse{
   padding-right:$navbar-padding-horizontal;
@@ -191,21 +196,26 @@ a,
   }
 }
 .user-setting {
+  padding-top: 21px;
   ul {
     li {
       vertical-align: middle;
       font-family: 'Montserrat';
+      a {
+        padding: 6px 15px;
+      }
     }
   }
 }
 .search-head {
   .form-control {
-    height: 50px;
     border-radius: 0;
-    width: 98%;
+    width: 100%;
     border: 0;
     border-bottom: 1px solid #ddd;
     box-shadow: none;
+    padding: 0 5px;
+    height: 26px;
   }
   .input-group {
     .btn {
@@ -367,7 +377,6 @@ footer {
         font-size: 24px;
         padding-right: 15px;
         vertical-align: sub;
-        color: $grey-color;
       }
     }
   }
