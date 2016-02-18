@@ -5,6 +5,8 @@
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
 @import "../bower_components/flexslider/flexslider.css";
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
+@import "blazen";
+
 /* Bootstrap Variables Goes Here */
 $brand-primary: #0d9dff !default;
 $brand-success: #4bae4f !default;
@@ -18,9 +20,8 @@ $hover-color: #00bbd3!default;
 $grey-color: #c7c7c7!default;
 $head-color: #767676!default;
 
-
-$font-family-sans-serif: "Lato", "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-$font-family-serif: "Lato", "Montserrat", "Advent Pro", Georgia, "Times New Roman", Times, serif !default;
+$font-family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-serif: "Lato", Georgia, "Times New Roman", Times, serif !default;
 
 $head-font: 12px;
 $font-family-sans-serif: "Lato", "Montserrat","Voyage Fantastique","Kenyan Coffee", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
@@ -29,7 +30,7 @@ $font-family-serif: "Lato", "Montserrat", "Voyage Fantastique ","Kenyan Coffee",
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 
 
-// custom variable
+/* Custom Variable */
 $navbar-padding-horizontal:        0px !important;
 $nav-link-padding:                 10px 15px 10px 20px ;
 
@@ -111,9 +112,14 @@ a,
   background-color: $white-color;
   border-color: $border-color;
 }
-.nav{
-  li{
-    a{
+.nav {
+  li {
+    &:active {
+      a {
+        background-color: #ccc;
+      }
+    }
+    a {
       padding:$nav-link-padding !important;
     }
   }
@@ -344,23 +350,23 @@ footer {
   }
 }
 
-.list-unstyled{
-    li{
+.list-unstyled {
+    li {
       margin: 6px 0px;
-      a{
+      a {
         color: $brand-base;
-font-size: 14px;
-cursor: pointer;
-i{
-  font-size: 24px;
-padding-right: 15px;
-vertical-align: sub;
-color:$grey-color;
+        font-size: 14px;
+        cursor: pointer;
+      i {
+        font-size: 24px;
+        padding-right: 15px;
+        vertical-align: sub;
+        color:$grey-color;
+      }
+    }
+  }
 }
-}
-}
-}
-.right-arrow{
+.right-arrow {
   float: right;
     font-size: 15px !important;
     padding-top: 8px;
@@ -368,26 +374,23 @@ color:$grey-color;
 }
 // scrollbar
 
-.sidemenu::-webkit-scrollbar-track
-{
+.sidemenu::-webkit-scrollbar-track {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	border-radius: 10px;
 	background-color:$border-color;
 }
 
-.sidemenu::-webkit-scrollbar
-{
+.sidemenu::-webkit-scrollbar {
 	width: 7px;
 	background-color: $border-color;
 }
 
-.sidemenu::-webkit-scrollbar-thumb
-{
+.sidemenu::-webkit-scrollbar-thumb {
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 	background-color: $grey-color;
 }
-.template-box{
+.template-box {
 
   .template-des {
       width: auto;
@@ -395,16 +398,16 @@ color:$grey-color;
       display: block;
       border: 1px solid #969696;
       padding: 5px;
-      img{
+      img {
         max-width: 100%;
-  max-height: 100%;
-  margin: 0 auto;
+        max-height: 100%;
+        margin: 0 auto;
       }
   }
 }
 
 .ionic-template{
-  h4{
+  h4 {
     font-family: 'Montserrat';
     text-transform: uppercase;
     margin-top: 32px;
@@ -418,13 +421,13 @@ color:$grey-color;
     padding: 5px;
     cursor:pointer;
     @include transition(all 300ms ease);
-    &:hover{
+    &:hover {
       transform: scale(1.1);
     }
 }
 .template-name{
   min-height: 35px;
-  span{
+  span {
     font-size: 17px;
 display: inline-block;
 padding-top: 6px;
@@ -446,7 +449,7 @@ font-weight: 300;
     }
 }
 .naming{
-  h4{
+  h4 {
     font-size: 16px;
   }
 }
