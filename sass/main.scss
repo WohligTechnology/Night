@@ -150,7 +150,7 @@ a,
 }
 .custom-li {
   ul {
-    display: block;
+    display: inline-block;
     list-style: none;
     li {
       display: inline-block;
@@ -170,6 +170,7 @@ a,
   padding-bottom: 15px;
 }
 .btn {
+  @include transition(all 300ms ease);
   &:focus,
   &.focus,
   &:active:focus,
@@ -179,6 +180,9 @@ a,
     outline-width: 0;
     outline-offset: 0;
   }
+}
+.btn.btn-clear {
+    background-color: transparent;
 }
 .user-setting {
   ul {
