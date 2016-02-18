@@ -175,19 +175,15 @@ a,
   }
 }
 .btn.btn-clear {
-<<<<<<< HEAD
   background-color: transparent;
-=======
-    background-color: transparent;
-    &:focus,
-    &.focus,
-    &:active:focus,
-    &:active.focus,
-    &.active:focus,
-    &.active.focus {
-      border-color: transparent;
-    }
->>>>>>> origin/master
+  &:focus,
+  &.focus,
+  &:active:focus,
+  &:active.focus,
+  &.active:focus,
+  &.active.focus {
+    border-color: transparent;
+  }
 }
 .user-setting {
   ul {
@@ -198,7 +194,6 @@ a,
   }
 }
 .search-head {
-
   .form-control {
     height: 50px;
     border-radius: 0;
