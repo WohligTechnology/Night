@@ -28,10 +28,10 @@ firstapp.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
         templateUrl: "views/template.html",
         controller: 'HomeCtrl'
     })
-    .state('navigations', {
-        url: "/navigations",
+    .state('navigation', {
+        url: "/navigation",
         templateUrl: "views/template.html",
-        controller: 'NavigationsCtrl'
+        controller: 'NavigationCtrl'
     })
     .state('login-signup', {
         url: "/login-signup",

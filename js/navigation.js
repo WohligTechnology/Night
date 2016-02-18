@@ -17,44 +17,44 @@ var navigationservice = angular.module('navigationservice', [])
     anchor: "home",
     icon: "ln-home3",
   },{
-    name: "Navigations",
+    name: "Navigation",
     classis: "active",
     anchor: "navigation",
     icon: "ln-compass",
   },{
     name: "Login & Signup",
     classis: "active",
-    anchor: "login/signup",
+    anchor: "login-signup",
     icon: "ln-unlock",
   },{
     name: "Notifications",
     classis: "active",
-    anchor: "notification",
+    anchor: "notifications",
     icon: "ln-bell",
   },{
     name: "Events",
     classis: "active",
-    anchor: "event",
+    anchor: "events",
     icon: "ln-calendar2",
   },{
     name: "Blogs",
     classis: "active",
-    anchor: "blog",
+    anchor: "blogs",
     icon: "ln-edit2",
   },{
     name: "Articles",
     classis: "active",
-    anchor: "article",
+    anchor: "articles",
     icon: "ln-papers",
   },{
     name: "Photo Galleries",
     classis: "active",
-    anchor: "photo-gallery",
+    anchor: "photo-galleries",
     icon: "ln-picture",
   },{
     name: "Video Galleries",
     classis: "active",
-    anchor: "video-gallery",
+    anchor: "video-galleries",
     icon: "ln-film-play",
   },{
     name: "Contact",
@@ -69,7 +69,7 @@ var navigationservice = angular.module('navigationservice', [])
   },{
     name: "Audio Players",
     classis: "active",
-    anchor: "audio-player",
+    anchor: "audio-players",
     icon: "ln-headset",
   },{
     name: "Intro Slider",
@@ -79,7 +79,7 @@ var navigationservice = angular.module('navigationservice', [])
   },{
     name: "Social Feeds",
     classis: "active",
-    anchor: "Social-eeds",
+    anchor: "social-feeds",
     icon: "ln-thumbs-up",
   },{
     name: "Forms",
@@ -89,7 +89,7 @@ var navigationservice = angular.module('navigationservice', [])
   },{
     name: "Users",
     classis: "active",
-    anchor: "user",
+    anchor: "users",
     icon: "ln-users2",
   }];
 
