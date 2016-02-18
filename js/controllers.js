@@ -104,8 +104,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('NotificationsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
   //Used to name the .html file
-  $scope.template = TemplateService.changecontent("nofications");
-  $scope.menutitle = NavigationService.makeactive("Nofications");
+  $scope.template = TemplateService.changecontent("notifications");
+  $scope.menutitle = NavigationService.makeactive("Notifications");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 })
