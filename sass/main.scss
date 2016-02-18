@@ -183,6 +183,14 @@ a,
 }
 .btn.btn-clear {
     background-color: transparent;
+    &:focus,
+    &.focus,
+    &:active:focus,
+    &:active.focus,
+    &.active:focus,
+    &.active.focus {
+      border-color: transparent;
+    }
 }
 .user-setting {
   ul {
