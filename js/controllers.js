@@ -117,13 +117,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 })
 
-.controller('NavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("navigationdetail");
-  $scope.menutitle = NavigationService.makeactive("Navigation");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
-})
 
 .controller('LoginSignupCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
   //Used to name the .html file
@@ -133,12 +126,39 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 })
 
-.controller('NotificationsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('NotificationsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("notifications");
   $scope.menutitle = NavigationService.makeactive("Notifications");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+
+
+    $scope.animationsEnabled = true;
+    $scope.open = function(size) {
+
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'views/modal/notificationdetail.html',
+        // controller: 'NotificationDetailCtrl',
+        size: size,
+        resolve: {
+          items: function() {
+            return $scope.items;
+          }
+        }
+      });
+
+      modalInstance.result.then(function(selectedItem) {
+        $scope.selected = selectedItem;
+      }, function() {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+    };
+
+    $scope.toggleAnimation = function() {
+      $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
 })
 
 .controller('NotificationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
