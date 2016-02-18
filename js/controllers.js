@@ -22,11 +22,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       }
     });
 
-    modalInstance.result.then(function(selectedItem) {
-      $scope.selected = selectedItem;
-    }, function() {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
   };
 
   $scope.toggleAnimation = function() {
@@ -140,19 +135,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,
         templateUrl: 'views/modal/notificationdetail.html',
-        controller: 'NotificationDetailCtrl',
+        controller: 'NotificationsCtrl',
         size: size,
         resolve: {
           items: function () {
             return $scope.items;
           }
         }
-      });
-
-      modalInstance.result.then(function (selectedItem) {
-        $scope.selected = selectedItem;
-      }, function () {
-        $log.info('Modal dismissed at: ' + new Date());
       });
     };
 
@@ -162,11 +151,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 })
 
 .controller('NotificationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("notificationdetail");
-  $scope.menutitle = NavigationService.makeactive("Notifications Detail");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
+
 })
 
 
