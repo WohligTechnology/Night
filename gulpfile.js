@@ -9,7 +9,10 @@ var jsArray = [
   './bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
   './bower_components/ui-router/release/angular-ui-router.min.js',
   './bower_components/angular-flexslider/angular-flexslider.js',
+  './bower_components/tinymce-dist/tinymce.js',
+  './bower_components/angular-ui-tinymce/src/tinymce.js',
   './bower_components/lodash/lodash.js',
+
   './js/app.js',
   './js/controllers.js',
   './js/templateservice.js',
@@ -25,7 +28,7 @@ var replacehostTo = "http://wohlig.co.in/demo2/";
 
 var ftpString = "U2FsdGVkX1+jcFED/CJbcYNiOJ42eBsjlxqmrcKWSIPH9Sao/4535zPQX5Fa7VYGAHSfkKCXbDpiUfJhkRRijaerS1lJ/k+dSfqsfl45ICkzMTJ7fBNVDj/242ur9ZG4HZDhSe1O/J4vEUboWDRBhg==";
 
-var uploadingFolder = "temp123";
+var uploadingFolder = "night";
 var password = "";
 
 
@@ -123,6 +126,7 @@ gulp.task('clean:tmp', function() {
       force: true
     }));
 });
+
 
 
 gulp.task('clean:w', function() {
@@ -229,6 +233,24 @@ gulp.task('copy:fonts', function() {
     .pipe(gulpCopy("./production/"));
 });
 
+gulp.task('copy:plugins', function() {
+  var gulpCopy = require('gulp-copy');
+  return gulp.src("./plugins/**")
+    .pipe(gulpCopy("./production/"));
+});
+
+gulp.task('copy:skins', function() {
+  var gulpCopy = require('gulp-copy');
+  return gulp.src("./skins/**")
+    .pipe(gulpCopy("./production/"));
+});
+
+gulp.task('copy:themes', function() {
+  var gulpCopy = require('gulp-copy');
+  return gulp.src("./themes/**")
+    .pipe(gulpCopy("./production/"));
+});
+
 
 gulp.task('sass:production', function() {
   var sass = require('gulp-sass');
@@ -306,8 +328,8 @@ gulp.task('watch', ["sass:development", "watch:all"]);
 gulp.task('default', ["sass:development", "watch:all"]);
 gulp.task('development', ["sass:development", "watch:all"]);
 gulp.task('minifyhtml', ["minify:indexHTML", "minify:views", "templatecache"]);
-gulp.task('copy', ["copy:img", "copy:fonts"]);
+gulp.task('copy', ["copy:img", "copy:fonts",'copy:plugins','copy:themes','copy:skins']);
 
-
-gulp.task('production', gulpSequence(["copy:img", "copy:fonts", "sass:production", "minify:indexproduction", "minify:views"], 'clean:tmp', "concat:js", 'clean:tmp', "templatecache", "uglify:js","minify:css", 'clean:tmp', "inlinesource", 'clean:tmp', "gzipfile", 'clean:tmp', 'clean:tmp', "zip"));
-gulp.task('production2', gulpSequence(["copy:img", "copy:fonts", "sass:production", "minify:indexproduction", "minify:views"], 'clean:tmp',  "concat:js", 'clean:tmp',"templatecache","uglify:js", "minify:css", 'clean:tmp', "inlinesource", 'clean:tmp', "copy:indexhtml", 'clean:tmp', 'clean:tmp', "zip"));
+gulp.task('production', gulpSequence(["copy", "sass:production", "minify:indexproduction", "minify:views"], 'clean:tmp', "concat:js", 'clean:tmp', "templatecache", "uglify:js","minify:css", 'clean:tmp', "inlinesource", 'clean:tmp', "gzipfile", 'clean:tmp', 'clean:tmp', "zip"));
+gulp.task('production2', gulpSequence(["copy", "sass:production", "minify:indexproduction", "minify:views"], 'clean:tmp',  "concat:js", 'clean:tmp',"templatecache","uglify:js", "minify:css", 'clean:tmp', "inlinesource", 'clean:tmp', "copy:indexhtml", 'clean:tmp', 'clean:tmp', "zip"));
+gulp.task('productionc', gulpSequence(["copy", "sass:production", "minify:indexproduction", "minify:views"], 'clean:tmp', "concat:js", 'clean:tmp', "templatecache", "uglify:js","minify:css", 'clean:tmp', "inlinesource", 'clean:tmp', 'clean:production',"gzipfile", 'clean:tmp', 'clean:tmp', "zip"));
