@@ -270,6 +270,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Blogs");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+
 })
 
 .controller('BlogDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {

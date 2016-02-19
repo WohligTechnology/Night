@@ -82,7 +82,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   .state('blogdetail', {
     url: "/blog/:id",
     templateUrl: "views/template.html",
-    controller: "BlogsCtrl"
+    controller: "BlogDetailCtrl"
   })
 
   .state('articles', {
