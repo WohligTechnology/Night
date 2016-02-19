@@ -104,7 +104,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   })
 
   .state('photo-gallerydetail', {
-    url: "/photogallery/:id",
+    url: "/photogalleries/:id",
     templateUrl: "views/template.html",
     controller: "PhotoGalleryDetailCtrl"
   })
