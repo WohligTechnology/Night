@@ -321,20 +321,36 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 })
 
-.controller('VideoGalleriesCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("videogalleries");
-  $scope.menutitle = NavigationService.makeactive("Video Galleries");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
-})
 
-.controller('VideoGalleryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('VideoGalleryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("videogallerydetail");
   $scope.menutitle = NavigationService.makeactive("Video Galleries");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+
+  $scope.VideoEdit = function(size) {
+
+    var modalInstances = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'views/modal/video-edit.html',
+      size: size,
+      resolve: {
+        items: function() {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstances.result.then(function(selectedItem) {
+      $scope.selected = selectedItem;
+    }, function() {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+  $scope.toggleAnimation = function() {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
 })
 
 .controller('ContactCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
