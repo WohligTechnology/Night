@@ -84,7 +84,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
-      templateUrl: 'views/modal/image-info.html',
+      templateUrl: 'views/modal/slider-link.html',
       size: size,
       resolve: {
         items: function() {
@@ -111,7 +111,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 })
-
+.controller('NavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("navigationdetail");
+  $scope.menutitle = NavigationService.makeactive("Navigation");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
 
 .controller('LoginSignupCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
   //Used to name the .html file
@@ -149,11 +155,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       $scope.animationsEnabled = !$scope.animationsEnabled;
     };
 })
-
-.controller('NotificationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
-
-})
-
 
 .controller('EventsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
   //Used to name the .html file
