@@ -1,6 +1,6 @@
 @font-face {
 	font-family: 'Linearicons';
-	src:url('Linearicons.ttf?-m09hd') format('truetype');
+	src:url('../fonts/Linearicons.ttf?-m09hd') format('truetype');
 	font-weight: bold;
 	font-style: normal;
 	font-size: 20px;
@@ -14,7 +14,7 @@
 	font-variant: normal;
 	text-transform: none;
 	line-height: 1;
-	
+
 	/* Enable Ligatures ================ */
 	-webkit-font-feature-settings: "liga";
 	-moz-font-feature-settings: "liga=1";
