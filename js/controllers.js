@@ -84,7 +84,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
-      templateUrl: 'views/modal/slider-link.html',
+      templateUrl: 'views/modal/image-info.html',
       size: size,
       resolve: {
         items: function() {
@@ -164,7 +164,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 })
 
-.controller('EventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('EventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("eventdetail");
   $scope.menutitle = NavigationService.makeactive("Events");
@@ -219,11 +219,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
      return '';
    };
 
-     $scope.open = function(size) {
+
+
+     $scope.OpenVideo = function(size) {
 
        var modalInstance = $uibModal.open({
          animation: $scope.animationsEnabled,
-         templateUrl: 'views/modal/slider-link.html',
+         templateUrl: 'views/modal/Video-upload.html',
          size: size,
          resolve: {
            items: function() {
@@ -233,6 +235,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
        });
 
        modalInstance.result.then(function(selectedItem) {
+         $scope.selected = selectedItem;
+       }, function() {
+         $log.info('Modal dismissed at: ' + new Date());
+       });
+     };
+     $scope.ImageEdit = function(size) {
+
+       var modalInstances = $uibModal.open({
+         animation: $scope.animationsEnabled,
+         templateUrl: 'views/modal/image-info.html',
+         size: size,
+         resolve: {
+           items: function() {
+             return $scope.items;
+           }
+         }
+       });
+
+       modalInstances.result.then(function(selectedItem) {
          $scope.selected = selectedItem;
        }, function() {
          $log.info('Modal dismissed at: ' + new Date());

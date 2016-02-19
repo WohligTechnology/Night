@@ -40,36 +40,41 @@
                             </p>
                           </div>
                           <div class="form-group">
+                            <label for="exampleInputName2">Time</label>
+                            <input type="time" class="form-control">
+                          </div>
+                          <div class="form-group">
                             <label for="">Event Banner</label>
                             <div class="image-set">
                               <div class="uploaded-img">
                                 <div class="slider-box">
-                                  <img src="img/slider/s1.jpg" class="img-responsive">
-                                </div>
-                                <div class="slider-title">
-                                  <div class="form-group">
-                                    <label for="exampleInputName2">Title </label>
-                                    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-                                  </div>
-                                </div>
-                                <div class="status-slider">
-                                  <span>Status</span>
-                                  <div class="display-inline">
-                                    <div class="onoffswitch">
-                                      <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-                                      <label class="onoffswitch-label" for="myonoffswitch">
-                                        <span class="onoffswitch-inner"></span>
-                                        <span class="onoffswitch-switch"></span>
-                                      </label>
-                                    </div>
-                                  </div>
+                                  <a href="" ng-click="ImageEdit()"><img src="img/slider/s1.jpg" class="img-responsive"></a>
                                 </div>
                               </div>
                             </div>
-                            <div class="upload-img text-center">
-                              <button class="btn btn-primary">Upload Image</button>
-                            </div>
+
                           </div>
+                          <div class="form-group">
+                            <label for="">Event Video</label>
+                            <div class="create-event pull-right">
+                              <button class="btn btn-primary" ng-click="OpenVideo()">Upload Video</button>
+                            </div>
+                            <div class="image-set">
+                              <div class="uploaded-img">
+                                <div class="slider-box">
+                                <a href="" ng-click="OpenVideo()">  <img src="img/slider/s1.jpg" class="img-responsive"></a>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="upload-img text-center">
+                            <button class="btn btn-primary">Upload Image</button>
+                          </div>
+                      </div>
+                      <div class="upload-img text-center">
+                        <button class="btn btn-primary">Save</button>
+                        <button class="btn btn-primary">Cancel</button>
                       </div>
                       </form>
                     </div>
