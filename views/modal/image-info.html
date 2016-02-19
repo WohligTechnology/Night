@@ -1,63 +1,69 @@
 <section>
 
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"  ng-click="$dismiss()"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title text-center" id="myModalLabel">Create New App</h4>
-        </div>
-        <div class="modal-body">
-<div class="row">
-  <div class="col-md-offset-2 col-md-8">
-
-        <div class="uploaded-img">
-          <div class="edit-btn pull-right">
-            <a href=""><i class="ln-trash2"></i></a>
-          </div>
-          <div class="slider-box">
-            <img src="img/slider/s1.jpg" class="img-responsive">
-          </div>
-          <div class="slider-title">
-            <div class="form-group">
-              <label for="exampleInputName2">Title </label>
-              <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$dismiss()"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title text-center" id="myModalLabel">Create New App</h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+<form action="">
+          <div class="uploaded-img">
+            <div class="edit-btn pull-right">
+              <a href=""><i class="ln-trash2"></i></a>
             </div>
-          </div>
-<div class="slider-link">
-  <div class="form-group">
-    <label for="">Link</label>
-    <select  class="form-control">
-  <optgroup label="Swedish Cars">
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
-  </optgroup>
-  <optgroup label="German Cars">
-    <option value="mercedes">Mercedes</option>
-    <option value="audi">Audi</option>
-  </optgroup>
-</select>
-  </div>
-</div>
-          <div class="status-slider">
-            <span>Status</span>
-            <div class="display-inline">
-              <div class="onoffswitch">
+            <div class="slider-box">
+              <img src="img/slider/s1.jpg" class="img-responsive">
+            </div>
+            <div class="slider-title">
+              <div class="form-group">
+                <label for="exampleInputName2">Title </label>
+                <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+              </div>
+            </div>
+            <div class="slider-link">
+              <div class="form-group">
+                <label for="">Link</label>
+                <select class="form-control">
+                  <optgroup label="Swedish Cars">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                  </optgroup>
+                  <optgroup label="German Cars">
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                  </optgroup>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputName2">External Link </label>
+                <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+              </div>
+            </div>
+            <div class="status-slider">
+              <span>Status</span>
+              <div class="display-inline">
+                <div class="onoffswitch">
                   <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
                   <label class="onoffswitch-label" for="myonoffswitch">
-                      <span class="onoffswitch-inner"></span>
-                      <span class="onoffswitch-switch"></span>
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
                   </label>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-  </div>
-</div>
-
-        </div>
-        <div class="modal-footer">
-
-          <button type="button" class="btn">Save</button>
+          </form>
         </div>
       </div>
+
+    </div>
+    <div class="modal-footer">
+
+      <button type="button" class="btn">Save</button>
+      <button type="button" class="btn">Cancel</button>
+    </div>
+  </div>
 
 </section>
