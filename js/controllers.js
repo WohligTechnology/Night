@@ -377,20 +377,46 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 })
 
-.controller('AudioGalleriesCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('AudioGalleriesCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("audiogalleries");
   $scope.menutitle = NavigationService.makeactive("Audio Galleries");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+
+
+
 })
 
-.controller('AudioGalleryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('AudioGalleryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("audiogallerydetail");
   $scope.menutitle = NavigationService.makeactive("Audio Galleries");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  
+  $scope.AudioEdit = function(size) {
+
+    var modalInstances = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'views/modal/audio-upload.html',
+      size: size,
+      resolve: {
+        items: function() {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstances.result.then(function(selectedItem) {
+      $scope.selected = selectedItem;
+    }, function() {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+  $scope.toggleAnimation = function() {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
 })
 
 .controller('IntroSliderCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
