@@ -84,7 +84,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
-      templateUrl: 'views/modal/slider-link.html',
+      templateUrl: 'views/modal/image-info.html',
       size: size,
       resolve: {
         items: function() {
