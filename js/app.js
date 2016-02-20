@@ -181,7 +181,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     url: "/user/:id",
     templateUrl: "views/template.html",
     controller: 'UserDetailCtrl'
-  });
+  })
+  .state('configuration', {
+    url: "/configuration",
+    templateUrl: "views/template.html",
+    controller: 'ConfigurationCtrl'
+  })
+  ;
 
   $urlRouterProvider.otherwise("/");
 

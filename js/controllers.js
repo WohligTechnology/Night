@@ -394,7 +394,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Audio Galleries");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
-  
+
   $scope.AudioEdit = function(size) {
 
     var modalInstances = $uibModal.open({
@@ -464,6 +464,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("userdetail");
   $scope.menutitle = NavigationService.makeactive("Users");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+.controller('ConfigurationCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("configuration");
+  $scope.menutitle = NavigationService.makeactive("Configuration");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 })

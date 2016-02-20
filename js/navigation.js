@@ -81,17 +81,26 @@ var navigationservice = angular.module('navigationservice', [])
     classis: "active",
     anchor: "social-feeds",
     icon: "ln-thumbs-up",
-  },{
-    name: "Forms",
-    classis: "active",
-    anchor: "forms",
-    icon: "ln-register",
-  },{
+  }
+  // ,{
+  //   name: "Forms",
+  //   classis: "active",
+  //   anchor: "forms",
+  //   icon: "ln-register",
+  // }
+  ,{
     name: "Users",
     classis: "active",
     anchor: "users",
     icon: "ln-users2",
-  }];
+  }
+  ,{
+    name: "Configuration",
+    classis: "active",
+    anchor: "configuration",
+    icon: "ln-gear2",
+  }
+];
 
   return {
     getnav: function() {
