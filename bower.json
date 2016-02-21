@@ -30,7 +30,8 @@
     "lodash": "~4.0.0",
     "ui-router": "~0.2.15",
     "angular-animate": "~1.4.6",
-    "angular-ui-tinymce": "^0.0.14"
+    "angular-ui-tinymce": "^0.0.14",
+    "angular-drag-and-drop-lists": "^1.4.0"
   },
   "resolutions": {
     "angular": "~1.4.8"
