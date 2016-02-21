@@ -9,7 +9,7 @@
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
 
 /* Bootstrap Variables Goes Here */
-$brand-primary: #0d9dff !default;
+$brand-primary: #00BCD4 !default;
 $brand-success: #4bae4f !default;
 $brand-warning: #ffec39 !default;
 $brand-danger: #fc483f !default;
@@ -20,6 +20,7 @@ $white-color: #fff !default;
 $hover-color: #00bbd3!default;
 $grey-color: #c7c7c7!default;
 $head-color: #767676!default;
+$label-color: #afb3bc!default;
 $font-family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif: "Lato", Georgia, "Times New Roman", Times, serif !default;
 $head-font: 12px;
@@ -28,13 +29,14 @@ $font-family-serif: "Lato", "Montserrat", "Voyage Fantastique ","Kenyan Coffee",
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 /* Custom Variable */
 $navbar-padding-horizontal: 0 !important;
-$nav-link-padding: 10px 15px 10px 20px;
+$nav-link-padding:12px 15px 15px 20px;
 @mixin transition($transition...) {
   -moz-transition: $transition;
   -o-transition: $transition;
   -webkit-transition: $transition;
   transition: $transition;
 }
+
 body {
   padding-top: 80px;
   font-family: 'Lato','Montserrat';
@@ -86,6 +88,11 @@ a,
     box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075), 0 0 0 rgba(102, 175, 233, 0.6);
     border-color: #ccc;
   }
+}
+.btn{
+  padding: 8px 20px;
+  border-radius: 0px;
+  text-transform: uppercase;
 }
 /* Start writing sass here */
 // Header;
@@ -317,6 +324,12 @@ footer {
 .mt30 {
   margin-top: 30px;
 }
+.mt15{
+  margin-top: 15px;
+}
+.mt20{
+  margin-top: 20px;
+}
 .mt60 {
   margin-top: 60px;
 }
@@ -328,11 +341,20 @@ footer {
 .mt45 {
   margin-top: 45px !important;
 }
+.mb30{
+  margin-bottom: 30px;
+}
+.mar30{
+      margin: 30px 0px;
+}
+.ml12{
+  margin-left: 12px;
+}
 .upload-btn {
   margin-top: 15px;
   .btn {
     color: #fff;
-    border-radius: 0;
+    border-radius: 2px;
     background: $grey-color;
   }
 }
@@ -497,4 +519,67 @@ footer {
 //     }
 //   }
 // }
+//mahesh scss.ionic-template
+
+.float-right{
+  float: right;
+}
+.paddingup {
+    padding: 20px 0px 5px 0px;
+}
+.pad20{
+  padding: 20px 0px;
+}
+.form-background{
+
+  background: #fff;
+  padding: 20px 20px;
+  border-radius: 4px;
+}
+.naming {
+    border-bottom: 1px solid $border-color;
+    padding-bottom: 8px;
+}
+.image-picker {
+    display: inline-block;
+}
+.image-holder{
+  width: auto;
+height: 200px;
+position: relative;
+overflow: hidden;
+img{
+  max-width: 100%;
+max-height: 100%;
+padding: 10px;
+border: 1px solid  $border-color;
+margin: 15px 0px;
+}
+}
+.all-label{
+  font-weight: 400;
+  color: $label-color;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+.form-group{
+  label{
+    color: #8D8D8D;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 14px;
+    margin-bottom: 10px;
+  }
+}
+.form-control {
+    margin-bottom: 25px;
+  width: 100%;
+  height: 52px;
+  border: 2px solid #ECECEC;
+  padding: 0 14px;
+  border-radius: 3px;
+    -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
+
+}
 @import "toggle"// @import "mahesh";

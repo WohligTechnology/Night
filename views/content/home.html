@@ -5,53 +5,50 @@
         <div class="">
           <div class="row">
             <div class="col-xs-7">
-              <div class="ionic-template">
-                <h4>Home Page</h4>
+              <div class="ionic-template mb30">
+                <h4 class="pad20">Home Page</h4>
                 <div class="row">
                   <div class="col-md-12">
-                    <div class="home-slider">
+                    <div class="home-slider form-background">
                       <div class="naming">
                         <h4>Set Home Slider</h4>
                       </div>
-                      
-
-                      <div dnd-list="lists">
-                        <div class="image-set" ng-repeat="item in lists"
-        dnd-draggable="item" dnd-moved="lists.splice($index, 1)"
-        dnd-effect-allowed="move"
-        dnd-selected="models.selected = item"
-        ng-class="{'selected': models.selected === item}">
-                          <div class="drop-image col-md-4">
-                            <a href="" ng-click="open()">
-                              <img ng-src="{{item.image}}" class="img-responsive"></a>
+                      <div class="image-picker">
+                        <div dnd-list="lists" class="pt15">
+                          <div class="image-set" ng-repeat="item in lists" dnd-draggable="item" dnd-moved="lists.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{'selected': models.selected === item}">
+                            <div class="drop-image col-md-2">
+                              <a href="" ng-click="open()" class="image-holder">
+                                <img ng-src="{{item.image}}" class="img-responsive">
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>
-
-
-
-
-                      <div class="upload-img text-center">
+                      <div class="upload-img text-center mar30">
                         <button class="btn btn-primary">Upload Image</button>
                       </div>
-
                     </div>
-                    <div class="home-content">
+                    <div class="home-content form-background mt30">
                       <div class="naming">
                         <h4>Set Home Content</h4>
                       </div>
-                      <div class="fill-content">
-                        <span>Content</span>
-                        <textarea class="form-control" rows="3"></textarea>
+                      <div class="fill-content mt15">
+                        <div class="all-label">
+                          <span>Content</span>
+                        </div>
+                        <div class="mt15">
+                          <textarea ui-tinymce ng-model="tinymceModel"></textarea>
+                        </div>
+                        <div class="upload-img text-center mar30">
+                          <button class="btn btn-primary">Save</button>
+                          <button class="btn btn-primary ml12">Cancel</button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-
               </div>
-
             </div>
-
             <div class="col-xs-5">
               <div class="preivew">
                 <div class="app-prview"></div>
