@@ -1,4 +1,4 @@
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce','dndLists'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'dndLists'])
 
 .controller('AllAppsCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
   //Used to name the .html file
@@ -80,35 +80,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 
-  $scope.lists = [
-      {
-        "image": "img/t1.jpg"
-      },
-      {
-        "image": "img/t2.jpg"
-      },
-      {
-        "image": "img/t3.jpg"
-      },
-      {
-        "image": "img/t1.jpg"
-      },
-      {
-        "image": "img/t2.jpg"
-      },
-      {
-        "image": "img/t3.jpg"
-      },
-      {
-        "image": "img/t1.jpg"
-      },
-      {
-        "image": "img/t2.jpg"
-      },
-      {
-        "image": "img/t3.jpg"
-      }
-    ];
+  $scope.lists = [{
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }, {
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }, {
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }];
 
   $scope.open = function(size) {
 
@@ -503,7 +493,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Configuration");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-
+    $scope.oneAtATime = true;
     var navigation = [{
       name: "Theme",
     }, {
