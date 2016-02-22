@@ -602,4 +602,15 @@ label{
 }
 }
 }
+.table{
+  thead{
+    tr{
+      th{
+        font-size: 16px;
+font-weight: 400;
+color:$head-color;
+      }
+    }
+  }
+}
 @import "toggle"// @import "mahesh";
