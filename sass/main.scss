@@ -631,12 +631,15 @@ color:$head-color;
 .edit{
   background: $brand-success;
   color: #fff;
-font-size: 18px;
+font-size: 16px;
 padding: 5px;
 border-radius: 2px;
 }
 .delete{
   @extend .edit;
     background: $brand-danger;
+}
+.resize{
+  resize: none;
 }
 @import "toggle"// @import "mahesh";
