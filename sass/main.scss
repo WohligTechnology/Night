@@ -10,9 +10,9 @@
 
 /* Bootstrap Variables Goes Here */
 $brand-primary: #00BCD4 !default;
-$brand-success: #4bae4f !default;
+$brand-success: #009688 !default;
 $brand-warning: #ffec39 !default;
-$brand-danger: #fc483f !default;
+$brand-danger: #F44336 !default;
 $brand-info: #000072 !default;
 $brand-base: #666 !default;
 $border-color: #e7e7e7 !default;
@@ -93,6 +93,13 @@ a,
   padding: 8px 20px;
   border-radius: 0px;
   text-transform: uppercase;
+}
+.color-success{
+  color:$brand-success;
+}
+.color-danger{
+
+  color:$brand-danger;
 }
 /* Start writing sass here */
 // Header;
@@ -561,16 +568,17 @@ margin: 15px 0px;
 }
 .all-label{
   font-weight: 400;
-  color: $label-color;
+    color: #8D8D8D;
+
   text-transform: uppercase;
-  font-size: 15px;
+  font-size: 14px;
 }
 .form-group{
   label{
-    color: #8D8D8D;
+  color: $label-color;
   text-transform: uppercase;
-  font-weight: 300;
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 13px;
     margin-bottom: 10px;
   }
 }
@@ -612,5 +620,23 @@ color:$head-color;
       }
     }
   }
+  tbody{
+    tr{
+      td{
+        vertical-align: middle;
+      }
+    }
+  }
+}
+.edit{
+  background: $brand-success;
+  color: #fff;
+font-size: 18px;
+padding: 5px;
+border-radius: 2px;
+}
+.delete{
+  @extend .edit;
+    background: $brand-danger;
 }
 @import "toggle"// @import "mahesh";
