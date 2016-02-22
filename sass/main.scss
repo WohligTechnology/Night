@@ -330,6 +330,9 @@ footer {
 .mt20{
   margin-top: 20px;
 }
+.mt25{
+  margin-top: 25px;
+}
 .mt60 {
   margin-top: 60px;
 }
@@ -581,5 +584,22 @@ margin: 15px 0px;
     -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
     box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
 
+}
+
+.f20{
+      font-size: 20px;
+}
+.select{
+  span{
+    float: left;
+  padding-right: 10px;
+  }
+.checkbox{
+  margin-top: 0px;
+margin-bottom: 0px;
+label{
+      min-height: 15px;
+}
+}
 }
 @import "toggle"// @import "mahesh";
