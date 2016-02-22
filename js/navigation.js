@@ -79,7 +79,7 @@ var navigationservice = angular.module('navigationservice', [])
     classis: "active",
     anchor: "intro-slider",
     icon: "ln-file-image",
-  }
+  },
   // ,
   // {
   //   name: "Social Feeds",
@@ -93,13 +93,13 @@ var navigationservice = angular.module('navigationservice', [])
   //   anchor: "forms",
   //   icon: "ln-register",
   // }
-  ,{
+  {
     name: "Users",
     classis: "active",
     anchor: "users",
     icon: "ln-users2",
-  }
-  ,{
+  },
+  {
     name: "Configuration",
     classis: "active",
     anchor: "configuration",
