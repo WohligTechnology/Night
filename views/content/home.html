@@ -15,12 +15,13 @@
                       </div>
                       <div class="image-picker">
                         <div dnd-list="lists" class="pt15">
-                          <div class="image-set" ng-repeat="item in lists" dnd-draggable="item" dnd-moved="lists.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{'selected': models.selected === item}">
-                            <div class="drop-image col-md-2">
+                          <div class="image-set">
+                            <div class="drop-image col-md-2" ng-repeat="item in lists" dnd-draggable="item" dnd-moved="lists.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{'selected': models.selected === item}">
                               <a href="" ng-click="open()" class="image-holder">
                                 <img ng-src="{{item.image}}" class="img-responsive">
                               </a>
                             </div>
+                            <div class="clearfix"></div>
                           </div>
                         </div>
                       </div>
