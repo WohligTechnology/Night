@@ -61,12 +61,15 @@ var navigationservice = angular.module('navigationservice', [])
     classis: "active",
     anchor: "contact",
     icon: "ln-contacts",
-  },{
-    name: "Search",
-    classis: "active",
-    anchor: "search",
-    icon: "ln-magnifier",
-  },{
+  }
+  // ,
+  // {
+  //   name: "Search",
+  //   classis: "active",
+  //   anchor: "search",
+  //   icon: "ln-magnifier",
+  // }
+  ,{
     name: "Audio Galleries",
     classis: "active",
     anchor: "audio-galleries",
@@ -76,12 +79,14 @@ var navigationservice = angular.module('navigationservice', [])
     classis: "active",
     anchor: "intro-slider",
     icon: "ln-file-image",
-  },{
-    name: "Social Feeds",
-    classis: "active",
-    anchor: "social-feeds",
-    icon: "ln-thumbs-up",
   }
+  // ,
+  // {
+  //   name: "Social Feeds",
+  //   classis: "active",
+  //   anchor: "social-feeds",
+  //   icon: "ln-thumbs-up",
+  // }
   // ,{
   //   name: "Forms",
   //   classis: "active",
