@@ -655,4 +655,34 @@ footer {
 .dndPlaceholder {
   list-style: none;
 }
+.img-box {
+    height: 120px;
+    width: 120px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid $border-color;
+}
+.img-noti{
+  max-width: 100%;
+max-height: 100%;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+padding: 5px;
+}
+.noti-image{
+    padding-bottom: 15px;
+}
+.modal-footer .btn {
+   color: #fff;
+   border-radius: 2px;
+   background: $brand-primary;
+}
+.calender-btn{
+  btn{
+        padding: 9px 20px;
+  }
+}
 @import "toggle"// @import "mahesh";
