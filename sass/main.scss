@@ -23,8 +23,6 @@ $label-color: #afb3bc!default;
 $font-family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif: "Lato", Georgia, "Times New Roman", Times, serif !default;
 $head-font: 12px;
-$font-family-sans-serif: "Lato", "Montserrat","Voyage Fantastique","Kenyan Coffee", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-$font-family-serif: "Lato", "Montserrat", "Voyage Fantastique ","Kenyan Coffee", "Advent Pro", Georgia, "Times New Roman", Times, serif !default;
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 /* Custom Variable */
 $navbar-padding-horizontal: 0 !important;
@@ -546,19 +544,35 @@ footer {
 }
 .image-picker {
   display: inline-block;
+  width: 100%;
+}
+.dndDragging {
+  .image-holder {
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.35);
+    border-color: rgba(0, 0, 0, 0.35);
+  }
 }
 .image-holder {
   width: auto;
-  height: 90px;
+  height: 100px;
   position: relative;
   overflow: hidden;
   display: block;
+  text-align: center;
+  margin-bottom: 10px;
+  border: 1px solid #F2F2F2;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+  cursor: pointer;;
+
   img {
     max-width: 100%;
     max-height: 100%;
-    padding: 10px;
-    border: 1px solid $border-color;
-    margin: 15px 0;
+    margin: 0;
+    display: inline-block;
+    padding: 0;
   }
 }
 .all-label {
@@ -637,5 +651,8 @@ footer {
 .create-btn {
   padding: 4px 10px;
   font-size: 12px;
+}
+.dndPlaceholder {
+  list-style: none;
 }
 @import "toggle"// @import "mahesh";
