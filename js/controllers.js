@@ -130,6 +130,59 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Navigation");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    var navigation = [{
+      name: "Home",
+      icon: "ln-home3",
+    },{
+      name: "Login & Signup",
+      icon: "ln-unlock",
+    },{
+      name: "Notifications",
+      icon: "ln-bell",
+    },{
+      name: "Events",
+      icon: "ln-calendar2",
+    },{
+      name: "Blogs",
+      icon: "ln-edit2",
+    },{
+      name: "Articles",
+      icon: "ln-papers",
+    },{
+      name: "Photo Gallery",
+      icon: "ln-picture",
+    },{
+      name: "Video Galleries",
+      icon: "ln-film-play",
+    },{
+      name: "Contact",
+      icon: "ln-contacts",
+    }
+    // ,
+    // {
+    //   name: "Search",
+    //   classis: "active",
+    //   anchor: "search",
+    //   icon: "ln-magnifier",
+    // }
+    ,{
+      name: "Audio Galleries",
+      icon: "ln-headset",
+    }
+    // ,
+    // {
+    //   name: "Social Feeds",
+    //   classis: "active",
+    //   anchor: "social-feeds",
+    //   icon: "ln-thumbs-up",
+    // }
+    // ,{
+    //   name: "Forms",
+    //   classis: "active",
+    //   anchor: "forms",
+    //   icon: "ln-register",
+    // }
+  ];
   })
   .controller('NavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file
