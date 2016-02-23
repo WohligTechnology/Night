@@ -5,16 +5,16 @@
         <div class="">
           <div class="row">
             <div class="col-xs-7">
-              <div class="ionic-template">
-                <h4>Events > Edit Event</h4>
+              <div class="ionic-template mb30">
+                <h4 class="pad20">Events > Edit Event</h4>
                 <div class="row">
-                  <div class="col-md-8">
-                    <div class="home-slider">
+                  <div class="col-md-12">
+                    <div class="home-slider form-background">
                       <div class="naming">
                         <h4>Edit events</h4>
                       </div>
-                    </div>
-                    <div class="google-login">
+
+                    <div class="google-login paddingup">
                       <div class="form-login">
                         <form action="">
                           <div class="form-group">
@@ -29,40 +29,54 @@
                             <label for="exampleInputName2">Content</label>
                             <textarea class="form-control" ui-tinymce ng-model="tinymceModel"></textarea>
                           </div>
-                          <div class="form-group">
+                          <div class="form-group mt25">
                             <label for="exampleInputName2">Date</label>
                             <p class="input-group">
                               <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
                                 alt-input-formats="altInputFormats" />
-                              <span class="input-group-btn">
-             <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                              <span class="input-group-btn calender-btn">
+             <button type="button" class="btn btn-default" ng-click="open1()"><i class="ln-calendar"></i></button>
            </span>
                             </p>
                           </div>
-                          <div class="form-group">
+                          <div class="form-group mt25">
                             <label for="exampleInputName2">Time</label>
                             <input type="time" class="form-control">
                           </div>
                           <div class="form-group">
                             <label for="">Event Banner</label>
-                            <div class="image-set">
-                              <div class="uploaded-img">
-                                <div class="slider-box">
-                                  <a href="" ng-click="ImageEdit()"><img src="img/slider/s1.jpg" class="img-responsive"></a>
+                            <div class="image-set mt15">
+                              <div class="image-picker">
+                                <div dnd-list="lists" class="pt15">
+                                  <div class="image-set">
+                                    <div class="row">
+                                      <div class="drop-image col-xs-3" ng-repeat="item in lists" dnd-draggable="item" dnd-moved="lists.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{'selected': models.selected === item}">
+                                        <div ng-click="open();" class="image-holder" ng-style="{'background-image': 'url({{item.image}})'}"></div>
+                                      </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
 
                           </div>
                           <div class="form-group">
-                            <label for="">Event Video</label>
-                            <div class="create-event pull-right">
-                              <button class="btn btn-primary" ng-click="OpenVideo()">Upload Video</button>
+                            <label for="" class="display-inline">Event Video</label>
+                            <div class="create-event float-right">
+                              <button class="btn btn-primary create-btn" ui-sref="eventdetail">Upload Video</button>
                             </div>
-                            <div class="image-set">
-                              <div class="uploaded-img">
-                                <div class="slider-box">
-                                <a href="" ng-click="OpenVideo()">  <img src="img/slider/s1.jpg" class="img-responsive"></a>
+                            <div class="image-set mt15">
+                              <div class="image-picker">
+                                <div dnd-list="lists" class="pt15">
+                                  <div class="image-set">
+                                    <div class="row">
+                                      <div class="drop-image col-xs-3" ng-repeat="item in lists" dnd-draggable="item" dnd-moved="lists.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{'selected': models.selected === item}">
+                                        <div ng-click="open();" class="image-holder" ng-style="{'background-image': 'url({{item.image}})'}"></div>
+                                      </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -72,12 +86,13 @@
                             <button class="btn btn-primary">Upload Image</button>
                           </div>
                       </div>
-                      <div class="upload-img text-center">
+                      <div class="upload-img text-center mar30">
                         <button class="btn btn-primary">Save</button>
-                        <button class="btn btn-primary">Cancel</button>
+                        <button class="btn btn-primary ml12">Cancel</button>
                       </div>
                       </form>
                     </div>
+                        </div>
                   </div>
                 </div>
               </div>
