@@ -5,16 +5,16 @@
 
           <div class="row">
             <div class="col-xs-7">
-              <div class="ionic-template">
-                <h4>Blog > Edit Blog</h4>
+              <div class="ionic-template mb30">
+                <h4 class="pad20" >Blog > Edit Blog</h4>
                 <div class="row">
-                  <div class="col-md-8">
-                    <div class="home-slider">
+                  <div class="col-md-12">
+                    <div class="home-slider form-background">
                       <div class="naming">
                         <h4>Edit blog</h4>
                       </div>
-                    </div>
-                    <div class="google-login">
+
+                    <div class="google-login paddingup">
                       <div class="form-login">
                         <form action="">
                           <div class="form-group">
@@ -31,27 +31,29 @@
                             <p class="input-group">
                               <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
                                 alt-input-formats="altInputFormats" />
-                              <span class="input-group-btn">
-             <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                              <span class="input-group-btn calender-btn">
+             <button type="button" class="btn btn-default" ng-click="open1()"><i class=" ln-calendar3"></i></button>
            </span>
                             </p>
                           </div>
-                          <div class="slider-box">
-
-                            <img src="img/slider/s1.jpg" class="img-responsive">
-                          </div>
                           <div class="form-group">
-                        <label for="exampleInputFile">Upload Image</label>
-                        <input type="file" id="exampleInputFile">
+                            <label for="exampleInputFile">Image Upload</label>
+                            <div class="noti-image">
+                              <div class="img-box">
+                                <img src="img/slider/s1.jpg">
+                              </div>
+                            </div>
+                            <input type="file" id="exampleInputFile">
 
-                        </div>
+                          </div>
                       </div>
-                      <div class="upload-img text-center">
+                      <div class="upload-img text-center mar30">
                         <button class="btn btn-primary">Save</button>
-                        <button class="btn btn-primary">Cancel</button>
+                        <button class="btn btn-primary ml12">Cancel</button>
                       </div>
                       </form>
                     </div>
+                      </div>
                   </div>
                 </div>
               </div>
