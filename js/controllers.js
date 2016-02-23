@@ -504,6 +504,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Video Galleries");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+
+  $scope.lists = [{
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }, {
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }, {
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }];
+
 })
 
 
@@ -536,6 +557,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.toggleAnimation = function() {
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
+  $scope.lists = [{
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }, {
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }, {
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }];
 })
 
 .controller('ContactCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {

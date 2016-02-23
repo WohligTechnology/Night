@@ -5,24 +5,29 @@
         <div class="">
           <div class="row">
             <div class="col-xs-7">
-              <div class="ionic-template">
-                <h4>Video Gallery</h4>
+              <div class="ionic-template mb30">
+                <h4 class="pad20">Video Gallery</h4>
                 <div class="row">
                   <div class="col-md-12">
-                    <div class="home-slider">
+                    <div class="home-slider form-background">
                       <div class="naming">
-                        <h4>Set Video Gallery</h4>
-                      </div>
-                      <div class="create-event pull-right">
-                        <button class="btn btn-primary" ui-sref="video-gallerydetail">Create Category</button>
-                      </div>
-                      <div class="image-set">
-                        <div class="drop-image">
-                        <a href="" ui-sref="video-gallerydetail"> <img src="img/slider/s1.jpg"></a>
+                        <h4 class="display-inline">Set Video Gallery</h4>
+                        <div class="create-event float-right">
+                          <button class="btn btn-primary create-btn" ui-sref="video-gallerydetail">Create Category</button>
                         </div>
-                        <!-- <div class="upload-img text-center">
-                          <button class="btn btn-primary">Upload Image</button>
-                        </div> -->
+                      </div>
+
+                      <div class="image-picker">
+                        <div dnd-list="lists" class="pt15">
+                          <div class="image-set">
+                            <div class="row">
+                              <div class="drop-image col-xs-3" ng-repeat="item in lists" dnd-draggable="item" dnd-moved="lists.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{'selected': models.selected === item}">
+                                <div ng-click="open()" class="image-holder" ng-style="{'background-image': 'url({{item.image}})'}"></div>
+                              </div>
+                            </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
