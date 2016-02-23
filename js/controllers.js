@@ -444,6 +444,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Photo Galleries");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+
+  $scope.lists = [{
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }, {
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }, {
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }];
+
 })
 
 .controller('PhotoGalleryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
