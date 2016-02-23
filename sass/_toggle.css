@@ -21,11 +21,13 @@
 .onoffswitch-inner:before {
     content: "ON";
     padding-left: 8px;
+    padding-top: 1px;
     background-color: #34A7C1; color: #FFFFFF;
 }
 .onoffswitch-inner:after {
     content: "OFF";
     padding-right: 8px;
+    padding-top: 1px;
     background-color: #C2C2C2; color: #FFFFFF;
     text-align: right;
 }

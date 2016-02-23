@@ -7,7 +7,6 @@
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
 @import "../bower_components/flexslider/flexslider.css";
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
-
 /* Bootstrap Variables Goes Here */
 $brand-primary: #00BCD4 !default;
 $brand-success: #009688 !default;
@@ -29,14 +28,13 @@ $font-family-serif: "Lato", "Montserrat", "Voyage Fantastique ","Kenyan Coffee",
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 /* Custom Variable */
 $navbar-padding-horizontal: 0 !important;
-$nav-link-padding:12px 15px 15px 20px;
+$nav-link-padding: 12px 15px 15px 20px;
 @mixin transition($transition...) {
   -moz-transition: $transition;
   -o-transition: $transition;
   -webkit-transition: $transition;
   transition: $transition;
 }
-
 body {
   padding-top: 80px;
   font-family: 'Lato','Montserrat';
@@ -65,14 +63,13 @@ nav li:hover .dropdown-menu {
   height: 80px;
 }
 .logo {
-    font-size: 24px;
-    line-height: 80px;
-    color: $brand-primary;
+  font-size: 24px;
+  line-height: 80px;
+  color: $brand-primary;
 }
-.navbar-collapse{
-  padding-right:$navbar-padding-horizontal;
-  padding-left:$navbar-padding-horizontal;
-
+.navbar-collapse {
+  padding-right: $navbar-padding-horizontal;
+  padding-left: $navbar-padding-horizontal;
 }
 a,
 .form-control,
@@ -89,17 +86,16 @@ a,
     border-color: #ccc;
   }
 }
-.btn{
+.btn {
   padding: 8px 20px;
-  border-radius: 0px;
+  border-radius: 0;
   text-transform: uppercase;
 }
-.color-success{
-  color:$brand-success;
+.color-success {
+  color: $brand-success;
 }
-.color-danger{
-
-  color:$brand-danger;
+.color-danger {
+  color: $brand-danger;
 }
 /* Start writing sass here */
 // Header;
@@ -331,13 +327,13 @@ footer {
 .mt30 {
   margin-top: 30px;
 }
-.mt15{
+.mt15 {
   margin-top: 15px;
 }
-.mt20{
+.mt20 {
   margin-top: 20px;
 }
-.mt25{
+.mt25 {
   margin-top: 25px;
 }
 .mt60 {
@@ -351,13 +347,13 @@ footer {
 .mt45 {
   margin-top: 45px !important;
 }
-.mb30{
+.mb30 {
   margin-bottom: 30px;
 }
-.mar30{
-      margin: 30px 0px;
+.mar30 {
+  margin: 30px 0;
 }
-.ml12{
+.ml12 {
   margin-left: 12px;
 }
 .upload-btn {
@@ -530,120 +526,116 @@ footer {
 //   }
 // }
 //mahesh scss.ionic-template
-
-.float-right{
+.float-right {
   float: right;
 }
 .paddingup {
-    padding: 20px 0px 5px 0px;
+  padding: 20px 0 5px;
 }
-.pad20{
-  padding: 20px 0px;
+.pad20 {
+  padding: 20px 0;
 }
-.form-background{
-
+.form-background {
   background: #fff;
-  padding: 20px 20px;
+  padding: 20px;
   border-radius: 4px;
 }
 .naming {
-    border-bottom: 1px solid $border-color;
-    padding-bottom: 8px;
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 8px;
 }
 .image-picker {
-    display: inline-block;
+  display: inline-block;
 }
-.image-holder{
+.image-holder {
   width: auto;
-height: 200px;
-position: relative;
-overflow: hidden;
-img{
-  max-width: 100%;
-max-height: 100%;
-padding: 10px;
-border: 1px solid  $border-color;
-margin: 15px 0px;
+  height: 90px;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    padding: 10px;
+    border: 1px solid $border-color;
+    margin: 15px 0;
+  }
 }
-}
-.all-label{
+.all-label {
   font-weight: 400;
-    color: #8D8D8D;
-
+  color: #8D8D8D;
   text-transform: uppercase;
   font-size: 14px;
 }
-.form-group{
-  label{
-  color: $label-color;
-  text-transform: uppercase;
-  font-weight: 400;
-  font-size: 13px;
+.form-group {
+  label {
+    color: $label-color;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 13px;
     margin-bottom: 10px;
   }
 }
 .form-control {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
   width: 100%;
-  height: 52px;
+  height: 40px;
   border: 2px solid #ECECEC;
   padding: 0 14px;
   border-radius: 3px;
-    -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
-    box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075);
-
+  -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
 }
-
-.f20{
-      font-size: 20px;
+.f20 {
+  font-size: 20px;
 }
-.select{
-  span{
+.select {
+  span {
     float: left;
-  padding-right: 10px;
+    padding-right: 10px;
   }
-.checkbox{
-  margin-top: 0px;
-margin-bottom: 0px;
-label{
+  .checkbox {
+    margin-top: 0;
+    margin-bottom: 0;
+    label {
       min-height: 15px;
+    }
+  }
 }
-}
-}
-.table{
-  thead{
-    tr{
-      th{
+.table {
+  thead {
+    tr {
+      th {
         font-size: 16px;
-font-weight: 400;
-color:$head-color;
+        font-weight: 400;
+        color: $head-color;
       }
     }
   }
-  tbody{
-    tr{
-      td{
+  tbody {
+    tr {
+      td {
         vertical-align: middle;
       }
     }
   }
 }
-.edit{
+.edit {
   background: $brand-success;
   color: #fff;
-font-size: 16px;
-padding: 5px;
-border-radius: 2px;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 2px;
 }
-.delete{
+.delete {
   @extend .edit;
-    background: $brand-danger;
+  background: $brand-danger;
 }
-.resize{
+.resize {
   resize: none;
 }
-.create-btn{
-      padding: 4px 10px;
-          font-size: 12px;
+.create-btn {
+  padding: 4px 10px;
+  font-size: 12px;
 }
 @import "toggle"// @import "mahesh";
