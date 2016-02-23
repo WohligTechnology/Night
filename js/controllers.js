@@ -438,7 +438,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 })
 
-.controller('PhotoGalleriesCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('PhotoGalleriesCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("photogalleries");
   $scope.menutitle = NavigationService.makeactive("Photo Galleries");
@@ -464,6 +464,29 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   }, {
     "image": "img/t3.jpg"
   }];
+
+  $scope.open = function(size) {
+
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'views/modal/image-info.html',
+      size: size,
+      resolve: {
+        items: function() {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstance.result.then(function(selectedItem) {
+      $scope.selected = selectedItem;
+    }, function() {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+  $scope.toggleAnimation = function() {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
 
 })
 
