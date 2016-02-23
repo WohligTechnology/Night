@@ -22,7 +22,7 @@
     content: "ON";
     padding-left: 8px;
     padding-top: 1px;
-    background-color: #34A7C1; color: #FFFFFF;
+    background-color: #0d9dff; color: #FFFFFF;
 }
 .onoffswitch-inner:after {
     content: "OFF";
