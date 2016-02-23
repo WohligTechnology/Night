@@ -22,7 +22,10 @@
     content: "ON";
     padding-left: 8px;
     padding-top: 1px;
-    background-color: #0d9dff; color: #FFFFFF;
+    background-color: #FFFFFF;
+    color: #0d9dff;
+    border-radius: 10px;
+    border: 1px solid #0d9dff;
 }
 .onoffswitch-inner:after {
     content: "OFF";
@@ -32,11 +35,16 @@
     text-align: right;
 }
 .onoffswitch-switch {
-    display: block; width: 20px; margin: 1.5px;
+    display: block;
+    width: 20px;
+    margin: 1.5px;
     background: #fff;
-    position: absolute; top: -1px; bottom: 0;
+    position: absolute;
+    top: -1px;
+    bottom: 0;
     right: 45px;
-    border: 1px solid #999999; border-radius: 20px;
+    border: 1px solid #0d9dff;
+    border-radius: 20px;
     transition: all 0.3s ease-in 0s;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
