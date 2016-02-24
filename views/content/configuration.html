@@ -33,7 +33,7 @@
                     <uib-accordion close-others="oneAtATime">
                       <uib-accordion-group is-open="status.open">
                         <uib-accordion-heading>
-                          <i class="ln-magnifier"></i> Search
+                          <i class="ln-magnifier"></i> Search <i class="right-arrow" ng-class="{'ln-chevron-right': status.isFirstOpen, 'ln-chevron-right': !status.isFirstOpen}"></i>
                         </uib-accordion-heading>
                         <div class="search">
                           <h4>Configuration > Search</h4>
@@ -52,7 +52,7 @@
                       </uib-accordion-group>
                       <uib-accordion-group>
                         <uib-accordion-heading>
-                          <i class="ln-thumbs-up"></i> Social Feeds
+                          <i class="ln-thumbs-up"></i> Social Feeds <i class="right-arrow" ng-class="{'ln-chevron-right': status.open2, 'ln-chevron-right': !status.open2}"></i>
                         </uib-accordion-heading>
                         <div class="soical-feeds">
                           <h4>Configuration > Social Feeds</h4>
@@ -90,7 +90,7 @@
                       </uib-accordion-group>
                       <uib-accordion-group>
                         <uib-accordion-heading>
-                          <i class="ln-graph"></i> Google Analytics
+                          <i class="ln-graph"></i> Google Analytics <i class="right-arrow" ng-class="{'ln-chevron-right': status.open2, 'ln-chevron-right': !status.open2}"></i>
                         </uib-accordion-heading>
                         <div class="google-analytics">
                           <form action="">
