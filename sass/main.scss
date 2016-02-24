@@ -694,4 +694,30 @@ footer {
   overflow-y: auto;
   overflow-x: hidden;
 }
+.checkbox-custom {
+  opacity: 1;
+  position: absolute;
+  display: inline-block;
+  vertical-align: middle;
+      margin: -7px 0px 0px -2px;
+  cursor: pointer;
+}
+.checkbox-custom-label {
+  position: relative;
+  font-weight: 400;
+  &:before {
+    content: '';
+    background: $border-color;
+    border: 1px solid $grey-color;
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    text-align: center;
+  }
+}
+.checkbox-custom:checked + .checkbox-custom-label:before {
+  background: $brand-primary;
+}
 @import "toggle"// @import "mahesh";
