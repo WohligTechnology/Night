@@ -494,11 +494,11 @@ footer {
 }
 .grouplist {
   .items {
-    min-height: 84px;
     position: relative;
     background: #fff;
     padding: 10px 20px;
     min-height: 60px;
+    margin-bottom: 1px;
     .circle {
       position: absolute;
       border: 1px solid #ddd;
@@ -520,6 +520,15 @@ footer {
       h5 {
         font-size: 16px;
         font-weight: 700;
+      }
+    }
+  }
+  li {
+    a {
+      i {
+        font-size: 16px;
+        padding: 5px;
+        line-height: 3.2;
       }
     }
   }
