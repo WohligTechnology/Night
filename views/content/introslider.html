@@ -4,35 +4,42 @@
       <div class="container-fluid">
         <div class="">
           <div class="row">
-            <div class="col-xs-7">
-              <div class="ionic-template">
-                <h4>Home Page</h4>
+            <div class="col-xs-8">
+              <div class="ionic-template mb30">
+                <h4 class="pad20">Home</h4>
                 <div class="row">
                   <div class="col-md-12">
-                    <div class="home-slider">
+                    <div class="home-slider form-background">
                       <div class="naming">
                         <h4>Set Onboarding Slider</h4>
                       </div>
-
-                      <div class="image-set">
-                        <div class="drop-image">
-                        <a href="" ng-click="open()"> <img src="img/slider/s1.jpg"></a>
-                        </div>
-                        <div class="upload-img text-center">
-                          <button class="btn btn-primary">Upload Image</button>
+                      <div class="image-picker">
+                        <div dnd-list="lists" class="pt15">
+                          <div class="image-set">
+                            <div class="row">
+                              <div class="drop-image col-xs-3" ng-repeat="item in lists" dnd-draggable="item" dnd-moved="lists.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{'selected': models.selected === item}">
+                                <div ng-click="open()" class="image-holder" ng-style="{'background-image': 'url({{item.image}})'}"></div>
+                              </div>
+                            </div>
+                            <div class="clearfix"></div>
+                          </div>
                         </div>
                       </div>
+                      <div class="upload-img text-center mar30">
+                        <button class="btn btn-primary">Upload Image</button>
+                      </div>
+                      <div class="upload-img text-center mar30">
+                        <button class="btn btn-primary">Save</button>
+                        <button class="btn btn-primary ml12">Cancel</button>
+                      </div>
                     </div>
-                
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xs-5">
+            <div class="col-xs-4">
               <div class="preivew">
-                <div class="app-prview">
-
-                </div>
+                <div class="app-prview"></div>
               </div>
             </div>
           </div>

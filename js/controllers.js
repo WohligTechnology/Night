@@ -650,6 +650,26 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Intro Slider");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  $scope.lists = [{
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }, {
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }, {
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }];
+
 })
 
 .controller('SocialFeedsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {

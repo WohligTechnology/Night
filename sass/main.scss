@@ -89,6 +89,9 @@ a,
   border-radius: 0;
   text-transform: uppercase;
 }
+textarea {
+  resize: none;
+}
 .color-success {
   color: $brand-success;
 }
@@ -708,8 +711,14 @@ footer {
   position: absolute;
   display: inline-block;
   vertical-align: middle;
-      margin: -7px 0px 0px -2px;
+  margin: -7px 0 0 -2px;
   cursor: pointer;
+}
+.panel-group .panel {
+  border-radius: 0;
+}
+.panel-default > .panel-heading {
+  background-color: #FFFFFF;
 }
 // .checkbox-custom-label {
 //   position: relative;
