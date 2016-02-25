@@ -53,8 +53,20 @@ img {
 img.doneLoading {
   opacity: 1;
 }
-nav li:hover .dropdown-menu {
-  display: block;
+nav {
+  li {
+    .dropdown-menu {
+      display: none;
+    }
+    &:hover {
+      .dropdown-menu {
+        display: block;
+        li {
+          display: block;
+        }
+      }
+    }
+  }
 }
 .navbar {
   margin-bottom: 0;
@@ -105,6 +117,10 @@ textarea {
 }
 .float-right {
   float: right;
+}
+.tuts {
+  padding: 10px;
+  font-weight: 600;
 }
 .pt10 {
   padding-top: 10px;
@@ -662,7 +678,7 @@ footer {
 .resize {
   resize: none;
 }
-.create-btn {
+.btn-primary {
   padding: 4px 10px;
   border-radius: 2px;
   font-size: 12px;
