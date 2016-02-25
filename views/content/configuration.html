@@ -33,9 +33,10 @@
                     <uib-accordion close-others="oneAtATime">
                       <uib-accordion-group is-open="status.open">
                         <uib-accordion-heading>
-                          <i class="ln-magnifier"></i> Search <i class="right-arrow" ng-class="{'ln-chevron-right': status.isFirstOpen, 'ln-chevron-right': !status.isFirstOpen}"></i>
+                          <i class="ln-magnifier"></i> Search <i class="right-arrow" ng-class="{'ln-chevron-right': status.isFirstOpen, 'ln-chevron-right down': !status.isFirstOpen}"></i>
                         </uib-accordion-heading>
                         <div class="search">
+
                           <h4>Configuration > Search</h4>
                           <label>Please Enable Search</label>
                           <form action="">
@@ -52,10 +53,14 @@
                       </uib-accordion-group>
                       <uib-accordion-group>
                         <uib-accordion-heading>
-                          <i class="ln-thumbs-up"></i> Social Feeds <i class="right-arrow" ng-class="{'ln-chevron-right': status.open2, 'ln-chevron-right': !status.open2}"></i>
+                          <i class="ln-thumbs-up"></i> Social Feeds <i class="right-arrow" ng-class="{'ln-chevron-right': status.open2, 'ln-chevron-right down': !status.open2}"></i>
                         </uib-accordion-heading>
                         <div class="soical-feeds">
-                          <h4>Configuration > Social Feeds</h4>
+                          <div class="ionic-template">
+                            <div class="ionic-template">
+                              <h4>Configuration > Social Feeds</h4>
+                            </div>
+                          </div>
                           <form action="">
                             <div class="form-group">
                               <label for="exampleInputName2">Facebook Page Url</label>
@@ -94,7 +99,9 @@
                         </uib-accordion-heading>
                         <div class="google-analytics">
                           <form action="">
-                            <h4>Configuration > Google Analytics </h4>
+                            <div class="ionic-template">
+                              <h4>Configuration > Google Analytics </h4>
+                            </div>
                             <div class="form-group">
                               <label for="exampleInputName2">Google Analytics </label>
                               <textarea name="name" class="form-control" placeholder="Please enter the Google Analytics ID here"></textarea>
