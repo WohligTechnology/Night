@@ -31,9 +31,9 @@
                         </ul>
                       </div> -->
                     <uib-accordion close-others="oneAtATime">
-                      <uib-accordion-group is-open="status.open">
+                      <uib-accordion-group is-open="status.isFirstOpen">
                         <uib-accordion-heading>
-                          <i class="ln-magnifier"></i> Search <i class="right-arrow" ng-class="{'ln-chevron-right': status.isFirstOpen, 'ln-chevron-right down': !status.isFirstOpen}"></i>
+                          <i class="ln-magnifier"></i> Search <i class="right-arrow" ng-class="{'ln-chevron-right down': status.isFirstOpen, 'ln-chevron-right': !status.isFirstOpen}"></i>
                         </uib-accordion-heading>
                         <div class="search">
 
@@ -51,9 +51,9 @@
                           </form>
                         </div>
                       </uib-accordion-group>
-                      <uib-accordion-group>
+                      <uib-accordion-group is-open="status.open2">
                         <uib-accordion-heading>
-                          <i class="ln-thumbs-up"></i> Social Feeds <i class="right-arrow" ng-class="{'ln-chevron-right': status.open2, 'ln-chevron-right down': !status.open2}"></i>
+                          <i class="ln-thumbs-up"></i> Social Feeds <i class="right-arrow" ng-class="{'ln-chevron-right down': status.open2, 'ln-chevron-right': !status.open2}"></i>
                         </uib-accordion-heading>
                         <div class="soical-feeds">
                           <div class="ionic-template">
@@ -93,9 +93,9 @@
                           </form>
                         </div>
                       </uib-accordion-group>
-                      <uib-accordion-group>
+                      <uib-accordion-group is-open="status.open3">
                         <uib-accordion-heading>
-                          <i class="ln-graph"></i> Google Analytics <i class="right-arrow" ng-class="{'ln-chevron-right': status.open2, 'ln-chevron-right': !status.open2}"></i>
+                          <i class="ln-graph"></i> Google Analytics <i class="right-arrow" ng-class="{'ln-chevron-right down': status.open3, 'ln-chevron-right': !status.open3}"></i>
                         </uib-accordion-heading>
                         <div class="google-analytics">
                           <form action="">

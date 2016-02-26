@@ -756,22 +756,37 @@ footer {
     font-size: 14px;
   }
 }
-// .checkbox-custom-label {
-//   position: relative;
-//   font-weight: 400;
-//   &:before {
-//     content: '';
-//     background: $border-color;
-//     border: 1px solid $grey-color;
-//     display: inline-block;
-//     vertical-align: middle;
-//     width: 16px;
-//     height: 16px;
-//     padding: 2px;
-//     text-align: center;
-//   }
+.img-box {
+  height: 100px;
+  width: 100px;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #e7e7e7;
+}
+.info {
+  cursor: pointer;
+  @include transform(rotate(180deg));
+}
+.img-box {
+  height: 100px;
+  width: 100px;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
+// .pophover{
+//   position: absolute;
+//   top: 40%;
+//   right: -14px;
 // }
-// .checkbox-custom:checked + .checkbox-custom-label:before {
-//   background: $brand-primary;
-// }
-@import "toggle"// @import "mahesh";
+// .checkbox-custom-label { // position: relative; // font-weight: 400; // &:before { // content: ''; // background: $border-color; // border: 1px solid $grey-color; // display: inline-block; // vertical-align: middle; // width: 16px; // height: 16px; // padding: 2px; // text-align: center; // } // } // .checkbox-custom:checked + .checkbox-custom-label:before { // background: $brand-primary; // }
+@import "toggle";
+@import "mahesh";
