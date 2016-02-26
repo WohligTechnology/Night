@@ -11,7 +11,10 @@ var jsArray = [
   './bower_components/angular-flexslider/angular-flexslider.js',
   './bower_components/tinymce-dist/tinymce.js',
   './bower_components/angular-ui-tinymce/src/tinymce.js',
-  './bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js',
+  "./bower_components/angular-ui-sortable/sortable.js",
+  "./bower_components/jquery-ui/jquery-ui.js",
+  "./bower_components/lodash/lodash.js",
+  "./bower_components/jStorage/jStorage.js",
   './bower_components/lodash/lodash.js',
 
   './js/app.js',
