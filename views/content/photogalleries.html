@@ -17,8 +17,8 @@
                       <div class="image-picker">
                         <div dnd-list="lists" class="pt15">
                           <div class="image-set">
-                            <div class="row">
-                              <div class="drop-image col-xs-3" ng-repeat="item in lists" dnd-draggable="item" dnd-moved="lists.splice($index, 1)" dnd-effect-allowed="move" dnd-selected="models.selected = item" ng-class="{'selected': models.selected === item}">
+                            <div class="row" ui-sortable ng-model="lists">
+                              <div class="drop-image col-xs-3" ng-repeat="item in lists" >
                                 <div ng-click="open()" class="image-holder" ng-style="{'background-image': 'url({{item.image}})'}"></div>
                               </div>
                             </div>
