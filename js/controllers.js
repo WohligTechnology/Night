@@ -1,4 +1,4 @@
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'dndLists'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable'])
 
 .controller('AllAppsCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
   //Used to name the .html file
@@ -130,59 +130,51 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Navigation");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    var navigation = [{
-      name: "Home",
-      icon: "ln-home3",
-    },{
-      name: "Login & Signup",
-      icon: "ln-unlock",
-    },{
-      name: "Notifications",
-      icon: "ln-bell",
-    },{
-      name: "Events",
-      icon: "ln-calendar2",
-    },{
-      name: "Blogs",
-      icon: "ln-edit2",
-    },{
-      name: "Articles",
-      icon: "ln-papers",
-    },{
-      name: "Photo Gallery",
-      icon: "ln-picture",
-    },{
-      name: "Video Galleries",
-      icon: "ln-film-play",
-    },{
-      name: "Contact",
-      icon: "ln-contacts",
-    }
-    // ,
-    // {
-    //   name: "Search",
-    //   classis: "active",
-    //   anchor: "search",
-    //   icon: "ln-magnifier",
-    // }
-    ,{
-      name: "Audio Galleries",
-      icon: "ln-headset",
-    }
-    // ,
-    // {
-    //   name: "Social Feeds",
-    //   classis: "active",
-    //   anchor: "social-feeds",
-    //   icon: "ln-thumbs-up",
-    // }
-    // ,{
-    //   name: "Forms",
-    //   classis: "active",
-    //   anchor: "forms",
-    //   icon: "ln-register",
-    // }
-  ];
+    $scope.navigation2 = [{
+        name: "Home",
+        icon: "ln-home3",
+      }, {
+        name: "Login & Signup",
+        icon: "ln-unlock",
+      }, {
+        name: "Notifications",
+        icon: "ln-bell",
+      }, {
+        name: "Events",
+        icon: "ln-calendar2",
+      }, {
+        name: "Blogs",
+        icon: "ln-edit2",
+      }, {
+        name: "Articles",
+        icon: "ln-papers",
+      }, {
+        name: "Photo Gallery",
+        icon: "ln-picture",
+      }, {
+        name: "Video Galleries",
+        icon: "ln-film-play",
+      }, {
+        name: "Contact",
+        icon: "ln-contacts",
+      }, {
+        name: "Audio Galleries",
+        icon: "ln-headset",
+      }
+      // ,
+      // {
+      //   name: "Social Feeds",
+      //   classis: "active",
+      //   anchor: "social-feeds",
+      //   icon: "ln-thumbs-up",
+      // }
+      // ,{
+      //   name: "Forms",
+      //   classis: "active",
+      //   anchor: "forms",
+      //   icon: "ln-register",
+      // }
+    ];
   })
   .controller('NavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file
@@ -712,21 +704,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
-.controller('BillingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+  .controller('BillingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("billing");
     $scope.menutitle = NavigationService.makeactive("Billing");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
-.controller('AccountCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+  .controller('AccountCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("account");
     $scope.menutitle = NavigationService.makeactive("Account");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
-.controller('PublishingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+  .controller('PublishingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("publishing");
     $scope.menutitle = NavigationService.makeactive("Publishing");

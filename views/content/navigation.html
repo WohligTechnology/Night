@@ -20,14 +20,14 @@
                     <div class="detainavigation">
                       <div class="fill-content">
                         <div class="navigation">
-                          <ul class="list-unstyled grouplist">
-                            <li class="items" ng-repeat="items in navigation">
+                          <ul class="list-unstyled grouplist" ui-sortable ng-model="navigation2">
+                            <li class="items" ng-repeat="item in navigation2"  >
                               <div class="pull-right">
                                 <a ui-sref="navigationdetail"><i class="ln-edit2 edit"></i></a>
                                 <a ui-sref="navigationdetail"><i class="ln-trash2 delete"></i></a>
                               </div>
-                              <i class="{{items.icon}} circle"></i>
-                              <span class="nav-name pad-left">{{items.name}}</span>
+                              <i class="{{item.icon}} circle"></i>
+                              <span class="nav-name pad-left">{{item.name}}</span>
                               <p class="pad-left">Enable</p>
                             </li>
                           </ul>
