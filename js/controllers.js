@@ -712,6 +712,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
+.controller('BillingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("billing");
+    $scope.menutitle = NavigationService.makeactive("Billing");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+  })
+.controller('AccountCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("account");
+    $scope.menutitle = NavigationService.makeactive("Account");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+  })
+.controller('PublishingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("publishing");
+    $scope.menutitle = NavigationService.makeactive("Publishing");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+  })
   .controller('ConfigurationCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("configuration");

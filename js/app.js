@@ -187,6 +187,21 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     templateUrl: "views/template.html",
     controller: 'ConfigurationCtrl'
   })
+  .state('billing', {
+    url: "/billing",
+    templateUrl: "views/template.html",
+    controller: 'BillingCtrl'
+  })
+  .state('account', {
+    url: "/account",
+    templateUrl: "views/template.html",
+    controller: 'AccountCtrl'
+  })
+  .state('publishing', {
+    url: "/publishing",
+    templateUrl: "views/template.html",
+    controller: 'PublishingCtrl'
+  })
   ;
 
   $urlRouterProvider.otherwise("/");
