@@ -504,6 +504,7 @@ footer {
     right: 0;
     transform: translateX(-50%);
     left: 50%;
+    @include transition(all 400ms ease);
   }
 }
 .naming {

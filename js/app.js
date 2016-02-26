@@ -110,15 +110,15 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   })
 
   .state('video-galleries', {
-    url: "/videogalleries",
-    templateUrl: "views/template.html",
-    controller: "VideoGalleriesCtrl"
-  })
-  .state('video-gallerydetail', {
-    url: "/videogallery/:id",
-    templateUrl: "views/template.html",
-    controller: "VideoGalleryDetailCtrl"
-  })
+      url: "/videogalleries",
+      templateUrl: "views/template.html",
+      controller: "VideoGalleriesCtrl"
+    })
+    .state('video-gallerydetail', {
+      url: "/videogallery/:id",
+      templateUrl: "views/template.html",
+      controller: "VideoGalleryDetailCtrl"
+    })
 
   .state('contact', {
     url: "/contact",
@@ -139,15 +139,15 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   })
 
   .state('audio-galleries', {
-    url: "/audio-galleries",
-    templateUrl: "views/template.html",
-    controller: "AudioGalleriesCtrl"
-  })
-  .state('audio-gallerydetail', {
-    url: "/audio-gallery/:id",
-    templateUrl: "views/template.html",
-    controller: "AudioGalleryDetailCtrl"
-  })
+      url: "/audio-galleries",
+      templateUrl: "views/template.html",
+      controller: "AudioGalleriesCtrl"
+    })
+    .state('audio-gallerydetail', {
+      url: "/audio-gallery/:id",
+      templateUrl: "views/template.html",
+      controller: "AudioGalleryDetailCtrl"
+    })
 
   .state('intro-slider', {
     url: "/intro-slider",
@@ -162,47 +162,46 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   })
 
   .state('forms', {
-    url: "/forms",
-    templateUrl: "views/template.html",
-    controller: 'FormsCtrl'
-  })
-  .state('formdetail', {
-    url: "/form/:id",
-    templateUrl: "views/template.html",
-    controller: 'FormDetailCtrl'
-  })
+      url: "/forms",
+      templateUrl: "views/template.html",
+      controller: 'FormsCtrl'
+    })
+    .state('formdetail', {
+      url: "/form/:id",
+      templateUrl: "views/template.html",
+      controller: 'FormDetailCtrl'
+    })
 
   .state('users', {
-    url: "/users",
-    templateUrl: "views/template.html",
-    controller: 'UsersCtrl'
-  })
-  .state('userdetail', {
-    url: "/user/:id",
-    templateUrl: "views/template.html",
-    controller: 'UserDetailCtrl'
-  })
-  .state('configuration', {
-    url: "/configuration",
-    templateUrl: "views/template.html",
-    controller: 'ConfigurationCtrl'
-  })
-  .state('billing', {
-    url: "/billing",
-    templateUrl: "views/template.html",
-    controller: 'BillingCtrl'
-  })
-  .state('account', {
-    url: "/account",
-    templateUrl: "views/template.html",
-    controller: 'AccountCtrl'
-  })
-  .state('publishing', {
-    url: "/publishing",
-    templateUrl: "views/template.html",
-    controller: 'PublishingCtrl'
-  })
-  ;
+      url: "/users",
+      templateUrl: "views/template.html",
+      controller: 'UsersCtrl'
+    })
+    .state('userdetail', {
+      url: "/user/:id",
+      templateUrl: "views/template.html",
+      controller: 'UserDetailCtrl'
+    })
+    .state('configuration', {
+      url: "/configuration",
+      templateUrl: "views/template.html",
+      controller: 'ConfigurationCtrl'
+    })
+    .state('billing', {
+      url: "/billing",
+      templateUrl: "views/template.html",
+      controller: 'BillingCtrl'
+    })
+    .state('account', {
+      url: "/account",
+      templateUrl: "views/template.html",
+      controller: 'AccountCtrl'
+    })
+    .state('publishing', {
+      url: "/publishing",
+      templateUrl: "views/template.html",
+      controller: 'PublishingCtrl'
+    });
 
   $urlRouterProvider.otherwise("/");
 
@@ -238,6 +237,37 @@ firstapp.directive('img', function($compile, $parse) {
       } else {
         $($element).addClass("doneLoading");
       }
+    }
+  };
+});
+
+firstapp.directive('appPrview', function($compile, $parse) {
+  return {
+    restrict: 'C',
+    replace: false,
+    link: function($scope, element, attrs) {
+      $(window).on("scroll", function() {
+        var bodyScrollTop = $("body").scrollTop();
+        $(".app-prview").css("margin-top", bodyScrollTop + "px");
+      });
+    }
+  };
+});
+firstapp.directive('scrollbars', function($compile, $parse) {
+  return {
+    restrict: 'C',
+    replace: false,
+    link: function($scope, element, attrs) {
+      console.log("App Preview is there now");
+      setTimeout(function() {
+        $(".scrollbars").scrollTop($.jStorage.get("navigationScroll"));
+      }, 10);
+
+
+      $(".scrollbars").on("scroll", function() {
+        var navigationScroll = $(".scrollbars").scrollTop();
+        $.jStorage.set("navigationScroll", navigationScroll);
+      });
     }
   };
 });
