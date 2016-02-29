@@ -286,10 +286,10 @@
                                     <input type="checkbox"> Audio Background Play
                                     <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i>
                                   </label>
-                                  <label>
+                                  <!-- <label>
                                     <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i> Adjust your App Store content rating
                                     <a href="#">HERE</a>
-                                  </label>
+                                  </label> -->
                                 </div>
                               </div>
                               <div class="col-md-6">
@@ -810,32 +810,63 @@
                         <h4>Loading Screen</h4>
                       </div>
                       <div class=" paddingup">
-                        <div class="row">
-                          <div class="col-md-6">
-                            <div class="head">
-                              <p>Upload a custom screen shot for your Tablet app.</p>
-                              <p>5 screen shots Maximum</p>
-                              <p>1536x2048px in PNG Format</p>
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="paddingup">
-                              <div class="iphone-screenshot min-hight">
-                                <div class="wrapper-iphone">
-                                  <div class="iphone">
-                                    <div class="iphone-upload">
-                                      <!-- <input type="file" class="form-control"> -->
-                                      <div class="upload-text text-center">
-                                        <i class="ln-circle-plus"></i>
-                                        <br> Select
+                        <uib-tabset active="activeJustified" justified="true">
+                          <uib-tab index="0" heading="iphone">
+                            <div class="row paddingup">
+                              <div class="col-md-6">
+                                <div class="head">
+                                  <p>Upload a splash loading screen. This is the first image that appears when your app is launched.</p>
+                                  <p>PNG Format: 640x1136px</p>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="paddingup">
+                                  <div class="iphone-screenshot min-hight">
+                                    <div class="wrapper-iphone">
+                                      <div class="iphone">
+                                        <div class="iphone-upload">
+                                          <!-- <input type="file" class="form-control"> -->
+                                          <div class="upload-text text-center">
+                                            <i class="ln-circle-plus"></i>
+                                            <br> Select
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        </div>
+                          </uib-tab>
+                          <uib-tab index="0" heading="Tablet" class="">
+                            <div class="row paddingup">
+                              <div class="col-md-6">
+                                <div class="head">
+                                  <p>Upload a splash loading screen. This is the first image that appears when your app is launched.</p>
+                                  <p>1536x2048px in PNG Format</p>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="paddingup">
+                                  <div class="iphone-screenshot min-hight">
+                                    <div class="wrapper-iphone">
+                                      <div class="iphone">
+                                        <div class="iphone-upload">
+                                          <!-- <input type="file" class="form-control"> -->
+                                          <div class="upload-text text-center">
+                                            <i class="ln-circle-plus"></i>
+                                            <br> Select
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </uib-tab>
+                        </uib-tabset>
+
                       </div>
                   </uib-tab>
                 </uib-tabset>
