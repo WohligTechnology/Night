@@ -8,13 +8,11 @@
 @import "../bower_components/flexslider/flexslider.css";
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
 /* Bootstrap Variables Goes Here */
-
 $brand-primary: #0d9dff !default;
 $brand-success: #009688 !default;
 $brand-warning: #ffec39 !default;
 $brand-danger: #F44336 !default;
 $brand-info: #000072 !default;
-
 $brand-base: #666 !default;
 $border-color: #e7e7e7 !default;
 $white-color: #fff !default;
@@ -22,38 +20,32 @@ $hover-color: #00bbd3!default;
 $grey-color: #c7c7c7!default;
 $head-color: #767676!default;
 $label-color: #afb3bc!default;
-
-$border-radius-base:        0px !default;
-$border-radius-large:       0px !default;
-$border-radius-small:       0px !default;
-
+$border-radius-base: 0 !default;
+$border-radius-large: 0 !default;
+$border-radius-small: 0 !default;
 $font-family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif: "Lato", Georgia, "Times New Roman", Times, serif !default;
-
 $head-font: 12px;
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 /* Custom Variable */
-
 $navbar-padding-horizontal: 0 !important;
 $nav-link-padding: 12px 15px 15px 20px;
-
 @mixin button-outline($color) {
   color: $color;
   background-color: transparent;
   border-color: $color;
-  &:hover , &:focus {
+  &:hover,
+  &:focus {
     color: white;
     background-color: $color;
     border-color: $color;
   }
 }
-
-
-a, .btn {
+a,
+.btn {
   @include transition(all 300ms ease);
   cursor: pointer;
 }
-
 body {
   padding-top: 50px;
   font-weight: normal;
@@ -85,6 +77,17 @@ nav {
           display: block;
         }
       }
+    }
+  }
+}
+.dropdown-menu {
+  border-color: #e7e7e7;
+  > li {
+    > a {
+      font-family: 'Montserrat';
+      color: #666;
+      text-transform: uppercase;
+      font-size: 12px;
     }
   }
 }
@@ -120,7 +123,6 @@ a,
 .btn {
   padding: 8px 20px;
   text-transform: uppercase;
-
   &.btn-outline {
     &.btn-primary {
       @include button-outline($brand-primary);
@@ -276,7 +278,6 @@ textarea {
     border-color: transparent;
   }
 }
-
 .user-setting {
   padding-top: 7px;
   ul {
@@ -328,8 +329,7 @@ textarea {
   z-index: 999;
   overflow-y: auto;
 }
-.main,
-footer {
+.content {
   padding-left: 225px;
 }
 .app-box {
@@ -875,11 +875,23 @@ footer {
   }
 }
 .fadeInOut.ng-enter {
-  transition:0.5s linear all;
-  opacity:0;
+  transition: 0.5s linear all;
+  opacity: 0;
 }
 .fadeInOut.ng-enter.ng-enter-active {
-  opacity:1;
+  opacity: 1;
+}
+.upload-img {
+  margin-top: 30px;
+}
+.history {
+  .naming {
+    border: 0;
+    h5 {
+      font-weight: 600;
+      color: #767676;
+    }
+  }
 }
 // .pophover{
 //   position: absolute;
@@ -888,4 +900,4 @@ footer {
 // }
 // .checkbox-custom-label { // position: relative; // font-weight: 400; // &:before { // content: ''; // background: $border-color; // border: 1px solid $grey-color; // display: inline-block; // vertical-align: middle; // width: 16px; // height: 16px; // padding: 2px; // text-align: center; // } // } // .checkbox-custom:checked + .checkbox-custom-label:before { // background: $brand-primary; // }
 @import "toggle";
-@import "mahesh";
+@import "mobile";
