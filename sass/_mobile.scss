@@ -5,4 +5,7 @@
   .sidemenu {
     @include transform(translateX(-100%));
   }
+  .hamburger {
+    display: inline-block;
+  }
 }
