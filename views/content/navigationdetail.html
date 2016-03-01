@@ -6,23 +6,25 @@
           <div class="row">
             <div class="col-xs-8 max-size">
               <div class="ionic-template mb30">
-                <h4 class="pad20">Navigation > Edit Navigation</h4>
+                <h4 class="pad20">Navigation >  {{page.header}}</h4>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="home-slider form-background">
                       <div class="naming">
-                        <h4>Edit Navigation</h4>
+                        <h4> {{page.header}}</h4>
                       </div>
                       <div class="form-login">
-                        <form action="">
+                        <form action="" name="user">
                           <div class="form-group">
                             <label for="exampleInputName2">Name</label>
-                            <input type="text" class="form-control" id="exampleInputName2" placeholder="Name">
+                            <input name="name" required ng-model=
+                            "userForm.name" type="text" class="form-control" id="exampleInputName2" placeholder="Name">
+                            <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Your Name.</div>
                           </div>
                           <div class="icon">
                             <div class="form-group">
                               <label for="sel1">Select Icon:</label>
-                              <select class="form-control" id="sel1">
+                              <select ng-model="userForm.icon" class="form-control" id="sel1">
                                 <option>ln-chart-growth</option>
                                 <option>ln-home3</option>
                                 <option>ln-unlock</option>
@@ -54,7 +56,7 @@
                           <div class="icon">
                             <div class="form-group">
                               <label for="sel1">List Type:</label>
-                              <select class="form-control">
+                              <select ng-model="userForm.listType" class="form-control">
                                 <optgroup label="Main Menu">
                                   <option value="volvo">Home</option>
                                   <option value="saab">Notifications</option>
@@ -69,7 +71,7 @@
                           <div class="icon">
                             <div class="form-group">
                               <label for="sel1">Select Inside:</label>
-                              <select class="form-control" id="sel1">
+                              <select ng-model="userForm.inside" class="form-control" id="sel1">
                                 <option>Gallery Inside1</option>
                                 <option>Gallery Inside2</option>
                                 <option>Gallery Inside3</option>
@@ -79,13 +81,18 @@
                           </div>
                           <div class="form-group">
                             <label for="exampleInputName2">External Link</label>
-                            <input type="text" class="form-control" id="exampleInputName2" placeholder="External Link">
+                            <input name="externalLink" ng-model=
+                            "userForm.externalLink" type="text" class="form-control" id="exampleInputName2" placeholder="External Link">
                           </div>
-                          <div class="upload-img text-center">
-                            <button class="btn btn-primary">Save</button>
+                        </div>
+                          <div class="upload-img text-center mar30">
+                            <button class="btn btn-primary" ng-click="submitForm(userForm,user)">Save</button>
                             <button class="btn btn-primary">Cancel</button>
                           </div>
                         </form>
+                      <!-- </div> -->
+                      <div class="text-center" ng-show="formComplete">
+                          <h3>Submitted Successfully, Thank You!</h3>
                       </div>
                     </div>
                   </div>

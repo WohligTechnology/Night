@@ -182,6 +182,47 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Navigation");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+    $scope.page = {header:"Create Navigation"};
+    $scope.submitForm = function(formData, formValid) {
+      console.log('form values: ', formData);
+      console.log('form values: ', formValid);
+      console.log('form values: ', $scope.userForm);
+      if (formValid.$valid) {
+        $scope.formComplete = true;
+        // NavigationService.userSubmit($scope.userForm, function(data) {
+        //
+        // });
+      } else {
+
+      }
+    };
+
+
+  })
+  .controller('EditNavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("navigationdetail");
+    $scope.menutitle = NavigationService.makeactive("Navigation");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+    $scope.page = {header:"Edit Navigation"};
+    $scope.submitForm = function(formData, formValid) {
+      console.log('form values: ', formData);
+      console.log('form values: ', formValid);
+      console.log('form values: ', $scope.userForm);
+      if (formValid.$valid) {
+        $scope.formComplete = true;
+        // NavigationService.userSubmit($scope.userForm, function(data) {
+        //
+        // });
+      } else {
+
+      }
+    };
+
+
   })
 
 .controller('LoginSignupCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
@@ -285,6 +326,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Events");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  $scope.userForm = {};
+  $scope.page = {header:"Create Event"};
+  $scope.submitForm = function(formData, formValid) {
+    console.log('form values: ', formData);
+    console.log('form values: ', formValid);
+    console.log('form values: ', $scope.userForm);
+    if (formValid.$valid) {
+      $scope.formComplete = true;
+      // NavigationService.userSubmit($scope.userForm, function(data) {
+      //
+      // });
+    } else {
+
+    }
+
+};
+
   $scope.today = function() {
     $scope.dt = new Date();
   };
@@ -354,6 +412,142 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     "image": "img/t3.jpg"
   }];
 
+
+  $scope.OpenVideo = function(size) {
+
+    var modalInstance = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'views/modal/Video-upload.html',
+      size: size,
+      resolve: {
+        items: function() {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstance.result.then(function(selectedItem) {
+      $scope.selected = selectedItem;
+    }, function() {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+  $scope.ImageEdit = function(size) {
+
+    var modalInstances = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'views/modal/image-info.html',
+      size: size,
+      resolve: {
+        items: function() {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstances.result.then(function(selectedItem) {
+      $scope.selected = selectedItem;
+    }, function() {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+  $scope.toggleAnimation = function() {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
+
+})
+
+.controller('EditEventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("eventdetail");
+  $scope.menutitle = NavigationService.makeactive("Events");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+  $scope.userForm = {};
+  $scope.page = {header:"Edit Event"};
+  $scope.submitForm = function(formData, formValid) {
+    console.log('form values: ', formData);
+    console.log('form values: ', formValid);
+    console.log('form values: ', $scope.userForm);
+    if (formValid.$valid) {
+      $scope.formComplete = true;
+      // NavigationService.userSubmit($scope.userForm, function(data) {
+      //
+      // });
+    } else {
+
+    }
+  };
+  $scope.today = function() {
+    $scope.dt = new Date();
+  };
+  $scope.today();
+
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+
+  $scope.toggleMin();
+  $scope.maxDate = new Date(2020, 5, 22);
+
+  $scope.open1 = function() {
+    $scope.popup1.opened = true;
+  };
+
+  $scope.setDate = function(year, month, day) {
+    $scope.dt = new Date(year, month, day);
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
+
+  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+  $scope.altInputFormats = ['M!/d!/yyyy'];
+
+  $scope.popup1 = {
+    opened: false
+  };
+
+  $scope.getDayClass = function(date, mode) {
+    if (mode === 'day') {
+      var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+      for (var i = 0; i < $scope.events.length; i++) {
+        var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+        if (dayToCheck === currentDay) {
+          return $scope.events[i].status;
+        }
+      }
+    }
+
+    return '';
+  };
+
+  $scope.lists = [{
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }, {
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }, {
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }];
+
+
   $scope.OpenVideo = function(size) {
 
     var modalInstance = $uibModal.open({
@@ -396,7 +590,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
 })
-
 .controller('BlogsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("blogs");
@@ -404,14 +597,153 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 
+
 })
 
-.controller('BlogDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('BlogDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("blogdetail");
   $scope.menutitle = NavigationService.makeactive("Blogs");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  $scope.userForm = {};
+  $scope.page = {header:"Create Blog"};
+  $scope.submitForm = function(formData, formValid) {
+    console.log('form values: ', formData);
+    console.log('form values: ', formValid);
+    console.log('form values: ', $scope.userForm);
+    if (formValid.$valid) {
+      $scope.formComplete = true;
+      // NavigationService.userSubmit($scope.userForm, function(data) {
+      //
+      // });
+    } else {
+
+    }
+  };
+  $scope.today = function() {
+    $scope.dt = new Date();
+  };
+  $scope.today();
+
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+
+  $scope.toggleMin();
+  $scope.maxDate = new Date(2020, 5, 22);
+
+  $scope.open1 = function() {
+    $scope.popup1.opened = true;
+  };
+
+  $scope.setDate = function(year, month, day) {
+    $scope.dt = new Date(year, month, day);
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
+
+  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+  $scope.altInputFormats = ['M!/d!/yyyy'];
+
+  $scope.popup1 = {
+    opened: false
+  };
+
+  $scope.getDayClass = function(date, mode) {
+    if (mode === 'day') {
+      var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+      for (var i = 0; i < $scope.events.length; i++) {
+        var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+        if (dayToCheck === currentDay) {
+          return $scope.events[i].status;
+        }
+      }
+    }
+
+    return '';
+  };
+
+
+})
+.controller('EditBlogDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("blogdetail");
+  $scope.menutitle = NavigationService.makeactive("Blogs");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+  $scope.userForm = {};
+  $scope.page = {header:"Edit Blog"};
+  $scope.submitForm = function(formData, formValid) {
+    console.log('form values: ', formData);
+    console.log('form values: ', formValid);
+    console.log('form values: ', $scope.userForm);
+    if (formValid.$valid) {
+      $scope.formComplete = true;
+      // NavigationService.userSubmit($scope.userForm, function(data) {
+      //
+      // });
+    } else {
+
+    }
+  };
+  $scope.today = function() {
+    $scope.dt = new Date();
+  };
+  $scope.today();
+
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+
+  $scope.toggleMin();
+  $scope.maxDate = new Date(2020, 5, 22);
+
+  $scope.open1 = function() {
+    $scope.popup1.opened = true;
+  };
+
+  $scope.setDate = function(year, month, day) {
+    $scope.dt = new Date(year, month, day);
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
+
+  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+  $scope.altInputFormats = ['M!/d!/yyyy'];
+
+  $scope.popup1 = {
+    opened: false
+  };
+
+  $scope.getDayClass = function(date, mode) {
+    if (mode === 'day') {
+      var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+      for (var i = 0; i < $scope.events.length; i++) {
+        var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+        if (dayToCheck === currentDay) {
+          return $scope.events[i].status;
+        }
+      }
+    }
+
+    return '';
+  };
+
+
+
 })
 
 .controller('ArticlesCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
@@ -428,6 +760,142 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Articles");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  $scope.userForm = {};
+  $scope.page = {header:"Create Article"};
+  $scope.submitForm = function(formData, formValid) {
+    console.log('form values: ', formData);
+    console.log('form values: ', formValid);
+    console.log('form values: ', $scope.userForm);
+    if (formValid.$valid) {
+      $scope.formComplete = true;
+      // NavigationService.userSubmit($scope.userForm, function(data) {
+      //
+      // });
+    } else {
+
+    }
+  };
+  $scope.today = function() {
+    $scope.dt = new Date();
+  };
+  $scope.today();
+
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+
+  $scope.toggleMin();
+  $scope.maxDate = new Date(2020, 5, 22);
+
+  $scope.open1 = function() {
+    $scope.popup1.opened = true;
+  };
+
+  $scope.setDate = function(year, month, day) {
+    $scope.dt = new Date(year, month, day);
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
+
+  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+  $scope.altInputFormats = ['M!/d!/yyyy'];
+
+  $scope.popup1 = {
+    opened: false
+  };
+
+  $scope.getDayClass = function(date, mode) {
+    if (mode === 'day') {
+      var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+      for (var i = 0; i < $scope.events.length; i++) {
+        var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+        if (dayToCheck === currentDay) {
+          return $scope.events[i].status;
+        }
+      }
+    }
+
+    return '';
+  };
+
+})
+
+.controller('EditArticleDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("articledetail");
+  $scope.menutitle = NavigationService.makeactive("Articles");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+  $scope.userForm = {};
+  $scope.page = {header:"Edit Article"};
+  $scope.submitForm = function(formData, formValid) {
+    console.log('form values: ', formData);
+    console.log('form values: ', formValid);
+    console.log('form values: ', $scope.userForm);
+    if (formValid.$valid) {
+      $scope.formComplete = true;
+      // NavigationService.userSubmit($scope.userForm, function(data) {
+      //
+      // });
+    } else {
+
+    }
+  };
+  $scope.today = function() {
+    $scope.dt = new Date();
+  };
+  $scope.today();
+
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+
+  $scope.toggleMin();
+  $scope.maxDate = new Date(2020, 5, 22);
+
+  $scope.open1 = function() {
+    $scope.popup1.opened = true;
+  };
+
+  $scope.setDate = function(year, month, day) {
+    $scope.dt = new Date(year, month, day);
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
+
+  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+  $scope.altInputFormats = ['M!/d!/yyyy'];
+
+  $scope.popup1 = {
+    opened: false
+  };
+
+  $scope.getDayClass = function(date, mode) {
+    if (mode === 'day') {
+      var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+      for (var i = 0; i < $scope.events.length; i++) {
+        var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+        if (dayToCheck === currentDay) {
+          return $scope.events[i].status;
+        }
+      }
+    }
+
+    return '';
+  };
+
 })
 
 .controller('PhotoGalleriesCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
@@ -703,7 +1171,48 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Users");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+    $scope.page = {header:"Create User"};
+    $scope.submitForm = function(formData, formValid) {
+      console.log('form values: ', formData);
+      console.log('form values: ', formValid);
+      console.log('form values: ', $scope.userForm);
+      if (formValid.$valid) {
+        $scope.formComplete = true;
+        // NavigationService.userSubmit($scope.userForm, function(data) {
+        //
+        // });
+      } else {
+
+      }
+    };
+
+
   })
+  .controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+      //Used to name the .html file
+      $scope.template = TemplateService.changecontent("userdetail");
+      $scope.menutitle = NavigationService.makeactive("Users");
+      TemplateService.title = $scope.menutitle;
+      $scope.navigation = NavigationService.getnav();
+      $scope.userForm = {};
+      $scope.page = {header:"Edit User"};
+      $scope.submitForm = function(formData, formValid) {
+        console.log('form values: ', formData);
+        console.log('form values: ', formValid);
+        console.log('form values: ', $scope.userForm);
+        if (formValid.$valid) {
+          $scope.formComplete = true;
+          // NavigationService.userSubmit($scope.userForm, function(data) {
+          //
+          // });
+        } else {
+
+        }
+      };
+
+
+    })
   .controller('BillingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("billing");

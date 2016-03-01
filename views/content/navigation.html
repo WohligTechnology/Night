@@ -11,7 +11,7 @@
                   <div class="col-md-12">
                     <div class="home-slider form-background">
                       <div class="create-event float-right">
-                          <button class="btn btn-primary create-btn" ui-sref="navigationdetail" href="#/navigationdetail/">Create Navigations</button>
+                          <button class="btn btn-primary create-btn" ui-sref="navigationdetail">Create Navigations</button>
                         </div>
                       <div class="naming">
                         <h4>List of Navigations</h4>
@@ -23,7 +23,7 @@
                           <ul class="list-unstyled grouplist" ui-sortable ng-model="navigation2">
                             <li class="items" ng-repeat="item in navigation2"  >
                               <div class="pull-right">
-                                <a ui-sref="navigationdetail"><i class="ln-edit2 edit"></i></a>
+                                <a ui-sref="editnavigationdetail"><i class="ln-edit2 edit"></i></a>
                                 <a ui-sref="navigationdetail"><i class="ln-trash2 delete"></i></a>
                               </div>
                               <i class="{{item.icon}} circle"></i>

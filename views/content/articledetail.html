@@ -5,20 +5,21 @@
         <div class="row">
           <div class="col-xs-8 max-size">
             <div class="ionic-template mb30">
-              <h4 class="pad20">Article > Edit Artile</h4>
+              <h4 class="pad20">Article > {{page.header}}</h4>
               <div class="row">
                 <div class="col-md-12">
                   <div class="home-slider form-background">
                     <div class="pull-right tuts"><a href="#" target="_blank">Tutorials</a></div>
                     <div class="naming">
-                      <h4>Edit Article</h4>
+                      <h4>{{page.header}}</h4>
                     </div>
                     <div class="google-login paddingup">
                       <div class="form-login">
-                        <form action="">
+                        <form action="" name="user">
                           <div class="form-group">
                             <label for="exampleInputName2">Article Title</label>
-                            <input type="text" class="form-control" id="exampleInputName2" placeholder="Event Title">
+                            <input name="articleTitle" required ng-model="userForm.articleTitle" type="text" class="form-control" id="exampleInputName2" placeholder="Event Title">
+                            <div class="error-msg" ng-show="user.articleTitle.$error.required && user.articleTitle.$touched">Please Enter Article Title.</div>
                           </div>
                           <div class="form-group">
                             <label for="exampleInputName2">Status</label>
@@ -30,15 +31,17 @@
                           </div>
                           <div class="form-group">
                             <label for="exampleInputName2">Content</label>
-                            <textarea class="form-control" ui-tinymce ng-model="tinymceModel" rows="3"></textarea>
+                            <textarea name="content" required ui-tinymce ng-model="userForm.content" class="form-control" ></textarea>
+                            <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content.</div>
                           </div>
                           <div class="form-group">
                             <label for="exampleInputName2">Date</label>
                             <p class="input-group">
-                              <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
+                              <input name="date" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
                                 alt-input-formats="altInputFormats" />
                               <span class="input-group-btn calender-btn">
              <button type="button" class="btn btn-default" ng-click="open1()"><i class="ln-calendar3"></i></button>
+             <div class="error-msg" ng-show="user.date.$error.required && user.date.$touched">Please Enter Date.</div>
            </span>
                             </p>
                           </div>
@@ -54,10 +57,13 @@
                           </div>
                       </div>
                       <div class="upload-img text-center mar30">
-                        <button class="btn btn-primary">Save</button>
+                        <button class="btn btn-primary" ng-click="submitForm(userForm,user)">Save</button>
                         <button class="btn btn-primary ml12">Cancel</button>
                       </div>
                       </form>
+                    </div>
+                    <div class="text-center" ng-show="formComplete">
+                        <h3>Submitted Successfully, Thank You!</h3>
                     </div>
                   </div>
                 </div>

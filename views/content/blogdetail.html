@@ -6,33 +6,36 @@
           <div class="row">
             <div class="col-xs-7">
               <div class="ionic-template mb30">
-                <h4 class="pad20" >Blog > Edit Blog</h4>
+                <h4 class="pad20" >Blog >{{page.header}}</h4>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="home-slider form-background">
                       <div class="naming">
-                        <h4>Edit blog</h4>
+                        <h4>{{page.header}}</h4>
                       </div>
 
                     <div class="google-login paddingup">
                       <div class="form-login">
-                        <form action="">
+                        <form action="" name="user">
                           <div class="form-group">
                             <label for="exampleInputName2">Blog Title</label>
-                            <input type="text" class="form-control" id="exampleInputName2" placeholder="Event Title">
+                            <input type="text" name="blogTitle" required ng-model="userForm.blogTitle"  class="form-control" id="exampleInputName2" placeholder="Event Title">
+                              <div class="error-msg" ng-show="user.blogTitle.$error.required && user.blogTitle.$touched">Please Enter Blog Title.</div>
                           </div>
 
                           <div class="form-group">
                             <label for="exampleInputName2">Content</label>
-                            <textarea class="form-control" ui-tinymce ng-model="tinymceModel"></textarea>
+                            <textarea name="content" required class="form-control" ui-tinymce ng-model="userForm.content"></textarea>
+                            <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Blog Content.</div>
                           </div>
                           <div class="form-group">
                             <label for="exampleInputName2">Date</label>
                             <p class="input-group">
-                              <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
+                              <input name="date" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
                                 alt-input-formats="altInputFormats" />
                               <span class="input-group-btn calender-btn">
              <button type="button" class="btn btn-default" ng-click="open1()"><i class=" ln-calendar3"></i></button>
+                 <div class="error-msg" ng-show="user.date.$error.required && user.date.$touched">Please Enter Date.</div>
            </span>
                             </p>
                           </div>
@@ -48,10 +51,13 @@
                           </div>
                       </div>
                       <div class="upload-img text-center mar30">
-                        <button class="btn btn-primary">Save</button>
+                        <button class="btn btn-primary" ng-click="submitForm(userForm,user)">Save</button>
                         <button class="btn btn-primary ml12">Cancel</button>
                       </div>
                       </form>
+                    </div>
+                    <div class="text-center" ng-show="formComplete">
+                        <h3>Submitted Successfully, Thank You!</h3>
                     </div>
                       </div>
                   </div>

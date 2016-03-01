@@ -48,6 +48,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     templateUrl: "views/template.html",
     controller: 'NavigationDetailCtrl'
   })
+  .state('editnavigationdetail', {
+    url: "/editnavigation/:id",
+    templateUrl: "views/template.html",
+    controller: 'EditNavigationDetailCtrl'
+  })
 
   .state('login-signup', {
     url: "/login-signup",
@@ -72,6 +77,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     templateUrl: "views/template.html",
     controller: 'EventDetailCtrl'
   })
+  .state('editeventdetail', {
+    url: "/editevent/:id",
+    templateUrl: "views/template.html",
+    controller: 'EditEventDetailCtrl'
+  })
 
   .state('blogs', {
     url: "/blogs",
@@ -84,6 +94,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     templateUrl: "views/template.html",
     controller: "BlogDetailCtrl"
   })
+  .state('editblogdetail', {
+    url: "/editblog/:id",
+    templateUrl: "views/template.html",
+    controller: "EditBlogDetailCtrl"
+  })
+
 
   .state('articles', {
     url: "/articles",
@@ -96,6 +112,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     templateUrl: "views/template.html",
     controller: "ArticleDetailCtrl"
   })
+
+    .state('editarticledetail', {
+      url: "/editarticle/:id",
+      templateUrl: "views/template.html",
+      controller: "EditArticleDetailCtrl"
+    })
 
   .state('photo-galleries', {
     url: "/photogalleries",
@@ -182,6 +204,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
       templateUrl: "views/template.html",
       controller: 'UserDetailCtrl'
     })
+    .state('edituserdetail', {
+      url: "/editUser/:id",
+      templateUrl: "views/template.html",
+      controller: 'EditUserCtrl'
+    })
     .state('configuration', {
       url: "/configuration",
       templateUrl: "views/template.html",
@@ -258,7 +285,7 @@ firstapp.directive('scrollbars', function($compile, $parse) {
     restrict: 'C',
     replace: false,
     link: function($scope, element, attrs) {
-      console.log("App Preview is there now");
+    //  console.log("App Preview is there now");
       setTimeout(function() {
         $(".scrollbars").scrollTop($.jStorage.get("navigationScroll"));
       }, 10);
