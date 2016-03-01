@@ -23,6 +23,10 @@ $grey-color: #c7c7c7!default;
 $head-color: #767676!default;
 $label-color: #afb3bc!default;
 
+$border-radius-base:        0px !default;
+$border-radius-large:       0px !default;
+$border-radius-small:       0px !default;
+
 $font-family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif: "Lato", Georgia, "Times New Roman", Times, serif !default;
 
@@ -33,9 +37,25 @@ $head-font: 12px;
 $navbar-padding-horizontal: 0 !important;
 $nav-link-padding: 12px 15px 15px 20px;
 
+@mixin button-outline($color) {
+  color: $color;
+  background-color: transparent;
+  border-color: $color;
+  &:hover , &:focus {
+    color: white;
+    background-color: $color;
+    border-color: $color;
+  }
+}
+
+
+a, .btn {
+  @include transition(all 300ms ease);
+  cursor: pointer;
+}
+
 body {
   padding-top: 50px;
-  font-family: 'Lato','Montserrat';
   font-weight: normal;
   background-color: #F2F2F2;
   color: $brand-base;
@@ -70,7 +90,7 @@ nav {
 }
 .navbar {
   margin-bottom: 0;
-  height: 50px;
+  min-height: 50px;
 }
 .logo {
   font-size: 24px;
@@ -99,8 +119,29 @@ a,
 }
 .btn {
   padding: 8px 20px;
-  border-radius: 0;
   text-transform: uppercase;
+
+  &.btn-outline {
+    &.btn-primary {
+      @include button-outline($brand-primary);
+    }
+    &.btn-success {
+      @include button-outline($brand-success);
+    }
+    &.btn-danger {
+      @include button-outline($brand-danger);
+    }
+    &.btn-warning {
+      @include button-outline($brand-warning);
+    }
+    &.btn-info {
+      @include button-outline($brand-info);
+    }
+  }
+  &.btn-small {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
 }
 textarea {
   resize: none;
@@ -136,7 +177,7 @@ textarea {
     position: absolute;
     font-size: 20px;
     color: $brand-base;
-    font-family: lato;
+    font-family: $font-family-sans-serif;
     top: 32px;
     font-weight: 300;
   }
@@ -146,14 +187,23 @@ textarea {
   border-color: $border-color;
 }
 .nav {
-  li {
+  > li {
+    margin: 0;
     &.active {
       a {
         background-color: #ccc;
       }
     }
-    a {
-      padding: $nav-link-padding !important;
+    > a {
+      color: $brand-base;
+      font-size: 14px;
+      cursor: pointer;
+      padding: $nav-link-padding;
+      > i {
+        font-size: 24px;
+        padding-right: 15px;
+        vertical-align: sub;
+      }
     }
   }
 }
@@ -185,6 +235,7 @@ textarea {
   ul {
     display: inline-block;
     list-style: none;
+    margin-bottom: 0;
     li {
       display: inline-block;
     }
@@ -225,6 +276,7 @@ textarea {
     border-color: transparent;
   }
 }
+
 .user-setting {
   padding-top: 7px;
   ul {
@@ -246,6 +298,7 @@ textarea {
     box-shadow: none;
     padding: 0 5px;
     height: 26px;
+    margin-bottom: 0;
   }
   .input-group {
     .btn {
@@ -277,7 +330,7 @@ textarea {
 }
 .main,
 footer {
-  padding-left: 250px;
+  padding-left: 225px;
 }
 .app-box {
   text-align: center;
@@ -308,7 +361,6 @@ footer {
   }
   .app-name {
     padding-top: 15px;
-    font-family: 'lato';
     font-size: 16px;
     padding-bottom: 4px;
     color: $brand-base;
@@ -316,7 +368,6 @@ footer {
   }
   .app-date {
     p {
-      font-family: 'lato';
       span {
         color: #000;
       }
@@ -378,7 +429,6 @@ footer {
   margin-top: 15px;
   .btn {
     color: #fff;
-    border-radius: 2px;
     background: $grey-color;
   }
 }
@@ -411,21 +461,6 @@ footer {
   span {
     &:focus {
       outline: 0;
-    }
-  }
-}
-.list-unstyled {
-  li {
-    margin: 0;
-    a {
-      color: $brand-base;
-      font-size: 14px;
-      cursor: pointer;
-      i {
-        font-size: 24px;
-        padding-right: 15px;
-        vertical-align: sub;
-      }
     }
   }
 }
@@ -568,7 +603,6 @@ footer {
 .form-background {
   background: #fff;
   padding: 20px;
-  border-radius: 4px;
 }
 .naming {
   border-bottom: 1px solid $border-color;
@@ -627,7 +661,6 @@ footer {
   height: 40px;
   border: 2px solid #ECECEC;
   padding: 2px 14px;
-  border-radius: 3px;
   -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
 }
@@ -670,7 +703,6 @@ footer {
   color: $brand-primary;
   font-size: 16px;
   padding: 5px;
-  border-radius: 2px;
   border: 1px solid;
 }
 .delete {
@@ -679,13 +711,6 @@ footer {
 }
 .resize {
   resize: none;
-}
-.btn-primary {
-  padding: 4px 10px;
-  border-radius: 2px;
-  font-size: 12px;
-  color: $brand-primary;
-  background: white;
 }
 .dndPlaceholder {
   list-style: none;
@@ -712,7 +737,6 @@ footer {
 }
 .modal-footer .btn {
   color: #fff;
-  border-radius: 2px;
   background: $brand-primary;
 }
 .calender-btn {
@@ -792,7 +816,6 @@ footer {
   height: 40px;
   border: 2px solid #ECECEC;
   padding: 8px 14px;
-  border-radius: 3px;
   -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
 }
