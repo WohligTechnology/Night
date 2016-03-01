@@ -1,4 +1,4 @@
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate'])
 
 .controller('AllAppsCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
   //Used to name the .html file
@@ -765,6 +765,5 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.searchBar = false;
   $scope.showBar = function() {
     $scope.searchBar = !$scope.searchBar;
-    console.log($scope.showBar);
   };
 });
