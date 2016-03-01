@@ -48,7 +48,6 @@ $nav-link-padding: 12px 15px 15px 20px;
   }
 }
 
-
 a, .btn {
   @include transition(all 300ms ease);
   cursor: pointer;
@@ -85,6 +84,17 @@ nav {
           display: block;
         }
       }
+    }
+  }
+}
+.dropdown-menu {
+  border-color: #e7e7e7;
+  > li {
+    > a {
+      font-family: 'Montserrat';
+      color: #666;
+      text-transform: uppercase;
+      font-size: 12px;
     }
   }
 }
@@ -328,8 +338,7 @@ textarea {
   z-index: 999;
   overflow-y: auto;
 }
-.main,
-footer {
+.content {
   padding-left: 225px;
 }
 .app-box {
@@ -881,6 +890,9 @@ footer {
 .fadeInOut.ng-enter.ng-enter-active {
   opacity:1;
 }
+.upload-img {
+  margin-top: 30px;
+}
 // .pophover{
 //   position: absolute;
 //   top: 40%;
@@ -888,4 +900,4 @@ footer {
 // }
 // .checkbox-custom-label { // position: relative; // font-weight: 400; // &:before { // content: ''; // background: $border-color; // border: 1px solid $grey-color; // display: inline-block; // vertical-align: middle; // width: 16px; // height: 16px; // padding: 2px; // text-align: center; // } // } // .checkbox-custom:checked + .checkbox-custom-label:before { // background: $brand-primary; // }
 @import "toggle";
-@import "mahesh";
+@import "mobile";
