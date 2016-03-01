@@ -2,4 +2,7 @@
   .content {
     padding: 0;
   }
+  .sidemenu {
+    @include transform(translateX(-100%));
+  }
 }
