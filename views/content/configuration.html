@@ -33,7 +33,9 @@
                     <uib-accordion close-others="oneAtATime">
                       <uib-accordion-group is-open="status.isFirstOpen">
                         <uib-accordion-heading>
-                          <i class="ln-magnifier"></i> Search <i class="right-arrow" ng-class="{'ln-chevron-right down': status.isFirstOpen, 'ln-chevron-right': !status.isFirstOpen}"></i>
+                          <i class="ln-magnifier"></i>
+                          Search
+                          <i class="right-arrow" ng-class="{'ln-chevron-right down': status.isFirstOpen, 'ln-chevron-right': !status.isFirstOpen}"></i>
                         </uib-accordion-heading>
                         <div class="search">
 
@@ -53,7 +55,9 @@
                       </uib-accordion-group>
                       <uib-accordion-group is-open="status.open2">
                         <uib-accordion-heading>
-                          <i class="ln-thumbs-up"></i> Social Feeds <i class="right-arrow" ng-class="{'ln-chevron-right down': status.open2, 'ln-chevron-right': !status.open2}"></i>
+                          <i class="ln-thumbs-up"></i>
+                          Social Feeds
+                          <i class="right-arrow" ng-class="{'ln-chevron-right down': status.open2, 'ln-chevron-right': !status.open2}"></i>
                         </uib-accordion-heading>
                         <div class="soical-feeds">
                           <div class="ionic-template">
@@ -61,58 +65,69 @@
                               <h4>Configuration > Social Feeds</h4>
                             </div>
                           </div>
-                          <form action="">
+                          <form action="" name="user">
                             <div class="form-group">
                               <label for="exampleInputName2">Facebook Page Url</label>
-                              <input type="text" class="form-control" id="exampleInputName2" placeholder="Facebook Page Url">
+                              <input name="facebookUrl" ng-model="userForm.facebookUrl" type="text" class="form-control" id="exampleInputName2" placeholder="Facebook Page Url">
                             </div>
                             <div class="form-group">
                               <label for="exampleInputName2">Twitter Page Url</label>
-                              <input type="text" class="form-control" id="exampleInputName2" placeholder="Twitter Page Url">
+                              <input name="twitterUrl" ng-model="userForm.twitterUrl" type="text" class="form-control" id="exampleInputName2" placeholder="Twitter Page Url">
                             </div>
                             <div class="form-group">
                               <label for="exampleInputName2">Instagram Page Url</label>
-                              <input type="text" class="form-control" id="exampleInputName2" placeholder="Instagram Page Url">
+                              <input name="instagramUrl" ng-model="userForm.instagramUrl" type="text" class="form-control" id="exampleInputName2" placeholder="Instagram Page Url">
                             </div>
                             <div class="form-group">
                               <label for="exampleInputName2">Google+ Page Url</label>
-                              <input type="text" class="form-control" id="exampleInputName2" placeholder="Google+ Page Url">
+                              <input name="googleUrl" ng-model="userForm.googleUrl" type="text" class="form-control" id="exampleInputName2" placeholder="Google+ Page Url">
                             </div>
                             <div class="form-group">
                               <label for="exampleInputName2">Youtube Page Url</label>
-                              <input type="text" class="form-control" id="exampleInputName2" placeholder="Youtube Page Url">
+                              <input name="youtubeUrl" ng-model="userForm.youtubeUrl" type="text" class="form-control" id="exampleInputName2" placeholder="Youtube Page Url">
                             </div>
                             <div class="form-group">
                               <label for="exampleInputName2">Tumblr Page Url</label>
-                              <input type="text" class="form-control" id="exampleInputName2" placeholder="Tumblr Page Url">
+                              <input name="tumblrUrl" ng-model="userForm.tumblrUrl" type="text" class="form-control" id="exampleInputName2" placeholder="Tumblr Page Url">
                             </div>
                             <div class="upload-img text-center">
-                              <button class="btn btn-primary btn-outline btn-small">Save</button>
+                              <button class="btn btn-primary btn-outline btn-small"  ng-click="submitForm(userForm,user)">Save</button>
                               <button class="btn btn-primary btn-outline btn-small">Cancel</button>
                             </div>
                           </form>
+                        </div>
+                        <div class="text-center" ng-show="formComplete">
+                            <h3>Submitted Successfully, Thank You!</h3>
                         </div>
                       </uib-accordion-group>
                       <uib-accordion-group is-open="status.open3">
                         <uib-accordion-heading>
-                          <i class="ln-graph"></i> Google Analytics <i class="right-arrow" ng-class="{'ln-chevron-right down': status.open3, 'ln-chevron-right': !status.open3}"></i>
+                          <i class="ln-graph"></i>
+                          Google Analytics
+                          <i class="right-arrow" ng-class="{'ln-chevron-right down': status.open3, 'ln-chevron-right': !status.open3}"></i>
                         </uib-accordion-heading>
                         <div class="google-analytics">
-                          <form action="">
+                          <form action="" name="user1">
                             <div class="ionic-template">
-                              <h4>Configuration > Google Analytics </h4>
+                              <h4>Configuration > Google Analytics
+                              </h4>
                             </div>
                             <div class="form-group">
-                              <label for="exampleInputName2">Google Analytics </label>
-                              <textarea name="name" class="form-control" placeholder="Please enter the Google Analytics ID here"></textarea>
+                              <label for="exampleInputName2">Google Analytics
+                              </label>
+                              <textarea name="googleid" ng-model="userForm.googleid" class="form-control" placeholder="Please enter the Google Analytics ID here"></textarea>
                             </div>
                             <div class="upload-img text-center">
-                              <button class="btn btn-primary btn-outline btn-small">Save</button>
+                              <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user1)">Save</button>
                               <button class="btn btn-primary btn-outline btn-small">Cancel</button>
                             </div>
                           </form>
                         </div>
+
                       </uib-accordion-group>
+                      <div class="text-center" ng-show="formComplete">
+                          <h3>Submitted Successfully, Thank You!</h3>
+                      </div>
                     </uib-accordion>
                   </div>
                 </div>
@@ -120,9 +135,7 @@
             </div>
             <div class="col-xs-4">
               <div class="preivew">
-                <div class="app-prview">
-
-                </div>
+                <div class="app-prview"></div>
               </div>
             </div>
           </div>

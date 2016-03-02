@@ -153,6 +153,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     templateUrl: "views/template.html",
     controller: "ContactDetailCtrl"
   })
+  .state('editcontactdetail', {
+    url: "/editcontact/:id",
+    templateUrl: "views/template.html",
+    controller: "EditContactDetailCtrl"
+  })
 
   .state('search', {
     url: "/search",

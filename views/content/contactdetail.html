@@ -6,27 +6,30 @@
           <div class="row">
             <div class="col-xs-8 max-size">
               <div class="ionic-template mb30">
-                <h4 class="pad20">Contact > Edit Contact </h4>
+                <h4 class="pad20">Contact > {{page.header}} </h4>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="home-slider form-background">
                       <div class="naming">
-                        <h4>Edit Contact</h4>
+                        <h4>{{page.header}} </h4>
                       </div>
                       <div class="google-login">
                         <div class="form-login">
-                          <form action="">
+                          <form action="" name="user">
                             <div class="form-group">
                               <label for="exampleInputName2">Contact Title</label>
-                              <input type="text" class="form-control" id="exampleInputName2" placeholder="Contact Title">
+                              <input name="contactTitle" required ng-model="userForm.contactTitle" type="text" class="form-control" id="exampleInputName2" placeholder="Contact Title">
+                              <div class="error-msg" ng-show="user.contactTitle.$error.required && user.contactTitle.$touched">Please Enter Contact Title.</div>
                             </div>
                             <div class="form-group">
                               <label for="exampleInputName2">Address</label>
-                              <textarea type="text" class="form-control" ui-tinymce ng-model="tinymceModel"></textarea>
+                              <textarea name="address" required type="text" class="form-control" ui-tinymce ng-model="userForm.address"></textarea>
+                              <div class="error-msg" ng-show="user.address.$error.required && user.address.$touched">Please Enter Your Address.</div>
                             </div>
                             <div class="form-group">
                               <label for="exampleInputName2">Email</label>
-                              <input type="email" class="form-control" id="exampleInputName2" placeholder="Email">
+                              <input name="email" required ng-model="userForm.email" type="email" class="form-control" id="exampleInputName2" placeholder="Email">
+                              <div class="error-msg" ng-show="user.email.$error.required && user.email.$touched">Please Enter Your Email id.</div>
                             </div>
                             <div class="embed-link">
                               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.424518709648!2d72.86076331490068!3d19.04506398710566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8d1dc2d4e93%3A0xaac7b2a8db110f47!2sWohlig+Technology!5e0!3m2!1sen!2sin!4v1455852051126"
@@ -35,17 +38,20 @@
                             </div>
                             <div class="form-group">
                               <label for="exampleInputName2">Map Embed Link</label>
-                              <textarea type="text" class="form-control" id="exampleInputName2" placeholder="Map Embed Link" rows="3"></textarea>
+                              <textarea name="maplink" ng-model="userForm.maplink" type="text" class="form-control" id="exampleInputName2" placeholder="Map Embed Link" rows="3"></textarea>
                             </div>
                         </div>
                         <div class="upload-img text-right">
                           <button class="btn btn-primary btn-outline btn-small">Add More</button>
                         </div>
                         <div class="upload-img text-center">
-                          <button class="btn btn-primary btn-outline btn-small">Save</button>
+                          <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
                           <button class="btn btn-primary btn-outline btn-small">Cancel</button>
                         </div>
                         </form>
+                      </div>
+                      <div class="text-center" ng-show="formComplete">
+                          <h3>Submitted Successfully, Thank You!</h3>
                       </div>
                     </div>
                   </div>
