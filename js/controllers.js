@@ -80,6 +80,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 
+  $scope.userForm = {};
+  $scope.submitForm = function(formData) {
+    console.log('form values: ', formData);
+    //console.log('form values: ', $scope.userForm);
+    if (formData) {
+      $scope.formComplete = true;
+      // NavigationService.userSubmit($scope.userForm, function(data) {
+      //
+      // });
+    } else {
+
+    }
+  };
+
   $scope.lists = [{
     "image": "img/t1.jpg"
   }, {
@@ -186,8 +200,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.page = {header:"Create Navigation"};
     $scope.submitForm = function(formData, formValid) {
       console.log('form values: ', formData);
-      console.log('form values: ', formValid);
-      console.log('form values: ', $scope.userForm);
+      //console.log('form values: ', formValid);
+      //console.log('form values: ', $scope.userForm);
       if (formValid.$valid) {
         $scope.formComplete = true;
         // NavigationService.userSubmit($scope.userForm, function(data) {
@@ -210,8 +224,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.page = {header:"Edit Navigation"};
     $scope.submitForm = function(formData, formValid) {
       console.log('form values: ', formData);
-      console.log('form values: ', formValid);
-      console.log('form values: ', $scope.userForm);
+      //console.log('form values: ', formValid);
+      //console.log('form values: ', $scope.userForm);
       if (formValid.$valid) {
         $scope.formComplete = true;
         // NavigationService.userSubmit($scope.userForm, function(data) {
@@ -344,8 +358,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.userForm = {};
   $scope.page = {header:"Create Event"};
   $scope.submitForm = function(formData, formValid) {
-    console.log('form values: ', formData);
-    console.log('form values: ', formValid);
+    //console.log('form values: ', formData);
+    //console.log('form values: ', formValid);
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
       $scope.formComplete = true;
@@ -356,6 +370,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     }
 
+};
+$scope.cancel=function(formData){
+    $scope.formData = {};
+    console.log("cancel values:",$scope.formData);
 };
 
   $scope.today = function() {
@@ -778,8 +796,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.userForm = {};
   $scope.page = {header:"Create Article"};
   $scope.submitForm = function(formData, formValid) {
-    console.log('form values: ', formData);
-    console.log('form values: ', formValid);
+    //console.log('form values: ', formData);
+    //console.log('form values: ', formValid);
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
       $scope.formComplete = true;
@@ -1011,8 +1029,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
   $scope.userForm = {};
   $scope.submitForm = function(formData, formValid) {
-    console.log('form values: ', formData);
-    console.log('form values: ', formValid);
+    // console.log('form values: ', formData);
+    // console.log('form values: ', formValid);
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
       $scope.formComplete = true;
@@ -1135,7 +1153,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.page = {header:"Create User"};
   $scope.submitForm = function(formData, formValid) {
     console.log('form values: ', formData);
-    console.log('form values: ', formValid);
+    console.log('formvalid values: ', formValid);
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
       $scope.formComplete = true;
@@ -1148,7 +1166,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   };
 })
 
-.controller('EditContactDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('EditContactDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log ,$state) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("contactdetail");
   $scope.menutitle = NavigationService.makeactive("Contact");
@@ -1162,6 +1180,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
       $scope.formComplete = true;
+      $state.go("contact");
       // NavigationService.userSubmit($scope.userForm, function(data) {
       //
       // });

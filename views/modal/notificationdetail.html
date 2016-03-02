@@ -16,7 +16,7 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputName2">Status</label>
-                <select class="form-control">
+                <select ng-model="userForm.status" class="form-control">
                   <option>Enable</option>
                   <option>Disable</option>
 
@@ -41,11 +41,11 @@
               <div class="form-group">
                   <label for="exampleInputName2">Timestamp</label><br>
                   <p class="input-group">
-                    <input  name="timeStamp" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.timeStamp" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
+                    <input  name="date" required type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
                       alt-input-formats="altInputFormats" />
                     <span class="input-group-btn calender-btn">
    <button type="button" class="btn btn-default" ng-click="open1()"><i class="ln-calendar3"></i></button>
-   <div class="error-msg" ng-show="user.timeStamp.$error.required && user.timeStamp.$touched">Please Enter TimeStamp.</div>
+   <div class="error-msg" ng-show="user.date.$error.required && user.date.$touched">Please Enter TimeStamp.</div>
  </span>
                   </p>
               </div>

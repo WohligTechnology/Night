@@ -39,11 +39,14 @@
                           <span>Content</span>
                         </div>
                         <div class="mt15">
-                          <textarea ui-tinymce ng-model="tinymceModel"></textarea>
+                          <textarea ui-tinymce ng-model="userForm.content"></textarea>
                         </div>
                         <div class="upload-img text-center">
-                          <button class="btn btn-primary btn-outline btn-small">Save</button>
+                          <button class="btn btn-primary btn-outline btn-small"  ng-click="submitForm(userForm)">Save</button>
                           <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+                        </div>
+                        <div class="text-center" ng-show="formComplete">
+                            <h3>Submitted Successfully, Thank You!</h3>
                         </div>
                       </div>
                     </div>

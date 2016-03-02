@@ -46,7 +46,7 @@
                               <label for="exampleInputName2">Enable</label>
                             </div>
                             <div class="onoffswitch">
-                              <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked="">
+                              <input name="status" ng-model="userForm.status" type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked="">
                               <label class="onoffswitch-label" for="myonoffswitch">
                                 <span class="onoffswitch-inner"></span>
                                 <span class="onoffswitch-switch"></span>
@@ -56,7 +56,7 @@
                           <div class="icon">
                             <div class="form-group">
                               <label for="sel1">List Type:</label>
-                              <select ng-model="userForm.listType" class="form-control">
+                              <select name="listType" ng-model="userForm.listType" class="form-control">
                                 <optgroup label="Main Menu">
                                   <option value="volvo">Home</option>
                                   <option value="saab">Notifications</option>
@@ -86,8 +86,8 @@
                           </div>
                         </div>
                           <div class="upload-img text-center">
-                            <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
-                            <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+                            <a href="#/navigation"> <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
+                            <button class="btn btn-primary btn-outline btn-small">Cancel</button></a>
                           </div>
                         </form>
                       <!-- </div> -->
