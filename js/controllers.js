@@ -8,8 +8,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
   TemplateService.sidemenu = "";
   $scope.animationsEnabled = true;
-  $scope.open = function(size) {
+  $scope.hamburgerOff = 'hidden';
 
+  $scope.open = function(size) {
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       templateUrl: 'views/modal/new-app.html',
@@ -1271,8 +1272,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $(window).scrollTop(0);
   });
+
   $scope.searchBar = false;
   $scope.showBar = function() {
     $scope.searchBar = !$scope.searchBar;
   };
+
+  $scope.menuOpener = false;
+  $scope.leftMenu = function() {
+    $scope.menuOpener = !$scope.menuOpener;
+    console.log($scope.menuOpener);
+  };
+
 });

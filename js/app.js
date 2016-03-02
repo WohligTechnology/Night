@@ -280,6 +280,20 @@ firstapp.directive('appPrview', function($compile, $parse) {
     }
   };
 });
+
+firstapp.directive('hamburger', function($compile, $parse) {
+  return {
+    restrict: 'C',
+    replace: false,
+    link: function($scope, element, attrs) {
+      var $element = $(element);
+      $element.click(function() {
+        $('.sidemenu').toggleClass('open-out');
+      });
+    }
+  };
+});
+
 firstapp.directive('scrollbars', function($compile, $parse) {
   return {
     restrict: 'C',

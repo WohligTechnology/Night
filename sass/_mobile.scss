@@ -4,8 +4,15 @@
   }
   .sidemenu {
     @include transform(translateX(-100%));
+    @include transition(all 300ms ease);
+    &.open-out {
+      @include transform(translateX(0));
+    }
   }
   .hamburger {
     display: inline-block;
   }
+  .user-setting {
+    text-align: center;
+}
 }
