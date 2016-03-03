@@ -8,8 +8,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
   TemplateService.sidemenu = "";
   $scope.animationsEnabled = true;
-  $scope.open = function(size) {
+  $scope.hamburgerOff = 'hidden';
 
+  $scope.open = function(size) {
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       templateUrl: 'views/modal/new-app.html',
@@ -1426,12 +1427,33 @@ $scope.cancel=function(formData){
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
-  .controller('PublishingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+  .controller('PublishingCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("publishing");
     $scope.menutitle = NavigationService.makeactive("Publishing");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.animationsEnabled = true;
+
+    $scope.openscreenshot = function(size) {
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'views/modal/screenshots.html',
+        controller: 'PublishingCtrl',
+        size: size,
+        resolve: {
+          items: function() {
+            return $scope.items;
+          }
+        }
+      });
+
+    };
+
+    $scope.toggleAnimation = function() {
+      $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
+
   })
   .controller('ConfigurationCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file
@@ -1479,14 +1501,29 @@ $scope.cancel=function(formData){
       name: "Users",
     }];
   })
+  .controller('InvoiceCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("invoice");
+    $scope.menutitle = NavigationService.makeactive("Invoice");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+  })
 
 .controller('headerctrl', function($scope, TemplateService) {
   $scope.template = TemplateService;
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $(window).scrollTop(0);
   });
+
   $scope.searchBar = false;
   $scope.showBar = function() {
     $scope.searchBar = !$scope.searchBar;
   };
+
+  $scope.menuOpener = false;
+  $scope.leftMenu = function() {
+    $scope.menuOpener = !$scope.menuOpener;
+    console.log($scope.menuOpener);
+  };
+
 });
