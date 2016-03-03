@@ -8,9 +8,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
   TemplateService.sidemenu = "";
   $scope.animationsEnabled = true;
-  $scope.hamburgerOff = 'hidden';
-
   $scope.open = function(size) {
+
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,
       templateUrl: 'views/modal/new-app.html',
@@ -85,15 +84,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.submitForm = function(formData) {
     console.log('form values: ', formData);
     //console.log('form values: ', $scope.userForm);
-    if (formData) {
+    if (formData.content) {
       $scope.formComplete = true;
+      $scope.userForm={};
       // NavigationService.userSubmit($scope.userForm, function(data) {
       //
       // });
     } else {
-
+$scope.formComplete = false;
     }
   };
+
+  // $scope.showempty=function(formData){
+  //   return angular.equals({}, formData);
+  // };
 
   $scope.lists = [{
     "image": "img/t1.jpg"
@@ -191,7 +195,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       // }
     ];
   })
-  .controller('NavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+  .controller('NavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("navigationdetail");
     $scope.menutitle = NavigationService.makeactive("Navigation");
@@ -205,6 +209,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       //console.log('form values: ', $scope.userForm);
       if (formValid.$valid) {
         $scope.formComplete = true;
+        $state.go("navigation");
         // NavigationService.userSubmit($scope.userForm, function(data) {
         //
         // });
@@ -215,7 +220,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
   })
-  .controller('EditNavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+  .controller('EditNavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("navigationdetail");
     $scope.menutitle = NavigationService.makeactive("Navigation");
@@ -229,6 +234,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       //console.log('form values: ', $scope.userForm);
       if (formValid.$valid) {
         $scope.formComplete = true;
+        $state.go("navigation");
         // NavigationService.userSubmit($scope.userForm, function(data) {
         //
         // });
@@ -350,7 +356,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 })
 
-.controller('EventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+.controller('EventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("eventdetail");
   $scope.menutitle = NavigationService.makeactive("Events");
@@ -364,6 +370,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
       $scope.formComplete = true;
+        $state.go("events");
       // NavigationService.userSubmit($scope.userForm, function(data) {
       //
       // });
@@ -491,7 +498,7 @@ $scope.cancel=function(formData){
 
 })
 
-.controller('EditEventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+.controller('EditEventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("eventdetail");
   $scope.menutitle = NavigationService.makeactive("Events");
@@ -500,11 +507,12 @@ $scope.cancel=function(formData){
   $scope.userForm = {};
   $scope.page = {header:"Edit Event"};
   $scope.submitForm = function(formData, formValid) {
-    console.log('form values: ', formData);
-    console.log('form values: ', formValid);
+    //console.log('form values: ', formData);
+    //console.log('form values: ', formValid);
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
       $scope.formComplete = true;
+        $state.go("events");
       // NavigationService.userSubmit($scope.userForm, function(data) {
       //
       // });
@@ -634,7 +642,7 @@ $scope.cancel=function(formData){
 
 })
 
-.controller('BlogDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal) {
+.controller('BlogDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal, $state) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("blogdetail");
   $scope.menutitle = NavigationService.makeactive("Blogs");
@@ -643,11 +651,12 @@ $scope.cancel=function(formData){
   $scope.userForm = {};
   $scope.page = {header:"Create Blog"};
   $scope.submitForm = function(formData, formValid) {
-    console.log('form values: ', formData);
-    console.log('form values: ', formValid);
+    // console.log('form values: ', formData);
+    // console.log('form values: ', formValid);
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
       $scope.formComplete = true;
+      $state.go("blogs");
       // NavigationService.userSubmit($scope.userForm, function(data) {
       //
       // });
@@ -706,7 +715,7 @@ $scope.cancel=function(formData){
 
 
 })
-.controller('EditBlogDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('EditBlogDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("blogdetail");
   $scope.menutitle = NavigationService.makeactive("Blogs");
@@ -715,11 +724,12 @@ $scope.cancel=function(formData){
   $scope.userForm = {};
   $scope.page = {header:"Edit Blog"};
   $scope.submitForm = function(formData, formValid) {
-    console.log('form values: ', formData);
-    console.log('form values: ', formValid);
+    //console.log('form values: ', formData);
+  // console.log('form values: ', formValid);
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
       $scope.formComplete = true;
+      $state.go("blogs");
       // NavigationService.userSubmit($scope.userForm, function(data) {
       //
       // });
@@ -788,7 +798,7 @@ $scope.cancel=function(formData){
   $scope.navigation = NavigationService.getnav();
 })
 
-.controller('ArticleDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('ArticleDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("articledetail");
   $scope.menutitle = NavigationService.makeactive("Articles");
@@ -802,6 +812,7 @@ $scope.cancel=function(formData){
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
       $scope.formComplete = true;
+      $state.go("articles");
       // NavigationService.userSubmit($scope.userForm, function(data) {
       //
       // });
@@ -860,7 +871,7 @@ $scope.cancel=function(formData){
 
 })
 
-.controller('EditArticleDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('EditArticleDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("articledetail");
   $scope.menutitle = NavigationService.makeactive("Articles");
@@ -869,11 +880,12 @@ $scope.cancel=function(formData){
   $scope.userForm = {};
   $scope.page = {header:"Edit Article"};
   $scope.submitForm = function(formData, formValid) {
-    console.log('form values: ', formData);
-    console.log('form values: ', formValid);
+    // console.log('form values: ', formData);
+    // console.log('form values: ', formValid);
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
       $scope.formComplete = true;
+      $state.go("articles");
       // NavigationService.userSubmit($scope.userForm, function(data) {
       //
       // });
@@ -1022,7 +1034,7 @@ $scope.cancel=function(formData){
 })
 
 
-.controller('VideoGalleryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+.controller('VideoGalleryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("videogallerydetail");
   $scope.menutitle = NavigationService.makeactive("Video Galleries");
@@ -1035,6 +1047,7 @@ $scope.cancel=function(formData){
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
       $scope.formComplete = true;
+      $state.go("video-galleries");
       // NavigationService.userSubmit($scope.userForm, function(data) {
       //
       // });
@@ -1144,7 +1157,7 @@ $scope.cancel=function(formData){
   $scope.navigation = NavigationService.getnav();
 })
 
-.controller('ContactDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('ContactDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("contactdetail");
   $scope.menutitle = NavigationService.makeactive("Contact");
@@ -1153,11 +1166,12 @@ $scope.cancel=function(formData){
   $scope.userForm = {};
   $scope.page = {header:"Create User"};
   $scope.submitForm = function(formData, formValid) {
-    console.log('form values: ', formData);
-    console.log('formvalid values: ', formValid);
+    // console.log('form values: ', formData);
+    // console.log('formvalid values: ', formValid);
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
       $scope.formComplete = true;
+      $state.go("contact");
       // NavigationService.userSubmit($scope.userForm, function(data) {
       //
       // });
@@ -1176,8 +1190,8 @@ $scope.cancel=function(formData){
   $scope.userForm = {};
   $scope.page = {header:"Edit User"};
   $scope.submitForm = function(formData, formValid) {
-    console.log('form values: ', formData);
-    console.log('form values: ', formValid);
+    // console.log('form values: ', formData);
+    // console.log('form values: ', formValid);
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
       $scope.formComplete = true;
@@ -1210,7 +1224,7 @@ $scope.cancel=function(formData){
 
 })
 
-.controller('AudioGalleryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+.controller('AudioGalleryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("audiogallerydetail");
   $scope.menutitle = NavigationService.makeactive("Audio Galleries");
@@ -1218,11 +1232,12 @@ $scope.cancel=function(formData){
   $scope.navigation = NavigationService.getnav();
   $scope.userForm = {};
   $scope.submitForm = function(formData, formValid) {
-    console.log('form values: ', formData);
-    console.log('form values: ', formValid);
+    // console.log('form values: ', formData);
+    // console.log('form values: ', formValid);
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
       $scope.formComplete = true;
+      $state.go("audio-galleries");
       // NavigationService.userSubmit($scope.userForm, function(data) {
       //
       // });
@@ -1365,7 +1380,7 @@ $scope.cancel=function(formData){
   $scope.navigation = NavigationService.getnav();
 })
 
-.controller('UserDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('UserDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("userdetail");
     $scope.menutitle = NavigationService.makeactive("Users");
@@ -1374,11 +1389,12 @@ $scope.cancel=function(formData){
     $scope.userForm = {};
     $scope.page = {header:"Create User"};
     $scope.submitForm = function(formData, formValid) {
-      console.log('form values: ', formData);
-      console.log('form values: ', formValid);
+      // console.log('form values: ', formData);
+      // console.log('form values: ', formValid);
       console.log('form values: ', $scope.userForm);
-      if (formValid.$valid) {
+      if (formData && formValid.$valid) {
         $scope.formComplete = true;
+        $state.go("users");
         // NavigationService.userSubmit($scope.userForm, function(data) {
         //
         // });
@@ -1389,7 +1405,7 @@ $scope.cancel=function(formData){
 
 
   })
-  .controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+  .controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
       //Used to name the .html file
       $scope.template = TemplateService.changecontent("userdetail");
       $scope.menutitle = NavigationService.makeactive("Users");
@@ -1398,11 +1414,12 @@ $scope.cancel=function(formData){
       $scope.userForm = {};
       $scope.page = {header:"Edit User"};
       $scope.submitForm = function(formData, formValid) {
-        console.log('form values: ', formData);
-        console.log('form values: ', formValid);
+        // console.log('form values: ', formData);
+        // console.log('form values: ', formValid);
         console.log('form values: ', $scope.userForm);
         if (formValid.$valid) {
           $scope.formComplete = true;
+          $state.go("users");
           // NavigationService.userSubmit($scope.userForm, function(data) {
           //
           // });
@@ -1427,33 +1444,12 @@ $scope.cancel=function(formData){
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
   })
-  .controller('PublishingCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
+  .controller('PublishingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("publishing");
     $scope.menutitle = NavigationService.makeactive("Publishing");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    $scope.animationsEnabled = true;
-
-    $scope.openscreenshot = function(size) {
-      var modalInstance = $uibModal.open({
-        animation: $scope.animationsEnabled,
-        templateUrl: 'views/modal/screenshots.html',
-        controller: 'PublishingCtrl',
-        size: size,
-        resolve: {
-          items: function() {
-            return $scope.items;
-          }
-        }
-      });
-
-    };
-
-    $scope.toggleAnimation = function() {
-      $scope.animationsEnabled = !$scope.animationsEnabled;
-    };
-
   })
   .controller('ConfigurationCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file
@@ -1501,29 +1497,14 @@ $scope.cancel=function(formData){
       name: "Users",
     }];
   })
-  .controller('InvoiceCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
-    //Used to name the .html file
-    $scope.template = TemplateService.changecontent("invoice");
-    $scope.menutitle = NavigationService.makeactive("Invoice");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-  })
 
 .controller('headerctrl', function($scope, TemplateService) {
   $scope.template = TemplateService;
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $(window).scrollTop(0);
   });
-
   $scope.searchBar = false;
   $scope.showBar = function() {
     $scope.searchBar = !$scope.searchBar;
   };
-
-  $scope.menuOpener = false;
-  $scope.leftMenu = function() {
-    $scope.menuOpener = !$scope.menuOpener;
-    console.log($scope.menuOpener);
-  };
-
 });
