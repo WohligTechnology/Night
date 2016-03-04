@@ -45,7 +45,7 @@
                           <button class="btn btn-primary btn-outline btn-small"  ng-click="submitForm(userForm)">Save</button>
                           <button class="btn btn-primary btn-outline btn-small">Cancel</button>
                         </div>
-                        <div class="text-center" ng-show="formComplete">
+                        <div class="text-center" ng-if="formComplete">
                             <h3>Submitted Successfully, Thank You!</h3>
                         </div>
                       </div>
@@ -64,4 +64,5 @@
       </div>
     </div>
   </div>
+  <!-- //ng-if="!showempty(userForm)" -->
 </section>

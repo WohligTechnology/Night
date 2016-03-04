@@ -32,7 +32,7 @@
                         <div class="form-group">
                           <label for="exampleInputName2">Date</label>
                           <p class="input-group">
-                            <input name="date" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
+                            <input name="date" required type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
                               alt-input-formats="altInputFormats" />
                             <span class="input-group-btn">
              <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="upload-img text-center">
                       <button class="btn btn-primary btn-outline btn-small"  ng-click="submitForm(userForm,user)">Save</button>
-                      <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+                    <a href="#/audio-galleries">  <button class="btn btn-primary btn-outline btn-small">Cancel</button></a>
                     </div>
                     </form>
                   </div>
