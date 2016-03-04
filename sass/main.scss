@@ -713,10 +713,20 @@ textarea {
   font-size: 16px;
   padding: 5px;
   border: 1px solid;
+  @include transition(all ease 300ms);
+  &:hover {
+    background: $brand-primary;
+    color: white;
+  }
 }
 .delete {
   @extend .edit;
   color: $brand-danger;
+  @include transition(all ease 300ms);
+  &:hover {
+    background: $brand-danger;
+    color: white;
+  }
 }
 .resize {
   resize: none;
@@ -783,11 +793,6 @@ textarea {
     &.down {
       transform: rotate(90deg);
     }
-  }
-}
-.panel-body {
-  .ionic-template h4 {
-    font-size: 14px;
   }
 }
 .info {
@@ -927,13 +932,9 @@ textarea {
   font-size: 18px;
   cursor: pointer;
 }
-.theme {
-  width: 100%;
-  height: 600px;
-  overflow: scroll;
-  .chosse-theme {
-    width: 1000px;
-    height: 600px;
+.panel-body {
+  .ionic-template h4 {
+    font-size: 14px;
   }
 }
 // .pophover{

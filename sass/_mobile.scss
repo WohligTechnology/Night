@@ -14,5 +14,14 @@
   }
   .user-setting {
     text-align: center;
-}
+  }
+  .theme {
+    width: 100%;
+    height: 600px;
+    overflow: auto;
+    .chosse-theme {
+      width: 1000px;
+      height: 600px;
+    }
+  }
 }
