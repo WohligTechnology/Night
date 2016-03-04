@@ -1434,7 +1434,11 @@ $scope.cancel=function(formData){
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.animationsEnabled = true;
-
+    $scope.lists = [{
+      "image": "img/t1.jpg"
+    }, {
+      "image": "img/t2.jpg"
+    }];
     $scope.openscreenshot = function(size) {
       var modalInstance = $uibModal.open({
         animation: $scope.animationsEnabled,

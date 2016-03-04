@@ -1,5 +1,5 @@
 <section class="main">
-  <div class="theme">
+  <div class="theme scrollbars">
     <div class="chosse-theme">
       <div class="container-fluid">
         <div class="">
@@ -523,21 +523,21 @@
                                   </div>
                                 </div>
                                 <div class="wrapper-iphone">
-                                  <div class="iphone">
-                                    <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
+                                  <div class="iphone" ui-sortable ng-model="lists">
+                                    <div class="iphone-upload iphone-upload-screen" ng-repeat="item in lists">
                                       <!-- <input type="file" class="form-control"> -->
-                                      <div class="upload-text text-center">
+                                      <!-- <div class="upload-text text-center" ng-click="openscreenshot()">
                                         <i class="ln-circle-plus"></i>
                                         <br> Select
+                                      </div> -->
+                                      <div class="image-hold">
+                                        <img ng-src="{{item.image}}" alt="" class="drop-image" />
+                                      </div>
+                                      <div class="text-center mr10">
+                                        <button class="btn btn-danger btn-outline btn-small">delete</button>
                                       </div>
                                     </div>
-                                    <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
-                                      <!-- <input type="file" class="form-control"> -->
-                                      <div class="upload-text text-center">
-                                        <i class="ln-circle-plus"></i>
-                                        <br> Select
-                                      </div>
-                                    </div>
+
                                     <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
                                       <!-- <input type="file" class="form-control"> -->
                                       <div class="upload-text text-center">
@@ -585,10 +585,11 @@
                                   <div class="iphone">
                                     <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
                                       <!-- <input type="file" class="form-control"> -->
-                                      <div class="upload-text text-center">
+                                      <!-- <div class="upload-text text-center">
                                         <i class="ln-circle-plus"></i>
                                         <br> Select
-                                      </div>
+                                      </div> -->
+                                      <img src="img/t1.jpg" alt="" />
                                     </div>
                                     <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
                                       <!-- <input type="file" class="form-control"> -->
@@ -701,35 +702,36 @@
                                 </div>
                                 <div class="wrapper-iphone">
                                   <div class="iphone">
-                                    <div class="iphone-upload iphone-upload-screen"  ng-click="openscreenshot()">
+                                    <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
                                       <!-- <input type="file" class="form-control"> -->
                                       <div class="upload-text text-center">
                                         <i class="ln-circle-plus"></i>
                                         <br> Select
                                       </div>
                                     </div>
-                                    <div class="iphone-upload iphone-upload-screen"  ng-click="openscreenshot()">
+                                    <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
                                       <!-- <input type="file" class="form-control"> -->
                                       <div class="upload-text text-center">
                                         <i class="ln-circle-plus"></i>
                                         <br> Select
                                       </div>
                                     </div>
-                                    <div class="iphone-upload iphone-upload-screen"  ng-click="openscreenshot()">
+                                    <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
                                       <!-- <input type="file" class="form-control"> -->
                                       <div class="upload-text text-center">
                                         <i class="ln-circle-plus"></i>
                                         <br> Select
                                       </div>
                                     </div>
-                                    <div class="iphone-upload iphone-upload-screen"  ng-click="openscreenshot()">
+                                    <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
                                       <!-- <input type="file" class="form-control"> -->
                                       <div class="upload-text text-center">
-                                        <i class="ln-circle-plus"></i>
-                                        <br> Select
+                                        <!-- <i class="ln-circle-plus"></i>
+                                        <br> Select -->
+                                        <img src="img/t1.jpg" alt="" />
                                       </div>
                                     </div>
-                                    <div class="iphone-upload iphone-upload-screen"  ng-click="openscreenshot()">
+                                    <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
                                       <!-- <input type="file" class="form-control"> -->
                                       <div class="upload-text text-center">
                                         <i class="ln-circle-plus"></i>
@@ -760,35 +762,35 @@
                                 </div>
                                 <div class="wrapper-iphone">
                                   <div class="iphone">
-                                    <div class="iphone-upload iphone-upload-screen"  ng-click="openscreenshot()">
+                                    <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
                                       <!-- <input type="file" class="form-control"> -->
                                       <div class="upload-text text-center">
                                         <i class="ln-circle-plus"></i>
                                         <br> Select
                                       </div>
                                     </div>
-                                    <div class="iphone-upload iphone-upload-screen"  ng-click="openscreenshot()">
+                                    <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
                                       <!-- <input type="file" class="form-control"> -->
                                       <div class="upload-text text-center">
                                         <i class="ln-circle-plus"></i>
                                         <br> Select
                                       </div>
                                     </div>
-                                    <div class="iphone-upload iphone-upload-screen"  ng-click="openscreenshot()">
+                                    <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
                                       <!-- <input type="file" class="form-control"> -->
                                       <div class="upload-text text-center">
                                         <i class="ln-circle-plus"></i>
                                         <br> Select
                                       </div>
                                     </div>
-                                    <div class="iphone-upload iphone-upload-screen"  ng-click="openscreenshot()">
+                                    <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
                                       <!-- <input type="file" class="form-control"> -->
                                       <div class="upload-text text-center">
                                         <i class="ln-circle-plus"></i>
                                         <br> Select
                                       </div>
                                     </div>
-                                    <div class="iphone-upload iphone-upload-screen"  ng-click="openscreenshot()">
+                                    <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
                                       <!-- <input type="file" class="form-control"> -->
                                       <div class="upload-text text-center">
                                         <i class="ln-circle-plus"></i>
