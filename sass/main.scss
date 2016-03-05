@@ -561,23 +561,32 @@ textarea {
   }
 }
 .grouplist {
+  margin-top: -10px;
   .items {
     position: relative;
-    background: #fff;
-    padding: 0 20px;
+    background-color: #fff;
+    padding: 6px 20px;
     min-height: 50px;
+<<<<<<< HEAD
     margin-bottom: -6px;
     margin-top: 4px;
+=======
+    margin-bottom: 0;
+>>>>>>> ffa410b3b4a2f2851a788de74c3d7b8c15c25f58
     .circle {
       position: absolute;
-      border: 1px solid #ddd;
+      color: $brand-base;
+      border: 1px solid $brand-base;
       border-radius: 50%;
-      height: 40px;
-      width: 40px;
+      height: 42px;
+      width: 42px;
       text-align: center;
-      font-size: 23px;
-      line-height: 1.4;
-      margin-top: 5px;
+      font-size: 18px;
+      line-height: 36px;
+      margin-top: 2px;
+    }
+    p {
+      margin: 0;
     }
     .pad-left {
       padding: 0 65px 0 52px;
