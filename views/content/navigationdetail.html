@@ -33,15 +33,30 @@
                               </select>
                             </div>
                           </div>
-                          <div class="form-group">
+
+
+
+                          <div class="form-group" ng-controller="UploadCtrl">
                             <label for="exampleInputFile">Image Icon</label>
                             <div class="noti-image">
                               <div class="img-box">
-                                <img src="img/slider/s1.jpg">
+                                <h4 ng-if="isloading">Loading...</h4>
+                                <img ng-src="{{userForm.picture.name|serverimage}}" style="height:200px;">
+                                <!-- <img src="img/slider/s1.jpg"> -->
                               </div>
                             </div>
-                            <input name="navigationImg" ng-model="userForm.navigationImg" type="file" id="exampleInputFile">
+                            <input type="file" name="picture" ng-file-select="onFileSelect($files)" onclick="this.value=null" required ng-model="formregistration.picture" accept=".jpg,.png" class="form-control ab">
+                            <!-- <input name="navigationImg" ng-model="userForm.navigationImg" type="file" id="exampleInputFile"> -->
                           </div>
+                          <div ng-if="userForm.picture">
+                            <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
+                          </div>
+
+
+
+
+
+
                           <div class="display-inline">
                             <div class="label-opt">
                               <label for="exampleInputName2">Enable</label>
@@ -84,20 +99,20 @@
                             <label for="exampleInputName2">External Link</label>
                             <input name="externalLink" ng-model="userForm.externalLink" type="text" class="form-control" id="exampleInputName2" placeholder="External Link">
                           </div>
+                          <!-- </div> -->
+                          <div class="upload-img text-center">
+                            <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
+                            <a href="#/navigation">
+                              <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+                            </a>
+                          </div>
+                        </form>
                         <!-- </div> -->
-                        <div class="upload-img text-center">
-                          <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
-                          <a href="#/navigation">
-                            <button class="btn btn-primary btn-outline btn-small">Cancel</button>
-                          </a>
+                        <!-- </div> -->
+                        <div class="text-center" ng-show="formComplete">
+                          <h3>Submitted Successfully, Thank You!</h3>
                         </div>
-                      </form>
-                        <!-- </div> -->
-                      <!-- </div> -->
-                      <div class="text-center" ng-show="formComplete">
-                        <h3>Submitted Successfully, Thank You!</h3>
                       </div>
-                    </div>
                     </div>
                   </div>
                 </div>

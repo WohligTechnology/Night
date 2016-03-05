@@ -1,3 +1,4 @@
+var imgpath = "http://europratik.com/admin/uploads/";
 var navigationservice = angular.module('navigationservice', [])
 
 .factory('NavigationService', function() {

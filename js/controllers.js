@@ -1,4 +1,130 @@
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'angularFileUpload'])
+
+.controller('UploadCtrl', function($scope, $upload, $timeout) {
+
+  var uploadres = [];
+  //imageupload
+  var imagejstupld = "";
+  $scope.usingFlash = FileAPI && FileAPI.upload !== null;
+  $scope.fileReaderSupported = window.FileReader !== null && (window.FileAPI === null || FileAPI.html5 !== false);
+  $scope.uploadRightAway = true;
+  $scope.changeAngularVersion = function() {
+    window.location.hash = $scope.angularVersion;
+    window.location.reload(true);
+  };
+
+  $scope.hasUploader = function(index) {
+    return $scope.upload[index] !== null;
+  };
+
+  $scope.abort = function(index) {
+    $scope.upload[index].abort();
+    $scope.upload[index] = null;
+  };
+  $scope.angularVersion = window.location.hash.length > 1 ? (window.location.hash.indexOf('/') === 1 ?
+    window.location.hash.substring(2) : window.location.hash.substring(1)) : '1.2.20';
+  // $scope.uploader.onSuccess(function () {
+  //   console.log('successfully uploaded!')
+  // });
+
+  $scope.onFileSelect = function($files) {
+    $scope.isloading = true;
+    $scope.selectedFiles = [];
+    $scope.progress = [];
+
+    console.log($files);
+
+    if ($scope.upload && $scope.upload.length > 0) {
+      for (var i = 0; i < $scope.upload.length; i++) {
+        if ($scope.upload[i] !== null) {
+          $scope.upload[i].abort();
+        }
+      }
+    }
+
+    $scope.upload = [];
+    $scope.uploadResult = uploadres;
+    $scope.selectedFiles = $files;
+    $scope.dataUrls = [];
+
+    for (var i = 0; i < $files.length; i++) {
+      var $file = $files[i];
+
+      if ($scope.fileReaderSupported && ($file.type.indexOf('image') || $file.type.indexOf('pdf')) > -1) {
+        var fileReader = new FileReader();
+        fileReader.readAsDataURL($files[i]);
+
+        var loadFile = function(fileReader, index) {
+          
+          fileReader.onload = function(e) {
+            $timeout(function() {
+              $scope.dataUrls[index] = e.target.result;
+            });
+          };
+        }(fileReader, i);
+      }
+      $scope.progress[i] = -1;
+      if ($scope.uploadRightAway) {
+        $scope.start(i);
+      }
+    }
+  };
+
+  $scope.start = function(index) {
+    // cfpLoadingBar.start();
+    $scope.progress[index] = 0;
+    $scope.errorMsg = null;
+    $scope.howToSend = 1;
+    if ($scope.howToSend == 1) {
+      $scope.upload[index] = $upload.upload({
+        url: imgpath,
+        method: "POST",
+        headers: {
+          'Content-Type': 'Content-Type'
+        },
+        data: {
+          myModel: $scope.myModel
+        },
+        file: $scope.selectedFiles[index],
+        fileFormDataName: 'image'
+      });
+      $scope.upload[index].then(function(response) {
+        $timeout(function() {
+          // cfpLoadingBar.complete();
+          $scope.uploadResult.push(response.data);
+          console.log(response);
+          if (response.data.value !== "") {
+            $scope.isloading = false;
+            $scope.userForm.picture = response.data.value;
+          }
+        });
+      }, function(response) {
+        if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
+      }, function(evt) {
+        $scope.progress[index] = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+      });
+      $scope.upload[index].xhr(function(xhr) {});
+    } else {
+      var fileReader = new FileReader();
+      fileReader.onload = function(e) {
+        $scope.upload[index] = $upload.http({
+          url: imgpath,
+          headers: {
+            'Content-Type': $scope.selectedFiles[index].type
+          },
+          data: e.target.result
+        }).then(function(response) {
+          $scope.uploadResult.push(response.data);
+        }, function(response) {
+          if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
+        }, function(evt) {
+          $scope.progress[index] = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+        });
+      };
+      fileReader.readAsArrayBuffer($scope.selectedFiles[index]);
+    }
+  };
+})
 
 .controller('AllAppsCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
   //Used to name the .html file
@@ -86,12 +212,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     //console.log('form values: ', $scope.userForm);
     if (formData.content) {
       $scope.formComplete = true;
-      $scope.userForm={};
+      $scope.userForm = {};
       // NavigationService.userSubmit($scope.userForm, function(data) {
       //
       // });
     } else {
-$scope.formComplete = false;
+      $scope.formComplete = false;
     }
   };
 
@@ -202,7 +328,9 @@ $scope.formComplete = false;
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.userForm = {};
-    $scope.page = {header:"Create Navigation"};
+    $scope.page = {
+      header: "Create Navigation"
+    };
     $scope.submitForm = function(formData, formValid) {
       console.log('form values: ', formData);
       //console.log('form values: ', formValid);
@@ -227,7 +355,9 @@ $scope.formComplete = false;
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.userForm = {};
-    $scope.page = {header:"Edit Navigation"};
+    $scope.page = {
+      header: "Edit Navigation"
+    };
     $scope.submitForm = function(formData, formValid) {
       console.log('form values: ', formData);
       //console.log('form values: ', formValid);
@@ -363,14 +493,16 @@ $scope.formComplete = false;
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
   $scope.userForm = {};
-  $scope.page = {header:"Create Event"};
+  $scope.page = {
+    header: "Create Event"
+  };
   $scope.submitForm = function(formData, formValid) {
     //console.log('form values: ', formData);
     //console.log('form values: ', formValid);
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
       $scope.formComplete = true;
-        $state.go("events");
+      $state.go("events");
       // NavigationService.userSubmit($scope.userForm, function(data) {
       //
       // });
@@ -378,11 +510,11 @@ $scope.formComplete = false;
 
     }
 
-};
-$scope.cancel=function(formData){
+  };
+  $scope.cancel = function(formData) {
     $scope.formData = {};
-    console.log("cancel values:",$scope.formData);
-};
+    console.log("cancel values:", $scope.formData);
+  };
 
   $scope.today = function() {
     $scope.dt = new Date();
@@ -499,296 +631,302 @@ $scope.cancel=function(formData){
 })
 
 .controller('EditEventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("eventdetail");
-  $scope.menutitle = NavigationService.makeactive("Events");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
-  $scope.userForm = {};
-  $scope.page = {header:"Edit Event"};
-  $scope.submitForm = function(formData, formValid) {
-    //console.log('form values: ', formData);
-    //console.log('form values: ', formValid);
-    console.log('form values: ', $scope.userForm);
-    if (formValid.$valid) {
-      $scope.formComplete = true;
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("eventdetail");
+    $scope.menutitle = NavigationService.makeactive("Events");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+    $scope.page = {
+      header: "Edit Event"
+    };
+    $scope.submitForm = function(formData, formValid) {
+      //console.log('form values: ', formData);
+      //console.log('form values: ', formValid);
+      console.log('form values: ', $scope.userForm);
+      if (formValid.$valid) {
+        $scope.formComplete = true;
         $state.go("events");
-      // NavigationService.userSubmit($scope.userForm, function(data) {
-      //
-      // });
-    } else {
+        // NavigationService.userSubmit($scope.userForm, function(data) {
+        //
+        // });
+      } else {
 
-    }
-  };
-  $scope.today = function() {
-    $scope.dt = new Date();
-  };
-  $scope.today();
+      }
+    };
+    $scope.today = function() {
+      $scope.dt = new Date();
+    };
+    $scope.today();
 
-  $scope.toggleMin = function() {
-    $scope.minDate = $scope.minDate ? null : new Date();
-  };
+    $scope.toggleMin = function() {
+      $scope.minDate = $scope.minDate ? null : new Date();
+    };
 
-  $scope.toggleMin();
-  $scope.maxDate = new Date(2020, 5, 22);
+    $scope.toggleMin();
+    $scope.maxDate = new Date(2020, 5, 22);
 
-  $scope.open1 = function() {
-    $scope.popup1.opened = true;
-  };
+    $scope.open1 = function() {
+      $scope.popup1.opened = true;
+    };
 
-  $scope.setDate = function(year, month, day) {
-    $scope.dt = new Date(year, month, day);
-  };
+    $scope.setDate = function(year, month, day) {
+      $scope.dt = new Date(year, month, day);
+    };
 
-  $scope.dateOptions = {
-    formatYear: 'yy',
-    startingDay: 1
-  };
+    $scope.dateOptions = {
+      formatYear: 'yy',
+      startingDay: 1
+    };
 
-  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-  $scope.format = $scope.formats[0];
-  $scope.altInputFormats = ['M!/d!/yyyy'];
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
 
-  $scope.popup1 = {
-    opened: false
-  };
+    $scope.popup1 = {
+      opened: false
+    };
 
-  $scope.getDayClass = function(date, mode) {
-    if (mode === 'day') {
-      var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+    $scope.getDayClass = function(date, mode) {
+      if (mode === 'day') {
+        var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
 
-      for (var i = 0; i < $scope.events.length; i++) {
-        var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+        for (var i = 0; i < $scope.events.length; i++) {
+          var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
 
-        if (dayToCheck === currentDay) {
-          return $scope.events[i].status;
+          if (dayToCheck === currentDay) {
+            return $scope.events[i].status;
+          }
         }
       }
-    }
 
-    return '';
-  };
+      return '';
+    };
 
-  $scope.lists = [{
-    "image": "img/t1.jpg"
-  }, {
-    "image": "img/t2.jpg"
-  }, {
-    "image": "img/t3.jpg"
-  }, {
-    "image": "img/t1.jpg"
-  }, {
-    "image": "img/t2.jpg"
-  }, {
-    "image": "img/t3.jpg"
-  }, {
-    "image": "img/t1.jpg"
-  }, {
-    "image": "img/t2.jpg"
-  }, {
-    "image": "img/t3.jpg"
-  }];
+    $scope.lists = [{
+      "image": "img/t1.jpg"
+    }, {
+      "image": "img/t2.jpg"
+    }, {
+      "image": "img/t3.jpg"
+    }, {
+      "image": "img/t1.jpg"
+    }, {
+      "image": "img/t2.jpg"
+    }, {
+      "image": "img/t3.jpg"
+    }, {
+      "image": "img/t1.jpg"
+    }, {
+      "image": "img/t2.jpg"
+    }, {
+      "image": "img/t3.jpg"
+    }];
 
 
-  $scope.OpenVideo = function(size) {
+    $scope.OpenVideo = function(size) {
 
-    var modalInstance = $uibModal.open({
-      animation: $scope.animationsEnabled,
-      templateUrl: 'views/modal/Video-upload.html',
-      size: size,
-      resolve: {
-        items: function() {
-          return $scope.items;
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'views/modal/Video-upload.html',
+        size: size,
+        resolve: {
+          items: function() {
+            return $scope.items;
+          }
         }
-      }
-    });
+      });
 
-    modalInstance.result.then(function(selectedItem) {
-      $scope.selected = selectedItem;
-    }, function() {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
-  };
-  $scope.ImageEdit = function(size) {
+      modalInstance.result.then(function(selectedItem) {
+        $scope.selected = selectedItem;
+      }, function() {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+    };
+    $scope.ImageEdit = function(size) {
 
-    var modalInstances = $uibModal.open({
-      animation: $scope.animationsEnabled,
-      templateUrl: 'views/modal/image-info.html',
-      size: size,
-      resolve: {
-        items: function() {
-          return $scope.items;
+      var modalInstances = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'views/modal/image-info.html',
+        size: size,
+        resolve: {
+          items: function() {
+            return $scope.items;
+          }
         }
-      }
-    });
+      });
 
-    modalInstances.result.then(function(selectedItem) {
-      $scope.selected = selectedItem;
-    }, function() {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
-  };
-  $scope.toggleAnimation = function() {
-    $scope.animationsEnabled = !$scope.animationsEnabled;
-  };
-})
-.controller('BlogsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("blogs");
-  $scope.menutitle = NavigationService.makeactive("Blogs");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
+      modalInstances.result.then(function(selectedItem) {
+        $scope.selected = selectedItem;
+      }, function() {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+    };
+    $scope.toggleAnimation = function() {
+      $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
+  })
+  .controller('BlogsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("blogs");
+    $scope.menutitle = NavigationService.makeactive("Blogs");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
 
 
-})
+  })
 
 .controller('BlogDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal, $state) {
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("blogdetail");
-  $scope.menutitle = NavigationService.makeactive("Blogs");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
-  $scope.userForm = {};
-  $scope.page = {header:"Create Blog"};
-  $scope.submitForm = function(formData, formValid) {
-    // console.log('form values: ', formData);
-    // console.log('form values: ', formValid);
-    console.log('form values: ', $scope.userForm);
-    if (formValid.$valid) {
-      $scope.formComplete = true;
-      $state.go("blogs");
-      // NavigationService.userSubmit($scope.userForm, function(data) {
-      //
-      // });
-    } else {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("blogdetail");
+    $scope.menutitle = NavigationService.makeactive("Blogs");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+    $scope.page = {
+      header: "Create Blog"
+    };
+    $scope.submitForm = function(formData, formValid) {
+      // console.log('form values: ', formData);
+      // console.log('form values: ', formValid);
+      console.log('form values: ', $scope.userForm);
+      if (formValid.$valid) {
+        $scope.formComplete = true;
+        $state.go("blogs");
+        // NavigationService.userSubmit($scope.userForm, function(data) {
+        //
+        // });
+      } else {
 
-    }
-  };
-  $scope.today = function() {
-    $scope.dt = new Date();
-  };
-  $scope.today();
+      }
+    };
+    $scope.today = function() {
+      $scope.dt = new Date();
+    };
+    $scope.today();
 
-  $scope.toggleMin = function() {
-    $scope.minDate = $scope.minDate ? null : new Date();
-  };
+    $scope.toggleMin = function() {
+      $scope.minDate = $scope.minDate ? null : new Date();
+    };
 
-  $scope.toggleMin();
-  $scope.maxDate = new Date(2020, 5, 22);
+    $scope.toggleMin();
+    $scope.maxDate = new Date(2020, 5, 22);
 
-  $scope.open1 = function() {
-    $scope.popup1.opened = true;
-  };
+    $scope.open1 = function() {
+      $scope.popup1.opened = true;
+    };
 
-  $scope.setDate = function(year, month, day) {
-    $scope.dt = new Date(year, month, day);
-  };
+    $scope.setDate = function(year, month, day) {
+      $scope.dt = new Date(year, month, day);
+    };
 
-  $scope.dateOptions = {
-    formatYear: 'yy',
-    startingDay: 1
-  };
+    $scope.dateOptions = {
+      formatYear: 'yy',
+      startingDay: 1
+    };
 
-  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-  $scope.format = $scope.formats[0];
-  $scope.altInputFormats = ['M!/d!/yyyy'];
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
 
-  $scope.popup1 = {
-    opened: false
-  };
+    $scope.popup1 = {
+      opened: false
+    };
 
-  $scope.getDayClass = function(date, mode) {
-    if (mode === 'day') {
-      var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+    $scope.getDayClass = function(date, mode) {
+      if (mode === 'day') {
+        var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
 
-      for (var i = 0; i < $scope.events.length; i++) {
-        var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+        for (var i = 0; i < $scope.events.length; i++) {
+          var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
 
-        if (dayToCheck === currentDay) {
-          return $scope.events[i].status;
+          if (dayToCheck === currentDay) {
+            return $scope.events[i].status;
+          }
         }
       }
-    }
 
-    return '';
-  };
+      return '';
+    };
 
 
-})
-.controller('EditBlogDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("blogdetail");
-  $scope.menutitle = NavigationService.makeactive("Blogs");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
-  $scope.userForm = {};
-  $scope.page = {header:"Edit Blog"};
-  $scope.submitForm = function(formData, formValid) {
-    //console.log('form values: ', formData);
-  // console.log('form values: ', formValid);
-    console.log('form values: ', $scope.userForm);
-    if (formValid.$valid) {
-      $scope.formComplete = true;
-      $state.go("blogs");
-      // NavigationService.userSubmit($scope.userForm, function(data) {
-      //
-      // });
-    } else {
+  })
+  .controller('EditBlogDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("blogdetail");
+    $scope.menutitle = NavigationService.makeactive("Blogs");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+    $scope.page = {
+      header: "Edit Blog"
+    };
+    $scope.submitForm = function(formData, formValid) {
+      //console.log('form values: ', formData);
+      // console.log('form values: ', formValid);
+      console.log('form values: ', $scope.userForm);
+      if (formValid.$valid) {
+        $scope.formComplete = true;
+        $state.go("blogs");
+        // NavigationService.userSubmit($scope.userForm, function(data) {
+        //
+        // });
+      } else {
 
-    }
-  };
-  $scope.today = function() {
-    $scope.dt = new Date();
-  };
-  $scope.today();
+      }
+    };
+    $scope.today = function() {
+      $scope.dt = new Date();
+    };
+    $scope.today();
 
-  $scope.toggleMin = function() {
-    $scope.minDate = $scope.minDate ? null : new Date();
-  };
+    $scope.toggleMin = function() {
+      $scope.minDate = $scope.minDate ? null : new Date();
+    };
 
-  $scope.toggleMin();
-  $scope.maxDate = new Date(2020, 5, 22);
+    $scope.toggleMin();
+    $scope.maxDate = new Date(2020, 5, 22);
 
-  $scope.open1 = function() {
-    $scope.popup1.opened = true;
-  };
+    $scope.open1 = function() {
+      $scope.popup1.opened = true;
+    };
 
-  $scope.setDate = function(year, month, day) {
-    $scope.dt = new Date(year, month, day);
-  };
+    $scope.setDate = function(year, month, day) {
+      $scope.dt = new Date(year, month, day);
+    };
 
-  $scope.dateOptions = {
-    formatYear: 'yy',
-    startingDay: 1
-  };
+    $scope.dateOptions = {
+      formatYear: 'yy',
+      startingDay: 1
+    };
 
-  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-  $scope.format = $scope.formats[0];
-  $scope.altInputFormats = ['M!/d!/yyyy'];
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
 
-  $scope.popup1 = {
-    opened: false
-  };
+    $scope.popup1 = {
+      opened: false
+    };
 
-  $scope.getDayClass = function(date, mode) {
-    if (mode === 'day') {
-      var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+    $scope.getDayClass = function(date, mode) {
+      if (mode === 'day') {
+        var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
 
-      for (var i = 0; i < $scope.events.length; i++) {
-        var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+        for (var i = 0; i < $scope.events.length; i++) {
+          var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
 
-        if (dayToCheck === currentDay) {
-          return $scope.events[i].status;
+          if (dayToCheck === currentDay) {
+            return $scope.events[i].status;
+          }
         }
       }
-    }
 
-    return '';
-  };
-
+      return '';
+    };
 
 
-})
+
+  })
 
 .controller('ArticlesCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
   //Used to name the .html file
@@ -805,7 +943,9 @@ $scope.cancel=function(formData){
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
   $scope.userForm = {};
-  $scope.page = {header:"Create Article"};
+  $scope.page = {
+    header: "Create Article"
+  };
   $scope.submitForm = function(formData, formValid) {
     //console.log('form values: ', formData);
     //console.log('form values: ', formValid);
@@ -878,7 +1018,9 @@ $scope.cancel=function(formData){
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
   $scope.userForm = {};
-  $scope.page = {header:"Edit Article"};
+  $scope.page = {
+    header: "Edit Article"
+  };
   $scope.submitForm = function(formData, formValid) {
     // console.log('form values: ', formData);
     // console.log('form values: ', formValid);
@@ -1057,54 +1199,54 @@ $scope.cancel=function(formData){
   };
 
 
-    $scope.today = function() {
-      $scope.dt = new Date();
-    };
-    $scope.today();
+  $scope.today = function() {
+    $scope.dt = new Date();
+  };
+  $scope.today();
 
-    $scope.toggleMin = function() {
-      $scope.minDate = $scope.minDate ? null : new Date();
-    };
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
 
-    $scope.toggleMin();
-    $scope.maxDate = new Date(2020, 5, 22);
+  $scope.toggleMin();
+  $scope.maxDate = new Date(2020, 5, 22);
 
-    $scope.open1 = function() {
-      $scope.popup1.opened = true;
-    };
+  $scope.open1 = function() {
+    $scope.popup1.opened = true;
+  };
 
-    $scope.setDate = function(year, month, day) {
-      $scope.dt = new Date(year, month, day);
-    };
+  $scope.setDate = function(year, month, day) {
+    $scope.dt = new Date(year, month, day);
+  };
 
-    $scope.dateOptions = {
-      formatYear: 'yy',
-      startingDay: 1
-    };
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
 
-    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-    $scope.format = $scope.formats[0];
-    $scope.altInputFormats = ['M!/d!/yyyy'];
+  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+  $scope.altInputFormats = ['M!/d!/yyyy'];
 
-    $scope.popup1 = {
-      opened: false
-    };
+  $scope.popup1 = {
+    opened: false
+  };
 
-    $scope.getDayClass = function(date, mode) {
-      if (mode === 'day') {
-        var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+  $scope.getDayClass = function(date, mode) {
+    if (mode === 'day') {
+      var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
 
-        for (var i = 0; i < $scope.events.length; i++) {
-          var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+      for (var i = 0; i < $scope.events.length; i++) {
+        var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
 
-          if (dayToCheck === currentDay) {
-            return $scope.events[i].status;
-          }
+        if (dayToCheck === currentDay) {
+          return $scope.events[i].status;
         }
       }
+    }
 
-      return '';
-    };
+    return '';
+  };
 
   $scope.VideoEdit = function(size) {
 
@@ -1164,7 +1306,9 @@ $scope.cancel=function(formData){
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
   $scope.userForm = {};
-  $scope.page = {header:"Create User"};
+  $scope.page = {
+    header: "Create User"
+  };
   $scope.submitForm = function(formData, formValid) {
     // console.log('form values: ', formData);
     // console.log('formvalid values: ', formValid);
@@ -1181,14 +1325,16 @@ $scope.cancel=function(formData){
   };
 })
 
-.controller('EditContactDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log ,$state) {
+.controller('EditContactDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("contactdetail");
   $scope.menutitle = NavigationService.makeactive("Contact");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
   $scope.userForm = {};
-  $scope.page = {header:"Edit User"};
+  $scope.page = {
+    header: "Edit User"
+  };
   $scope.submitForm = function(formData, formValid) {
     // console.log('form values: ', formData);
     // console.log('form values: ', formValid);
@@ -1246,54 +1392,54 @@ $scope.cancel=function(formData){
     }
   };
 
-    $scope.today = function() {
-      $scope.dt = new Date();
-    };
-    $scope.today();
+  $scope.today = function() {
+    $scope.dt = new Date();
+  };
+  $scope.today();
 
-    $scope.toggleMin = function() {
-      $scope.minDate = $scope.minDate ? null : new Date();
-    };
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
 
-    $scope.toggleMin();
-    $scope.maxDate = new Date(2020, 5, 22);
+  $scope.toggleMin();
+  $scope.maxDate = new Date(2020, 5, 22);
 
-    $scope.open1 = function() {
-      $scope.popup1.opened = true;
-    };
+  $scope.open1 = function() {
+    $scope.popup1.opened = true;
+  };
 
-    $scope.setDate = function(year, month, day) {
-      $scope.dt = new Date(year, month, day);
-    };
+  $scope.setDate = function(year, month, day) {
+    $scope.dt = new Date(year, month, day);
+  };
 
-    $scope.dateOptions = {
-      formatYear: 'yy',
-      startingDay: 1
-    };
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
 
-    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-    $scope.format = $scope.formats[0];
-    $scope.altInputFormats = ['M!/d!/yyyy'];
+  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+  $scope.altInputFormats = ['M!/d!/yyyy'];
 
-    $scope.popup1 = {
-      opened: false
-    };
+  $scope.popup1 = {
+    opened: false
+  };
 
-    $scope.getDayClass = function(date, mode) {
-      if (mode === 'day') {
-        var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+  $scope.getDayClass = function(date, mode) {
+    if (mode === 'day') {
+      var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
 
-        for (var i = 0; i < $scope.events.length; i++) {
-          var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+      for (var i = 0; i < $scope.events.length; i++) {
+        var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
 
-          if (dayToCheck === currentDay) {
-            return $scope.events[i].status;
-          }
+        if (dayToCheck === currentDay) {
+          return $scope.events[i].status;
         }
       }
+    }
 
-      return '';
-    };
+    return '';
+  };
 
   $scope.AudioEdit = function(size) {
 
@@ -1387,7 +1533,9 @@ $scope.cancel=function(formData){
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.userForm = {};
-    $scope.page = {header:"Create User"};
+    $scope.page = {
+      header: "Create User"
+    };
     $scope.submitForm = function(formData, formValid) {
       // console.log('form values: ', formData);
       // console.log('form values: ', formValid);
@@ -1406,30 +1554,32 @@ $scope.cancel=function(formData){
 
   })
   .controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
-      //Used to name the .html file
-      $scope.template = TemplateService.changecontent("userdetail");
-      $scope.menutitle = NavigationService.makeactive("Users");
-      TemplateService.title = $scope.menutitle;
-      $scope.navigation = NavigationService.getnav();
-      $scope.userForm = {};
-      $scope.page = {header:"Edit User"};
-      $scope.submitForm = function(formData, formValid) {
-        // console.log('form values: ', formData);
-        // console.log('form values: ', formValid);
-        console.log('form values: ', $scope.userForm);
-        if (formValid.$valid) {
-          $scope.formComplete = true;
-          $state.go("users");
-          // NavigationService.userSubmit($scope.userForm, function(data) {
-          //
-          // });
-        } else {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("userdetail");
+    $scope.menutitle = NavigationService.makeactive("Users");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+    $scope.page = {
+      header: "Edit User"
+    };
+    $scope.submitForm = function(formData, formValid) {
+      // console.log('form values: ', formData);
+      // console.log('form values: ', formValid);
+      console.log('form values: ', $scope.userForm);
+      if (formValid.$valid) {
+        $scope.formComplete = true;
+        $state.go("users");
+        // NavigationService.userSubmit($scope.userForm, function(data) {
+        //
+        // });
+      } else {
 
-        }
-      };
+      }
+    };
 
 
-    })
+  })
   .controller('BillingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("billing");
