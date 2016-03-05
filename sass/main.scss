@@ -564,6 +564,7 @@ textarea {
     padding: 0 20px;
     min-height: 50px;
     margin-bottom: -6px;
+    margin-top: 4px;
     .circle {
       position: absolute;
       border: 1px solid #ddd;
@@ -576,7 +577,7 @@ textarea {
       margin-top: 5px;
     }
     .pad-left {
-      padding-left: 51px;
+      padding: 0 65px 0 52px;
     }
     .nav-name {
       font-size: 14px;
