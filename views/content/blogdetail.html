@@ -3,24 +3,25 @@
     <div class="chosse-theme">
       <div class="container-fluid">
 
-          <div class="row">
-            <div class="col-xs-7">
-              <div class="ionic-template mb30">
-                <h4 class="pad20" >Blog >{{page.header}}</h4>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="home-slider form-background">
-                      <div class="naming">
-                        <h4>{{page.header}}</h4>
-                      </div>
+        <div class="row">
+          <div class="col-xs-7">
+            <div class="ionic-template mb30">
+              <h4 class="pad20">Blog >{{page.header}}</h4>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="home-slider form-background">
+                    <div class="pull-right tuts"><a href="#" target="_blank">Tutorials</a></div>
+                    <div class="naming">
+                      <h4>{{page.header}}</h4>
+                    </div>
 
                     <div class="google-login paddingup">
                       <div class="form-login">
                         <form action="" name="user">
                           <div class="form-group">
                             <label for="exampleInputName2">Blog Title</label>
-                            <input type="text" name="blogTitle" required ng-model="userForm.blogTitle"  class="form-control" id="exampleInputName2" placeholder="Event Title">
-                              <div class="error-msg" ng-show="user.blogTitle.$error.required && user.blogTitle.$touched">Please Enter Blog Title.</div>
+                            <input type="text" name="blogTitle" required ng-model="userForm.blogTitle" class="form-control" id="exampleInputName2" placeholder="Event Title">
+                            <div class="error-msg" ng-show="user.blogTitle.$error.required && user.blogTitle.$touched">Please Enter Blog Title.</div>
                           </div>
 
                           <div class="form-group">
@@ -31,8 +32,8 @@
                           <div class="form-group">
                             <label for="exampleInputName2">Date</label>
                             <p class="input-group">
-                              <input name="date" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
-                                alt-input-formats="altInputFormats" />
+                              <input name="date" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
+                                close-text="Close" alt-input-formats="altInputFormats" />
                               <span class="input-group-btn calender-btn">
              <button type="button" class="btn btn-default" ng-click="open1()"><i class=" ln-calendar3"></i></button>
                  <div class="error-msg" ng-show="user.date.$error.required && user.date.$touched">Please Enter Date.</div>
@@ -51,28 +52,30 @@
                           </div>
                       </div>
                       <div class="upload-img text-center mar30">
-                        <button class="btn btn-primary btn-outline btn-small"  ng-click="submitForm(userForm,user)">Save</button>
-                      <a href="#/blogs">  <button class="btn btn-primary btn-outline btn-small ml12">Cancel</button></a>
+                        <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
+                        <a href="#/blogs">
+                          <button class="btn btn-primary btn-outline btn-small ml12">Cancel</button>
+                        </a>
                       </div>
                       </form>
                     </div>
                     <div class="text-center" ng-show="formComplete">
-                        <h3>Submitted Successfully, Thank You!</h3>
+                      <h3>Submitted Successfully, Thank You!</h3>
                     </div>
-                      </div>
                   </div>
                 </div>
               </div>
-
             </div>
-            <div class="col-xs-5">
-              <div class="preivew">
-                <div class="app-prview">
 
-                </div>
+          </div>
+          <div class="col-xs-5">
+            <div class="preivew">
+              <div class="app-prview">
+
               </div>
             </div>
           </div>
+        </div>
 
 
       </div>

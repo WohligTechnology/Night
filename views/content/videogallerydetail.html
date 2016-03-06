@@ -10,78 +10,80 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="home-slider form-background">
+                    <div class="pull-right tuts"><a href="#" target="_blank">Tutorials</a></div>
                     <div class="naming">
                       <h4>Edit Video gallery</h4>
                     </div>
-
-                  <div class="google-login paddingup">
-                    <div class="form-login">
-                      <form name="user" action="">
-                        <div class="form-group">
-                          <label for="exampleInputName2">Category Title</label>
-                          <input name="catTitle" required ng-model="userForm.catTitle"  type="text" class="form-control" id="exampleInputName2" placeholder="Photo Title">
+                    <div class="google-login paddingup">
+                      <div class="form-login">
+                        <form name="user" action="">
+                          <div class="form-group">
+                            <label for="exampleInputName2">Category Title</label>
+                            <input name="catTitle" required ng-model="userForm.catTitle" type="text" class="form-control" id="exampleInputName2" placeholder="Photo Title">
                             <div class="error-msg" ng-show="user.catTitle.$error.required && user.catTitle.$touched">Please Enter Category Title.</div>
-                        </div>
+                          </div>
 
-                        <div class="form-group">
-                          <label for="exampleInputName2">Status</label>
-                          <select name="status" ng-model="userForm.status" class="form-control">
-                            <option>Enable</option>
-                            <option>Disable</option>
+                          <div class="form-group">
+                            <label for="exampleInputName2">Status</label>
+                            <select name="status" ng-model="userForm.status" class="form-control">
+                              <option>Enable</option>
+                              <option>Disable</option>
 
-                          </select>
-                        </div>
+                            </select>
+                          </div>
 
-                        <div class="form-group">
-                          <label for="exampleInputName2">Date</label>
-                          <p class="input-group">
-                            <input name="date" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
-                              alt-input-formats="altInputFormats" />
-                            <span class="input-group-btn calender-btn">
+                          <div class="form-group">
+                            <label for="exampleInputName2">Date</label>
+                            <p class="input-group">
+                              <input name="date" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
+                                close-text="Close" alt-input-formats="altInputFormats" />
+                              <span class="input-group-btn calender-btn">
              <button type="button" class="btn btn-default" ng-click="open1()"><i class="ln-calendar3"></i></button>
              <div class="error-msg" ng-show="user.date.$error.required && user.date.$touched">Please Enter Date.</div>
            </span>
-                          </p>
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputFile">Image Upload</label>
-                          <div class="noti-image">
-                            <div class="img-box">
-                              <img src="img/slider/s1.jpg">
+                            </p>
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputFile">Image Upload</label>
+                            <div class="noti-image">
+                              <div class="img-box">
+                                <img src="img/slider/s1.jpg">
+                              </div>
                             </div>
-                          </div>
-                          <input type="file" id="exampleInputFile">
+                            <input type="file" id="exampleInputFile">
 
-                        </div>
-                        <div class="multiple-img mt25 form-group">
-                          <label for="">Upload Video</label>
-                          <div class="create-event pull-right">
-                            <button class="btn btn-primary btn-outline btn-small create-btn" ng-click="VideoEdit()">Upload Video</button>
                           </div>
-                          <div class="image-picker mt15">
-                            <div dnd-list="lists" class="pt15">
-                              <div class="image-set">
-                                <div class="row" ui-sortable ng-model="lists">
-                                  <div class="drop-image col-xs-3" ng-repeat="item in lists" >
-                                    <div ng-click="open()" class="image-holder" ng-style="{'background-image': 'url({{item.image}})'}"></div>
+                          <div class="multiple-img mt25 form-group">
+                            <label for="">Upload Video</label>
+                            <div class="create-event pull-right">
+                              <button class="btn btn-primary btn-outline btn-small create-btn" ng-click="VideoEdit()">Upload Video</button>
+                            </div>
+                            <div class="image-picker mt15">
+                              <div dnd-list="lists" class="pt15">
+                                <div class="image-set">
+                                  <div class="row" ui-sortable ng-model="lists">
+                                    <div class="drop-image col-xs-3" ng-repeat="item in lists">
+                                      <div ng-click="open()" class="image-holder" ng-style="{'background-image': 'url({{item.image}})'}"></div>
+                                    </div>
                                   </div>
+                                  <div class="clearfix"></div>
                                 </div>
-                                <div class="clearfix"></div>
                               </div>
                             </div>
                           </div>
-                        </div>
+                      </div>
+                      <div class="upload-img text-center">
+                        <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
+                        <a href="#/videogalleries">
+                          <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+                        </a>
+                      </div>
+                      </form>
                     </div>
-                    <div class="upload-img text-center">
-                      <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
-                    <a href="#/videogalleries">  <button class="btn btn-primary btn-outline btn-small">Cancel</button></a>
-                    </div>
-                    </form>
-                  </div>
-                  <div class="text-center" ng-show="formComplete">
+                    <div class="text-center" ng-show="formComplete">
                       <h3>Submitted Successfully, Thank You!</h3>
-                  </div>
                     </div>
+                  </div>
                 </div>
               </div>
             </div>

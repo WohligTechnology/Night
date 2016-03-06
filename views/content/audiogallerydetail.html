@@ -10,6 +10,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="home-slider form-background">
+                      <div class="pull-right tuts"><a href="#" target="_blank">Tutorials</a></div>
                       <div class="naming">
                         <h4>Edit Audio Gallery</h4>
                       </div>
@@ -17,7 +18,7 @@
                         <div class="form-group">
                           <label for="exampleInputName2">Playlist Title</label>
                           <input name="audioTitle" required ng-model="userForm.audioTitle" type="text" class="form-control" id="exampleInputName2" placeholder="Photo Title">
-                        <div class="error-msg" ng-show="user.audioTitle.$error.required && user.audioTitle.$touched">Please Enter Playlist Title.</div>
+                          <div class="error-msg" ng-show="user.audioTitle.$error.required && user.audioTitle.$touched">Please Enter Playlist Title.</div>
                         </div>
 
                         <div class="form-group">
@@ -32,8 +33,8 @@
                         <div class="form-group">
                           <label for="exampleInputName2">Date</label>
                           <p class="input-group">
-                            <input name="date" required type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
-                              alt-input-formats="altInputFormats" />
+                            <input name="date" required type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                              ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                             <span class="input-group-btn">
              <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
              <div class="error-msg" ng-show="user.date.$error.required && user.date.$touched">Please Enter Date.</div>
@@ -65,13 +66,15 @@
                         </div>
                     </div>
                     <div class="upload-img text-center">
-                      <button class="btn btn-primary btn-outline btn-small"  ng-click="submitForm(userForm,user)">Save</button>
-                    <a href="#/audio-galleries">  <button class="btn btn-primary btn-outline btn-small">Cancel</button></a>
+                      <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
+                      <a href="#/audio-galleries">
+                        <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+                      </a>
                     </div>
                     </form>
                   </div>
                   <div class="text-center" ng-show="formComplete">
-                      <h3>Submitted Successfully, Thank You!</h3>
+                    <h3>Submitted Successfully, Thank You!</h3>
                   </div>
                 </div>
               </div>
