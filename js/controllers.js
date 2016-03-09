@@ -1,4 +1,4 @@
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'angularFileUpload'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'angularFileUpload', 'toaster'])
 
 .controller('UploadCtrl', function($scope, $upload, $timeout) {
 
@@ -55,7 +55,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         fileReader.readAsDataURL($files[i]);
 
         var loadFile = function(fileReader, index) {
-          
+
           fileReader.onload = function(e) {
             $timeout(function() {
               $scope.dataUrls[index] = e.target.result;
@@ -478,7 +478,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 })
 
-.controller('EventsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('EventsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, toaster) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("events");
   $scope.menutitle = NavigationService.makeactive("Events");
@@ -486,7 +486,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 })
 
-.controller('EventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
+.controller('EventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, toaster) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("eventdetail");
   $scope.menutitle = NavigationService.makeactive("Events");
@@ -627,10 +627,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.toggleAnimation = function() {
     $scope.animationsEnabled = !$scope.animationsEnabled;
   };
-
 })
 
-.controller('EditEventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
+.controller('EditEventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, toaster) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("eventdetail");
     $scope.menutitle = NavigationService.makeactive("Events");
@@ -639,6 +638,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userForm = {};
     $scope.page = {
       header: "Edit Event"
+    };
+    $scope.pop = function() {
+      toaster.pop('success', "Successfully Saved", '<p>The data has been Successfully saved</p>', 5000, 'trustedHtml');
     };
     $scope.submitForm = function(formData, formValid) {
       //console.log('form values: ', formData);
@@ -765,6 +767,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.toggleAnimation = function() {
       $scope.animationsEnabled = !$scope.animationsEnabled;
     };
+
+
+
+
+
+
+
   })
   .controller('BlogsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file

@@ -92,9 +92,11 @@
                             </div>
                             <div class="upload-img text-center mar30">
                               <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
-                              <a href="#/events">
+                              <!-- <button class="btn btn-primary btn-outline btn-small" ng-click="pop()">Save</button> -->
+                              <toaster-container toaster-options="{'close-button': true,'position-class': 'toast-bottom-right'}"></toaster-container>
+                              <!-- <a href="#/events"> -->
                                 <button class="btn btn-primary btn-outline btn-small ml12" ng-click="cancel(userForm)">Cancel</button>
-                              </a>
+                              <!-- </a> -->
                             </div>
                           </form>
                         </div>
@@ -115,7 +117,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
