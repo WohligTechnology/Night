@@ -39,31 +39,30 @@
                 <textarea name="content" required ng-model="userForm.content" class="form-control resize" rows="3"></textarea>
                 <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content.</div>
               </div>
-              </div>
-              <div class="form-group">
-                  <label for="exampleInputName2">Timestamp</label><br>
-                  <p class="input-group">
-                    <input  name="date" required type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
-                      alt-input-formats="altInputFormats" />
-                    <span class="input-group-btn calender-btn">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputName2">Timestamp</label>
+            <br>
+            <p class="input-group">
+              <input name="date" required type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+              <span class="input-group-btn calender-btn">
    <button type="button" class="btn btn-default" ng-click="open1()"><i class="ln-calendar3"></i></button>
    <div class="error-msg" ng-show="user.date.$error.required && user.date.$touched">Please Enter TimeStamp.</div>
  </span>
-                  </p>
-              </div>
-            </form>
+            </p>
           </div>
-          <div class="text-center" ng-show="formComplete">
-              <h3>Submitted Successfully, Thank You!</h3>
-          </div>
+          </form>
+        </div>
+        <div class="text-center" ng-show="formComplete">
+          <h3>Submitted Successfully, Thank You!</h3>
         </div>
       </div>
     </div>
-    <div class="modal-footer">
-
-      <button type="button" class="btn btn-primary"  ng-click="submitForm(userForm,user)">Save</button>
-      <button type="button" class="btn btn-primary" ng-click="$dismiss()">Cancel</button>
-    </div>
   </div>
-
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary btn-small btn-outline" ng-click="submitForm(userForm,user)">Save</button>
+    <button type="button" class="btn btn-primary btn-small btn-outline" ng-click="$dismiss()">Cancel</button>
+  </div>
+  </div>
 </section>

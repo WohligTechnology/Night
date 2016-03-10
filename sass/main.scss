@@ -461,9 +461,9 @@ textarea {
 //   top: 50%;
 //   transform: translate(-50%,-50%)!important;
 // }
-.modal-footer {
-  @extend .upload-btn;
-}
+// .modal-footer {
+//   @extend .upload-btn;
+// }
 .modal-header {
   .close {
     outline: 0;
@@ -963,6 +963,12 @@ label {
     padding-bottom: 10px;
   }
 }
+.modal-content {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 0;
+}
+
 // .pophover{
 //   position: absolute;
 //   top: 40%;
