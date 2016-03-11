@@ -10,19 +10,19 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="home-slider form-background">
-                      <div class="pull-right tuts"><a href="#" target="_blank">Tutorials</a></div>
+                      <div class="pull-right "><a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a></div>
                       <div class="naming">
                         <h4>Edit Audio Gallery</h4>
                       </div>
                       <form action="" name="user">
                         <div class="form-group">
-                          <label for="exampleInputName2">Playlist Title</label>
-                          <input name="audioTitle" required ng-model="userForm.audioTitle" type="text" class="form-control" id="exampleInputName2" placeholder="Photo Title">
+                          <label for="">Playlist Title</label>
+                          <input name="audioTitle" required ng-model="userForm.audioTitle" type="text" class="form-control" id="" placeholder="Photo Title">
                           <div class="error-msg" ng-show="user.audioTitle.$error.required && user.audioTitle.$touched">Please Enter Playlist Title.</div>
                         </div>
 
                         <div class="form-group">
-                          <label for="exampleInputName2">Status</label>
+                          <label for="">Status</label>
                           <select ng-model="userForm.status" class="form-control">
                             <option>Enable</option>
                             <option>Disable</option>
@@ -31,12 +31,12 @@
                         </div>
 
                         <div class="form-group">
-                          <label for="exampleInputName2">Date</label>
+                          <label for="">Date</label>
                           <p class="input-group">
                             <input name="date" required type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
                               ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                             <span class="input-group-btn">
-             <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+             <button type="button" class="btn btn-default" ng-click="open1()"><i class="ln ln-calendar"></i></button>
              <div class="error-msg" ng-show="user.date.$error.required && user.date.$touched">Please Enter Date.</div>
            </span>
                           </p>

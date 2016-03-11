@@ -10,7 +10,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="home-slider form-background">
-                      <div class="pull-right tuts"><a href="#" target="_blank">Tutorials</a></div>
+                      <div class="pull-right "><a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a></div>
                       <div class="naming">
                         <h4>{{page.header}} </h4>
                       </div>
@@ -18,18 +18,18 @@
                         <div class="form-login">
                           <form action="" name="user">
                             <div class="form-group">
-                              <label for="exampleInputName2">Contact Title</label>
-                              <input name="contactTitle" required ng-model="userForm.contactTitle" type="text" class="form-control" id="exampleInputName2" placeholder="Contact Title">
+                              <label for="">Contact Title</label>
+                              <input name="contactTitle" required ng-model="userForm.contactTitle" type="text" class="form-control" id="" placeholder="Contact Title">
                               <div class="error-msg" ng-show="user.contactTitle.$error.required && user.contactTitle.$touched">Please Enter Contact Title.</div>
                             </div>
                             <div class="form-group">
-                              <label for="exampleInputName2">Address</label>
+                              <label for="">Address</label>
                               <textarea name="address" required type="text" class="form-control" ui-tinymce ng-model="userForm.address"></textarea>
                               <div class="error-msg" ng-show="user.address.$error.required && user.address.$touched">Please Enter Your Address.</div>
                             </div>
                             <div class="form-group">
-                              <label for="exampleInputName2">Email</label>
-                              <input name="email" required ng-model="userForm.email" type="email" class="form-control" id="exampleInputName2" placeholder="Email">
+                              <label for="">Email</label>
+                              <input name="email" required ng-model="userForm.email" type="email" class="form-control" id="" placeholder="Email">
                               <div class="error-msg" ng-show="user.email.$error.required && user.email.$touched">Please Enter Your Email id.</div>
                             </div>
                             <div class="embed-link">
@@ -38,8 +38,8 @@
                               </iframe>
                             </div>
                             <div class="form-group">
-                              <label for="exampleInputName2">Map Embed Link</label>
-                              <textarea name="maplink" ng-model="userForm.maplink" type="text" class="form-control" id="exampleInputName2" placeholder="Map Embed Link" rows="3"></textarea>
+                              <label for="">Map Embed Link</label>
+                              <textarea name="maplink" ng-model="userForm.maplink" type="text" class="form-control" id="" placeholder="Map Embed Link" rows="3"></textarea>
                             </div>
                         </div>
                         <div class="upload-img text-right">

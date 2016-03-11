@@ -10,9 +10,9 @@
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
 /* Bootstrap Variables Goes Here */
 $brand-primary: #0d9dff !default;
-$brand-success: #009688 !default;
-$brand-warning: #ffec39 !default;
-$brand-danger: #F44336 !default;
+$brand-success: #42cd48 !default;
+$brand-warning: #f78b34 !default;
+$brand-danger: #F33232 !default;
 $brand-info: #000072 !default;
 $brand-base: #666 !default;
 $border-color: #e7e7e7 !default;
@@ -155,9 +155,6 @@ textarea {
 .pd5 {
   padding: 5px 0;
 }
-.nav > li.active a {
-  background-color: #FFF!important;
-}
 .color-danger {
   color: $brand-danger;
 }
@@ -174,10 +171,6 @@ textarea {
 }
 .float-right {
   float: right;
-}
-.tuts {
-  padding: 10px;
-  font-weight: 600;
 }
 .pt10 {
   padding-top: 10px;
@@ -557,8 +550,12 @@ textarea {
   }
 }
 .naming {
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 5px;
+
   h4 {
     font-size: 16px;
+    margin: 5px 0 10px;
   }
 }
 .grouplist {
@@ -610,9 +607,6 @@ textarea {
   }
 }
 //mahesh scss.ionic-template
-.float-right {
-  float: right;
-}
 .paddingup {
   padding: 20px 0 5px;
 }
@@ -622,10 +616,6 @@ textarea {
 .form-background {
   background: #fff;
   padding: 20px;
-}
-.naming {
-  border-bottom: 1px solid $border-color;
-  padding-bottom: 8px;
 }
 .image-picker {
   display: inline-block;
@@ -667,7 +657,7 @@ textarea {
 }
 label {
   color: $label-color;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: 400;
   font-size: 13px;
   margin-bottom: 10px;
@@ -725,6 +715,7 @@ label {
   &:hover {
     background: $brand-primary;
     color: white;
+    border-color: $brand-primary;
   }
 }
 .delete {
@@ -733,6 +724,7 @@ label {
   @include transition(all ease 300ms);
   &:hover {
     background: $brand-danger;
+    border-color: $brand-danger;
     color: white;
   }
 }
@@ -745,10 +737,16 @@ label {
 .img-box {
   height: 120px;
   width: 120px;
-  display: block;
   overflow: hidden;
   position: relative;
   border: 1px solid $border-color;
+  @include display(flex);
+
+  img {
+    @include align-self(center);
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
 .img-noti {
   max-width: 100%;

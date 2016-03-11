@@ -11,29 +11,29 @@
                   <div class="col-md-12">
                     <div class="home-slider form-background">
                       <div class="naming">
-                        <div class="pull-right tuts"><a href="#" target="_blank">Tutorials</a></div>
+                        <div class="pull-right "><a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a></div>
                         <h4>{{page.header}}</h4>
                       </div>
                       <div class="google-login paddingup">
                         <div class="form-login">
                           <form action="" name="user">
                             <div class="form-group">
-                              <label for="exampleInputName2">Event Title</label>
-                              <input name="eventTitle" required ng-model="userForm.eventTitle" type="text" class="form-control" id="exampleInputName2" placeholder="Event Title">
+                              <label for="">Event Title</label>
+                              <input name="eventTitle" required ng-model="userForm.eventTitle" type="text" class="form-control" id="" placeholder="Event Title">
                               <div class="error-msg" ng-show="user.eventTitle.$error.required && user.eventTitle.$touched">Please Enter Event Title.</div>
                             </div>
                             <div class="form-group">
-                              <label for="exampleInputName2">Venue</label>
-                              <input name="venue" required ng-model="userForm.venue" type="text" class="form-control" id="exampleInputName2" placeholder="Venue">
+                              <label for="">Venue</label>
+                              <input name="venue" required ng-model="userForm.venue" type="text" class="form-control" id="" placeholder="Venue">
                               <div class="error-msg" ng-show="user.venue.$error.required && user.venue.$touched">Please Enter Venue.</div>
                             </div>
                             <div class="form-group" required>
-                              <label for="exampleInputName2">Content</label>
+                              <label for="">Content</label>
                               <textarea name="content" required ui-tinymce ng-model="userForm.content" class="form-control"></textarea>
                               <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content.</div>
                             </div>
                             <div class="form-group mt25">
-                              <label for="exampleInputName2">Date</label>
+                              <label for="">Date</label>
                               <p class="input-group">
                                 <input name="date" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
                                   close-text="Close" alt-input-formats="altInputFormats" />
@@ -46,7 +46,7 @@
                               </p>
                             </div>
                             <div class="form-group mt25">
-                              <label for="exampleInputName2">Time</label>
+                              <label for="">Time</label>
                               <input name="time" ng-model="userForm.time" type="time" class="form-control">
                               <div class="error-msg" ng-show="user.time.$error.required && user.time.$touched">Please Enter Time.</div>
                             </div>

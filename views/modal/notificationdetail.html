@@ -11,11 +11,11 @@
           <div class="linking">
             <form name="user" action="">
               <div class="form-group">
-                <label for="exampleInputName2">Title</label>
-                <input type="text" class="form-control" id="exampleInputName2" placeholder="Title">
+                <label for="">Title</label>
+                <input type="text" class="form-control" id="" placeholder="Title">
               </div>
               <div class="form-group">
-                <label for="exampleInputName2">Status</label>
+                <label for="">Status</label>
                 <select ng-model="userForm.status" class="form-control">
                   <option>Enable</option>
                   <option>Disable</option>
@@ -35,13 +35,13 @@
                 </div>
               </div>
               <div class="form-group mt25">
-                <label for="exampleInputName2">Content</label>
+                <label for="">Content</label>
                 <textarea name="content" required ng-model="userForm.content" class="form-control resize" rows="3"></textarea>
                 <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content.</div>
               </div>
           </div>
           <div class="form-group">
-            <label for="exampleInputName2">Timestamp</label>
+            <label for="">Timestamp</label>
             <br>
             <p class="input-group">
               <input name="date" required type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"

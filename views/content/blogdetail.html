@@ -10,7 +10,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="home-slider form-background">
-                    <div class="pull-right tuts"><a href="#" target="_blank">Tutorials</a></div>
+                    <div class="pull-right "><a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a></div>
                     <div class="naming">
                       <h4>{{page.header}}</h4>
                     </div>
@@ -19,18 +19,18 @@
                       <div class="form-login">
                         <form action="" name="user">
                           <div class="form-group">
-                            <label for="exampleInputName2">Blog Title</label>
-                            <input type="text" name="blogTitle" required ng-model="userForm.blogTitle" class="form-control" id="exampleInputName2" placeholder="Event Title">
+                            <label for="">Blog Title</label>
+                            <input type="text" name="blogTitle" required ng-model="userForm.blogTitle" class="form-control" id="" placeholder="Event Title">
                             <div class="error-msg" ng-show="user.blogTitle.$error.required && user.blogTitle.$touched">Please Enter Blog Title.</div>
                           </div>
 
                           <div class="form-group">
-                            <label for="exampleInputName2">Content</label>
+                            <label for="">Content</label>
                             <textarea name="content" required class="form-control" ui-tinymce ng-model="userForm.content"></textarea>
                             <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Blog Content.</div>
                           </div>
                           <div class="form-group">
-                            <label for="exampleInputName2">Date</label>
+                            <label for="">Date</label>
                             <p class="input-group">
                               <input name="date" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
                                 close-text="Close" alt-input-formats="altInputFormats" />
