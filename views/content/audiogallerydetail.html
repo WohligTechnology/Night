@@ -59,22 +59,22 @@
                           </div>
                           <div class="image-set">
                             <div class="drop-image">
-                              <a href="" ui-sref="photo-gallerydetail"> <img src="img/slider/s1.jpg"></a>
+                              <a href=""> <img src="img/slider/s1.jpg"></a>
                             </div>
 
                           </div>
                         </div>
+                        <div class="upload-img text-center">
+                          <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
+                          <a href="#/audio-galleries">
+                            <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+                          </a>
+                        </div>
+                      </form>
                     </div>
-                    <div class="upload-img text-center">
-                      <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
-                      <a href="#/audio-galleries">
-                        <button class="btn btn-primary btn-outline btn-small">Cancel</button>
-                      </a>
+                    <div class="text-center" ng-show="formComplete">
+                      <h3>Submitted Successfully, Thank You!</h3>
                     </div>
-                    </form>
-                  </div>
-                  <div class="text-center" ng-show="formComplete">
-                    <h3>Submitted Successfully, Thank You!</h3>
                   </div>
                 </div>
               </div>
