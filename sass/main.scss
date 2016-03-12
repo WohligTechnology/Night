@@ -552,7 +552,6 @@ textarea {
 .naming {
   border-bottom: 1px solid $border-color;
   padding-bottom: 5px;
-
   h4 {
     font-size: 16px;
     margin: 5px 0 10px;
@@ -741,7 +740,6 @@ label {
   position: relative;
   border: 1px solid $border-color;
   @include display(flex);
-
   img {
     @include align-self(center);
     max-width: 100%;
@@ -966,7 +964,14 @@ label {
   box-shadow: none;
   border: 0;
 }
-
+span.input-group-btn.calender-btn {
+  .btn {
+    height: 40px;
+    &:hover {
+      background: #fff;
+    }
+  }
+}
 // .pophover{
 //   position: absolute;
 //   top: 40%;
