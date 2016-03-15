@@ -536,17 +536,24 @@ textarea {
 .preivew {
   text-align: center;
   margin-top: 50px;
+  @include transform(scale(0.8));
+  @include transform-origin(left top 0px);
   .app-prview {
     background: url("../img/device.png") no-repeat center center;
-    width: 251px;
-    height: 500px;
+    width: 320px;
+    height: 654px;
     background-size: 100% 100%;
     margin: 0 auto;
-    position: absolute;
-    right: 0;
-    transform: translateX(-50%);
-    left: 50%;
-    @include transition(all 400ms ease);
+    @include transition(all 300ms ease);
+    position: relative;
+
+    .frame-holder {
+      position: absolute;
+      left: 18px;
+      top: 72px;
+      right: 18px;
+      bottom: 69.5px;
+    }
   }
 }
 .naming {
