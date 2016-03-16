@@ -1,7 +1,12 @@
-var imgpath = "http://europratik.com/admin/uploads/";
+var adminurl = "http://192.168.0.124:1337/";
+var imgpath = "http://vignesh.com/uploadfile/upload/";
+
+
+
+//var imgpath = "http://europratik.com/admin/uploads/";
 var navigationservice = angular.module('navigationservice', [])
 
-.factory('NavigationService', function() {
+.factory('NavigationService', function($http) {
   var navigation = [{
     name: "Dashboard",
     classis: "active",
@@ -62,7 +67,7 @@ var navigationservice = angular.module('navigationservice', [])
     classis: "active",
     anchor: "contact",
     icon: "ln-contacts",
-  }
+  },
   // ,
   // {
   //   name: "Search",
@@ -70,7 +75,7 @@ var navigationservice = angular.module('navigationservice', [])
   //   anchor: "search",
   //   icon: "ln-magnifier",
   // }
-  ,{
+  {
     name: "Audio Galleries",
     classis: "active",
     anchor: "audio-galleries",
@@ -112,6 +117,74 @@ var navigationservice = angular.module('navigationservice', [])
     getnav: function() {
       return navigation;
     },
+
+    navigationViewAll: function(formData, callback) {
+        // console.log('form data: ', formData);
+        $http({
+            url: adminurl + 'navigation/getAll',
+            method: 'POST',
+            withCredentials: true,
+            data: {
+                "name": formData.name,
+                "type": formData.type,
+                "iconType": formData.iconType,
+                "order": formData.order,
+                "status": formData.status
+            }
+        }).success(callback);
+    },
+
+    eventsViewAll: function(formData, callback) {
+        // console.log('form data: ', formData);
+        $http({
+            url: adminurl + 'events/viewAll',
+            method: 'POST',
+            withCredentials: true,
+            data: {
+                "title": formData.title,
+                "date": formData.date,
+            }
+        }).success(callback);
+    },
+    deleteEventsData: function(formData, callback) {
+        // console.log('form data: ', formData);
+        $http({
+            url: adminurl + 'events/delete',
+            method: 'POST',
+            withCredentials: true,
+            data: {
+                "_id": formData.id,
+
+            }
+        }).success(callback);
+    },
+
+    eventCreateSubmit: function(formData, callback) {
+        console.log('Navigation form data: ', formData);
+        $http({
+            url: adminurl + 'events/create',
+            method: 'POST',
+            withCredentials: true,
+            data: {
+                "title": formData.title,
+                "_id": formData._id,
+                "venue": formData.venue,
+                "date": formData.date,
+                "content": formData.content,
+                "time": formData.time,
+                //"status": formData.status
+                // "name": formData.name,
+                // "contact":formData.contact,
+                // "facebook":formData.facebook,
+                // "google":formData.google,
+                // "logintype":formData.logintype,
+                // "twitter":formData.twitter
+            }
+        }).success(callback);
+    },
+
+
+
     makeactive: function(menuname) {
       for (var i = 0; i < navigation.length; i++) {
         if (navigation[i].name == menuname) {

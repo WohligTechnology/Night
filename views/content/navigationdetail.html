@@ -17,7 +17,7 @@
                           {{page.header}}</h4>
                       </div>
                       <div class="form-login">
-                        <form action="" name="user">
+                        <form name="user">
                           <div class="form-group">
                             <label for="">Name</label>
                             <input name="name" required ng-model="userForm.name" type="text" class="form-control" id="" placeholder="Name">
@@ -26,7 +26,7 @@
                           <div class="icon">
                             <div class="form-group">
                               <label for="sel1">Select Icon:</label>
-                              <select ng-model="userForm.icon" class="form-control" id="sel1">
+                              <select ng-model="userForm.iconType" class="form-control" id="sel1">
                                 <option>ln-chart-growth</option>
                                 <option>ln-home3</option>
                                 <option>ln-unlock</option>
@@ -73,7 +73,7 @@
                           <div class="icon">
                             <div class="form-group">
                               <label for="sel1">List Type:</label>
-                              <select name="listType" ng-model="userForm.listType" class="form-control">
+                              <select name="type" ng-model="userForm.type" class="form-control">
                                 <optgroup label="Main Menu">
                                   <option value="volvo">Home</option>
                                   <option value="saab">Notifications</option>
@@ -88,7 +88,7 @@
                           <div class="icon">
                             <div class="form-group">
                               <label for="sel1">Select Inside:</label>
-                              <select ng-model="userForm.inside" class="form-control" id="sel1">
+                              <select ng-model="userForm.order" class="form-control" id="sel1">
                                 <option>Gallery Inside1</option>
                                 <option>Gallery Inside2</option>
                                 <option>Gallery Inside3</option>
@@ -102,7 +102,7 @@
                           </div>
                           <!-- </div> -->
                           <div class="upload-img text-center">
-                            <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
+                            <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(user)">Save</button>
                             <a href="#/navigation">
                               <button class="btn btn-primary btn-outline btn-small">Cancel</button>
                             </a>

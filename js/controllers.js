@@ -275,51 +275,76 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Navigation");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    $scope.navigation2 = [{
-        name: "Home",
-        icon: "ln-home3",
-      }, {
-        name: "Login & Signup",
-        icon: "ln-unlock",
-      }, {
-        name: "Notifications",
-        icon: "ln-bell",
-      }, {
-        name: "Events",
-        icon: "ln-calendar2",
-      }, {
-        name: "Blogs",
-        icon: "ln-edit2",
-      }, {
-        name: "Articles",
-        icon: "ln-papers",
-      }, {
-        name: "Photo Gallery",
-        icon: "ln-picture",
-      }, {
-        name: "Video Galleries",
-        icon: "ln-film-play",
-      }, {
-        name: "Contact",
-        icon: "ln-contacts",
-      }, {
-        name: "Audio Galleries",
-        icon: "ln-headset",
-      }
-      // ,
-      // {
-      //   name: "Social Feeds",
-      //   classis: "active",
-      //   anchor: "social-feeds",
-      //   icon: "ln-thumbs-up",
-      // }
-      // ,{
-      //   name: "Forms",
-      //   classis: "active",
-      //   anchor: "forms",
-      //   icon: "ln-register",
-      // }
-    ];
+
+    $scope.eventForm={};
+
+    $scope.allNavigationRecord=function(){
+    NavigationService.navigationViewAll($scope.eventForm,function(data){
+      $scope.navigationdata=data.data;
+      console.log('$scope.eventsdata',data.data);
+    });
+    };
+    $scope.allNavigationRecord();
+
+    $scope.deleteNavigation = function(formValid) {
+      console.log('formvalid', formValid);
+      NavigationService.deleteEventsData({
+          id: formValid
+      }, function(data) {
+          console.log('delete data:', data);
+          if (data.value === true) {
+
+              $scope.allNavigationRecord();
+          }
+
+      });
+    };
+
+    // $scope.navigation2 = [{
+    //     name: "Home",
+    //     icon: "ln-home3",
+    //   }, {
+    //     name: "Login & Signup",
+    //     icon: "ln-unlock",
+    //   }, {
+    //     name: "Notifications",
+    //     icon: "ln-bell",
+    //   }, {
+    //     name: "Events",
+    //     icon: "ln-calendar2",
+    //   }, {
+    //     name: "Blogs",
+    //     icon: "ln-edit2",
+    //   }, {
+    //     name: "Articles",
+    //     icon: "ln-papers",
+    //   }, {
+    //     name: "Photo Gallery",
+    //     icon: "ln-picture",
+    //   }, {
+    //     name: "Video Galleries",
+    //     icon: "ln-film-play",
+    //   }, {
+    //     name: "Contact",
+    //     icon: "ln-contacts",
+    //   }, {
+    //     name: "Audio Galleries",
+    //     icon: "ln-headset",
+    //   }
+    //   // ,
+    //   // {
+    //   //   name: "Social Feeds",
+    //   //   classis: "active",
+    //   //   anchor: "social-feeds",
+    //   //   icon: "ln-thumbs-up",
+    //   // }
+    //   // ,{
+    //   //   name: "Forms",
+    //   //   classis: "active",
+    //   //   anchor: "forms",
+    //   //   icon: "ln-register",
+    //   // }
+    // ];
   })
   .controller('NavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
     //Used to name the .html file
@@ -331,20 +356,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.page = {
       header: "Create Navigation"
     };
-    $scope.submitForm = function(formData, formValid) {
-      console.log('form values: ', formData);
-      //console.log('form values: ', formValid);
-      //console.log('form values: ', $scope.userForm);
-      if (formValid.$valid) {
-        $scope.formComplete = true;
-        $state.go("navigation");
-        // NavigationService.userSubmit($scope.userForm, function(data) {
-        //
-        // });
-      } else {
 
-      }
+    $scope.submitForm = function(formValid) {
+        if (formValid.$valid) {
+            NavigationService.navigationCreateSubmit($scope.userForm, function(data) {
+                console.log('userform', $scope.userForm);
+                $state.go("navigation");
+            });
+
+        }
     };
+
+    // $scope.submitForm = function(formData, formValid) {
+    //   console.log('form values: ', formData);
+    //   //console.log('form values: ', formValid);
+    //   //console.log('form values: ', $scope.userForm);
+    //   if (formValid.$valid) {
+    //     $scope.formComplete = true;
+    //     $state.go("navigation");
+    //     // NavigationService.userSubmit($scope.userForm, function(data) {
+    //     //
+    //     // });
+    //   } else {
+    //
+    //   }
+    // };
 
 
   })
@@ -484,6 +520,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.menutitle = NavigationService.makeactive("Events");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  $scope.eventForm={};
+
+$scope.allEventsRecord=function(){
+  NavigationService.eventsViewAll($scope.eventForm,function(data){
+    $scope.eventsdata=data.data;
+    console.log('$scope.eventsdata',data.data);
+});
+};
+$scope.allEventsRecord();
+
+
+$scope.deleteEvent = function(formValid) {
+    console.log('formvalid', formValid);
+    NavigationService.deleteEventsData({
+        id: formValid
+    }, function(data) {
+        console.log('delete data:', data);
+        if (data.value === true) {
+
+            $scope.allEventsRecord();
+        }
+
+    });
+    };
+
 })
 
 .controller('EventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, toaster) {
