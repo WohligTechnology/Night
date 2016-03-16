@@ -536,6 +536,9 @@ textarea {
 .preivew {
   text-align: center;
   margin-top: 50px;
+  position: absolute;
+  height: 0px;
+  width: 0px;
   @include transform(scale(0.8));
   @include transform-origin(left top 0px);
   .app-prview {

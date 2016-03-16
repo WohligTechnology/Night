@@ -279,14 +279,15 @@ firstapp.directive('img', function($compile, $parse) {
   };
 });
 
-firstapp.directive('appPrview', function($compile, $parse) {
+firstapp.directive('preivew', function($compile, $parse) {
   return {
     restrict: 'C',
     replace: false,
     link: function($scope, element, attrs) {
+      var $appPrview = $(element);
       $(window).on("scroll", function() {
-        var bodyScrollTop = $("body").scrollTop();
-        $(".app-prview").css("margin-top", bodyScrollTop + "px");
+        var bodyScrollTop = $("body").scrollTop() + 50;
+        $appPrview.css("margin-top", bodyScrollTop + "px");
       });
     }
   };
