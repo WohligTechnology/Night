@@ -1,32 +1,26 @@
-<section class="main">
-  <div class="theme">
-    <div class="chosse-theme">
-      <div class="container-fluid">
-        <div class="">
-          <div class="row">
-            <div class="col-xs-8 max-size">
-              <div class="ionic-template mb30">
-                <h4 class="pad20">Users > {{page.header}}</h4>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="home-slider form-background">
-                      <div class="pull-right "><a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a></div>
-                      <div class="naming">
-                        <h4> {{page.header}}</h4>
-                      </div>
-                      <div class="paddingup">
-                        <form action="" name="user">
-                          <div class="form-group">
-                            <label for="">Name</label>
-                            <input name="name" required ng-model="userForm.name" type="text" class="form-control" id="" placeholder="Name">
-                            <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Your Name.</div>
-                          </div>
-                          <div class="form-group">
-                            <label for="">Email id</label>
-                            <input name="email" required ng-model="userForm.email" type="email" class="form-control" id="" placeholder="Email id">
-                            <div class="error-msg" ng-show="user.email.$error.required && user.email.$touched">Please Enter Your Email id.</div>
-                          </div>
-                          <!-- <div class="form-group">
+<div class="max-size">
+  <div class="ionic-template mb30">
+    <h4 class="pad20">Users > {{page.header}}</h4>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="home-slider form-background">
+          <div class="pull-right "><a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a></div>
+          <div class="naming">
+            <h4> {{page.header}}</h4>
+          </div>
+          <div class="paddingup">
+            <form action="" name="user">
+              <div class="form-group">
+                <label for="">Name</label>
+                <input name="name" required ng-model="userForm.name" type="text" class="form-control" id="" placeholder="Name">
+                <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Your Name.</div>
+              </div>
+              <div class="form-group">
+                <label for="">Email id</label>
+                <input name="email" required ng-model="userForm.email" type="email" class="form-control" id="" placeholder="Email id">
+                <div class="error-msg" ng-show="user.email.$error.required && user.email.$touched">Please Enter Your Email id.</div>
+              </div>
+              <!-- <div class="form-group">
                             <label for="">Password</label>
                             <input type="password" class="form-control" id="" placeholder="Email id">
                           </div>
@@ -34,83 +28,74 @@
                             <label for="">New Password</label>
                             <input type="password" class="form-control" id="" placeholder="Email id">
                           </div> -->
-                          <div class="icon">
-                            <div class="form-group">
-                              <label for="sel1">Login Type</label>
-                              <select name="loginTypes" ng-model="userForm.loginTypes" class="form-control" id="sel1">
-                                <option>Facebook</option>
-                                <option>Twitter</option>
-                                <option>Instagram</option>
-                                <option>Google +</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="">Social Id</label>
-                            <input name="socialId" required ng-model="userForm.socialId" type="text" class="form-control" id="" placeholder="Social Id">
-                            <div class="error-msg" ng-show="user.socialId.$error.required && user.socialId.$touched">Please Enter Your Social Id.</div>
-                          </div>
-                          <div class="form-group">
-                            <label for="">Contact</label>
-                            <input name="contact" required ng-model="userForm.contact" type="text" class="form-control" id="" placeholder="Contact">
-                            <div class="error-msg" ng-show="user.contact.$error.required && user.contact.$touched">Please Enter Your Contact No.</div>
-                          </div>
-                          <div class="form-group">
-                            <label for="">Access Level</label>
-                            <input name="accessLevel" required ng-model="userForm.accessLevel" type="text" class="form-control" id="" placeholder="Access Level">
-                            <div class="error-msg" ng-show="user.accessLevel.$error.required && user.accessLevel.$touched">Please Enter Your Access Level.</div>
-                          </div>
-                          <div class="form-group">
-                            <label for="">Address</label>
-                            <textarea name="address" required ng-model="userForm.address" class="form-control"></textarea>
-                            <div class="error-msg" ng-show="user.address.$error.required && user.address.$touched">Please Enter Your Address </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleInputFile">Profile Image</label>
-                            <div class="noti-image">
-                              <div class="img-box">
-                                <img src="img/slider/s1.jpg" class="doneLoading">
-                              </div>
-                            </div>
-                            <div class="btn-upload">
-                              <input type="file" id="exampleInputFile">
-                              <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleInputFile">Cover Image</label>
-                            <div class="noti-image">
-                              <div class="img-box">
-                                <img src="img/slider/s1.jpg" class="doneLoading">
-                              </div>
-                            </div>
-                            <div class="btn-upload">
-                              <input type="file" id="exampleInputFile">
-                              <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
-                            </div>
-                          </div>
-                          <div class="upload-img text-center">
-                            <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
-                            <a href="#/users">
-                              <button class="btn btn-primary btn-outline btn-small">Cancel</button>
-                            </a>
-                          </div>
-                        </form>
-                      </div>
-                      <div class="text-center" ng-show="formComplete">
-                        <h3>Submitted Successfully, Thank You!</h3>
-                      </div>
-                    </div>
-                  </div>
+              <div class="icon">
+                <div class="form-group">
+                  <label for="sel1">Login Type</label>
+                  <select name="loginTypes" ng-model="userForm.loginTypes" class="form-control" id="sel1">
+                    <option>Facebook</option>
+                    <option>Twitter</option>
+                    <option>Instagram</option>
+                    <option>Google +</option>
+                  </select>
                 </div>
               </div>
-            </div>
-            <div class="col-xs-4">
-              <div ng-include="preview"></div>
-            </div>
+              <div class="form-group">
+                <label for="">Social Id</label>
+                <input name="socialId" required ng-model="userForm.socialId" type="text" class="form-control" id="" placeholder="Social Id">
+                <div class="error-msg" ng-show="user.socialId.$error.required && user.socialId.$touched">Please Enter Your Social Id.</div>
+              </div>
+              <div class="form-group">
+                <label for="">Contact</label>
+                <input name="contact" required ng-model="userForm.contact" type="text" class="form-control" id="" placeholder="Contact">
+                <div class="error-msg" ng-show="user.contact.$error.required && user.contact.$touched">Please Enter Your Contact No.</div>
+              </div>
+              <div class="form-group">
+                <label for="">Access Level</label>
+                <input name="accessLevel" required ng-model="userForm.accessLevel" type="text" class="form-control" id="" placeholder="Access Level">
+                <div class="error-msg" ng-show="user.accessLevel.$error.required && user.accessLevel.$touched">Please Enter Your Access Level.</div>
+              </div>
+              <div class="form-group">
+                <label for="">Address</label>
+                <textarea name="address" required ng-model="userForm.address" class="form-control"></textarea>
+                <div class="error-msg" ng-show="user.address.$error.required && user.address.$touched">Please Enter Your Address </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputFile">Profile Image</label>
+                <div class="noti-image">
+                  <div class="img-box">
+                    <img src="img/slider/s1.jpg" class="doneLoading">
+                  </div>
+                </div>
+                <div class="btn-upload">
+                  <input type="file" id="exampleInputFile">
+                  <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputFile">Cover Image</label>
+                <div class="noti-image">
+                  <div class="img-box">
+                    <img src="img/slider/s1.jpg" class="doneLoading">
+                  </div>
+                </div>
+                <div class="btn-upload">
+                  <input type="file" id="exampleInputFile">
+                  <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
+                </div>
+              </div>
+              <div class="upload-img text-center">
+                <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
+                <a href="#/users">
+                  <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+                </a>
+              </div>
+            </form>
+          </div>
+          <div class="text-center" ng-show="formComplete">
+            <h3>Submitted Successfully, Thank You!</h3>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
