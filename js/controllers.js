@@ -276,19 +276,26 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    $scope.eventForm={};
+    //$scope.eventForm={};
 
     $scope.allNavigationRecord=function(){
     NavigationService.navigationViewAll($scope.eventForm,function(data){
       $scope.navigationdata=data.data;
-      console.log('$scope.eventsdata',data.data);
+
+      console.log('$scope.navigationdata',data.data);
     });
+    // if($scope.userForm.status==1)
+    // {
+    //   $scope.userForm.getstatus= true;
+    // }else{
+    //   $scope.userForm.getstatus= false;
+    // }
     };
     $scope.allNavigationRecord();
 
     $scope.deleteNavigation = function(formValid) {
       console.log('formvalid', formValid);
-      NavigationService.deleteEventsData({
+      NavigationService.deleteNavigationData({
           id: formValid
       }, function(data) {
           console.log('delete data:', data);
@@ -357,12 +364,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       header: "Create Navigation"
     };
 
-    $scope.submitForm = function(formValid) {
+    $scope.navigationSubmitForm = function(formValid) {
         if (formValid.$valid) {
+          console.log('in navi');
             NavigationService.navigationCreateSubmit($scope.userForm, function(data) {
                 console.log('userform', $scope.userForm);
                 $state.go("navigation");
             });
+            // if($scope.userForm.status==1)
+            // {
+            //   $scope.userForm.getstatus= true;
+            // }else{
+            //   $scope.userForm.getstatus= false;
+            // }
 
         }
     };
@@ -384,7 +398,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
   })
-  .controller('EditNavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
+  .controller('EditNavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state, $stateParams) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("navigationdetail");
     $scope.menutitle = NavigationService.makeactive("Navigation");
@@ -394,13 +408,35 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.page = {
       header: "Edit Navigation"
     };
-    $scope.submitForm = function(formData, formValid) {
-      console.log('form values: ', formData);
+
+
+    NavigationService.getNavigationEditDetail($stateParams.id, function(data) {
+        console.log('getNavigationEditDetail', data.data);
+        $scope.userForm = data.data;
+        console.log('status',$scope.userForm.status);
+        if($scope.userForm.status==1)
+        {
+          $scope.userForm.status= true;
+        }else{
+          $scope.userForm.status= false;
+        }
+    });
+
+
+
+
+    $scope.navigationSubmitForm = function(formValid) {
+      //console.log('form values: ', formData);
       //console.log('form values: ', formValid);
       //console.log('form values: ', $scope.userForm);
       if (formValid.$valid) {
-        $scope.formComplete = true;
-        $state.go("navigation");
+        NavigationService.editNavigationSubmit($scope.userForm, function(data) {
+          console.log('my edit navigation',$scope.userForm);
+          console.log('edit status',$scope.userForm.status);
+            //console.log('response:', data);
+            $state.go("navigation");
+        });
+
         // NavigationService.userSubmit($scope.userForm, function(data) {
         //
         // });
@@ -433,7 +469,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     console.log('form values: ', formValid);
     console.log('form values: ', $scope.userForm);
     if (formValid.$valid) {
-      $scope.formComplete = true;
+      //$scope.formComplete = true;
       // NavigationService.userSubmit($scope.userForm, function(data) {
       //
       // });
@@ -1004,6 +1040,31 @@ $scope.deleteEvent = function(formValid) {
   $scope.menutitle = NavigationService.makeactive("Articles");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+$scope.articleForm={};
+  $scope.allArticlesRecord=function(){
+  NavigationService.articleViewAll($scope.articleForm, function(data){
+    $scope.articledata=data.data;
+    $scope.articledata.modificationTime=new Date($scope.articledata.modificationTime);
+    //console.log('$scope.articledata.modificationTime',$scope.articledata.modificationTime);
+    console.log('$scope.articledata',data.data);
+  });
+};
+  $scope.allArticlesRecord();
+
+  $scope.deleteArticle = function(formValid) {
+    console.log('formvalid', formValid);
+    NavigationService.deleteArticleData({
+        id: formValid
+    }, function(data) {
+        console.log('delete data:', data);
+        if (data.value === true) {
+
+            $scope.allArticlesRecord();
+        }
+
+    });
+  };
+
 })
 
 .controller('ArticleDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
@@ -1013,23 +1074,12 @@ $scope.deleteEvent = function(formValid) {
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
   $scope.userForm = {};
+  //$scope.userForm.status=1;
   $scope.page = {
     header: "Create Article"
   };
-  $scope.submitForm = function(formData, formValid) {
-    //console.log('form values: ', formData);
-    //console.log('form values: ', formValid);
-    console.log('form values: ', $scope.userForm);
-    if (formValid.$valid) {
-      $scope.formComplete = true;
-      $state.go("articles");
-      // NavigationService.userSubmit($scope.userForm, function(data) {
-      //
-      // });
-    } else {
 
-    }
-  };
+
   $scope.today = function() {
     $scope.dt = new Date();
   };
@@ -1078,10 +1128,46 @@ $scope.deleteEvent = function(formValid) {
 
     return '';
   };
+//
+//   $scope.articleSubmitForm = function() {
+//
+//         console.log('in navi');
+//           NavigationService.articleCreateSubmit($scope.userForm, function(data) {
+//               console.log('userform', $scope.userForm);
+//
+//           });
+// $state.go("articles");
+//
+//
+//   };
+//
+// if($scope.userForm.status=="Enable"){
+//   $scope.userForm.status=1;
+// }else{
+//   $scope.userForm.status=0;
+// }
+
+  $scope.articleSubmitForm = function(formValid) {
+      if (formValid.$valid) {
+        console.log('in navi');
+          NavigationService.articleCreateSubmit($scope.userForm, function(data) {
+              console.log('userform', $scope.userForm);
+console.log('$scope.userForm.status',$scope.userForm.status);
+if($scope.userForm.status=="Enable"){
+  $scope.userForm.status=1;
+}else{
+  $scope.userForm.status=0;
+}
+console.log('userform of status', $scope.userForm);
+          });
+$state.go("articles");
+
+      }
+  };
 
 })
 
-.controller('EditArticleDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
+.controller('EditArticleDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state, $stateParams) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("articledetail");
   $scope.menutitle = NavigationService.makeactive("Articles");
@@ -1091,6 +1177,42 @@ $scope.deleteEvent = function(formValid) {
   $scope.page = {
     header: "Edit Article"
   };
+
+  NavigationService.getArticleEditDetail($stateParams.id, function(data) {
+      console.log('getArticleEditDetail', data.data);
+      $scope.userForm = data.data;
+      console.log('userForm',$scope.userForm);
+      // if($scope.userForm.status==1)
+      // {
+      //   $scope.userForm.status= true;
+      // }else{
+      //   $scope.userForm.status= false;
+      // }
+  });
+
+
+
+  $scope.articleSubmitForm = function(formValid) {
+    //console.log('form values: ', formData);
+    //console.log('form values: ', formValid);
+    //console.log('form values: ', $scope.userForm);
+    if (formValid.$valid) {
+      NavigationService.editarticleSubmit($scope.userForm, function(data) {
+        console.log('my edit article',$scope.userForm);
+        console.log('edit status',$scope.userForm.status);
+          //console.log('response:', data);
+          $state.go("articles");
+      });
+
+      // NavigationService.userSubmit($scope.userForm, function(data) {
+      //
+      // });
+    } else {
+
+    }
+  };
+
+
   $scope.submitForm = function(formData, formValid) {
     // console.log('form values: ', formData);
     // console.log('form values: ', formValid);

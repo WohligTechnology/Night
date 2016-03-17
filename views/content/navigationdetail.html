@@ -20,7 +20,7 @@
                         <form name="user">
                           <div class="form-group">
                             <label for="">Name</label>
-                            <input name="name" required ng-model="userForm.name" type="text" class="form-control" id="" placeholder="Name">
+                            <input name="name" required  ng-model="userForm.name" type="text" class="form-control" id="name" placeholder="Name">
                             <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Your Name.</div>
                           </div>
                           <div class="icon">
@@ -42,14 +42,14 @@
                             <div class="noti-image">
                               <div class="img-box">
                                 <h4 ng-if="isloading">Loading...</h4>
-                                <img ng-src="{{userForm.picture.name|serverimage}}" style="height:200px;">
+                                <img ng-src="{{userForm.icon.name|serverimage}}" style="height:200px;">
                                 <!-- <img src="img/slider/s1.jpg"> -->
                               </div>
                             </div>
-                            <input type="file" name="picture" ng-file-select="onFileSelect($files)" onclick="this.value=null" required ng-model="formregistration.picture" accept=".jpg,.png" class="form-control ab">
+                            <input type="file" name="icon" ng-file-select="onFileSelect($files)" onclick="this.value=null"  ng-model="userForm.icon" accept=".jpg,.png" class="form-control ab">
                             <!-- <input name="navigationImg" ng-model="userForm.navigationImg" type="file" id="exampleInputFile"> -->
                           </div>
-                          <div ng-if="userForm.picture">
+                          <div ng-if="userForm.icon">
                             <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
                           </div>
 
@@ -63,7 +63,7 @@
                               <label for="">Enable</label>
                             </div>
                             <div class="onoffswitch">
-                              <input name="status" ng-model="userForm.status" type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked="">
+                              <input name="status" ng-model="userForm.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch" >
                               <label class="onoffswitch-label" for="myonoffswitch">
                                 <span class="onoffswitch-inner"></span>
                                 <span class="onoffswitch-switch"></span>
@@ -98,21 +98,21 @@
                           </div>
                           <div class="form-group">
                             <label for="">External Link</label>
-                            <input name="externalLink" ng-model="userForm.externalLink" type="text" class="form-control" id="" placeholder="External Link">
+                            <input name="link" ng-model="userForm.link" type="text" class="form-control" id="" placeholder="External Link">
                           </div>
                           <!-- </div> -->
                           <div class="upload-img text-center">
-                            <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(user)">Save</button>
-                            <a href="#/navigation">
+                            <button class="btn btn-primary btn-outline btn-small" ng-click="navigationSubmitForm(user)">Save</button>
+                            <a ui-sref="navigation">
                               <button class="btn btn-primary btn-outline btn-small">Cancel</button>
                             </a>
                           </div>
                         </form>
                         <!-- </div> -->
                         <!-- </div> -->
-                        <div class="text-center" ng-show="formComplete">
+                        <!-- <div class="text-center" ng-show="formComplete">
                           <h3>Submitted Successfully, Thank You!</h3>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                   </div>

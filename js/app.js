@@ -109,13 +109,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
   .state('articledetail', {
     url: "/article/:id",
-    templateUrl: "views/template.html",
+    templateUrl: "views/template-sidemenu.html",
     controller: "ArticleDetailCtrl"
   })
 
     .state('editarticledetail', {
       url: "/editarticle/:id",
-      templateUrl: "views/template.html",
+      templateUrl: "views/template-sidemenu.html",
       controller: "EditArticleDetailCtrl"
     })
 
