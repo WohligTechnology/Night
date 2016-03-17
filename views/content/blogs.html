@@ -1,197 +1,178 @@
-<section class="main">
-  <div class="theme">
-    <div class="chosse-theme">
-      <div class="container-fluid">
-        <div class="">
-          <div class="row">
-            <div class="col-xs-8 max-size">
-              <div class="ionic-template mb30">
-                <h4 class="pad20">Blog</h4>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="home-slider form-background">
-                      <div class="naming">
-                        <h4>Set Blog</h4>
-                      </div>
-                      <div class="set-login paddingup">
-                        <div class="custom-login display-inline">
-                          <span class="all-label">CMS Blog</span>
-                        </div>
-                        <div class="display-inline float-right">
-                          <div class="onoffswitch">
-                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-                            <label class="onoffswitch-label" for="myonoffswitch">
-                              <span class="onoffswitch-inner"></span>
-                              <span class="onoffswitch-switch"></span>
+<div class="max-size">
+  <div class="ionic-template mb30">
+    <h4 class="pad20">Blog</h4>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="home-slider form-background">
+          <div class="naming">
+            <h4>Set Blog</h4>
+          </div>
+          <div class="set-login paddingup">
+            <div class="custom-login display-inline">
+              <span class="all-label">CMS Blog</span>
+            </div>
+            <div class="display-inline float-right">
+              <div class="onoffswitch">
+                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                <label class="onoffswitch-label" for="myonoffswitch">
+                  <span class="onoffswitch-inner"></span>
+                  <span class="onoffswitch-switch"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="home-content form-background mt30">
+          <div class="list-blog  ">
+            <div class="notification-list">
+              <div class="naming">
+                <h4 class="display-inline">List Of Blog</h4>
+                <div class="create-event float-right">
+                  <button class="btn btn-primary btn-outline btn-small create-btn" ui-sref="blogdetail">Create</button>
+                </div>
+              </div>
+              <div class="notification-table mt30">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>
+                        <div class="select">
+                          <!-- <span>Select All</span> -->
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
                             </label>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="home-content form-background mt30">
-                      <div class="list-blog  ">
-                        <div class="notification-list">
-                          <div class="naming">
-                            <h4 class="display-inline">List Of Blog</h4>
-                            <div class="create-event float-right">
-                              <button class="btn btn-primary btn-outline btn-small create-btn" ui-sref="blogdetail">Create</button>
-                            </div>
-                          </div>
-                          <div class="notification-table mt30">
-                            <table class="table">
-                              <thead>
-                                <tr>
-                                  <th>
-                                    <div class="select">
-                                      <!-- <span>Select All</span> -->
-                                      <div class="checkbox">
-                                        <label>
-                                          <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-                                        </label>
-                                      </div>
-                                    </div>
-                                  </th>
-                                  <th>
-                                    <span>Title</span>
-                                  </th>
-                                  <th>
-                                    <span>Timestamp</span>
-                                  </th>
-                                  <th>
-                                    <span>Action</span>
-                                  </th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>
-                                    <div class="select-check">
-                                      <div class="checkbox">
-                                        <label>
-                                          <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-                                        </label>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <span>India Win By 8 Wicket</span>
-                                  </td>
-                                  <td>
-                                    <span>Thu, Dec 10 2015 </span>
-                                  </td>
-                                  <td>
-                                    <div class="action">
-                                      <a ui-sref="editblogdetail"> <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i></a>
-                                      <a href=""><i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i></a>
-                                    </div>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
+                      </th>
+                      <th>
+                        <span>Title</span>
+                      </th>
+                      <th>
+                        <span>Timestamp</span>
+                      </th>
+                      <th>
+                        <span>Action</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="select-check">
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            </label>
                           </div>
                         </div>
-                      </div>
-                          </div>
-                      <div class="row">
-
-                        <div class="col-md-6">
-                          <div class="form-background mt30">
-                          <div class="set-login">
-                            <div class="custom-login display-inline">
-                              <span class="all-label">Wordpress Blog</span>
-                            </div>
-                            <div class="display-inline float-right">
-                              <div class="onoffswitch">
-                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch1" checked>
-                                <label class="onoffswitch-label" for="myonoffswitch1">
-                                  <span class="onoffswitch-inner"></span>
-                                  <span class="onoffswitch-switch"></span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="blog-link mt30">
-                              <form action="">
-                                <div class="form-group">
-                                  <label for="">Wordpress User Name</label>
-                                  <input type="text" class="form-control" id="">
-                                </div>
-
-                              </form>
-                            </div>
-                          </div>
+                      </td>
+                      <td>
+                        <span>India Win By 8 Wicket</span>
+                      </td>
+                      <td>
+                        <span>Thu, Dec 10 2015 </span>
+                      </td>
+                      <td>
+                        <div class="action">
+                          <a ui-sref="editblogdetail"> <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i></a>
+                          <a href=""><i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i></a>
                         </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-background mt30">
-                          <div class="set-login">
-                            <div class="custom-login display-inline">
-                              <span class="all-label">Self Hosted Wordpress</span>
-                            </div>
-                            <div class="display-inline float-right">
-                              <div class="onoffswitch">
-                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch3" checked>
-                                <label class="onoffswitch-label" for="myonoffswitch3">
-                                  <span class="onoffswitch-inner"></span>
-                                  <span class="onoffswitch-switch"></span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="blog-link  mt30">
-                              <form action="">
-                                <div class="form-group">
-                                  <label for="">Self Hosted Wordpress Blog URL</label>
-                                  <input type="text" class="form-control" id="">
-                                </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
 
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                        </div>
-                      </div>
-
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-background mt30">
-                          <div class="set-login">
-                            <div class="custom-login display-inline">
-                              <span class="all-label">Tumblr Blog</span>
-                            </div>
-                            <div class="display-inline float-right">
-                              <div class="onoffswitch">
-                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
-                                <label class="onoffswitch-label" for="myonoffswitch2">
-                                  <span class="onoffswitch-inner"></span>
-                                  <span class="onoffswitch-switch"></span>
-                                </label>
-                              </div>
-                            </div>
-                            <div class="blog-link mt30">
-                              <form action="">
-                                <div class="form-group">
-                                  <label for="">Tumblr User Name</label>
-                                  <input type="text" class="form-control" id="">
-                                </div>
-
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-
-
+          <div class="col-md-6">
+            <div class="form-background mt30">
+              <div class="set-login">
+                <div class="custom-login display-inline">
+                  <span class="all-label">Wordpress Blog</span>
+                </div>
+                <div class="display-inline float-right">
+                  <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch1" checked>
+                    <label class="onoffswitch-label" for="myonoffswitch1">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
                   </div>
+                </div>
+                <div class="blog-link mt30">
+                  <form action="">
+                    <div class="form-group">
+                      <label for="">Wordpress User Name</label>
+                      <input type="text" class="form-control" id="">
+                    </div>
+
+                  </form>
                 </div>
               </div>
             </div>
-
           </div>
-          <div class="col-xs-4">
-            <div ng-include="preview"></div>
+          <div class="col-md-6">
+            <div class="form-background mt30">
+              <div class="set-login">
+                <div class="custom-login display-inline">
+                  <span class="all-label">Self Hosted Wordpress</span>
+                </div>
+                <div class="display-inline float-right">
+                  <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch3" checked>
+                    <label class="onoffswitch-label" for="myonoffswitch3">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="blog-link  mt30">
+                  <form action="">
+                    <div class="form-group">
+                      <label for="">Self Hosted Wordpress Blog URL</label>
+                      <input type="text" class="form-control" id="">
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-background mt30">
+              <div class="set-login">
+                <div class="custom-login display-inline">
+                  <span class="all-label">Tumblr Blog</span>
+                </div>
+                <div class="display-inline float-right">
+                  <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch2" checked>
+                    <label class="onoffswitch-label" for="myonoffswitch2">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="blog-link mt30">
+                  <form action="">
+                    <div class="form-group">
+                      <label for="">Tumblr User Name</label>
+                      <input type="text" class="form-control" id="">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>

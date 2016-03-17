@@ -1,46 +1,30 @@
-<section class="main">
-  <div class="theme">
-    <div class="chosse-theme">
-      <div class="container-fluid">
-
-          <div class="row">
-            <div class="col-xs-8 max-size">
-              <div class="ionic-template mb30">
-                <h4 class="pad20">Photo Gallery</h4>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="home-slider form-background">
-                        <div class="pull-right "><a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a></div>
-                      <div class="naming">
-                        <h4>Set Photo Gallery</h4>
-                      </div>
-                      <div class="image-picker">
-                        <div dnd-list="lists" class="pt15">
-                          <div class="image-set">
-                            <div class="row" ui-sortable ng-model="lists">
-                              <div class="drop-image col-xs-3" ng-repeat="item in lists" >
-                                <div ng-click="open()" class="image-holder" ng-style="{'background-image': 'url({{item.image}})'}"></div>
-                              </div>
-                            </div>
-                            <div class="clearfix"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="upload-img text-center mar30">
-                        <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
-                      </div>
-                    </div>
-
+<div class="max-size">
+  <div class="ionic-template mb30">
+    <h4 class="pad20">Photo Gallery</h4>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="home-slider form-background">
+          <div class="pull-right "><a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a></div>
+          <div class="naming">
+            <h4>Set Photo Gallery</h4>
+          </div>
+          <div class="image-picker">
+            <div dnd-list="lists" class="pt15">
+              <div class="image-set">
+                <div class="row" ui-sortable ng-model="lists">
+                  <div class="drop-image col-xs-3" ng-repeat="item in lists">
+                    <div ng-click="open()" class="image-holder" ng-style="{'background-image': 'url({{item.image}})'}"></div>
                   </div>
                 </div>
+                <div class="clearfix"></div>
+              </div>
             </div>
-
           </div>
-          <div class="col-xs-4">
-            <div ng-include="preview"></div>
+          <div class="upload-img text-center mar30">
+            <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
           </div>
         </div>
-
+      </div>
     </div>
   </div>
-</section>
+</div>
