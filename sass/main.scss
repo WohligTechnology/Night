@@ -402,6 +402,9 @@ textarea {
 .mt30 {
   margin-top: 30px;
 }
+.mrg0 {
+  margin: 0px;
+}
 .mt15 {
   margin-top: 15px;
 }
@@ -537,8 +540,8 @@ textarea {
   text-align: center;
   margin-top: 50px;
   position: absolute;
-  height: 0px;
-  width: 0px;
+  height: 0;
+  width: 0;
   @include transform(scale(0.8));
   @include transform-origin(left top 0px);
   .app-prview {
@@ -549,7 +552,6 @@ textarea {
     margin: 0 auto;
     @include transition(all 300ms ease);
     position: relative;
-
     .frame-holder {
       position: absolute;
       left: 17px;
@@ -799,7 +801,7 @@ label {
 .panel-heading {
   padding: 10px 15px;
   h4 {
-    font-size: 16px;
+    font-size: 14px;
   }
   .right-arrow {
     font-size: 14px !important;
@@ -981,6 +983,19 @@ span.input-group-btn.calender-btn {
       background: #fff;
     }
   }
+}
+.config {
+  .panel-default {
+    border: 0;
+    border-bottom: 1px solid #ddd;
+    @include box-shadow(none);
+  }
+  .panel-group .panel + .panel {
+    margin-top: 0;
+  }
+  // label {
+  //   margin-bottom: 0;
+  // }
 }
 // .pophover{
 //   position: absolute;
