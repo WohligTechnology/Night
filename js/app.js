@@ -27,19 +27,19 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
   .state('theme', {
     url: "/theme",
-    templateUrl: "views/template.html",
+    templateUrl: "views/template-sidemenu.html",
     controller: 'ThemeCtrl'
   })
 
   .state('home', {
     url: "/home",
-    templateUrl: "views/template.html",
+    templateUrl: "views/template-sidemenu.html",
     controller: 'HomeCtrl'
   })
 
   .state('navigation', {
     url: "/navigation",
-    templateUrl: "views/template.html",
+    templateUrl: "views/template-sidemenu.html",
     controller: 'NavigationCtrl'
   })
 
@@ -56,19 +56,19 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
   .state('login-signup', {
     url: "/login-signup",
-    templateUrl: "views/template.html",
+    templateUrl: "views/template-sidemenu.html",
     controller: 'LoginSignupCtrl'
   })
 
   .state('notifications', {
     url: "/notifications",
-    templateUrl: "views/template.html",
+    templateUrl: "views/template-sidemenu.html",
     controller: 'NotificationsCtrl'
   })
 
   .state('events', {
     url: "/events",
-    templateUrl: "views/template.html",
+    templateUrl: "views/template-sidemenu.html",
     controller: 'EventsCtrl'
   })
 
@@ -85,7 +85,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
   .state('blogs', {
     url: "/blogs",
-    templateUrl: "views/template.html",
+    templateUrl: "views/template-sidemenu.html",
     controller: "BlogsCtrl"
   })
 
@@ -103,7 +103,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
   .state('articles', {
     url: "/articles",
-    templateUrl: "views/template.html",
+    templateUrl: "views/template-sidemenu.html",
     controller: "ArticlesCtrl"
   })
 
@@ -121,7 +121,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
   .state('photo-galleries', {
     url: "/photogalleries",
-    templateUrl: "views/template.html",
+    templateUrl: "views/template-sidemenu.html",
     controller: "PhotoGalleriesCtrl"
   })
 
@@ -133,7 +133,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
   .state('video-galleries', {
       url: "/videogalleries",
-      templateUrl: "views/template.html",
+      templateUrl: "views/template-sidemenu.html",
       controller: "VideoGalleriesCtrl"
     })
     .state('video-gallerydetail', {
@@ -144,7 +144,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
   .state('contact', {
     url: "/contact",
-    templateUrl: "views/template.html",
+    templateUrl: "views/template-sidemenu.html",
     controller: "ContactCtrl"
   })
 
@@ -167,7 +167,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
   .state('audio-galleries', {
       url: "/audio-galleries",
-      templateUrl: "views/template.html",
+      templateUrl: "views/template-sidemenu.html",
       controller: "AudioGalleriesCtrl"
     })
     .state('audio-gallerydetail', {
@@ -178,7 +178,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
   .state('intro-slider', {
     url: "/intro-slider",
-    templateUrl: "views/template.html",
+    templateUrl: "views/template-sidemenu.html",
     controller: "IntroSliderCtrl"
   })
 
@@ -201,7 +201,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
   .state('users', {
       url: "/users",
-      templateUrl: "views/template.html",
+      templateUrl: "views/template-sidemenu.html",
       controller: 'UsersCtrl'
     })
     .state('userdetail', {
@@ -216,7 +216,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     })
     .state('configuration', {
       url: "/configuration",
-      templateUrl: "views/template.html",
+      templateUrl: "views/template-sidemenu.html",
       controller: 'ConfigurationCtrl'
     })
     .state('billing', {
