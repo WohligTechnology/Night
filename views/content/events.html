@@ -1,84 +1,76 @@
-<section class="main">
-  <div class="theme">
-    <div class="chosse-theme">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xs-8 max-size">
-            <div class="ionic-template mb30">
-              <h4 class="pad20">Events</h4>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="home-slider form-background">
-                    <div class="naming">
-                      <h4 class="display-inline">List Of events</h4>
-                      <div class="create-event float-right">
-                        <button class="btn btn-primary btn-outline btn-small create-btn" ui-sref="eventdetail">Create</button>
-                      </div>
-                    </div>
-                    <div class="notification-list mt30">
-                      <div class="notification-table">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>
-                                <div class="select">
-                                  <!-- <span>Select All</span> -->
-                                  <div class="checkbox">
-                                    <label>
-                                      <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-                                    </label>
-                                  </div>
-                                </div>
-                              </th>
-                              <th>
-                                <span>Event Title</span>
-                              </th>
-                              <th>
-                                <span>Event Date</span>
-                              </th>
-                              <th>
-                                <span>Action</span>
-                              </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <div class="select-check">
-                                  <div class="checkbox">
-                                    <label>
-                                      <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-                                    </label>
-                                  </div>
-                                </div>
-                              </td>
-                              <td>
-                                <span>Jaipurpinkpanther App Lunching at jaipur</span>
-                              </td>
-                              <td>
-                                <span>Thu, Dec 10 2015 </span>
-                              </td>
-                              <td>
-                                <div class="action">
-                                  <a ui-sref="editeventdetail"> <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i></a>
-                                  <a href=""><i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i></a>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+<div class="max-size">
+  <div class="ionic-template mb30">
+    <h4 class="pad20">Events</h4>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="home-slider form-background">
+          <div class="naming">
+            <h4 class="display-inline">List Of events</h4>
+            <div class="create-event float-right">
+              <button class="btn btn-primary btn-outline btn-small create-btn" ui-sref="eventdetail">Create</button>
             </div>
           </div>
-          <div class="col-xs-4">
-            <div ng-include="preview"></div>
+          <div class="notification-list mt30">
+            <div class="notification-table">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>
+                      <div class="select">
+                        <!-- <span>Select All</span> -->
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                          </label>
+                        </div>
+                      </div>
+                    </th>
+                    <th>
+                      <span>Event Title</span>
+                    </th>
+                    <th>
+                      <span>Event Date</span>
+                    </th>
+                    <th>
+                      <span>Action</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="select-check">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span>Jaipurpinkpanther App Lunching at jaipur</span>
+                    </td>
+                    <td>
+                      <span>Thu, Dec 10 2015
+                      </span>
+                    </td>
+                    <td>
+                      <div class="action">
+                        <a ui-sref="editeventdetail">
+                          <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i>
+                        </a>
+                        <a href="">
+                          <i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>

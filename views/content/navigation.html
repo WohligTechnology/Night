@@ -1,50 +1,38 @@
-<section class="main">
-  <div class="theme">
-    <div class="chosse-theme">
-      <div class="container-fluid">
-        <div class="">
-          <div class="row">
-            <div class="col-xs-8">
-              <div class="ionic-template mb30">
-                <h4 class="pad20">Navigation</h4>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="home-slider form-background">
-                      <div class="create-event float-right">
-                        <button class="btn btn-primary btn-outline btn-small create-btn" ui-sref="navigationdetail" ui-sref="navigationdetail">Create</button>
-                      </div>
-                      <div class="naming">
-                        <h4>List of Navigations</h4>
-                      </div>
-                    </div>
-                    <div class="detainavigation">
-                      <div class="fill-content">
-                        <div class="navigation">
-                          <ul class="list-unstyled grouplist" ui-sortable ng-model="navigation2">
-                            <li class="items" ng-repeat="nav in navigationdata">
-                              <div class="pull-right">
-                                <a ui-sref="editnavigationdetail"><i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i></a>
-                                <a ui-sref="navigationdetail"><i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i></a>
-                              </div>
-                              <i class="{{item.icon}} circle"></i>
-                              <div class="pad-left">
-                                <span class="nav-name">{{nav.name}}</span>
-                                <p>Enable</p>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+<div class="ionic-template mb30">
+  <h4 class="pad20">Navigation</h4>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="home-slider form-background">
+        <div class="create-event float-right">
+          <button class="btn btn-primary btn-outline btn-small create-btn" ui-sref="navigationdetail" ui-sref="navigationdetail">Create</button>
+        </div>
+        <div class="naming">
+          <h4>List of Navigations</h4>
+        </div>
+      </div>
+      <div class="detainavigation">
+        <div class="fill-content">
+          <div class="navigation">
+            <ul class="list-unstyled grouplist" ui-sortable ng-model="navigation2">
+              <li class="items" ng-repeat="nav in navigationdata">
+                <div class="pull-right">
+                  <a ui-sref="editnavigationdetail">
+                    <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i>
+                  </a>
+                  <a ui-sref="navigationdetail">
+                    <i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i>
+                  </a>
                 </div>
-              </div>
-            </div>
-            <div class="col-xs-4">
-              <div ng-include="preview"></div>
-            </div>
+                <i class="{{item.icon}} circle"></i>
+                <div class="pad-left">
+                  <span class="nav-name">{{nav.name}}</span>
+                  <p>Enable</p>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
