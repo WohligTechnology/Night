@@ -276,7 +276,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    //$scope.eventForm={};
+    $scope.eventForm={};
 
     $scope.allNavigationRecord=function(){
     NavigationService.navigationViewAll($scope.eventForm,function(data){
@@ -1179,15 +1179,12 @@ $state.go("articles");
   };
 
   NavigationService.getArticleEditDetail($stateParams.id, function(data) {
-      console.log('getArticleEditDetail', data.data);
+      //console.log('getArticleEditDetail', data.data);
       $scope.userForm = data.data;
       console.log('userForm',$scope.userForm);
-      // if($scope.userForm.status==1)
-      // {
-      //   $scope.userForm.status= true;
-      // }else{
-      //   $scope.userForm.status= false;
-      // }
+      console.log($scope.userForm.status);
+
+
   });
 
 
@@ -1200,7 +1197,12 @@ $state.go("articles");
       NavigationService.editarticleSubmit($scope.userForm, function(data) {
         console.log('my edit article',$scope.userForm);
         console.log('edit status',$scope.userForm.status);
-          //console.log('response:', data);
+        // if($scope.userForm.status==0)
+        // {
+        //   $scope.userForm.status='Disable';
+        // }else{
+        //   $scope.userForm.status='Enable';
+        // }
           $state.go("articles");
       });
 
@@ -1212,21 +1214,21 @@ $state.go("articles");
     }
   };
 
-
-  $scope.submitForm = function(formData, formValid) {
-    // console.log('form values: ', formData);
-    // console.log('form values: ', formValid);
-    console.log('form values: ', $scope.userForm);
-    if (formValid.$valid) {
-      $scope.formComplete = true;
-      $state.go("articles");
-      // NavigationService.userSubmit($scope.userForm, function(data) {
-      //
-      // });
-    } else {
-
-    }
-  };
+  //
+  // $scope.submitForm = function(formData, formValid) {
+  //   // console.log('form values: ', formData);
+  //   // console.log('form values: ', formValid);
+  //   console.log('form values: ', $scope.userForm);
+  //   if (formValid.$valid) {
+  //     $scope.formComplete = true;
+  //     $state.go("articles");
+  //     // NavigationService.userSubmit($scope.userForm, function(data) {
+  //     //
+  //     // });
+  //   } else {
+  //
+  //   }
+  // };
   $scope.today = function() {
     $scope.dt = new Date();
   };
@@ -1374,6 +1376,8 @@ $state.go("articles");
   $scope.menutitle = NavigationService.makeactive("Video Galleries");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+  $scope.header{};
+  $scope.header.name='Create Video Gallary';
   $scope.userForm = {};
   $scope.submitForm = function(formData, formValid) {
     // console.log('form values: ', formData);

@@ -6,16 +6,23 @@
         <div class="home-slider form-background">
           <div class="pull-right "><a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a></div>
           <div class="naming">
-            <h4>Edit Video gallery</h4>
+            <h4>{{header.name}}</h4>
           </div>
           <div class="google-login paddingup">
             <div class="form-login">
               <form name="user" action="">
                 <div class="form-group">
                   <label for="">Category Title</label>
-                  <input name="catTitle" required ng-model="userForm.catTitle" type="text" class="form-control" id="" placeholder="Photo Title">
-                  <div class="error-msg" ng-show="user.catTitle.$error.required && user.catTitle.$touched">Please Enter Category Title.</div>
+                  <input name="name" required ng-model="userForm.name" type="text" class="form-control" id="" placeholder="Photo Title">
+                  <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Category Title.</div>
                 </div>
+
+                <div class="form-group">
+                  <label for="">Category Order</label>
+                  <input name="order" required ng-model="userForm.order" type="text" class="form-control" id="" placeholder="Category Order">
+                  <div class="error-msg" ng-show="user.order.$error.required && user.order.$touched">Please Enter Category Title.</div>
+                </div>
+
 
                 <div class="form-group">
                   <label for="">Status</label>

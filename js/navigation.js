@@ -164,19 +164,14 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
-        getArticleEditDetail: function(formData, callback) {
+        getArticleEditDetail: function(id, callback) {
             // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'article/get',
                 method: 'POST',
                 withCredentials: true,
                 data: {
-                    "name": formData.name,
-                    "content": formData.content,
-                    "tags": formData.tags,
-                    //"modificationTime": formData.modificationTime,
-                    "status": formData.status,
-                    //"views": formData.views,
+                    "_id": id
 
                 }
             }).success(callback);
@@ -188,6 +183,7 @@ var navigationservice = angular.module('navigationservice', [])
                 method: 'POST',
                 withCredentials: true,
                 data: {
+                  "_id": formData._id,
                     "name": formData.name,
                     "content": formData.content,
                     "tags": formData.tags,
