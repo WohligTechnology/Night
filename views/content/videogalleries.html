@@ -14,8 +14,9 @@
             <div dnd-list="lists" class="pt15">
               <div class="image-set">
                 <div class="row" ui-sortable ng-model="lists">
-                  <div class="drop-image col-xs-3" ui-sref="video-gallerydetail" ng-repeat="item in lists">
-                    <div ng-click="open()" class="image-holder" ng-style="{'background-image': 'url({{item.image}})'}"></div>
+                  <div class="drop-image col-xs-3" ui-sref="editvideo-gallerydetail({id:videogal._id})" ng-repeat="videogal in videogalleries">
+                    <!-- <a ui-sref="editvideo-gallerydetail({id:videogal._id})"> -->
+                    <div class="image-holder" ng-style="{'background-image': 'url({{videogal.image | uploadpath}})'}"></div>
                   </div>
                 </div>
                 <div class="clearfix"></div>
@@ -27,3 +28,5 @@
     </div>
   </div>
 </div>
+
+<!-- img ng-src="{{videogal.image | uploadpath}}" -->

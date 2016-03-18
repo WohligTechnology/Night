@@ -1,5 +1,5 @@
 var adminurl = "http://192.168.0.124:1337/";
-var imgpath = "http://vignesh.com/uploadfile/upload/";
+var imgpath = "http://vignesh.com:81/uploadfile/resize?";
 
 
 
@@ -116,6 +116,73 @@ var navigationservice = angular.module('navigationservice', [])
         getnav: function() {
             return navigation;
         },
+        videoGalleryCreateSubmit: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'videogallerycategory/save',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "name": formData.name,
+                    "image": formData.image,
+                    "order": formData.order,
+                    //"modificationTime": formData.modificationTime,
+                    "status": formData.status,
+                    //"views": formData.views,
+
+                }
+            }).success(callback);
+        },
+        videoGalleriesViewAll: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'videogallerycategory/getAll',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                  "name": formData.name,
+                  "image": formData.image,
+                  "order": formData.order,
+                  //"modificationTime": formData.modificationTime,
+                  "status": formData.status,
+                    //"views": formData.views,
+
+                }
+            }).success(callback);
+        },
+        getVideoGalleryEditDetail: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'videogallerycategory/get',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+
+                }
+            }).success(callback);
+        },
+        editvideogallerySubmit: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'videogallerycategory/save',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                  "_id": formData._id,
+                  "name": formData.name,
+                  "image": formData.image,
+                  "order": formData.order,
+                  //"modificationTime": formData.modificationTime,
+                  "status": formData.status,
+
+                }
+            }).success(callback);
+        },
+
+
+
+
 
         articleViewAll: function(formData, callback) {
             // console.log('form data: ', formData);

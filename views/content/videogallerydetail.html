@@ -1,6 +1,6 @@
 <div class="max-size">
   <div class="ionic-template mb30">
-    <h4 class="pad20">Video Gallery > Edit Video gallery</h4>
+    <h4 class="pad20">Video Gallery > {{header.name}}</h4>
     <div class="row">
       <div class="col-md-12">
         <div class="home-slider form-background">
@@ -25,10 +25,10 @@
 
 
                 <div class="form-group">
-                  <label for="">Status</label>
+                  <label for="">Status</label>{{userForm.status}}
                   <select name="status" ng-model="userForm.status" class="form-control">
-                    <option>Enable</option>
-                    <option>Disable</option>
+                    <option value="1">Enable</option>
+                    <option value="0">Disable</option>
 
                   </select>
                 </div>
@@ -44,15 +44,20 @@
            </span>
                   </p>
                 </div>
-                <div class="form-group">
+                <div class="form-group" ng-controller="UploadCtrl">
                   <label for="exampleInputFile">Image Upload</label>
                   <div class="noti-image">
                     <div class="img-box">
-                      <img src="img/slider/s1.jpg">
+                      <!-- {{userForm.image | uploadpath}} -->
+                      <img ng-src="{{userForm.image | uploadpath}}" ng-if="userForm.image">
                     </div>
                   </div>
+                  <div ng-if="userForm.image">
+                    <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
+                  </div>
                   <div class="btn-upload">
-                    <input type="file" id="exampleInputFile">
+                    <input type="file" name="image" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" title="Choose File" required ng-model="userForm.image" accept=".jpg,.png" class="btn-primary" ui-file-upload>
+                    <!-- <input type="file" id="exampleInputFile"> -->
                     <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
                   </div>
                 </div>
@@ -76,16 +81,16 @@
                 </div>
             </div>
             <div class="upload-img text-center">
-              <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
-              <a href="#/videogalleries">
+              <button class="btn btn-primary btn-outline btn-small" ng-click="videoGallerySubmitForm(user)">Save</button>
+              <a ui-sref="video-galleries">
                 <button class="btn btn-primary btn-outline btn-small">Cancel</button>
               </a>
             </div>
             </form>
           </div>
-          <div class="text-center" ng-show="formComplete">
+          <!-- <div class="text-center" ng-show="formComplete">
             <h3>Submitted Successfully, Thank You!</h3>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

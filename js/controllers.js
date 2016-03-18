@@ -1,130 +1,145 @@
+//window.uploadurl = "http://192.168.0.126:81/uploadfile/upload/";
+window.uploadurl = "http://vignesh.com:81/uploadfile/upload/";
+
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'angularFileUpload', 'toaster'])
+
 
 .controller('UploadCtrl', function($scope, $upload, $timeout) {
 
-  var uploadres = [];
-  //imageupload
-  var imagejstupld = "";
-  $scope.usingFlash = FileAPI && FileAPI.upload !== null;
-  $scope.fileReaderSupported = window.FileReader !== null && (window.FileAPI === null || FileAPI.html5 !== false);
-  $scope.uploadRightAway = true;
-  $scope.changeAngularVersion = function() {
-    window.location.hash = $scope.angularVersion;
-    window.location.reload(true);
-  };
+    var uploadres = [];
+    //
+    $scope.usingFlash = FileAPI && FileAPI.upload !== null;
+    $scope.fileReaderSupported = window.FileReader !== null && (window.FileAPI === null || FileAPI.html5 !== false);
+    $scope.uploadRightAway = true;
+    $scope.changeAngularVersion = function() {
+        window.location.hash = $scope.angularVersion;
+        window.location.reload(true);
+    };
 
-  $scope.hasUploader = function(index) {
-    return $scope.upload[index] !== null;
-  };
+    $scope.hasUploader = function(index) {
+        return $scope.upload[index] !== null;
+    };
 
-  $scope.abort = function(index) {
-    $scope.upload[index].abort();
-    $scope.upload[index] = null;
-  };
-  $scope.angularVersion = window.location.hash.length > 1 ? (window.location.hash.indexOf('/') === 1 ?
-    window.location.hash.substring(2) : window.location.hash.substring(1)) : '1.2.20';
-  // $scope.uploader.onSuccess(function () {
-  //   console.log('successfully uploaded!')
-  // });
+    $scope.abort = function(index) {
+        $scope.upload[index].abort();
+        $scope.upload[index] = null;
+    };
+    $scope.angularVersion = window.location.hash.length > 1 ? (window.location.hash.indexOf('/') === 1 ?
+        window.location.hash.substring(2) : window.location.hash.substring(1)) : '1.2.20';
+    // $scope.uploader.onSuccess(function () {
+    //   console.log('successfully uploaded!')
+    // });
 
-  $scope.onFileSelect = function($files) {
-    $scope.isloading = true;
-    $scope.selectedFiles = [];
-    $scope.progress = [];
+    $scope.onFileSelect = function($files, whichone) {
+        $scope.isloading = true;
+        $scope.selectedFiles = [];
+        $scope.progress = [];
 
-    console.log($files);
+        console.log($files);
 
-    if ($scope.upload && $scope.upload.length > 0) {
-      for (var i = 0; i < $scope.upload.length; i++) {
-        if ($scope.upload[i] !== null) {
-          $scope.upload[i].abort();
+        if ($scope.upload && $scope.upload.length > 0) {
+            for (var i = 0; i < $scope.upload.length; i++) {
+                if ($scope.upload[i] !== null) {
+                    $scope.upload[i].abort();
+                }
+            }
         }
-      }
-    }
 
-    $scope.upload = [];
-    $scope.uploadResult = uploadres;
-    $scope.selectedFiles = $files;
-    $scope.dataUrls = [];
+        $scope.upload = [];
+        $scope.uploadResult = uploadres;
+        $scope.selectedFiles = $files;
+        $scope.dataUrls = [];
 
-    for (var i = 0; i < $files.length; i++) {
-      var $file = $files[i];
+        for (var i = 0; i < $files.length; i++) {
+            var $file = $files[i];
+            console.log('$files', $files);
+            if ($scope.fileReaderSupported && ($file.type.indexOf('image') || $file.type.indexOf('pdf')) > -1) {
+                var fileReader = new FileReader();
+                fileReader.readAsDataURL($files[i]);
 
-      if ($scope.fileReaderSupported && ($file.type.indexOf('image') || $file.type.indexOf('pdf')) > -1) {
-        var fileReader = new FileReader();
-        fileReader.readAsDataURL($files[i]);
+                var loadFile = function(fileReader, index) {
 
-        var loadFile = function(fileReader, index) {
+                    fileReader.onload = function(e) {
+                        $timeout(function() {
+                            $scope.dataUrls[index] = e.target.result;
+                        });
+                    };
+                }(fileReader, i);
+            }
+            $scope.progress[i] = -1;
+            if ($scope.uploadRightAway) {
+                $scope.start(i, whichone);
+            }
+        }
+    };
 
-          fileReader.onload = function(e) {
-            $timeout(function() {
-              $scope.dataUrls[index] = e.target.result;
+    $scope.start = function(index, whichone) {
+        // cfpLoadingBar.start();
+        $scope.progress[index] = 0;
+        $scope.errorMsg = null;
+        $scope.howToSend = 1;
+        if ($scope.howToSend == 1) {
+            $scope.upload[index] = $upload.upload({
+                url: uploadurl,
+                method: "POST",
+                headers: {
+                    'Content-Type': 'Content-Type'
+                },
+                data: {
+                    myModel: $scope.myModel
+                },
+                file: $scope.selectedFiles[index],
+                fileFormDataName: 'file'
             });
-          };
-        }(fileReader, i);
-      }
-      $scope.progress[i] = -1;
-      if ($scope.uploadRightAway) {
-        $scope.start(i);
-      }
-    }
-  };
-
-  $scope.start = function(index) {
-    // cfpLoadingBar.start();
-    $scope.progress[index] = 0;
-    $scope.errorMsg = null;
-    $scope.howToSend = 1;
-    if ($scope.howToSend == 1) {
-      $scope.upload[index] = $upload.upload({
-        url: imgpath,
-        method: "POST",
-        headers: {
-          'Content-Type': 'Content-Type'
-        },
-        data: {
-          myModel: $scope.myModel
-        },
-        file: $scope.selectedFiles[index],
-        fileFormDataName: 'image'
-      });
-      $scope.upload[index].then(function(response) {
-        $timeout(function() {
-          // cfpLoadingBar.complete();
-          $scope.uploadResult.push(response.data);
-          console.log(response);
-          if (response.data.value !== "") {
-            $scope.isloading = false;
-            $scope.userForm.picture = response.data.value;
-          }
-        });
-      }, function(response) {
-        if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
-      }, function(evt) {
-        $scope.progress[index] = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-      });
-      $scope.upload[index].xhr(function(xhr) {});
-    } else {
-      var fileReader = new FileReader();
-      fileReader.onload = function(e) {
-        $scope.upload[index] = $upload.http({
-          url: imgpath,
-          headers: {
-            'Content-Type': $scope.selectedFiles[index].type
-          },
-          data: e.target.result
-        }).then(function(response) {
-          $scope.uploadResult.push(response.data);
-        }, function(response) {
-          if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
-        }, function(evt) {
-          $scope.progress[index] = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-        });
-      };
-      fileReader.readAsArrayBuffer($scope.selectedFiles[index]);
-    }
-  };
+            $scope.upload[index].then(function(response) {
+                    $timeout(function() {
+                        // cfpLoadingBar.complete();
+                        $scope.uploadResult.push(response.data);
+                        console.log(response);
+                        if (response.data.files[0].fd !== "") {
+                            $scope.isloading = false;
+                            if (whichone == 1) {
+                                $scope.userForm.image = response.data.files[0].fd;
+                            }
+                            //  else {
+                            //     $scope.userForm.images.push(response.data.files[0].fd);
+                            //  }
+                        }
+                        console.log('response.data', response.data);
+                    });
+                },
+                function(response) {
+                    if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
+                },
+                function(evt) {
+                    $scope.progress[index] = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                });
+            $scope.upload[index].xhr(function(xhr) {});
+        } else {
+            var fileReader = new FileReader();
+            fileReader.onload = function(e) {
+                $scope.upload[index] = $upload.http({
+                    url: imgpath,
+                    headers: {
+                        'Content-Type': $scope.selectedFiles[index].type
+                    },
+                    data: e.target.result
+                }).then(function(response) {
+                    $scope.uploadResult.push(response.data);
+                }, function(response) {
+                    if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
+                }, function(evt) {
+                    $scope.progress[index] = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+                });
+            };
+            fileReader.readAsArrayBuffer($scope.selectedFiles[index]);
+        }
+    };
 })
+
+
+
+
 
 .controller('AllAppsCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
   //Used to name the .html file
@@ -1346,26 +1361,33 @@ $state.go("articles");
   $scope.menutitle = NavigationService.makeactive("Video Galleries");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+$scope.articleForm={};
+  NavigationService.videoGalleriesViewAll($scope.articleForm, function(data){
+    $scope.videogalleries=data.data;
+    //$scope.articledata.modificationTime=new Date($scope.articledata.modificationTime);
+    //console.log('$scope.articledata.modificationTime',$scope.articledata.modificationTime);
+    console.log('$scope.videogalleries',data.data);
+  });
 
-  $scope.lists = [{
-    "image": "img/t1.jpg"
-  }, {
-    "image": "img/t2.jpg"
-  }, {
-    "image": "img/t3.jpg"
-  }, {
-    "image": "img/t1.jpg"
-  }, {
-    "image": "img/t2.jpg"
-  }, {
-    "image": "img/t3.jpg"
-  }, {
-    "image": "img/t1.jpg"
-  }, {
-    "image": "img/t2.jpg"
-  }, {
-    "image": "img/t3.jpg"
-  }];
+  // $scope.lists = [{
+  //   "image": "img/t1.jpg"
+  // }, {
+  //   "image": "img/t2.jpg"
+  // }, {
+  //   "image": "img/t3.jpg"
+  // }, {
+  //   "image": "img/t1.jpg"
+  // }, {
+  //   "image": "img/t2.jpg"
+  // }, {
+  //   "image": "img/t3.jpg"
+  // }, {
+  //   "image": "img/t1.jpg"
+  // }, {
+  //   "image": "img/t2.jpg"
+  // }, {
+  //   "image": "img/t3.jpg"
+  // }];
 
 })
 
@@ -1376,23 +1398,48 @@ $state.go("articles");
   $scope.menutitle = NavigationService.makeactive("Video Galleries");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
-  $scope.header{};
+  $scope.header={};
   $scope.header.name='Create Video Gallary';
   $scope.userForm = {};
-  $scope.submitForm = function(formData, formValid) {
-    // console.log('form values: ', formData);
-    // console.log('form values: ', formValid);
-    console.log('form values: ', $scope.userForm);
-    if (formValid.$valid) {
-      $scope.formComplete = true;
-      $state.go("video-galleries");
-      // NavigationService.userSubmit($scope.userForm, function(data) {
-      //
-      // });
-    } else {
 
-    }
-  };
+
+    $scope.videoGallerySubmitForm = function(formValid) {
+        if (formValid.$valid) {
+          console.log('in navi');
+            NavigationService.videoGalleryCreateSubmit($scope.userForm, function(data) {
+                console.log('userform', $scope.userForm);
+  console.log('$scope.userForm.status',$scope.userForm.status);
+  // if($scope.userForm.status=="Enable"){
+  //   $scope.userForm.status=1;
+  // }else{
+  //   $scope.userForm.status=0;
+  // }
+  console.log('userform of status', $scope.userForm);
+            });
+  $state.go("video-galleries");
+
+        }
+    };
+
+
+
+
+
+
+  // $scope.submitForm = function(formData, formValid) {
+  //   // console.log('form values: ', formData);
+  //   // console.log('form values: ', formValid);
+  //   console.log('form values: ', $scope.userForm);
+  //   if (formValid.$valid) {
+  //     $scope.formComplete = true;
+  //     $state.go("video-galleries");
+  //     // NavigationService.userSubmit($scope.userForm, function(data) {
+  //     //
+  //     // });
+  //   } else {
+  //
+  //   }
+  // };
 
 
   $scope.today = function() {
@@ -1486,6 +1533,162 @@ $state.go("articles");
     "image": "img/t3.jpg"
   }];
 })
+
+
+
+.controller('EditVideoGalleryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, $stateParams) {
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("videogallerydetail");
+  $scope.menutitle = NavigationService.makeactive("Video Galleries");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+  $scope.header={};
+  $scope.header.name='Edit Video Gallary';
+  $scope.userForm = {};
+
+  NavigationService.getVideoGalleryEditDetail($stateParams.id, function(data) {
+      //console.log('getArticleEditDetail', data.data);
+      $scope.userForm = data.data;
+      console.log('userForm',$scope.userForm);
+      console.log($scope.userForm.status);
+  });
+
+
+
+  $scope.videoGallerySubmitForm = function(formValid) {
+    //console.log('form values: ', formData);
+    //console.log('form values: ', formValid);
+    //console.log('form values: ', $scope.userForm);
+    if (formValid.$valid) {
+      NavigationService.editvideogallerySubmit($scope.userForm, function(data) {
+        console.log('my edit article',$scope.userForm);
+        console.log('edit status',$scope.userForm.status);
+        // if($scope.userForm.status==0)
+        // {
+        //   $scope.userForm.status='Disable';
+        // }else{
+        //   $scope.userForm.status='Enable';
+        // }
+          $state.go("video-galleries");
+      });
+
+      // NavigationService.userSubmit($scope.userForm, function(data) {
+      //
+      // });
+    } else {
+
+    }
+  };
+
+
+  // $scope.submitForm = function(formData, formValid) {
+  //   // console.log('form values: ', formData);
+  //   // console.log('form values: ', formValid);
+  //   console.log('form values: ', $scope.userForm);
+  //   if (formValid.$valid) {
+  //     $scope.formComplete = true;
+  //     $state.go("video-galleries");
+  //     // NavigationService.userSubmit($scope.userForm, function(data) {
+  //     //
+  //     // });
+  //   } else {
+  //
+  //   }
+  // };
+
+
+  $scope.today = function() {
+    $scope.dt = new Date();
+  };
+  $scope.today();
+
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+
+  $scope.toggleMin();
+  $scope.maxDate = new Date(2020, 5, 22);
+
+  $scope.open1 = function() {
+    $scope.popup1.opened = true;
+  };
+
+  $scope.setDate = function(year, month, day) {
+    $scope.dt = new Date(year, month, day);
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
+
+  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+  $scope.altInputFormats = ['M!/d!/yyyy'];
+
+  $scope.popup1 = {
+    opened: false
+  };
+
+  $scope.getDayClass = function(date, mode) {
+    if (mode === 'day') {
+      var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+      for (var i = 0; i < $scope.events.length; i++) {
+        var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+        if (dayToCheck === currentDay) {
+          return $scope.events[i].status;
+        }
+      }
+    }
+
+    return '';
+  };
+
+  $scope.VideoEdit = function(size) {
+
+    var modalInstances = $uibModal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'views/modal/video-edit.html',
+      size: size,
+      resolve: {
+        items: function() {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstances.result.then(function(selectedItem) {
+      $scope.selected = selectedItem;
+    }, function() {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+  $scope.toggleAnimation = function() {
+    $scope.animationsEnabled = !$scope.animationsEnabled;
+  };
+  $scope.lists = [{
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }, {
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }, {
+    "image": "img/t1.jpg"
+  }, {
+    "image": "img/t2.jpg"
+  }, {
+    "image": "img/t3.jpg"
+  }];
+})
+
 
 .controller('ContactCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
   //Used to name the .html file
