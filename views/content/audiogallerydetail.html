@@ -1,12 +1,12 @@
 <div class="max-size">
   <div class="ionic-template mb30">
-    <h4 class="pad20">Audio Gallery > Edit Audio Gallery</h4>
+    <h4 class="pad20">Audio Gallery >{{page.header}}</h4>
     <div class="row">
       <div class="col-md-12">
         <div class="home-slider form-background">
           <div class="pull-right "><a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a></div>
           <div class="naming">
-            <h4>Edit Audio Gallery</h4>
+            <h4>{{page.header}}</h4>
           </div>
           <form action="" name="user">
             <div class="form-group">
@@ -59,16 +59,14 @@
               </div>
             </div>
             <div class="upload-img text-center">
-              <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
-              <a href="#/audio-galleries">
+              <button class="btn btn-primary btn-outline btn-small" ng-click="audioGallerySubmitForm(user)">Save</button>
+              <a ui-sref="audio-galleries">
                 <button class="btn btn-primary btn-outline btn-small">Cancel</button>
               </a>
             </div>
           </form>
         </div>
-        <div class="text-center" ng-show="formComplete">
-          <h3>Submitted Successfully, Thank You!</h3>
-        </div>
+
       </div>
     </div>
   </div>

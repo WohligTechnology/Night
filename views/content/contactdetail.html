@@ -40,16 +40,14 @@
               <button class="btn btn-primary btn-outline btn-small">Add More</button>
             </div>
             <div class="upload-img text-center">
-              <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
-              <a href="#/contact">
+              <button class="btn btn-primary btn-outline btn-small" ng-click="contactSubmitForm(user)">Save</button>
+              <a ui-sref="contact">
                 <button class="btn btn-primary btn-outline btn-small">Cancel</button>
               </a>
             </div>
             </form>
           </div>
-          <div class="text-center" ng-show="formComplete">
-            <h3>Submitted Successfully, Thank You!</h3>
-          </div>
+
         </div>
       </div>
     </div>

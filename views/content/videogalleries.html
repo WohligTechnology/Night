@@ -15,6 +15,7 @@
               <div class="image-set">
                 <div class="row" ui-sortable ng-model="lists">
                   <div class="drop-image col-xs-3" ui-sref="editvideo-gallerydetail({id:videogal._id})" ng-repeat="videogal in videogalleries">
+            
                     <!-- <a ui-sref="editvideo-gallerydetail({id:videogal._id})"> -->
                     <div class="image-holder" ng-style="{'background-image': 'url({{videogal.image | uploadpath}})'}"></div>
                   </div>

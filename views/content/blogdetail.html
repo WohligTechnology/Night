@@ -42,16 +42,14 @@
               </div>
           </div>
           <div class="upload-img text-center mar30">
-            <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
-            <a href="#/blogs">
+            <button class="btn btn-primary btn-outline btn-small" ng-click="blogSubmitForm(user)">Save</button>
+            <a ui-sref="blogs">
               <button class="btn btn-primary btn-outline btn-small ml12">Cancel</button>
             </a>
           </div>
           </form>
         </div>
-        <div class="text-center" ng-show="formComplete">
-          <h3>Submitted Successfully, Thank You!</h3>
-        </div>
+
       </div>
     </div>
   </div>

@@ -73,10 +73,17 @@
                       <td>
                         <span>Thu, Dec 10 2015 </span>
                       </td>
+
+                      <!-- <td>
+                        <span>{{blog.blogtitle}}</span>
+                      </td>
+                      <td>
+                        <span>{{blog.timestamp}} </span>
+                      </td> -->
                       <td>
                         <div class="action">
-                          <a ui-sref="editblogdetail"> <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i></a>
-                          <a href=""><i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i></a>
+                          <a ui-sref="editblogdetail({id:blog._id})"> <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i></a>
+                          <a ng-click="deleteBlog(blog._id)"><i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i></a>
                         </div>
                       </td>
                     </tr>

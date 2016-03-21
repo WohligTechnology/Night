@@ -42,16 +42,18 @@
                             <div class="noti-image">
                               <div class="img-box">
                                 <h4 ng-if="isloading">Loading...</h4>
-                                <img ng-src="{{userForm.icon.name|serverimage}}" style="height:200px;">
+                                <img ng-src="{{userForm.icon|uploadpath}}" ng-if="userForm.icon" style="height:200px;">
                                 <!-- <img src="img/slider/s1.jpg"> -->
                               </div>
                             </div>
-                            <input type="file" name="icon" ng-file-select="onFileSelect($files)" onclick="this.value=null"  ng-model="userForm.icon" accept=".jpg,.png" class="form-control ab">
+                            <div ng-if="userForm.icon">
+                              <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
+                            </div>
+                            <!-- <input type="file" name="icon" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" title="Choose File" required ng-model="userForm.icon" accept=".jpg,.png" class="btn-primary" ui-file-upload> -->
+                            <input type="file" name="icon" ng-file-select="onFileSelect($files,1)" onclick="this.value=null"  ng-model="userForm.icon" accept=".jpg,.png" class="form-control ab" ui-file-upload>
                             <!-- <input name="navigationImg" ng-model="userForm.navigationImg" type="file" id="exampleInputFile"> -->
                           </div>
-                          <div ng-if="userForm.icon">
-                            <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
-                          </div>
+
 
 
 

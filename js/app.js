@@ -74,12 +74,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
     .state('eventdetail', {
             url: "/event/:id",
-            templateUrl: "views/template.html",
+            templateUrl: "views/template-sidemenu.html",
             controller: 'EventDetailCtrl'
         })
         .state('editeventdetail', {
             url: "/editevent/:id",
-            templateUrl: "views/template.html",
+            templateUrl: "views/template-sidemenu.html",
             controller: 'EditEventDetailCtrl'
         })
 
@@ -91,12 +91,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
     .state('blogdetail', {
             url: "/blog/:id",
-            templateUrl: "views/template.html",
+            templateUrl: "views/template-sidemenu.html",
             controller: "BlogDetailCtrl"
         })
         .state('editblogdetail', {
             url: "/editblog/:id",
-            templateUrl: "views/template.html",
+            templateUrl: "views/template-sidemenu.html",
             controller: "EditBlogDetailCtrl"
         })
 
@@ -155,12 +155,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
     .state('contactdetail', {
             url: "/contact/:id",
-            templateUrl: "views/template.html",
+            templateUrl: "views/template-sidemenu.html",
             controller: "ContactDetailCtrl"
         })
         .state('editcontactdetail', {
             url: "/editcontact/:id",
-            templateUrl: "views/template.html",
+            templateUrl: "views/template-sidemenu.html",
             controller: "EditContactDetailCtrl"
         })
 
@@ -177,8 +177,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         })
         .state('audio-gallerydetail', {
             url: "/audio-gallery/:id",
-            templateUrl: "views/template.html",
+            templateUrl: "views/template-sidemenu.html",
             controller: "AudioGalleryDetailCtrl"
+        })
+        .state('editaudio-gallerydetail', {
+            url: "/editaudiogallery/:id",
+            templateUrl: "views/template-sidemenu.html",
+            controller: "EditAudioGalleryDetailCtrl"
         })
 
     .state('intro-slider', {
@@ -211,12 +216,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
         })
         .state('userdetail', {
             url: "/user/:id",
-            templateUrl: "views/template.html",
+            templateUrl: "views/template-sidemenu.html",
             controller: 'UserDetailCtrl'
         })
         .state('edituserdetail', {
             url: "/editUser/:id",
-            templateUrl: "views/template.html",
+            templateUrl: "views/template-sidemenu.html",
             controller: 'EditUserCtrl'
         })
         .state('configuration', {

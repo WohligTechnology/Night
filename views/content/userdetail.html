@@ -84,16 +84,14 @@
                 </div>
               </div>
               <div class="upload-img text-center">
-                <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
-                <a href="#/users">
+                <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(user)">Save</button>
+                <a ui-sref="users">
                   <button class="btn btn-primary btn-outline btn-small">Cancel</button>
                 </a>
               </div>
             </form>
           </div>
-          <div class="text-center" ng-show="formComplete">
-            <h3>Submitted Successfully, Thank You!</h3>
-          </div>
+
         </div>
       </div>
     </div>
