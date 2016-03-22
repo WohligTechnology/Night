@@ -347,7 +347,34 @@ firstapp.filter('isEmpty', [function() {
         return angular.equals({}, object);
     };
 }]);
+// firstapp.filter('trustedurl', [function($sce) {
+//     return function(object) {
+//       if(object){
+//         return $sce.trustAsResourceUrl("https://www.google.com/maps/embed?q="+object.lat+","+object.long);
+//       }
+//     };
+// }]);
+// firstapp.filter('trustedurl', function($sce) {
+//     return function(input) {
+//         if (input) {
+//           console.log(input);
+//             return $sce.trustAsResourceUrl("https://maps.google.com/maps?q="+input.lat+","+input.long +"&hl=es;z=14&amp;output=embed");
+//
+//         }
+//
+//     };
+// });
 
+firstapp.filter('trustedurl', function($sce) {
+    return function(input) {
+        if (input) {
+          console.log(input);
+            return $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/view?key=AIzaSyCqoHt9DpuP2vCOS-aDNyqN6pBIf7L9yyE&center="+input.lat+","+input.long);
+
+        }
+
+    };
+});
 //
 // firstapp.filter('serverimage', function() {
 //   return function(input) {

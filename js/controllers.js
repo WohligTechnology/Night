@@ -1191,7 +1191,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.setDate = function(year, month, day) {
         $scope.dt = new Date(year, month, day);
-    };
+  };
 
     $scope.dateOptions = {
         formatYear: 'yy',
@@ -1845,22 +1845,78 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (formValid.$valid) {
           console.log('in navi');
           NavigationService.contactCreateSubmit($scope.userForm, function(data) {
-              console.log('userform', $scope.userForm);
-              console.log('$scope.userForm.status', $scope.userForm.status);
-              if ($scope.userForm.status == "Enable") {
-                  $scope.userForm.status = 1;
-              } else {
-                  $scope.userForm.status = 0;
-              }
-              console.log('userform of status', $scope.userForm);
+
+              console.log('create contact userform', $scope.userForm);
           });
           $state.go("contact");
 
       }
   };
+
+                //   $scope.initMap=function() {
+                //   var myLatLng = {lat: userForm.lat, long: userForm.long};
+                //
+                //   // Create a map object and specify the DOM element for display.
+                //   var map = new google.maps.Map(document.getElementById('map'), {
+                //     center: myLatLng,
+                //   });
+                //
+                //   // Create a marker and set its position.
+                //   var marker = new google.maps.Marker({
+                //     map: map,
+                //     position: myLatLng,
+                //
+                //   });
+                // };
+
+
+
+  //   $scope.contactSubmitForm = function(formValid) {
+  //       // console.log('form values: ', formData);
+  //       // console.log('formvalid values: ', formValid);
+  //       console.log('form values: ', $scope.userForm);
+  //       if (formValid.$valid) {
+  //         console.log('in navi');
+  //         NavigationService.contactCreateSubmit($scope.userForm, function(data) {
+  //
+  //             console.log('create contact userform', $scope.userForm);
+  //         });
+  //         $state.go("contact");
+  //
+  //     }
+  // };
+  $scope.initMap=function() {
+    // Create a map object and specify the DOM element for display.
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -34.397, lng: 150.644},
+      zoom: 10,
+      key:"AIzaSyCqoHt9DpuP2vCOS-aDNyqN6pBIf7L9yyE"
+    });
+  };
+  $timeout(function () {
+    $scope.initMap();
+  }, 1000);
+
+//
+//   $scope.initMap=function() {
+//   var myLatLng = {lat: -25.363, long: 131.044};
+//
+//   // Create a map object and specify the DOM element for display.
+//   var map = new google.maps.Map(document.getElementById('map'), {
+//     center: myLatLng,
+//   });
+//
+//   // Create a marker and set its position.
+//   var marker = new google.maps.Marker({
+//     map: map,
+//     position: myLatLng,
+//     title: 'Hello World!'
+//   });
+// };
+
 })
 
-.controller('EditContactDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
+.controller('EditContactDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state, $stateParams) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("contactdetail");
     $scope.menutitle = NavigationService.makeactive("Contact");
@@ -1879,7 +1935,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
     });
-    $scope.contactSubmitForm = function(formData, formValid) {
+    $scope.contactSubmitForm = function(formValid) {
         // console.log('form values: ', formData);
         // console.log('form values: ', formValid);
         console.log('form values: ', $scope.userForm);
@@ -1903,8 +1959,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
       }
   };
-
-
+  //
+  // <script>
+  // function initialize() {
+  //   var mapProp = {
+  //     center:new google.maps.LatLng(51.508742,-0.120850),
+  //     zoom:5,
+  //     mapTypeId:google.maps.MapTypeId.ROADMAP
+  //   };
+  //   var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+  // }
+  // google.maps.event.addDomListener(window, 'load', initialize);
+  // </script>
 
 
 })

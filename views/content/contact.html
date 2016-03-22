@@ -37,7 +37,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr ng-repeat="contact in contactdata">
                     <td>
                       <div class="select-check">
                         <div class="checkbox">
@@ -48,15 +48,15 @@
                       </div>
                     </td>
                     <td>
-                      <span>Wohlig Technologies</span>
+                      <span>{{contact.title}}</span>
                     </td>
                     <td>
-                      <span>Sadhana Vidhayala, Sion</span>
+                      <span>{{contact.address}}</span>
                     </td>
                     <td>
                       <div class="action">
-                        <a ui-sref="editcontactdetail"> <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i></a>
-                        <a href=""><i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i></a>
+                        <a ui-sref="editcontactdetail({id:contact._id})"> <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i></a>
+                        <a ng-click="deleteContact(contact._id)"><i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i></a>
                       </div>
                     </td>
                   </tr>

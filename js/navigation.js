@@ -129,7 +129,7 @@ var navigationservice = angular.module('navigationservice', [])
                   "blogtitle": formData.blogtitle,
                   "content": formData.content,
                   "timestamp": formData.timestamp,
-                
+
 
                 }
             }).success(callback);
@@ -199,10 +199,10 @@ var navigationservice = angular.module('navigationservice', [])
                         method: 'POST',
                         withCredentials: true,
                         data: {
-                            "contacttitle": formData.contacttitle,
+                            "title": formData.title,
                             "email": formData.email,
                             "address": formData.address,
-                             "link": formData.link,
+                             //"link": formData.link,
                             // "socialid": formData.socialid,
                             // "contact": formData.contact,
                             // "accesslevel": formData.accesslevel,
@@ -233,10 +233,11 @@ var navigationservice = angular.module('navigationservice', [])
                         method: 'POST',
                         withCredentials: true,
                         data: {
-                          "contacttitle": formData.contacttitle,
+                          "title": formData.title,
                           "email": formData.email,
                           "address": formData.address,
-                           "link": formData.link,
+                           "lat": formData.lat,
+                            "long": formData.long,
                         }
                     }).success(callback);
                 },
@@ -260,10 +261,11 @@ var navigationservice = angular.module('navigationservice', [])
                         withCredentials: true,
                         data: {
                             "_id": formData._id,
-                            "contacttitle": formData.contacttitle,
+                            "title": formData.title,
                             "email": formData.email,
                             "address": formData.address,
-                             "link": formData.link,
+                            "lat": formData.lat,
+                             "long": formData.long,
 
                         }
                     }).success(callback);
