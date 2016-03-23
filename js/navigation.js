@@ -667,19 +667,19 @@ var navigationservice = angular.module('navigationservice', [])
         eventsViewAll: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'events/getAll',
+                url: adminurl + 'event/getAll',
                 method: 'POST',
                 withCredentials: true,
                 data: {
-                    "title": formData.title,
-                    "date": formData.date,
+                    "name": formData.name,
+                    "startTime": formData.startTime,
                 }
             }).success(callback);
         },
         deleteEventsData: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'events/delete',
+                url: adminurl + 'event/delete',
                 method: 'POST',
                 withCredentials: true,
                 data: {
@@ -690,32 +690,27 @@ var navigationservice = angular.module('navigationservice', [])
         },
 
         eventCreateSubmit: function(formData, callback) {
-            console.log('Navigation form data: ', formData);
+            console.log('Navigation event create form data: ', formData);
             $http({
-                url: adminurl + 'events/save',
+                url: adminurl + 'event/save',
                 method: 'POST',
                 withCredentials: true,
                 data: {
-                    "title": formData.title,
+                    "name": formData.name,
                     //  "_id": formData._id,
                     "venue": formData.venue,
-                    "date": formData.date,
+                    //"startdate": formData.startdate,
+                    "startTime": formData.startTime,
                     "content": formData.content,
-                    "time": formData.time,
-                    //"status": formData.status
-                    // "name": formData.name,
-                    // "contact":formData.contact,
-                    // "facebook":formData.facebook,
-                    // "google":formData.google,
-                    // "logintype":formData.logintype,
-                    // "twitter":formData.twitter
+                    "endTime": formData.endTime,
+
                 }
             }).success(callback);
         },
         getEventsEditDetail: function(id, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'events/get',
+                url: adminurl + 'event/get',
                 method: 'POST',
                 withCredentials: true,
                 data: {
@@ -727,16 +722,16 @@ var navigationservice = angular.module('navigationservice', [])
         editEventSubmit: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'events/save',
+                url: adminurl + 'event/save',
                 method: 'POST',
                 withCredentials: true,
                 data: {
                     "_id": formData._id,
-                    "title": formData.title,
+                    "name": formData.name,
                     "venue": formData.venue,
-                    "date": formData.date,
+                  "startTime": formData.startTime,
                     "content": formData.content,
-                    "time": formData.time,
+                        "endTime": formData.endTime,
                 }
             }).success(callback);
         },

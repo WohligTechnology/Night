@@ -37,7 +37,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr ng-repeat="event in eventsdata">
                     <td>
                       <div class="select-check">
                         <div class="checkbox">
@@ -48,18 +48,18 @@
                       </div>
                     </td>
                     <td>
-                      <span>Jaipurpinkpanther App Lunching at jaipur</span>
+                      <span>{{event.name}}</span>
                     </td>
                     <td>
-                      <span>Thu, Dec 10 2015
+                      <span>{{event.startTime}}
                       </span>
                     </td>
                     <td>
                       <div class="action">
-                        <a ui-sref="editeventdetail">
+                        <a ui-sref="editeventdetail({id:event._id})">
                           <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i>
                         </a>
-                        <a href="">
+                        <a ng-click="deleteEvent(event._id)">
                           <i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i>
                         </a>
                       </div>

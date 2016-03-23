@@ -576,7 +576,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.allEventsRecord = function() {
         NavigationService.eventsViewAll($scope.eventForm, function(data) {
             $scope.eventsdata = data.data;
-            console.log('$scope.eventsdata', data.data);
+            console.log('$scope.eventsdata.startTime', $scope.eventsdata.startTime);
+            $scope.eventsdata.startTime = new Date($scope.eventsdata.startTime);
+            console.log('$scope.eventsdata', $scope.eventsdata);
         });
     };
     $scope.allEventsRecord();
@@ -598,7 +600,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 })
 
-.controller('EventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, toaster) {
+.controller('EventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, toaster, $filter) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("eventdetail");
     $scope.menutitle = NavigationService.makeactive("Events");
@@ -615,18 +617,62 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (formValid.$valid) {
             NavigationService.eventCreateSubmit($scope.userForm, function(data) {
                 console.log('userform', $scope.userForm);
-                console.log('$scope.userForm.status', $scope.userForm.status);
-                // if($scope.userForm.status=="Enable"){
-                //   $scope.userForm.status=1;
-                // }else{
-                //   $scope.userForm.status=0;
-                // }
+
                 console.log('userform of status', $scope.userForm);
             });
             $state.go("events");
 
         }
     };
+
+    $scope.$watch('userForm.sdate', function() {
+        $scope.tryCombineStartDateTime();
+    });
+
+    $scope.$watch('userForm.stime', function() {
+        $scope.tryCombineStartDateTime();
+    });
+    $scope.$watch('userForm.edate', function() {
+        $scope.tryCombineEndDateTime();
+    });
+
+    $scope.$watch('userForm.etime', function() {
+        $scope.tryCombineEndDateTime();
+    });
+
+    $scope.tryCombineStartDateTime = function() {
+        if ($scope.userForm.sdate && $scope.userForm.stime) {
+            var newdate = $filter('date')($scope.userForm.sdate, 'yyyy-MM-dd');
+            var newtime = $filter('date')($scope.userForm.stime, 'HH:mm');
+            console.log(newdate,newtime);
+            var dateParts = newdate.toString().split('-');
+            var timeParts = newtime.toString().split(':');
+            if (dateParts && timeParts) {
+                dateParts[1] -= 1;
+                $scope.userForm.startTime = new Date(Date.UTC.apply(undefined, dateParts.concat(timeParts))).toISOString();
+                console.log('startTime', $scope.userForm.startTime);
+            }
+        }
+    };
+    $scope.tryCombineEndDateTime = function() {
+        if ($scope.userForm.edate && $scope.userForm.etime) {
+            var newdate = $filter('date')($scope.userForm.edate, 'yyyy-MM-dd');
+            var newtime = $filter('date')($scope.userForm.etime, 'HH:mm');
+            console.log(newdate,newtime);
+            var dateParts = newdate.toString().split('-');
+            var timeParts = newtime.toString().split(':');
+            if (dateParts && timeParts) {
+                dateParts[1] -= 1;
+                $scope.userForm.endTime = new Date(Date.UTC.apply(undefined, dateParts.concat(timeParts))).toISOString();
+                console.log('startTime', $scope.userForm.endTime);
+            }
+        }
+    };
+
+
+
+
+
 
     $scope.cancel = function(formData) {
         $scope.formData = {};
@@ -681,6 +727,64 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         return '';
     };
+
+
+
+
+    $scope.cancel = function(formData) {
+        $scope.formData = {};
+        console.log("cancel values:", $scope.formData);
+    };
+
+    $scope.today = function() {
+        $scope.dt = new Date();
+    };
+    $scope.today();
+
+    $scope.toggleMin = function() {
+        $scope.minDate = $scope.minDate ? null : new Date();
+    };
+
+    $scope.toggleMin();
+    $scope.maxDate = new Date(2020, 5, 22);
+
+    $scope.open10 = function() {
+        $scope.popup10.opened = true;
+    };
+
+    $scope.setDate = function(year, month, day) {
+        $scope.dt = new Date(year, month, day);
+    };
+
+    $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1
+    };
+
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
+
+    $scope.popup10 = {
+        opened: false
+    };
+
+    $scope.getDayClass = function(date, mode) {
+        if (mode === 'day') {
+            var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+            for (var i = 0; i < $scope.events.length; i++) {
+                var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+                if (dayToCheck === currentDay) {
+                    return $scope.events[i].status;
+                }
+            }
+        }
+
+        return '';
+    };
+
 
     $scope.lists = [{
         "image": "img/t1.jpg"
@@ -968,15 +1072,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             // console.log('form values: ', formValid);
             console.log('form values: ', $scope.userForm);
             if (formValid.$valid) {
-              console.log('in navi');
-              NavigationService.blogCreateSubmit($scope.userForm, function(data) {
-                  console.log('userform', $scope.userForm);
+                console.log('in navi');
+                NavigationService.blogCreateSubmit($scope.userForm, function(data) {
+                    console.log('userform', $scope.userForm);
 
-              });
-              $state.go("blogs");
+                });
+                $state.go("blogs");
 
-          }
-      };
+            }
+        };
         $scope.today = function() {
             $scope.dt = new Date();
         };
@@ -1051,25 +1155,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             // console.log('form values: ', formValid);
             console.log('form values: ', $scope.userForm);
             if (formValid.$valid) {
-              NavigationService.editblogSubmit($scope.userForm, function(data) {
-                  console.log('my edit blog', $scope.userForm);
-                  console.log('edit status', $scope.userForm.status);
-                  // if($scope.userForm.status==0)
-                  // {
-                  //   $scope.userForm.status='Disable';
-                  // }else{
-                  //   $scope.userForm.status='Enable';
-                  // }
-                  $state.go("blogs");
-              });
+                NavigationService.editblogSubmit($scope.userForm, function(data) {
+                    console.log('my edit blog', $scope.userForm);
+                    console.log('edit status', $scope.userForm.status);
+                    // if($scope.userForm.status==0)
+                    // {
+                    //   $scope.userForm.status='Disable';
+                    // }else{
+                    //   $scope.userForm.status='Enable';
+                    // }
+                    $state.go("blogs");
+                });
 
-              // NavigationService.userSubmit($scope.userForm, function(data) {
-              //
-              // });
-          } else {
+                // NavigationService.userSubmit($scope.userForm, function(data) {
+                //
+                // });
+            } else {
 
-          }
-      };
+            }
+        };
 
 
 
@@ -1191,7 +1295,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.setDate = function(year, month, day) {
         $scope.dt = new Date(year, month, day);
-  };
+    };
 
     $scope.dateOptions = {
         formatYear: 'yy',
@@ -1843,76 +1947,92 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         // console.log('formvalid values: ', formValid);
         console.log('form values: ', $scope.userForm);
         if (formValid.$valid) {
-          console.log('in navi');
-          NavigationService.contactCreateSubmit($scope.userForm, function(data) {
+            console.log('in navi');
+            NavigationService.contactCreateSubmit($scope.userForm, function(data) {
 
-              console.log('create contact userform', $scope.userForm);
-          });
-          $state.go("contact");
+                console.log('create contact userform', $scope.userForm);
+            });
+            $state.go("contact");
 
-      }
-  };
+        }
+    };
 
-                //   $scope.initMap=function() {
-                //   var myLatLng = {lat: userForm.lat, long: userForm.long};
-                //
-                //   // Create a map object and specify the DOM element for display.
-                //   var map = new google.maps.Map(document.getElementById('map'), {
-                //     center: myLatLng,
-                //   });
-                //
-                //   // Create a marker and set its position.
-                //   var marker = new google.maps.Marker({
-                //     map: map,
-                //     position: myLatLng,
-                //
-                //   });
-                // };
+    //   $scope.initMap=function() {
+    //   var myLatLng = {lat: userForm.lat, long: userForm.long};
+    //
+    //   // Create a map object and specify the DOM element for display.
+    //   var map = new google.maps.Map(document.getElementById('map'), {
+    //     center: myLatLng,
+    //   });
+    //
+    //   // Create a marker and set its position.
+    //   var marker = new google.maps.Marker({
+    //     map: map,
+    //     position: myLatLng,
+    //
+    //   });
+    // };
 
 
 
-  //   $scope.contactSubmitForm = function(formValid) {
-  //       // console.log('form values: ', formData);
-  //       // console.log('formvalid values: ', formValid);
-  //       console.log('form values: ', $scope.userForm);
-  //       if (formValid.$valid) {
-  //         console.log('in navi');
-  //         NavigationService.contactCreateSubmit($scope.userForm, function(data) {
-  //
-  //             console.log('create contact userform', $scope.userForm);
-  //         });
-  //         $state.go("contact");
-  //
-  //     }
-  // };
-  $scope.initMap=function() {
-    // Create a map object and specify the DOM element for display.
-    var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: -34.397, lng: 150.644},
-      zoom: 10,
-      key:"AIzaSyCqoHt9DpuP2vCOS-aDNyqN6pBIf7L9yyE"
-    });
-  };
-  $timeout(function () {
-    $scope.initMap();
-  }, 1000);
+    //   $scope.contactSubmitForm = function(formValid) {
+    //       // console.log('form values: ', formData);
+    //       // console.log('formvalid values: ', formValid);
+    //       console.log('form values: ', $scope.userForm);
+    //       if (formValid.$valid) {
+    //         console.log('in navi');
+    //         NavigationService.contactCreateSubmit($scope.userForm, function(data) {
+    //
+    //             console.log('create contact userform', $scope.userForm);
+    //         });
+    //         $state.go("contact");
+    //
+    //     }
+    // };
+    // $scope.initMap=function() {
+    //   // Create a map object and specify the DOM element for display.
+    //   var map = new google.maps.Map(document.getElementById('map'), {
+    //     center: {lat: -34.397, lng: 150.644},
+    //     zoom: 10,
+    //     key:"AIzaSyCqoHt9DpuP2vCOS-aDNyqN6pBIf7L9yyE"
+    //   });
+    // };
+    // $timeout(function () {
+    //   $scope.initMap();
+    // }, 1000);
 
-//
-//   $scope.initMap=function() {
-//   var myLatLng = {lat: -25.363, long: 131.044};
-//
-//   // Create a map object and specify the DOM element for display.
-//   var map = new google.maps.Map(document.getElementById('map'), {
-//     center: myLatLng,
-//   });
-//
-//   // Create a marker and set its position.
-//   var marker = new google.maps.Marker({
-//     map: map,
-//     position: myLatLng,
-//     title: 'Hello World!'
-//   });
-// };
+
+
+    // $scope.initMap=function() {
+    //   // Create a map object and specify the DOM element for display.
+    //   var map = new google.maps.Map(document.getElementById('map'), {
+    //     center: {lat:34.397,lng:150.644},
+    //     disableDefaultUI: true,
+    //     key:"AIzaSyCqoHt9DpuP2vCOS-aDNyqN6pBIf7L9yyE"
+    //   });
+    // };
+    // $timeout(function () {
+    //   $scope.initMap();
+    // }, 1000);
+
+
+
+    //
+    //   $scope.initMap=function() {
+    //   var myLatLng = {lat: -25.363, long: 131.044};
+    //
+    //   // Create a map object and specify the DOM element for display.
+    //   var map = new google.maps.Map(document.getElementById('map'), {
+    //     center: myLatLng,
+    //   });
+    //
+    //   // Create a marker and set its position.
+    //   var marker = new google.maps.Marker({
+    //     map: map,
+    //     position: myLatLng,
+    //     title: 'Hello World!'
+    //   });
+    // };
 
 })
 
@@ -1940,37 +2060,37 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         // console.log('form values: ', formValid);
         console.log('form values: ', $scope.userForm);
         if (formValid.$valid) {
-          NavigationService.editContactSubmit($scope.userForm, function(data) {
-              console.log('my edit contact', $scope.userForm);
-              console.log('edit status', $scope.userForm.status);
-              // if($scope.userForm.status==0)
-              // {
-              //   $scope.userForm.status='Disable';
-              // }else{
-              //   $scope.userForm.status='Enable';
-              // }
-              $state.go("contact");
-          });
+            NavigationService.editContactSubmit($scope.userForm, function(data) {
+                console.log('my edit contact', $scope.userForm);
+                console.log('edit status', $scope.userForm.status);
+                // if($scope.userForm.status==0)
+                // {
+                //   $scope.userForm.status='Disable';
+                // }else{
+                //   $scope.userForm.status='Enable';
+                // }
+                $state.go("contact");
+            });
 
-          // NavigationService.userSubmit($scope.userForm, function(data) {
-          //
-          // });
-      } else {
+            // NavigationService.userSubmit($scope.userForm, function(data) {
+            //
+            // });
+        } else {
 
-      }
-  };
-  //
-  // <script>
-  // function initialize() {
-  //   var mapProp = {
-  //     center:new google.maps.LatLng(51.508742,-0.120850),
-  //     zoom:5,
-  //     mapTypeId:google.maps.MapTypeId.ROADMAP
-  //   };
-  //   var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
-  // }
-  // google.maps.event.addDomListener(window, 'load', initialize);
-  // </script>
+        }
+    };
+    //
+    // <script>
+    // function initialize() {
+    //   var mapProp = {
+    //     center:new google.maps.LatLng(51.508742,-0.120850),
+    //     zoom:5,
+    //     mapTypeId:google.maps.MapTypeId.ROADMAP
+    //   };
+    //   var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    // }
+    // google.maps.event.addDomListener(window, 'load', initialize);
+    // </script>
 
 
 })
