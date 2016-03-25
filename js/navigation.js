@@ -117,6 +117,74 @@ var navigationservice = angular.module('navigationservice', [])
             return navigation;
         },
 
+        notificationViewAll: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'notification/getAll',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                  "image": formData.image,
+                  "content": formData.content,
+                  "sendingTime": formData.sendingTime,
+                }
+            }).success(callback);
+        },
+        deleteNotificationData: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'notification/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": formData.id,
+
+                }
+            }).success(callback);
+        },
+        notificationCreateSubmit: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'notification/save',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                  "content": formData.content,
+                  "sendingTime": formData.sendingTime,
+                   "image": formData.image,
+                   "status":formData.status
+                }
+            }).success(callback);
+        },
+        getNotificationEditDetail: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'notification/get',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": formData.id,
+
+                }
+            }).success(callback);
+        },
+        editnotiicationSubmit: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'notification/save',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": formData._id,
+                    "content": formData.content,
+                    "sendingTime": formData.sendingTime,
+                     "image": formData.image,
+                     "status":formData.status
+
+                }
+            }).success(callback);
+        },
+
 
 
         blogViewAll: function(formData, callback) {
