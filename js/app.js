@@ -1,351 +1,353 @@
 // JavaScript Document
 var firstapp = angular.module('firstapp', [
-    'ui.router',
-    'phonecatControllers',
-    'templateservicemod',
-    'navigationservice'
+  'ui.router',
+  'phonecatControllers',
+  'templateservicemod',
+  'navigationservice'
 ]);
 
 firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
-    // for http request with session
-    $httpProvider.defaults.withCredentials = true;
+  // for http request with session
+  $httpProvider.defaults.withCredentials = true;
 
-    $stateProvider
+  $stateProvider
 
-        .state('allapps', {
-        url: "/",
-        templateUrl: "views/template.html",
-        controller: 'AllAppsCtrl'
+    .state('allapps', {
+    url: "/",
+    templateUrl: "views/template.html",
+    controller: 'AllAppsCtrl'
+  })
+
+  .state('dashboard', {
+    url: "/dashboard",
+    templateUrl: "views/template.html",
+    controller: 'DashboardCtrl'
+  })
+
+  .state('theme', {
+    url: "/theme",
+    templateUrl: "views/template-sidemenu.html",
+    controller: 'ThemeCtrl'
+  })
+
+  .state('home', {
+    url: "/home",
+    templateUrl: "views/template-sidemenu.html",
+    controller: 'HomeCtrl'
+  })
+
+  .state('navigation', {
+    url: "/navigation",
+    templateUrl: "views/template-sidemenu.html",
+    controller: 'NavigationCtrl'
+  })
+
+  .state('navigationdetail', {
+    url: "/navigation/:id",
+    templateUrl: "views/template.html",
+    controller: 'NavigationDetailCtrl'
+  })
+
+  .state('editnavigationdetail', {
+    url: "/editnavigation/:id",
+    templateUrl: "views/template.html",
+    controller: 'EditNavigationDetailCtrl'
+  })
+
+  .state('login-signup', {
+    url: "/login-signup",
+    templateUrl: "views/template-sidemenu.html",
+    controller: 'LoginSignupCtrl'
+  })
+
+  .state('notifications', {
+    url: "/notifications",
+    templateUrl: "views/template-sidemenu.html",
+    controller: 'NotificationsCtrl'
+  })
+
+  .state('events', {
+    url: "/events",
+    templateUrl: "views/template-sidemenu.html",
+    controller: 'EventsCtrl'
+  })
+
+  .state('eventdetail', {
+      url: "/event/:id",
+      templateUrl: "views/template-sidemenu.html",
+      controller: 'EventDetailCtrl'
+    })
+    .state('editeventdetail', {
+      url: "/editevent/:id",
+      templateUrl: "views/template-sidemenu.html",
+      controller: 'EditEventDetailCtrl'
     })
 
-    .state('dashboard', {
-        url: "/dashboard",
-        templateUrl: "views/template.html",
-        controller: 'DashboardCtrl'
+  .state('blogs', {
+    url: "/blogs",
+    templateUrl: "views/template-sidemenu.html",
+    controller: "BlogsCtrl"
+  })
+
+  .state('blogdetail', {
+    url: "/blog/:id",
+    templateUrl: "views/template-sidemenu.html",
+    controller: "BlogDetailCtrl"
+  })
+
+  .state('editblogdetail', {
+    url: "/editblog/:id",
+    templateUrl: "views/template-sidemenu.html",
+    controller: "EditBlogDetailCtrl"
+  })
+
+
+  .state('articles', {
+    url: "/articles",
+    templateUrl: "views/template-sidemenu.html",
+    controller: "ArticlesCtrl"
+  })
+
+  .state('articledetail', {
+    url: "/article/:id",
+    templateUrl: "views/template-sidemenu.html",
+    controller: "ArticleDetailCtrl"
+  })
+
+  .state('editarticledetail', {
+    url: "/editarticle/:id",
+    templateUrl: "views/template-sidemenu.html",
+    controller: "EditArticleDetailCtrl"
+  })
+
+  .state('photo-galleries', {
+    url: "/photogalleries",
+    templateUrl: "views/template-sidemenu.html",
+    controller: "PhotoGalleriesCtrl"
+  })
+
+  .state('photo-gallerydetail', {
+    url: "/photogalleries/:id",
+    templateUrl: "views/template-sidemenu.html",
+    controller: "PhotoGalleryDetailCtrl"
+  })
+
+  .state('video-galleries', {
+      url: "/videogalleries",
+      templateUrl: "views/template-sidemenu.html",
+      controller: "VideoGalleriesCtrl"
+    })
+    .state('video-gallerydetail', {
+      url: "/videogallery/:id",
+      templateUrl: "views/template-sidemenu.html",
+      controller: "VideoGalleryDetailCtrl"
+    })
+    .state('editvideo-gallerydetail', {
+      url: "/editvideogallery/:id",
+      templateUrl: "views/template-sidemenu.html",
+      controller: "EditVideoGalleryDetailCtrl"
     })
 
-    .state('theme', {
-        url: "/theme",
-        templateUrl: "views/template-sidemenu.html",
-        controller: 'ThemeCtrl'
+  .state('contact', {
+    url: "/contact",
+    templateUrl: "views/template-sidemenu.html",
+    controller: "ContactCtrl"
+  })
+
+  .state('contactdetail', {
+      url: "/contact/:id",
+      templateUrl: "views/template-sidemenu.html",
+      controller: "ContactDetailCtrl"
+    })
+    .state('editcontactdetail', {
+      url: "/editcontact/:id",
+      templateUrl: "views/template-sidemenu.html",
+      controller: "EditContactDetailCtrl"
     })
 
-    .state('home', {
-        url: "/home",
-        templateUrl: "views/template-sidemenu.html",
-        controller: 'HomeCtrl'
+  .state('search', {
+    url: "/search",
+    templateUrl: "views/template.html",
+    controller: "SearchCtrl"
+  })
+
+  .state('audio-galleries', {
+      url: "/audio-galleries",
+      templateUrl: "views/template-sidemenu.html",
+      controller: "AudioGalleriesCtrl"
+    })
+    .state('audio-gallerydetail', {
+      url: "/audio-gallery/:id",
+      templateUrl: "views/template-sidemenu.html",
+      controller: "AudioGalleryDetailCtrl"
+    })
+    .state('editaudio-gallerydetail', {
+      url: "/editaudiogallery/:id",
+      templateUrl: "views/template-sidemenu.html",
+      controller: "EditAudioGalleryDetailCtrl"
     })
 
-    .state('navigation', {
-        url: "/navigation",
-        templateUrl: "views/template-sidemenu.html",
-        controller: 'NavigationCtrl'
+  .state('intro-slider', {
+    url: "/intro-slider",
+    templateUrl: "views/template-sidemenu.html",
+    controller: "IntroSliderCtrl"
+  })
+
+  .state('social-feeds', {
+    url: "/social-feeds",
+    templateUrl: "views/template.html",
+    controller: "SocialFeedsCtrl"
+  })
+
+  .state('forms', {
+      url: "/forms",
+      templateUrl: "views/template.html",
+      controller: 'FormsCtrl'
+    })
+    .state('formdetail', {
+      url: "/form/:id",
+      templateUrl: "views/template.html",
+      controller: 'FormDetailCtrl'
     })
 
-    .state('navigationdetail', {
-            url: "/navigation/:id",
-            templateUrl: "views/template.html",
-            controller: 'NavigationDetailCtrl'
-        })
-        .state('editnavigationdetail', {
-            url: "/editnavigation/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditNavigationDetailCtrl'
-        })
-
-    .state('login-signup', {
-        url: "/login-signup",
-        templateUrl: "views/template-sidemenu.html",
-        controller: 'LoginSignupCtrl'
+  .state('users', {
+      url: "/users",
+      templateUrl: "views/template-sidemenu.html",
+      controller: 'UsersCtrl'
     })
-
-    .state('notifications', {
-        url: "/notifications",
-        templateUrl: "views/template-sidemenu.html",
-        controller: 'NotificationsCtrl'
+    .state('userdetail', {
+      url: "/user/:id",
+      templateUrl: "views/template-sidemenu.html",
+      controller: 'UserDetailCtrl'
     })
-
-    .state('events', {
-        url: "/events",
-        templateUrl: "views/template-sidemenu.html",
-        controller: 'EventsCtrl'
+    .state('edituserdetail', {
+      url: "/editUser/:id",
+      templateUrl: "views/template-sidemenu.html",
+      controller: 'EditUserCtrl'
     })
-
-    .state('eventdetail', {
-            url: "/event/:id",
-            templateUrl: "views/template-sidemenu.html",
-            controller: 'EventDetailCtrl'
-        })
-        .state('editeventdetail', {
-            url: "/editevent/:id",
-            templateUrl: "views/template-sidemenu.html",
-            controller: 'EditEventDetailCtrl'
-        })
-
-    .state('blogs', {
-        url: "/blogs",
-        templateUrl: "views/template-sidemenu.html",
-        controller: "BlogsCtrl"
+    .state('configuration', {
+      url: "/configuration",
+      templateUrl: "views/template-sidemenu.html",
+      controller: 'ConfigurationCtrl'
     })
-
-    .state('blogdetail', {
-            url: "/blog/:id",
-            templateUrl: "views/template-sidemenu.html",
-            controller: "BlogDetailCtrl"
-        })
-        .state('editblogdetail', {
-            url: "/editblog/:id",
-            templateUrl: "views/template-sidemenu.html",
-            controller: "EditBlogDetailCtrl"
-        })
-
-
-    .state('articles', {
-        url: "/articles",
-        templateUrl: "views/template-sidemenu.html",
-        controller: "ArticlesCtrl"
+    .state('billing', {
+      url: "/billing",
+      templateUrl: "views/template.html",
+      controller: 'BillingCtrl'
     })
-
-    .state('articledetail', {
-        url: "/article/:id",
-        templateUrl: "views/template-sidemenu.html",
-        controller: "ArticleDetailCtrl"
+    .state('account', {
+      url: "/account",
+      templateUrl: "views/template.html",
+      controller: 'AccountCtrl'
     })
-
-    .state('editarticledetail', {
-        url: "/editarticle/:id",
-        templateUrl: "views/template-sidemenu.html",
-        controller: "EditArticleDetailCtrl"
+    .state('publishing', {
+      url: "/publishing",
+      templateUrl: "views/template.html",
+      controller: 'PublishingCtrl'
     })
+    .state('invoice', {
+      url: "/invoice",
+      templateUrl: "views/template.html",
+      controller: 'InvoiceCtrl'
+    });
 
-    .state('photo-galleries', {
-        url: "/photogalleries",
-        templateUrl: "views/template-sidemenu.html",
-        controller: "PhotoGalleriesCtrl"
-    })
-
-    .state('photo-gallerydetail', {
-        url: "/photogalleries/:id",
-        templateUrl: "views/template.html",
-        controller: "PhotoGalleryDetailCtrl"
-    })
-
-    .state('video-galleries', {
-            url: "/videogalleries",
-            templateUrl: "views/template-sidemenu.html",
-            controller: "VideoGalleriesCtrl"
-        })
-        .state('video-gallerydetail', {
-            url: "/videogallery/:id",
-            templateUrl: "views/template-sidemenu.html",
-            controller: "VideoGalleryDetailCtrl"
-        })
-        .state('editvideo-gallerydetail', {
-            url: "/editvideogallery/:id",
-            templateUrl: "views/template-sidemenu.html",
-            controller: "EditVideoGalleryDetailCtrl"
-        })
-
-    .state('contact', {
-        url: "/contact",
-        templateUrl: "views/template-sidemenu.html",
-        controller: "ContactCtrl"
-    })
-
-    .state('contactdetail', {
-            url: "/contact/:id",
-            templateUrl: "views/template-sidemenu.html",
-            controller: "ContactDetailCtrl"
-        })
-        .state('editcontactdetail', {
-            url: "/editcontact/:id",
-            templateUrl: "views/template-sidemenu.html",
-            controller: "EditContactDetailCtrl"
-        })
-
-    .state('search', {
-        url: "/search",
-        templateUrl: "views/template.html",
-        controller: "SearchCtrl"
-    })
-
-    .state('audio-galleries', {
-            url: "/audio-galleries",
-            templateUrl: "views/template-sidemenu.html",
-            controller: "AudioGalleriesCtrl"
-        })
-        .state('audio-gallerydetail', {
-            url: "/audio-gallery/:id",
-            templateUrl: "views/template-sidemenu.html",
-            controller: "AudioGalleryDetailCtrl"
-        })
-        .state('editaudio-gallerydetail', {
-            url: "/editaudiogallery/:id",
-            templateUrl: "views/template-sidemenu.html",
-            controller: "EditAudioGalleryDetailCtrl"
-        })
-
-    .state('intro-slider', {
-        url: "/intro-slider",
-        templateUrl: "views/template-sidemenu.html",
-        controller: "IntroSliderCtrl"
-    })
-
-    .state('social-feeds', {
-        url: "/social-feeds",
-        templateUrl: "views/template.html",
-        controller: "SocialFeedsCtrl"
-    })
-
-    .state('forms', {
-            url: "/forms",
-            templateUrl: "views/template.html",
-            controller: 'FormsCtrl'
-        })
-        .state('formdetail', {
-            url: "/form/:id",
-            templateUrl: "views/template.html",
-            controller: 'FormDetailCtrl'
-        })
-
-    .state('users', {
-            url: "/users",
-            templateUrl: "views/template-sidemenu.html",
-            controller: 'UsersCtrl'
-        })
-        .state('userdetail', {
-            url: "/user/:id",
-            templateUrl: "views/template-sidemenu.html",
-            controller: 'UserDetailCtrl'
-        })
-        .state('edituserdetail', {
-            url: "/editUser/:id",
-            templateUrl: "views/template-sidemenu.html",
-            controller: 'EditUserCtrl'
-        })
-        .state('configuration', {
-            url: "/configuration",
-            templateUrl: "views/template-sidemenu.html",
-            controller: 'ConfigurationCtrl'
-        })
-        .state('billing', {
-            url: "/billing",
-            templateUrl: "views/template.html",
-            controller: 'BillingCtrl'
-        })
-        .state('account', {
-            url: "/account",
-            templateUrl: "views/template.html",
-            controller: 'AccountCtrl'
-        })
-        .state('publishing', {
-            url: "/publishing",
-            templateUrl: "views/template.html",
-            controller: 'PublishingCtrl'
-        })
-        .state('invoice', {
-            url: "/invoice",
-            templateUrl: "views/template.html",
-            controller: 'InvoiceCtrl'
-        });
-
-    $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("/");
 
 });
 firstapp.filter('uploadpath', function() {
-    return function(input) {
-        if (input) {
-            return imgpath + "file=" + input;
-        }
-    };
+  return function(input) {
+    if (input) {
+      return imgpath + "file=" + input;
+    }
+  };
 });
 
 firstapp.directive('autoHeight', function($compile, $parse) {
-    return {
-        restrict: 'EA',
-        replace: false,
-        link: function($scope, element, attrs) {
-            var $element = $(element);
-            var windowHeight = $(window).height();
-            var addHeight = function() {
-                $element.css("min-height", windowHeight);
-            };
-            addHeight();
-        }
-    };
+  return {
+    restrict: 'EA',
+    replace: false,
+    link: function($scope, element, attrs) {
+      var $element = $(element);
+      var windowHeight = $(window).height();
+      var addHeight = function() {
+        $element.css("min-height", windowHeight);
+      };
+      addHeight();
+    }
+  };
 });
 firstapp.directive('img', function($compile, $parse) {
-    return {
-        restrict: 'E',
-        replace: false,
-        link: function($scope, element, attrs) {
-            var $element = $(element);
-            if (!attrs.noloading) {
-                $element.after("<img src='img/loading.gif' class='loading' />");
-                var $loading = $element.next(".loading");
-                $element.load(function() {
-                    $loading.remove();
-                    $(this).addClass("doneLoading");
-                });
-            } else {
-                $($element).addClass("doneLoading");
-            }
-        }
-    };
+  return {
+    restrict: 'E',
+    replace: false,
+    link: function($scope, element, attrs) {
+      var $element = $(element);
+      if (!attrs.noloading) {
+        $element.after("<img src='img/loading.gif' class='loading' />");
+        var $loading = $element.next(".loading");
+        $element.load(function() {
+          $loading.remove();
+          $(this).addClass("doneLoading");
+        });
+      } else {
+        $($element).addClass("doneLoading");
+      }
+    }
+  };
 });
 
 firstapp.directive('preivew', function($compile, $parse) {
-    return {
-        restrict: 'C',
-        replace: false,
-        link: function($scope, element, attrs) {
-            var $appPrview = $(element);
-            $(window).on("scroll", function() {
-                var bodyScrollTop = $("body").scrollTop() + 50;
-                $appPrview.css("margin-top", bodyScrollTop + "px");
-            });
-        }
-    };
+  return {
+    restrict: 'C',
+    replace: false,
+    link: function($scope, element, attrs) {
+      var $appPrview = $(element);
+      $(window).on("scroll", function() {
+        var bodyScrollTop = $("body").scrollTop() + 50;
+        $appPrview.css("margin-top", bodyScrollTop + "px");
+      });
+    }
+  };
 });
 
 firstapp.directive('hamburger', function($compile, $parse) {
-    return {
-        restrict: 'C',
-        replace: false,
-        link: function($scope, element, attrs) {
-            var $element = $(element);
-            $element.click(function() {
-                $('.sidemenu').toggleClass('open-out');
-            });
-        }
-    };
+  return {
+    restrict: 'C',
+    replace: false,
+    link: function($scope, element, attrs) {
+      var $element = $(element);
+      $element.click(function() {
+        $('.sidemenu').toggleClass('open-out');
+      });
+    }
+  };
 });
 
 firstapp.directive('scrollbars', function($compile, $parse) {
-    return {
-        restrict: 'C',
-        replace: false,
-        link: function($scope, element, attrs) {
-            //  console.log("App Preview is there now");
-            setTimeout(function() {
-                $(".scrollbars").scrollTop($.jStorage.get("navigationScroll"));
-            }, 10);
+  return {
+    restrict: 'C',
+    replace: false,
+    link: function($scope, element, attrs) {
+      //  console.log("App Preview is there now");
+      setTimeout(function() {
+        $(".scrollbars").scrollTop($.jStorage.get("navigationScroll"));
+      }, 10);
 
 
-            $(".scrollbars").on("scroll", function() {
-                var navigationScroll = $(".scrollbars").scrollTop();
-                $.jStorage.set("navigationScroll", navigationScroll);
-            });
-        }
-    };
+      $(".scrollbars").on("scroll", function() {
+        var navigationScroll = $(".scrollbars").scrollTop();
+        $.jStorage.set("navigationScroll", navigationScroll);
+      });
+    }
+  };
 });
 
 
 firstapp.filter('isEmpty', [function() {
-    return function(object) {
-        return angular.equals({}, object);
-    };
+  return function(object) {
+    return angular.equals({}, object);
+  };
 }]);
 // firstapp.filter('trustedurl', [function($sce) {
 //     return function(object) {
@@ -366,14 +368,14 @@ firstapp.filter('isEmpty', [function() {
 // });
 
 firstapp.filter('trustedurl', function($sce) {
-    return function(input) {
-        if (input) {
-          console.log(input);
-            return $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/view?key=AIzaSyCqoHt9DpuP2vCOS-aDNyqN6pBIf7L9yyE&center="+input.lat+","+input.long);
+  return function(input) {
+    if (input) {
+      console.log(input);
+      return $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/view?key=AIzaSyCqoHt9DpuP2vCOS-aDNyqN6pBIf7L9yyE&center=" + input.lat + "," + input.long);
 
-        }
+    }
 
-    };
+  };
 });
 //
 // firstapp.filter('serverimage', function() {
@@ -389,14 +391,14 @@ firstapp.filter('trustedurl', function($sce) {
 //   };
 // });
 firstapp.filter('serverimage', function() {
-    return function(input) {
-        if (input) {
-            // console.log('serverimage: ', input);
-            // return input;
-            return imgpath + input;
-            // return "http://192.168.0.123/eurobackend/uploads"+input;
-        } else {
-            return "img/logo.png";
-        }
-    };
+  return function(input) {
+    if (input) {
+      // console.log('serverimage: ', input);
+      // return input;
+      return imgpath + input;
+      // return "http://192.168.0.123/eurobackend/uploads"+input;
+    } else {
+      return "img/logo.png";
+    }
+  };
 });
