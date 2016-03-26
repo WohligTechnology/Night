@@ -8,9 +8,9 @@
     <div class="modal-body">
       <div class="row">
         <div class="col-md-12">
-          <form action="">
+          <form name="user">
             <div class="uploaded-img">
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="exampleInputFile">Image Upload</label>
                 <div class="noti-image">
                   <div class="img-box">
@@ -21,11 +21,27 @@
                   <input type="file" id="exampleInputFile">
                   <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
                 </div>
+              </div> -->
+              <div class="form-group" ng-controller="UploadCtrl">
+                  <label for="exampleInputFile">Image Icon</label>
+                  <div class="noti-image">
+                      <div class="img-box">
+                          <h4 ng-if="isloading">Loading...</h4>
+                          <img ng-src="{{home.image|uploadpath}}" ng-if="home.image" style="height:200px;">
+
+                      </div>
+                  </div>
+                  <div ng-if="home.image">
+                      <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
+                  </div>
+
+                  <input type="file" name="image" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-model="home.image" accept=".jpg,.png" class="form-control ab" ui-file-upload>
+
               </div>
               <div class="slider-title mt25">
                 <div class="form-group">
                   <label for="">Title </label>
-                  <input type="text" class="form-control" id="">
+                  <input type="text" class="form-control" ng-model="home.title">
                 </div>
               </div>
               <div class="slider-link">
@@ -44,16 +60,27 @@
                 </div>
                 <div class="form-group">
                   <label for="">External Link </label>
-                  <input type="text" class="form-control" id="">
+                  <input type="text" class="form-control" ng-model="home.externallink">
                 </div>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="">Status</label>
                 <select class="form-control">
                   <option>Enable</option>
                   <option>Disable</option>
 
                 </select>
+              </div> -->
+              <div class="label-opt">
+                  <label for="">Enable</label>
+              </div>
+              {{noti.status}}
+              <div class="onoffswitch">
+                  <input name="status" ng-model="home.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch">
+                  <label class="onoffswitch-label" for="myonoffswitch">
+                      <span class="onoffswitch-inner"></span>
+                      <span class="onoffswitch-switch"></span>
+                  </label>
               </div>
             </div>
           </form>
@@ -63,7 +90,7 @@
     </div>
     <div class="modal-footer">
 
-      <button type="button" class="btn btn-small btn-primary btn-outline">Save</button>
+      <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="homeEditSubmitForm(home)">Save</button>
       <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss()">Cancel</button>
     </div>
   </div>

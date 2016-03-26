@@ -117,6 +117,41 @@ var navigationservice = angular.module('navigationservice', [])
             return navigation;
         },
 
+
+        homeViewAll: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'home/getAll',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                  "title": formData.title,
+                  "externallink": formData.externallink,
+                   "image": formData.image,
+                   "status":formData.status
+                }
+            }).success(callback);
+        },
+        edithomeSubmit: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'home/save',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": formData._id,
+                    "title": formData.title,
+                    "externallink": formData.externallink,
+                     "image": formData.image,
+                     "status":formData.status
+
+                }
+            }).success(callback);
+        },
+
+
+
+
         notificationViewAll: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
