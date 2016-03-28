@@ -951,6 +951,13 @@ label {
 .cutom-accordion {
   .panel-group {
     margin: 0;
+    margin-top: 10px;
+  }
+  .panel-heading {
+    h4 {
+      font-size: 14px;
+      text-transform: capitalize;
+    }
   }
 }
 .btn-upload {
