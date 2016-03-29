@@ -1,0 +1,19 @@
+<div class="form-group">
+  <label for="exampleInputEmail1" style="margin:5px;">Image Upload</label>
+
+  <div class="img-box" ng-if="image && !isMultiple">
+    <img ng-src="{{image.url}}" imageonload="upload(image)" type="{{image.file.type}}"/>
+  </div>
+  <div class="clearfix">
+    <div class="img-box" style="float:left;" ng-if="image && isMultiple" ng-repeat="sImage in image">
+      <img alt="" ng-src="{{sImage.url}}" imageonload="upload(sImage)" type="{{sImage.file.type}}"/>
+    </div>
+  </div>
+
+  <div class="btn-upload">
+    <input id="inputImage" ng-show="!isMultiple" type="file" accept="image/*" image="image" title="Choose Files" class="btn-primary">
+    <input id="inputImage" ng-show="isMultiple" type="file" accept="image/*" image="image" title="Choose Multiple Files" class="btn-primary" onchange="angular.element(this).scope().clearOld()" multiple>
+    <button class="btn btn-info" ng-if="!isMultiple">Upload Image</button>
+    <button class="btn btn-info" ng-if="isMultiple">Upload Multiple Images</button>
+  </div>
+</diV>

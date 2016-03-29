@@ -297,6 +297,64 @@ firstapp.directive('img', function($compile, $parse) {
   };
 });
 
+
+
+firstapp.directive('uploadImage', function($http) {
+  return {
+    templateUrl: 'views/directive/uploadFile.html',
+    scope: {
+      model: '=ngModel'
+    },
+    link: function($scope, element, attrs) {
+      $scope.isMultiple = false;
+      if (attrs.multiple || attrs.multiple === "") {
+        console.log("Its Multiple");
+        $scope.isMultiple = true;
+
+        $("#inputImage").attr("multiple", "ADD");
+      }
+
+      $scope.clearOld = function() {
+        $scope.model = [];
+      };
+
+      $scope.upload = function(image) {
+        var Template = this;
+        image.hide = true;
+        var formData = new FormData();
+        formData.append('file', image.file, image.name);
+        $http.post(adminurl + 'upload', formData, {
+          headers: {
+            'Content-Type': undefined
+          },
+          transformRequest: angular.identity
+        }).success(function(data) {
+          if ($scope.isMultiple) {
+            $scope.model.push(data.data[0]);
+
+          } else {
+            $scope.model = data.data[0];
+          }
+
+        });
+
+      };
+
+    }
+  };
+});
+
+firstapp.directive('imageonload', function() {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+      element.bind('load', function() {
+        scope.$apply(attrs.imageonload);
+      });
+    }
+  };
+});
+
 firstapp.directive('preivew', function($compile, $parse) {
   return {
     restrict: 'C',
