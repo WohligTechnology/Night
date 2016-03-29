@@ -312,6 +312,9 @@ firstapp.directive('uploadImage', function($http) {
 
                 $("#inputImage").attr("multiple", "ADD");
             }
+            if (attrs.noView || attrs.noView === "") {
+                $scope.noShow = true;
+            }
 
             $scope.clearOld = function() {
                 $scope.model = [];
