@@ -138,10 +138,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 })
 
-
-
-
-
 .controller('AllAppsCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("allapps");
@@ -222,31 +218,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    $scope.homeForm={};
-    $scope.homedata=[];
+    $scope.homeForm = {};
+    $scope.homedata = [];
     $scope.allHomeRecord = function() {
         NavigationService.homeViewAll($scope.homeForm, function(data) {
             $scope.homedata = data.data;
 
             console.log('$scope.homedata', data.data);
         });
-      };
-      $scope.allHomeRecord();
+    };
+    $scope.allHomeRecord();
 
     $scope.userForm = {};
-    // $scope.submitForm = function(formData) {
-    //     console.log('form values: ', formData);
-    //     //console.log('form values: ', $scope.userForm);
-    //     if (formData.content) {
-    //         $scope.formComplete = true;
-    //         $scope.userForm = {};
-    //         // NavigationService.userSubmit($scope.userForm, function(data) {
-    //         //
-    //         // });
-    //     } else {
-    //         $scope.formComplete = false;
-    //     }
-    // };
 
     $scope.homeEditSubmitForm = function(formValid) {
         if (formValid.$valid) {
@@ -256,14 +239,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.allHomeRecord();
 
             });
-            //$state.go("notifications");
         }
     };
-
-
-    // $scope.showempty=function(formData){
-    //   return angular.equals({}, formData);
-    // };
 
     $scope.lists = [{
         "image": "img/t1.jpg"
@@ -286,14 +263,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     }];
 
     $scope.open = function(home) {
-      $scope.home = home;
-      if ($scope.home.status == 1) {
-          $scope.home.status = true;
-      } else {
-          $scope.home.status = false;
-      }
-      console.log('in open modal', $scope.home);
-      console.log('notification data: ', $scope.home);
+        $scope.home = home;
+        if ($scope.home.status == 1) {
+            $scope.home.status = true;
+        } else {
+            $scope.home.status = false;
+        }
+        console.log('in open modal', $scope.home);
+        console.log('notification data: ', $scope.home);
 
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
@@ -314,182 +291,140 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 })
 
 .controller('NavigationCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
-        //Used to name the .html file
-        $scope.template = TemplateService.changecontent("navigation");
-        $scope.menutitle = NavigationService.makeactive("Navigation");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("navigation");
+    $scope.menutitle = NavigationService.makeactive("Navigation");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
 
-        $scope.eventForm = {};
+    $scope.eventForm = {};
 
-        $scope.allNavigationRecord = function() {
-            NavigationService.navigationViewAll($scope.eventForm, function(data) {
-                $scope.navigationdata = data.data;
-
-                console.log('$scope.navigationdata', data.data);
-            });
-            // if($scope.userForm.status==1)
-            // {
-            //   $scope.userForm.getstatus= true;
-            // }else{
-            //   $scope.userForm.getstatus= false;
-            // }
-        };
-        $scope.allNavigationRecord();
-
-        $scope.deleteNavigation = function(formValid) {
-            console.log('formvalid', formValid);
-            NavigationService.deleteNavigationData({
-                id: formValid
-            }, function(data) {
-                console.log('delete data:', data);
-                if (data.value === true) {
-
-                    $scope.allNavigationRecord();
-                }
-
-            });
-        };
-
-        // $scope.navigation2 = [{
-        //     name: "Home",
-        //     icon: "ln-home3",
-        //   }, {
-        //     name: "Login & Signup",
-        //     icon: "ln-unlock",
-        //   }, {
-        //     name: "Notifications",
-        //     icon: "ln-bell",
-        //   }, {
-        //     name: "Events",
-        //     icon: "ln-calendar2",
-        //   }, {
-        //     name: "Blogs",
-        //     icon: "ln-edit2",
-        //   }, {
-        //     name: "Articles",
-        //     icon: "ln-papers",
-        //   }, {
-        //     name: "Photo Gallery",
-        //     icon: "ln-picture",
-        //   }, {
-        //     name: "Video Galleries",
-        //     icon: "ln-film-play",
-        //   }, {
-        //     name: "Contact",
-        //     icon: "ln-contacts",
-        //   }, {
-        //     name: "Audio Galleries",
-        //     icon: "ln-headset",
-        //   }
-        //   // ,
-        //   // {
-        //   //   name: "Social Feeds",
-        //   //   classis: "active",
-        //   //   anchor: "social-feeds",
-        //   //   icon: "ln-thumbs-up",
-        //   // }
-        //   // ,{
-        //   //   name: "Forms",
-        //   //   classis: "active",
-        //   //   anchor: "forms",
-        //   //   icon: "ln-register",
-        //   // }
-        // ];
-    })
-    .controller('NavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
-        //Used to name the .html file
-        $scope.template = TemplateService.changecontent("navigationdetail");
-        $scope.menutitle = NavigationService.makeactive("Navigation");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.userForm = {};
-        $scope.page = {
-            header: "Create Navigation"
-        };
-
-        $scope.navigationSubmitForm = function(formValid) {
-            if (formValid.$valid) {
-                console.log('in navi');
-                NavigationService.navigationCreateSubmit($scope.userForm, function(data) {
-                    console.log('userform', $scope.userForm);
-                    $state.go("navigation");
-                });
-                // if($scope.userForm.status==1)
-                // {
-                //   $scope.userForm.getstatus= true;
-                // }else{
-                //   $scope.userForm.getstatus= false;
-                // }
-
-            }
-        };
-
-        // $scope.submitForm = function(formData, formValid) {
-        //   console.log('form values: ', formData);
-        //   //console.log('form values: ', formValid);
-        //   //console.log('form values: ', $scope.userForm);
-        //   if (formValid.$valid) {
-        //     $scope.formComplete = true;
-        //     $state.go("navigation");
-        //     // NavigationService.userSubmit($scope.userForm, function(data) {
-        //     //
-        //     // });
-        //   } else {
-        //
-        //   }
-        // };
-
-
-    })
-    .controller('EditNavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state, $stateParams) {
-        //Used to name the .html file
-        $scope.template = TemplateService.changecontent("navigationdetail");
-        $scope.menutitle = NavigationService.makeactive("Navigation");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.userForm = {};
-        $scope.page = {
-            header: "Edit Navigation"
-        };
-
-
-        NavigationService.getNavigationEditDetail($stateParams.id, function(data) {
-            console.log('getNavigationEditDetail', data.data);
-            $scope.userForm = data.data;
-            console.log('status', $scope.userForm.status);
-            if ($scope.userForm.status == 1) {
-                $scope.userForm.status = true;
-            } else {
-                $scope.userForm.status = false;
-            }
+    $scope.allNavigationRecord = function() {
+        NavigationService.navigationViewAll($scope.eventForm, function(data) {
+            $scope.navigationdata = data.data;
         });
+    };
+    $scope.allNavigationRecord();
 
+    $scope.deleteNavigation = function(formValid) {
+        console.log('formvalid', formValid);
+        NavigationService.deleteNavigationData({
+            id: formValid
+        }, function(data) {
+            console.log('delete data:', data);
+            if (data.value === true) {
 
-
-
-        $scope.navigationSubmitForm = function(formValid) {
-            //console.log('form values: ', formData);
-            //console.log('form values: ', formValid);
-            //console.log('form values: ', $scope.userForm);
-            if (formValid.$valid) {
-                NavigationService.editNavigationSubmit($scope.userForm, function(data) {
-                    console.log('my edit navigation', $scope.userForm);
-                    console.log('edit status', $scope.userForm.status);
-                    //console.log('response:', data);
-                    $state.go("navigation");
-                });
-
-                // NavigationService.userSubmit($scope.userForm, function(data) {
-                //
-                // });
-            } else {
-
+                $scope.allNavigationRecord();
             }
-        };
 
+        });
+    };
 
-    })
+    // $scope.navigation2 = [{
+    //     name: "Home",
+    //     icon: "ln-home3",
+    //   }, {
+    //     name: "Login & Signup",
+    //     icon: "ln-unlock",
+    //   }, {
+    //     name: "Notifications",
+    //     icon: "ln-bell",
+    //   }, {
+    //     name: "Events",
+    //     icon: "ln-calendar2",
+    //   }, {
+    //     name: "Blogs",
+    //     icon: "ln-edit2",
+    //   }, {
+    //     name: "Articles",
+    //     icon: "ln-papers",
+    //   }, {
+    //     name: "Photo Gallery",
+    //     icon: "ln-picture",
+    //   }, {
+    //     name: "Video Galleries",
+    //     icon: "ln-film-play",
+    //   }, {
+    //     name: "Contact",
+    //     icon: "ln-contacts",
+    //   }, {
+    //     name: "Audio Galleries",
+    //     icon: "ln-headset",
+    //   }
+    //   // ,
+    //   // {
+    //   //   name: "Social Feeds",
+    //   //   classis: "active",
+    //   //   anchor: "social-feeds",
+    //   //   icon: "ln-thumbs-up",
+    //   // }
+    //   // ,{
+    //   //   name: "Forms",
+    //   //   classis: "active",
+    //   //   anchor: "forms",
+    //   //   icon: "ln-register",
+    //   // }
+    // ];
+})
+
+.controller('NavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("navigationdetail");
+    $scope.menutitle = NavigationService.makeactive("Navigation");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+    $scope.page = {
+        header: "Create Navigation"
+    };
+
+    $scope.navigationSubmitForm = function(formValid) {
+        if (formValid.$valid) {
+            console.log('in navi');
+            NavigationService.navigationCreateSubmit($scope.userForm, function(data) {
+                console.log('userform', $scope.userForm);
+                $state.go("navigation");
+            });
+        }
+    };
+
+})
+
+.controller('EditNavigationDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state, $stateParams) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("navigationdetail");
+    $scope.menutitle = NavigationService.makeactive("Navigation");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+    $scope.page = {
+        header: "Edit Navigation"
+    };
+
+    NavigationService.getNavigationEditDetail($stateParams.id, function(data) {
+        console.log('getNavigationEditDetail', data.data);
+        $scope.userForm = data.data;
+        console.log('status', $scope.userForm.status);
+        if ($scope.userForm.status == 1) {
+            $scope.userForm.status = true;
+        } else {
+            $scope.userForm.status = false;
+        }
+    });
+
+    $scope.navigationSubmitForm = function(formValid) {;
+        if (formValid.$valid) {
+            NavigationService.editNavigationSubmit($scope.userForm, function(data) {
+                console.log('my edit navigation', $scope.userForm);
+                console.log('edit status', $scope.userForm.status);
+                //console.log('response:', data);
+                $state.go("navigation");
+            });
+
+        }
+    };
+
+})
 
 .controller('LoginSignupCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $stateParams) {
     //Used to name the .html file
@@ -505,12 +440,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Notifications");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    console.log($scope.editId);
-
-    // if($scope.editId == undefined){
-    //   $scope.editId = ;
-    // }
-    console.log($scope.editId);
     $scope.userForm = {};
     $scope.notificationForm = {};
 
@@ -518,12 +447,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.allNotificationRecord = function() {
         NavigationService.notificationViewAll($scope.notificationForm, function(data) {
             $scope.notificationdata = data.data;
-
-            console.log('$scope.notificationdata', data.data);
             $scope.notificationdata.sendingTime = new Date($scope.notificationdata.sendingTime);
-            console.log('$scope.eventsdata', $scope.eventsdata);
         });
-
     };
     $scope.allNotificationRecord();
 
@@ -534,26 +459,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }, function(data) {
             console.log('delete data:', data);
             if (data.value === true) {
-
                 $scope.allNotificationRecord();
             }
-
         });
     };
-    //
-    // $scope.editnoti = function(formValid) {
-    //     NavigationService.getNotificationEditDetail({
-    //         id: formValid
-    //     }, function(data) {
-    //         $scope.userForm = data.data;
-    //         console.log('userForm', $scope.userForm);
-    //         if ($scope.userForm.status == 1) {
-    //             $scope.userForm.status = true;
-    //         } else {
-    //             $scope.userForm.status = false;
-    //         }
-    //     });
-    // };
 
     $scope.notificationSubmitForm = function(formValid) {
         if (formValid.$valid) {
@@ -578,7 +487,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     };
 
-
     $scope.animationsEnabled = true;
 
     $scope.open = function(noti) {
@@ -595,8 +503,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             templateUrl: 'views/modal/notificationdetail.html',
             scope: $scope
         });
-        //$scope.editnoti();
-
     };
 
     $scope.toggleAnimation = function() {
@@ -639,16 +545,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.getDayClass = function(date, mode) {
         if (mode === 'day') {
             var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
             for (var i = 0; i < $scope.events.length; i++) {
                 var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-
                 if (dayToCheck === currentDay) {
                     return $scope.events[i].status;
                 }
             }
         }
-
         return '';
     };
 
@@ -672,7 +575,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     $scope.allEventsRecord();
 
-
     $scope.deleteEvent = function(formValid) {
         console.log('formvalid', formValid);
         NavigationService.deleteEventsData({
@@ -680,10 +582,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }, function(data) {
             console.log('delete data:', data);
             if (data.value === true) {
-
                 $scope.allEventsRecord();
             }
-
         });
     };
 
@@ -700,17 +600,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         header: "Create Event"
     };
     $scope.eventSubmitForm = function(formValid) {
-        //console.log('form values: ', formData);
-        //console.log('form values: ', formValid);
-        console.log('form values: ', $scope.userForm);
         if (formValid.$valid) {
             NavigationService.eventCreateSubmit($scope.userForm, function(data) {
-                console.log('userform', $scope.userForm);
-
-                console.log('userform of status', $scope.userForm);
+                $state.go("events");
             });
-            $state.go("events");
-
         }
     };
 
@@ -758,16 +651,414 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     };
 
+    $scope.cancel = function(formData) {
+        $scope.formData = {};
+        console.log("cancel values:", $scope.formData);
+    };
 
+    $scope.today = function() {
+        $scope.dt = new Date();
+    };
+    $scope.today();
 
+    $scope.toggleMin = function() {
+        $scope.minDate = $scope.minDate ? null : new Date();
+    };
 
+    $scope.toggleMin();
+    $scope.maxDate = new Date(2020, 5, 22);
 
+    $scope.open1 = function() {
+        $scope.popup1.opened = true;
+    };
+
+    $scope.setDate = function(year, month, day) {
+        $scope.dt = new Date(year, month, day);
+    };
+
+    $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1
+    };
+
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
+
+    $scope.popup1 = {
+        opened: false
+    };
+
+    $scope.getDayClass = function(date, mode) {
+        if (mode === 'day') {
+            var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+            for (var i = 0; i < $scope.events.length; i++) {
+                var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+                if (dayToCheck === currentDay) {
+                    return $scope.events[i].status;
+                }
+            }
+        }
+        return '';
+    };
 
     $scope.cancel = function(formData) {
         $scope.formData = {};
         console.log("cancel values:", $scope.formData);
     };
 
+    $scope.today = function() {
+        $scope.dt = new Date();
+    };
+    $scope.today();
+
+    $scope.toggleMin = function() {
+        $scope.minDate = $scope.minDate ? null : new Date();
+    };
+
+    $scope.toggleMin();
+    $scope.maxDate = new Date(2020, 5, 22);
+
+    $scope.open10 = function() {
+        $scope.popup10.opened = true;
+    };
+
+    $scope.setDate = function(year, month, day) {
+        $scope.dt = new Date(year, month, day);
+    };
+
+    $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1
+    };
+
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
+
+    $scope.popup10 = {
+        opened: false
+    };
+
+    $scope.getDayClass = function(date, mode) {
+        if (mode === 'day') {
+            var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+            for (var i = 0; i < $scope.events.length; i++) {
+                var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+                if (dayToCheck === currentDay) {
+                    return $scope.events[i].status;
+                }
+            }
+        }
+        return '';
+    };
+
+    $scope.lists = [{
+        "image": "img/t1.jpg"
+    }, {
+        "image": "img/t2.jpg"
+    }, {
+        "image": "img/t3.jpg"
+    }, {
+        "image": "img/t1.jpg"
+    }, {
+        "image": "img/t2.jpg"
+    }, {
+        "image": "img/t3.jpg"
+    }, {
+        "image": "img/t1.jpg"
+    }, {
+        "image": "img/t2.jpg"
+    }, {
+        "image": "img/t3.jpg"
+    }];
+
+    $scope.OpenVideo = function(size) {
+
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/Video-upload.html',
+            size: size,
+            resolve: {
+                items: function() {
+                    return $scope.items;
+                }
+            }
+        });
+
+        modalInstance.result.then(function(selectedItem) {
+            $scope.selected = selectedItem;
+        }, function() {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+    $scope.ImageEdit = function(size) {
+        var modalInstances = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/image-info.html',
+            size: size,
+            resolve: {
+                items: function() {
+                    return $scope.items;
+                }
+            }
+        });
+        modalInstances.result.then(function(selectedItem) {
+            $scope.selected = selectedItem;
+        }, function() {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+
+    $scope.toggleAnimation = function() {
+        $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
+
+})
+
+.controller('EditEventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, toaster, $stateParams, $filter) {
+
+    //Used to name the .html file
+
+    $scope.template = TemplateService.changecontent("eventdetail");
+    $scope.menutitle = NavigationService.makeactive("Events");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+    $scope.page = {
+        header: "Edit Event"
+    };
+
+    NavigationService.getEventsEditDetail($stateParams.id, function(data) {
+        $scope.userForm = data.data;
+        if ($scope.userForm.startTime || $scope.userForm.endTime) {
+            $scope.userForm.sdate = new Date($scope.userForm.startTime);
+            $scope.userForm.stime = new Date($scope.userForm.startTime);
+            $scope.userForm.edate = new Date($scope.userForm.endTime);
+            $scope.userForm.etime = new Date($scope.userForm.endTime);
+        }
+    });
+
+    $scope.$watch('userForm.sdate', function() {
+        $scope.tryCombineStartDateTime();
+    });
+
+    $scope.$watch('userForm.stime', function() {
+        $scope.tryCombineStartDateTime();
+    });
+    $scope.$watch('userForm.edate', function() {
+        $scope.tryCombineEndDateTime();
+    });
+
+    $scope.$watch('userForm.etime', function() {
+        $scope.tryCombineEndDateTime();
+    });
+
+    $scope.tryCombineStartDateTime = function() {
+        if ($scope.userForm.sdate && $scope.userForm.stime) {
+            var newdate = $filter('date')($scope.userForm.sdate, 'yyyy-MM-dd');
+            var newtime = $filter('date')($scope.userForm.stime, 'HH:mm');
+            console.log(newdate, newtime);
+            var dateParts = newdate.toString().split('-');
+            var timeParts = newtime.toString().split(':');
+            if (dateParts && timeParts) {
+                dateParts[1] -= 1;
+                $scope.userForm.startTime = new Date(Date.UTC.apply(undefined, dateParts.concat(timeParts))).toISOString();
+                console.log('startTime', $scope.userForm.startTime);
+            }
+        }
+    };
+
+    $scope.tryCombineEndDateTime = function() {
+        if ($scope.userForm.edate && $scope.userForm.etime) {
+            var newdate = $filter('date')($scope.userForm.edate, 'yyyy-MM-dd');
+            var newtime = $filter('date')($scope.userForm.etime, 'HH:mm');
+            console.log(newdate, newtime);
+            var dateParts = newdate.toString().split('-');
+            var timeParts = newtime.toString().split(':');
+            if (dateParts && timeParts) {
+                dateParts[1] -= 1;
+                $scope.userForm.endTime = new Date(Date.UTC.apply(undefined, dateParts.concat(timeParts))).toISOString();
+                console.log('startTime', $scope.userForm.endTime);
+            }
+        }
+    };
+
+    $scope.pop = function() {
+        toaster.pop('success', "Successfully Saved", '<p>The data has been Successfully saved</p>', 5000, 'trustedHtml');
+    };
+    $scope.eventSubmitForm = function(formValid) {
+        if (formValid.$valid) {
+            NavigationService.editEventSubmit($scope.userForm, function(data) {
+                $state.go("events");
+            });
+        } else {
+
+        }
+    };
+
+    $scope.today = function() {
+        $scope.dt = new Date();
+    };
+    $scope.today();
+
+    $scope.toggleMin = function() {
+        $scope.minDate = $scope.minDate ? null : new Date();
+    };
+
+    $scope.toggleMin();
+    $scope.maxDate = new Date(2020, 5, 22);
+
+    $scope.open1 = function() {
+        $scope.popup1.opened = true;
+    };
+
+    $scope.setDate = function(year, month, day) {
+        $scope.dt = new Date(year, month, day);
+    };
+
+    $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1
+    };
+
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
+
+    $scope.popup1 = {
+        opened: false
+    };
+
+    $scope.getDayClass = function(date, mode) {
+        if (mode === 'day') {
+            var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+            for (var i = 0; i < $scope.events.length; i++) {
+                var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+                if (dayToCheck === currentDay) {
+                    return $scope.events[i].status;
+                }
+            }
+        }
+        return '';
+    };
+
+    $scope.lists = [{
+        "image": "img/t1.jpg"
+    }, {
+        "image": "img/t2.jpg"
+    }, {
+        "image": "img/t3.jpg"
+    }, {
+        "image": "img/t1.jpg"
+    }, {
+        "image": "img/t2.jpg"
+    }, {
+        "image": "img/t3.jpg"
+    }, {
+        "image": "img/t1.jpg"
+    }, {
+        "image": "img/t2.jpg"
+    }, {
+        "image": "img/t3.jpg"
+    }];
+
+
+    $scope.OpenVideo = function(size) {
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/Video-upload.html',
+            size: size,
+            resolve: {
+                items: function() {
+                    return $scope.items;
+                }
+            }
+        });
+        modalInstance.result.then(function(selectedItem) {
+            $scope.selected = selectedItem;
+        }, function() {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+    $scope.ImageEdit = function(size) {
+
+        var modalInstances = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/image-info.html',
+            size: size,
+            resolve: {
+                items: function() {
+                    return $scope.items;
+                }
+            }
+        });
+        modalInstances.result.then(function(selectedItem) {
+            $scope.selected = selectedItem;
+        }, function() {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+    $scope.toggleAnimation = function() {
+        $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
+})
+
+.controller('BlogsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("blogs");
+    $scope.menutitle = NavigationService.makeactive("Blogs");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+
+
+    $scope.blogForm = {};
+    $scope.allBlogsRecord = function() {
+        NavigationService.blogViewAll($scope.blogForm, function(data) {
+            $scope.blogdata = data.data;
+        });
+    };
+    $scope.allBlogsRecord();
+
+    $scope.deleteBlog = function(formValid) {
+        console.log('formvalid', formValid);
+        NavigationService.deleteBlogData({
+            id: formValid
+        }, function(data) {
+            console.log('delete data:', data);
+            if (data.value === true) {
+                $scope.allBlogsRecord();
+            }
+        });
+    };
+})
+
+.controller('BlogDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal, $state) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("blogdetail");
+    $scope.menutitle = NavigationService.makeactive("Blogs");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+    $scope.page = {
+        header: "Create Blog"
+    };
+    $scope.blogSubmitForm = function(formValid) {
+        // console.log('form values: ', formData);
+        // console.log('form values: ', formValid);
+        console.log('form values: ', $scope.userForm);
+        if (formValid.$valid) {
+            console.log('in navi');
+            NavigationService.blogCreateSubmit($scope.userForm, function(data) {
+                console.log('userform', $scope.userForm);
+
+            });
+            $state.go("blogs");
+
+        }
+    };
     $scope.today = function() {
         $scope.dt = new Date();
     };
@@ -818,11 +1109,45 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
 
+})
 
+.controller('EditBlogDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state, $stateParams) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("blogdetail");
+    $scope.menutitle = NavigationService.makeactive("Blogs");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+    $scope.page = {
+        header: "Edit Blog"
+    };
 
-    $scope.cancel = function(formData) {
-        $scope.formData = {};
-        console.log("cancel values:", $scope.formData);
+    NavigationService.getBlogEditDetail($stateParams.id, function(data) {
+        //console.log('getArticleEditDetail', data.data);
+        $scope.userForm = data.data;
+        console.log('userForm', $scope.userForm);
+        console.log($scope.userForm.status);
+    });
+
+    $scope.blogSubmitForm = function(formValid) {
+        //console.log('form values: ', formData);
+        // console.log('form values: ', formValid);
+        console.log('form values: ', $scope.userForm);
+        if (formValid.$valid) {
+            NavigationService.editblogSubmit($scope.userForm, function(data) {
+                console.log('my edit blog', $scope.userForm);
+                console.log('edit status', $scope.userForm.status);
+                // if($scope.userForm.status==0)
+                // {
+                //   $scope.userForm.status='Disable';
+                // }else{
+                //   $scope.userForm.status='Enable';
+                // }
+                $state.go("blogs");
+            });
+        } else {
+
+        }
     };
 
     $scope.today = function() {
@@ -837,8 +1162,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.toggleMin();
     $scope.maxDate = new Date(2020, 5, 22);
 
-    $scope.open10 = function() {
-        $scope.popup10.opened = true;
+    $scope.open1 = function() {
+        $scope.popup1.opened = true;
     };
 
     $scope.setDate = function(year, month, day) {
@@ -854,522 +1179,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.format = $scope.formats[0];
     $scope.altInputFormats = ['M!/d!/yyyy'];
 
-    $scope.popup10 = {
+    $scope.popup1 = {
         opened: false
     };
 
     $scope.getDayClass = function(date, mode) {
         if (mode === 'day') {
             var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
             for (var i = 0; i < $scope.events.length; i++) {
                 var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-
                 if (dayToCheck === currentDay) {
                     return $scope.events[i].status;
                 }
             }
         }
-
         return '';
     };
-
-
-    $scope.lists = [{
-        "image": "img/t1.jpg"
-    }, {
-        "image": "img/t2.jpg"
-    }, {
-        "image": "img/t3.jpg"
-    }, {
-        "image": "img/t1.jpg"
-    }, {
-        "image": "img/t2.jpg"
-    }, {
-        "image": "img/t3.jpg"
-    }, {
-        "image": "img/t1.jpg"
-    }, {
-        "image": "img/t2.jpg"
-    }, {
-        "image": "img/t3.jpg"
-    }];
-
-
-    $scope.OpenVideo = function(size) {
-
-        var modalInstance = $uibModal.open({
-            animation: $scope.animationsEnabled,
-            templateUrl: 'views/modal/Video-upload.html',
-            size: size,
-            resolve: {
-                items: function() {
-                    return $scope.items;
-                }
-            }
-        });
-
-        modalInstance.result.then(function(selectedItem) {
-            $scope.selected = selectedItem;
-        }, function() {
-            $log.info('Modal dismissed at: ' + new Date());
-        });
-    };
-    $scope.ImageEdit = function(size) {
-
-        var modalInstances = $uibModal.open({
-            animation: $scope.animationsEnabled,
-            templateUrl: 'views/modal/image-info.html',
-            size: size,
-            resolve: {
-                items: function() {
-                    return $scope.items;
-                }
-            }
-        });
-
-        modalInstances.result.then(function(selectedItem) {
-            $scope.selected = selectedItem;
-        }, function() {
-            $log.info('Modal dismissed at: ' + new Date());
-        });
-    };
-    $scope.toggleAnimation = function() {
-        $scope.animationsEnabled = !$scope.animationsEnabled;
-    };
 })
-
-.controller('EditEventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, toaster, $stateParams, $filter) {
-        //Used to name the .html file
-        $scope.template = TemplateService.changecontent("eventdetail");
-        $scope.menutitle = NavigationService.makeactive("Events");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.userForm = {};
-        $scope.page = {
-            header: "Edit Event"
-        };
-
-        NavigationService.getEventsEditDetail($stateParams.id, function(data) {
-            //console.log('getArticleEditDetail', data.data);
-            $scope.userForm = data.data;
-            console.log('userForm', $scope.userForm);
-            console.log($scope.userForm.status);
-            if ($scope.userForm.startTime || $scope.userForm.endTime) {
-                // var newdate = $filter('date')(new Date($scope.userForm.startTime), 'yyyy-MM-dd');
-                // var newtime = $filter('date')(new Date($scope.userForm.startTime), 'HH:mm');
-                // console.log(newdate, newtime);
-                $scope.userForm.sdate = new Date($scope.userForm.startTime);
-                $scope.userForm.stime = new Date($scope.userForm.startTime);
-                $scope.userForm.edate = new Date($scope.userForm.endTime);
-                $scope.userForm.etime = new Date($scope.userForm.endTime);
-                // $scope.userForm.sdate = new Date(newdate);
-                // newtime += "1970-01-01T" + newtime + ":00.000Z";
-                // $scope.userForm.stime = new Date(newtime);
-                // console.log($scope.userForm.stime);
-            }
-        });
-
-
-        $scope.$watch('userForm.sdate', function() {
-            $scope.tryCombineStartDateTime();
-        });
-
-        $scope.$watch('userForm.stime', function() {
-            $scope.tryCombineStartDateTime();
-        });
-        $scope.$watch('userForm.edate', function() {
-            $scope.tryCombineEndDateTime();
-        });
-
-        $scope.$watch('userForm.etime', function() {
-            $scope.tryCombineEndDateTime();
-        });
-
-        $scope.tryCombineStartDateTime = function() {
-            if ($scope.userForm.sdate && $scope.userForm.stime) {
-                var newdate = $filter('date')($scope.userForm.sdate, 'yyyy-MM-dd');
-                var newtime = $filter('date')($scope.userForm.stime, 'HH:mm');
-                console.log(newdate, newtime);
-                var dateParts = newdate.toString().split('-');
-                var timeParts = newtime.toString().split(':');
-                if (dateParts && timeParts) {
-                    dateParts[1] -= 1;
-                    $scope.userForm.startTime = new Date(Date.UTC.apply(undefined, dateParts.concat(timeParts))).toISOString();
-                    console.log('startTime', $scope.userForm.startTime);
-                }
-            }
-        };
-        $scope.tryCombineEndDateTime = function() {
-            if ($scope.userForm.edate && $scope.userForm.etime) {
-                var newdate = $filter('date')($scope.userForm.edate, 'yyyy-MM-dd');
-                var newtime = $filter('date')($scope.userForm.etime, 'HH:mm');
-                console.log(newdate, newtime);
-                var dateParts = newdate.toString().split('-');
-                var timeParts = newtime.toString().split(':');
-                if (dateParts && timeParts) {
-                    dateParts[1] -= 1;
-                    $scope.userForm.endTime = new Date(Date.UTC.apply(undefined, dateParts.concat(timeParts))).toISOString();
-                    console.log('startTime', $scope.userForm.endTime);
-                }
-            }
-        };
-
-
-
-
-
-
-
-        $scope.pop = function() {
-            toaster.pop('success', "Successfully Saved", '<p>The data has been Successfully saved</p>', 5000, 'trustedHtml');
-        };
-        $scope.eventSubmitForm = function(formValid) {
-            //console.log('form values: ', formData);
-            //console.log('form values: ', formValid);
-            console.log('form values: ', $scope.userForm);
-            if (formValid.$valid) {
-                NavigationService.editEventSubmit($scope.userForm, function(data) {
-                    console.log('my edit article', $scope.userForm);
-                    //console.log('edit status', $scope.userForm.status);
-
-                    $state.go("events");
-                });
-            } else {
-
-            }
-        };
-
-        $scope.today = function() {
-            $scope.dt = new Date();
-        };
-        $scope.today();
-
-        $scope.toggleMin = function() {
-            $scope.minDate = $scope.minDate ? null : new Date();
-        };
-
-        $scope.toggleMin();
-        $scope.maxDate = new Date(2020, 5, 22);
-
-        $scope.open1 = function() {
-            $scope.popup1.opened = true;
-        };
-
-        $scope.setDate = function(year, month, day) {
-            $scope.dt = new Date(year, month, day);
-        };
-
-        $scope.dateOptions = {
-            formatYear: 'yy',
-            startingDay: 1
-        };
-
-        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-        $scope.format = $scope.formats[0];
-        $scope.altInputFormats = ['M!/d!/yyyy'];
-
-        $scope.popup1 = {
-            opened: false
-        };
-
-        $scope.getDayClass = function(date, mode) {
-            if (mode === 'day') {
-                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
-                for (var i = 0; i < $scope.events.length; i++) {
-                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-
-                    if (dayToCheck === currentDay) {
-                        return $scope.events[i].status;
-                    }
-                }
-            }
-
-            return '';
-        };
-
-        $scope.lists = [{
-            "image": "img/t1.jpg"
-        }, {
-            "image": "img/t2.jpg"
-        }, {
-            "image": "img/t3.jpg"
-        }, {
-            "image": "img/t1.jpg"
-        }, {
-            "image": "img/t2.jpg"
-        }, {
-            "image": "img/t3.jpg"
-        }, {
-            "image": "img/t1.jpg"
-        }, {
-            "image": "img/t2.jpg"
-        }, {
-            "image": "img/t3.jpg"
-        }];
-
-
-        $scope.OpenVideo = function(size) {
-
-            var modalInstance = $uibModal.open({
-                animation: $scope.animationsEnabled,
-                templateUrl: 'views/modal/Video-upload.html',
-                size: size,
-                resolve: {
-                    items: function() {
-                        return $scope.items;
-                    }
-                }
-            });
-
-            modalInstance.result.then(function(selectedItem) {
-                $scope.selected = selectedItem;
-            }, function() {
-                $log.info('Modal dismissed at: ' + new Date());
-            });
-        };
-        $scope.ImageEdit = function(size) {
-
-            var modalInstances = $uibModal.open({
-                animation: $scope.animationsEnabled,
-                templateUrl: 'views/modal/image-info.html',
-                size: size,
-                resolve: {
-                    items: function() {
-                        return $scope.items;
-                    }
-                }
-            });
-
-            modalInstances.result.then(function(selectedItem) {
-                $scope.selected = selectedItem;
-            }, function() {
-                $log.info('Modal dismissed at: ' + new Date());
-            });
-        };
-        $scope.toggleAnimation = function() {
-            $scope.animationsEnabled = !$scope.animationsEnabled;
-        };
-
-
-
-
-
-
-
-    })
-    .controller('BlogsCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
-        //Used to name the .html file
-        $scope.template = TemplateService.changecontent("blogs");
-        $scope.menutitle = NavigationService.makeactive("Blogs");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.userForm = {};
-
-
-        $scope.blogForm = {};
-        $scope.allBlogsRecord = function() {
-            NavigationService.blogViewAll($scope.blogForm, function(data) {
-                $scope.blogdata = data.data;
-                //$scope.articledata.modificationTime = new Date($scope.articledata.modificationTime);
-                //console.log('$scope.articledata.modificationTime',$scope.articledata.modificationTime);
-                console.log('$scope.blogdata', data.data);
-            });
-        };
-        $scope.allBlogsRecord();
-
-        $scope.deleteBlog = function(formValid) {
-            console.log('formvalid', formValid);
-            NavigationService.deleteBlogData({
-                id: formValid
-            }, function(data) {
-                console.log('delete data:', data);
-                if (data.value === true) {
-
-                    $scope.allBlogsRecord();
-                }
-
-            });
-        };
-
-
-
-    })
-
-.controller('BlogDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal, $state) {
-        //Used to name the .html file
-        $scope.template = TemplateService.changecontent("blogdetail");
-        $scope.menutitle = NavigationService.makeactive("Blogs");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.userForm = {};
-        $scope.page = {
-            header: "Create Blog"
-        };
-        $scope.blogSubmitForm = function(formValid) {
-            // console.log('form values: ', formData);
-            // console.log('form values: ', formValid);
-            console.log('form values: ', $scope.userForm);
-            if (formValid.$valid) {
-                console.log('in navi');
-                NavigationService.blogCreateSubmit($scope.userForm, function(data) {
-                    console.log('userform', $scope.userForm);
-
-                });
-                $state.go("blogs");
-
-            }
-        };
-        $scope.today = function() {
-            $scope.dt = new Date();
-        };
-        $scope.today();
-
-        $scope.toggleMin = function() {
-            $scope.minDate = $scope.minDate ? null : new Date();
-        };
-
-        $scope.toggleMin();
-        $scope.maxDate = new Date(2020, 5, 22);
-
-        $scope.open1 = function() {
-            $scope.popup1.opened = true;
-        };
-
-        $scope.setDate = function(year, month, day) {
-            $scope.dt = new Date(year, month, day);
-        };
-
-        $scope.dateOptions = {
-            formatYear: 'yy',
-            startingDay: 1
-        };
-
-        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-        $scope.format = $scope.formats[0];
-        $scope.altInputFormats = ['M!/d!/yyyy'];
-
-        $scope.popup1 = {
-            opened: false
-        };
-
-        $scope.getDayClass = function(date, mode) {
-            if (mode === 'day') {
-                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
-                for (var i = 0; i < $scope.events.length; i++) {
-                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-
-                    if (dayToCheck === currentDay) {
-                        return $scope.events[i].status;
-                    }
-                }
-            }
-
-            return '';
-        };
-
-
-    })
-    .controller('EditBlogDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state, $stateParams) {
-        //Used to name the .html file
-        $scope.template = TemplateService.changecontent("blogdetail");
-        $scope.menutitle = NavigationService.makeactive("Blogs");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.userForm = {};
-        $scope.page = {
-            header: "Edit Blog"
-        };
-
-        NavigationService.getBlogEditDetail($stateParams.id, function(data) {
-            //console.log('getArticleEditDetail', data.data);
-            $scope.userForm = data.data;
-            console.log('userForm', $scope.userForm);
-            console.log($scope.userForm.status);
-        });
-
-        $scope.blogSubmitForm = function(formValid) {
-            //console.log('form values: ', formData);
-            // console.log('form values: ', formValid);
-            console.log('form values: ', $scope.userForm);
-            if (formValid.$valid) {
-                NavigationService.editblogSubmit($scope.userForm, function(data) {
-                    console.log('my edit blog', $scope.userForm);
-                    console.log('edit status', $scope.userForm.status);
-                    // if($scope.userForm.status==0)
-                    // {
-                    //   $scope.userForm.status='Disable';
-                    // }else{
-                    //   $scope.userForm.status='Enable';
-                    // }
-                    $state.go("blogs");
-                });
-
-                // NavigationService.userSubmit($scope.userForm, function(data) {
-                //
-                // });
-            } else {
-
-            }
-        };
-
-
-
-
-        $scope.today = function() {
-            $scope.dt = new Date();
-        };
-        $scope.today();
-
-        $scope.toggleMin = function() {
-            $scope.minDate = $scope.minDate ? null : new Date();
-        };
-
-        $scope.toggleMin();
-        $scope.maxDate = new Date(2020, 5, 22);
-
-        $scope.open1 = function() {
-            $scope.popup1.opened = true;
-        };
-
-        $scope.setDate = function(year, month, day) {
-            $scope.dt = new Date(year, month, day);
-        };
-
-        $scope.dateOptions = {
-            formatYear: 'yy',
-            startingDay: 1
-        };
-
-        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-        $scope.format = $scope.formats[0];
-        $scope.altInputFormats = ['M!/d!/yyyy'];
-
-        $scope.popup1 = {
-            opened: false
-        };
-
-        $scope.getDayClass = function(date, mode) {
-            if (mode === 'day') {
-                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
-                for (var i = 0; i < $scope.events.length; i++) {
-                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-
-                    if (dayToCheck === currentDay) {
-                        return $scope.events[i].status;
-                    }
-                }
-            }
-
-            return '';
-        };
-
-
-
-    })
 
 .controller('ArticlesCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file
@@ -1624,16 +1450,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    $scope.photogalForm={};
-    $scope.photogaldata=[];
+    $scope.photogalForm = {};
+    $scope.photogaldata = [];
     $scope.allPhotogalRecord = function() {
         NavigationService.homeViewAll($scope.photogalForm, function(data) {
             $scope.photogaldata = data.data;
 
             console.log('$scope.photogaldata', data.data);
         });
-      };
-      $scope.allPhotogalRecord();
+    };
+    $scope.allPhotogalRecord();
 
     $scope.userForm = {};
     // $scope.submitForm = function(formData) {
@@ -1683,14 +1509,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     }];
 
     $scope.open = function(photogal) {
-      $scope.photogal = photogal;
-      if ($scope.photogal.status == 1) {
-          $scope.photogal.status = true;
-      } else {
-          $scope.photogal.status = false;
-      }
-      console.log('in open modal', $scope.photogal);
-      console.log('photogal data: ', $scope.photogal);
+        $scope.photogal = photogal;
+        if ($scope.photogal.status == 1) {
+            $scope.photogal.status = true;
+        } else {
+            $scope.photogal.status = false;
+        }
+        console.log('in open modal', $scope.photogal);
+        console.log('photogal data: ', $scope.photogal);
 
 
         var modalInstance = $uibModal.open({
@@ -2184,82 +2010,82 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
 
-// $scope.initMap=function() {
-//   var map = new google.maps.Map(document.getElementById('map'), {
-//     center: {lat: -33.8688, lng: 151.2195},
-//     zoom: 13
-//   });
-//   var input = /** @type {!HTMLInputElement} */(
-//       document.getElementById('pac-input'));
-//
-//   var types = document.getElementById('type-selector');
-//   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-//   map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
-//
-//   var autocomplete = new google.maps.places.Autocomplete(input);
-//   autocomplete.bindTo('bounds', map);
-//
-//   var infowindow = new google.maps.InfoWindow();
-//   var marker = new google.maps.Marker({
-//     map: map,
-//     anchorPoint: new google.maps.Point(0, -29)
-//   });
-//
-//   autocomplete.addListener('place_changed', function() {
-//     infowindow.close();
-//     marker.setVisible(false);
-//     var place = autocomplete.getPlace();
-//     if (!place.geometry) {
-//       window.alert("Autocomplete's returned place contains no geometry");
-//       return;
-//     }
-//
-//     // If the place has a geometry, then present it on a map.
-//     if (place.geometry.viewport) {
-//       map.fitBounds(place.geometry.viewport);
-//     } else {
-//       map.setCenter(place.geometry.location);
-//       map.setZoom(17);  // Why 17? Because it looks good.
-//     }
-//     marker.setIcon(/** @type {google.maps.Icon} */({
-//       url: place.icon,
-//       size: new google.maps.Size(71, 71),
-//       origin: new google.maps.Point(0, 0),
-//       anchor: new google.maps.Point(17, 34),
-//       scaledSize: new google.maps.Size(35, 35)
-//     }));
-//     marker.setPosition(place.geometry.location);
-//     marker.setVisible(true);
-//
-//     var address = '';
-//     if (place.address_components) {
-//       address = [
-//         (place.address_components[0] && place.address_components[0].short_name || ''),
-//         (place.address_components[1] && place.address_components[1].short_name || ''),
-//         (place.address_components[2] && place.address_components[2].short_name || '')
-//       ].join(' ');
-//     }
-//
-//     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-//     infowindow.open(map, marker);
-//   });
-//
-//   // Sets a listener on a radio button to change the filter type on Places
-//   // Autocomplete.
-//   function setupClickListener(id, types) {
-//     var radioButton = document.getElementById(id);
-//     radioButton.addEventListener('click', function() {
-//       autocomplete.setTypes(types);
-//     });
-//   }
-//
-//   setupClickListener('changetype-all', []);
-//   setupClickListener('changetype-address', ['address']);
-//   setupClickListener('changetype-establishment', ['establishment']);
-//   setupClickListener('changetype-geocode', ['geocode']);
-// };
+    // $scope.initMap=function() {
+    //   var map = new google.maps.Map(document.getElementById('map'), {
+    //     center: {lat: -33.8688, lng: 151.2195},
+    //     zoom: 13
+    //   });
+    //   var input = /** @type {!HTMLInputElement} */(
+    //       document.getElementById('pac-input'));
+    //
+    //   var types = document.getElementById('type-selector');
+    //   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    //   map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+    //
+    //   var autocomplete = new google.maps.places.Autocomplete(input);
+    //   autocomplete.bindTo('bounds', map);
+    //
+    //   var infowindow = new google.maps.InfoWindow();
+    //   var marker = new google.maps.Marker({
+    //     map: map,
+    //     anchorPoint: new google.maps.Point(0, -29)
+    //   });
+    //
+    //   autocomplete.addListener('place_changed', function() {
+    //     infowindow.close();
+    //     marker.setVisible(false);
+    //     var place = autocomplete.getPlace();
+    //     if (!place.geometry) {
+    //       window.alert("Autocomplete's returned place contains no geometry");
+    //       return;
+    //     }
+    //
+    //     // If the place has a geometry, then present it on a map.
+    //     if (place.geometry.viewport) {
+    //       map.fitBounds(place.geometry.viewport);
+    //     } else {
+    //       map.setCenter(place.geometry.location);
+    //       map.setZoom(17);  // Why 17? Because it looks good.
+    //     }
+    //     marker.setIcon(/** @type {google.maps.Icon} */({
+    //       url: place.icon,
+    //       size: new google.maps.Size(71, 71),
+    //       origin: new google.maps.Point(0, 0),
+    //       anchor: new google.maps.Point(17, 34),
+    //       scaledSize: new google.maps.Size(35, 35)
+    //     }));
+    //     marker.setPosition(place.geometry.location);
+    //     marker.setVisible(true);
+    //
+    //     var address = '';
+    //     if (place.address_components) {
+    //       address = [
+    //         (place.address_components[0] && place.address_components[0].short_name || ''),
+    //         (place.address_components[1] && place.address_components[1].short_name || ''),
+    //         (place.address_components[2] && place.address_components[2].short_name || '')
+    //       ].join(' ');
+    //     }
+    //
+    //     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+    //     infowindow.open(map, marker);
+    //   });
+    //
+    //   // Sets a listener on a radio button to change the filter type on Places
+    //   // Autocomplete.
+    //   function setupClickListener(id, types) {
+    //     var radioButton = document.getElementById(id);
+    //     radioButton.addEventListener('click', function() {
+    //       autocomplete.setTypes(types);
+    //     });
+    //   }
+    //
+    //   setupClickListener('changetype-all', []);
+    //   setupClickListener('changetype-address', ['address']);
+    //   setupClickListener('changetype-establishment', ['establishment']);
+    //   setupClickListener('changetype-geocode', ['geocode']);
+    // };
 
-// $scope.initMap();
+    // $scope.initMap();
 
 
 
@@ -2299,17 +2125,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     //
     //     }
     // };
-    $scope.initMap=function() {
-      // Create a map object and specify the DOM element for display.
-      var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 10,
-        key:"AIzaSyCqoHt9DpuP2vCOS-aDNyqN6pBIf7L9yyE"
-      });
+    $scope.initMap = function() {
+        // Create a map object and specify the DOM element for display.
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+                lat: -34.397,
+                lng: 150.644
+            },
+            zoom: 10,
+            key: "AIzaSyCqoHt9DpuP2vCOS-aDNyqN6pBIf7L9yyE"
+        });
     };
     //$scope.initMap();
-    $timeout(function () {
-      $scope.initMap();
+    $timeout(function() {
+        $scope.initMap();
     }, 1000);
 
 
