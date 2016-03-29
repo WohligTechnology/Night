@@ -35,7 +35,8 @@
     "angular-ui-sortable": "^0.13.4",
     "jStorage": "^0.4.12",
     "tinymce": "tinymce-dist#^4.3.4",
-    "angularjs-toaster": "~1.2.0"
+    "angularjs-toaster": "~1.2.0",
+    "angularjs-imageupload-directive": "https://github.com/Mischi/angularjs-imageupload-directive.git"
   },
   "resolutions": {
     "angular": "~1.4.8"

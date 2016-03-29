@@ -1,7 +1,7 @@
 //window.uploadurl = "http://192.168.0.126:81/uploadfile/upload/";
 window.uploadurl = "http://vignesh.com:81/uploadfile/upload/";
 
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'angularFileUpload', 'toaster'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'toaster', 'imageupload'])
 
 
 .controller('UploadCtrl', function($scope, $upload, $timeout) {
