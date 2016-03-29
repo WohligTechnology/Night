@@ -72,8 +72,8 @@
                            <label for="">Event Banner</label>
 
                            <div class="create-event float-right">
-                              <upload-image ng-model="userForm.images" multiple></upload-image>
-                              <h2>{{userForm.images}}</h2>
+                              <upload-image ng-model="userForm.images" multiple no-view></upload-image>
+                              <!-- <h2>{{userForm.images}}</h2> -->
                               <!-- <a class="btn btn-primary btn-outline btn-small create-btn">Upload Image</a> -->
                            </div>
                            <div class="image-set mt15" ng-if="userForm.images && userForm.images.length>0">
@@ -81,8 +81,8 @@
                                  <div dnd-list="lists" class="pt15">
                                     <div class="image-set">
                                        <div class="row" ui-sortable ng-model="lists">
-                                          <div class="drop-image col-xs-3" ng-repeat="item in lists">
-                                             <div ng-click="open();" class="image-holder" ng-style="{'background-image': 'url({{userForm.images | uploadpath}})'}"></div>
+                                          <div class="drop-image col-xs-3" ng-repeat="item in userForm.images">
+                                             <div ng-click="open();" class="image-holder" ng-style="{'background-image': 'url({{item | uploadpath}})'}"></div>
                                           </div>
                                        </div>
                                        <div class="clearfix"></div>
