@@ -1,4 +1,4 @@
-var adminurl = "http://192.168.0.124:1337/";
+var adminurl = "http://192.168.1.113:1337/";
 var imgpath = "http://vignesh.com:81/uploadfile/resize?";
 
 
