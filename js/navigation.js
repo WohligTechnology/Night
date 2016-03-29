@@ -1,9 +1,6 @@
-var adminurl = "http://192.168.1.113:1337/";
-var imgpath = "http://vignesh.com:81/uploadfile/resize?";
-
-
-
-//var imgpath = "http://europratik.com/admin/uploads/";
+var adminurl = "http://192.168.1.114:1337/";
+// var imgpath = "http://vignesh.com:81/uploadfile/resize?";
+var imgpath = adminurl + "upload/readFile";
 var navigationservice = angular.module('navigationservice', [])
 
 .factory('NavigationService', function($http) {
@@ -116,8 +113,6 @@ var navigationservice = angular.module('navigationservice', [])
         getnav: function() {
             return navigation;
         },
-
-
         homeViewAll: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -125,10 +120,10 @@ var navigationservice = angular.module('navigationservice', [])
                 method: 'POST',
                 withCredentials: true,
                 data: {
-                  "title": formData.title,
-                  "externallink": formData.externallink,
-                   "image": formData.image,
-                   "status":formData.status
+                    "title": formData.title,
+                    "externallink": formData.externallink,
+                    "image": formData.image,
+                    "status": formData.status
                 }
             }).success(callback);
         },
@@ -142,16 +137,12 @@ var navigationservice = angular.module('navigationservice', [])
                     "_id": formData._id,
                     "title": formData.title,
                     "externallink": formData.externallink,
-                     "image": formData.image,
-                     "status":formData.status
+                    "image": formData.image,
+                    "status": formData.status
 
                 }
             }).success(callback);
         },
-
-
-
-
         notificationViewAll: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -159,9 +150,9 @@ var navigationservice = angular.module('navigationservice', [])
                 method: 'POST',
                 withCredentials: true,
                 data: {
-                  "image": formData.image,
-                  "content": formData.content,
-                  "sendingTime": formData.sendingTime,
+                    "image": formData.image,
+                    "content": formData.content,
+                    "sendingTime": formData.sendingTime,
                 }
             }).success(callback);
         },
@@ -184,10 +175,10 @@ var navigationservice = angular.module('navigationservice', [])
                 method: 'POST',
                 withCredentials: true,
                 data: {
-                  "content": formData.content,
-                  "sendingTime": formData.sendingTime,
-                   "image": formData.image,
-                   "status":formData.status
+                    "content": formData.content,
+                    "sendingTime": formData.sendingTime,
+                    "image": formData.image,
+                    "status": formData.status
                 }
             }).success(callback);
         },
@@ -213,31 +204,25 @@ var navigationservice = angular.module('navigationservice', [])
                     "_id": formData._id,
                     "content": formData.content,
                     "sendingTime": formData.sendingTime,
-                     "image": formData.image,
-                     "status":formData.status
+                    "image": formData.image,
+                    "status": formData.status
 
                 }
             }).success(callback);
         },
-
-
-
         blogViewAll: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'contact/getAll',
+                url: adminurl + 'blog/getAll',
                 method: 'POST',
                 withCredentials: true,
                 data: {
-                  "blogtitle": formData.blogtitle,
-                  "content": formData.content,
-                  "timestamp": formData.timestamp,
-
-
+                    "blogtitle": formData.blogtitle,
+                    "content": formData.content,
+                    "timestamp": formData.timestamp,
                 }
             }).success(callback);
         },
-
         deleteBlogData: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -246,33 +231,29 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true,
                 data: {
                     "_id": formData.id,
-
                 }
             }).success(callback);
         },
         blogCreateSubmit: function(formData, callback) {
-            // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'contact/save',
                 method: 'POST',
                 withCredentials: true,
                 data: {
-                  "blogtitle": formData.blogtitle,
-                  "content": formData.content,
-                  "timestamp": formData.timestamp,
-                   "image": formData.image,
+                    "blogtitle": formData.blogtitle,
+                    "content": formData.content,
+                    "timestamp": formData.timestamp,
+                    "image": formData.image,
                 }
             }).success(callback);
         },
         getBlogEditDetail: function(id, callback) {
-            // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'contact/get',
                 method: 'POST',
                 withCredentials: true,
                 data: {
                     "_id": id
-
                 }
             }).success(callback);
         },
@@ -287,98 +268,76 @@ var navigationservice = angular.module('navigationservice', [])
                     "blogtitle": formData.blogtitle,
                     "content": formData.content,
                     "timestamp": formData.timestamp,
-                     "image": formData.image,
+                    "image": formData.image,
+                }
+            }).success(callback);
+        },
+        contactViewAll: function(formData, callback) {
+            $http({
+                url: adminurl + 'contact/getAll',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "title": formData.title,
+                    "email": formData.email,
+                    "address": formData.address
+                }
+            }).success(callback);
+        },
+        deleteContactData: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'contact/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": formData.id,
 
                 }
             }).success(callback);
         },
-
-
-
-                contactViewAll: function(formData, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'contact/getAll',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: {
-                            "title": formData.title,
-                            "email": formData.email,
-                            "address": formData.address,
-                             //"link": formData.link,
-                            // "socialid": formData.socialid,
-                            // "contact": formData.contact,
-                            // "accesslevel": formData.accesslevel,
-                            // "address": formData.address,
-                            // "image": formData.image,
-                            // "image1": formData.image1,
-
-                        }
-                    }).success(callback);
-                },
-
-                deleteContactData: function(formData, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'contact/delete',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: {
-                            "_id": formData.id,
-
-                        }
-                    }).success(callback);
-                },
-                contactCreateSubmit: function(formData, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'contact/save',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: {
-                          "title": formData.title,
-                          "email": formData.email,
-                          "address": formData.address,
-                           "lat": formData.lat,
-                            "long": formData.long,
-                        }
-                    }).success(callback);
-                },
-                getContactEditDetail: function(id, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'contact/get',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: {
-                            "_id": id
-
-                        }
-                    }).success(callback);
-                },
-                editContactSubmit: function(formData, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'contact/save',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: {
-                            "_id": formData._id,
-                            "title": formData.title,
-                            "email": formData.email,
-                            "address": formData.address,
-                            "lat": formData.lat,
-                             "long": formData.long,
-
-                        }
-                    }).success(callback);
-                },
-
-
-
-
-        videoGalleryCreateSubmit: function(formData, callback) {
+        contactCreateSubmit: function(formData, callback) {
+            $http({
+                url: adminurl + 'contact/save',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "title": formData.title,
+                    "email": formData.email,
+                    "address": formData.address,
+                    "lat": formData.lat,
+                    "long": formData.long,
+                }
+            }).success(callback);
+        },
+        getContactEditDetail: function(id, callback) {
             // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'contact/get',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+
+                }
+            }).success(callback);
+        },
+        editContactSubmit: function(formData, callback) {
+            $http({
+                url: adminurl + 'contact/save',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": formData._id,
+                    "title": formData.title,
+                    "email": formData.email,
+                    "address": formData.address,
+                    "lat": formData.lat,
+                    "long": formData.long,
+                }
+            }).success(callback);
+        },
+        videoGalleryCreateSubmit: function(formData, callback) {
             $http({
                 url: adminurl + 'videogallerycategory/save',
                 method: 'POST',
@@ -387,15 +346,11 @@ var navigationservice = angular.module('navigationservice', [])
                     "name": formData.name,
                     "image": formData.image,
                     "order": formData.order,
-                    //"modificationTime": formData.modificationTime,
-                    "status": formData.status,
-                    //"views": formData.views,
-
+                    "status": formData.status
                 }
             }).success(callback);
         },
         videoGalleriesViewAll: function(formData, callback) {
-            // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'videogallerycategory/getAll',
                 method: 'POST',
@@ -405,21 +360,17 @@ var navigationservice = angular.module('navigationservice', [])
                     "image": formData.image,
                     "order": formData.order,
                     "modificationTime": formData.modificationTime,
-                    "status": formData.status,
-                    //"views": formData.views,
-
+                    "status": formData.status
                 }
             }).success(callback);
         },
         getVideoGalleryEditDetail: function(id, callback) {
-            // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'videogallerycategory/get',
                 method: 'POST',
                 withCredentials: true,
                 data: {
                     "_id": id
-
                 }
             }).success(callback);
         },
@@ -436,15 +387,10 @@ var navigationservice = angular.module('navigationservice', [])
                     "order": formData.order,
                     "modificationTime": formData.modificationTime,
                     "status": formData.status,
-
                 }
             }).success(callback);
         },
-
-
-
         audioGalleryCreateSubmit: function(formData, callback) {
-            // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'audiogallerycategory/save',
                 method: 'POST',
@@ -832,9 +778,9 @@ var navigationservice = angular.module('navigationservice', [])
                     "_id": formData._id,
                     "name": formData.name,
                     "venue": formData.venue,
-                  "startTime": formData.startTime,
+                    "startTime": formData.startTime,
                     "content": formData.content,
-                        "endTime": formData.endTime,
+                    "endTime": formData.endTime,
                 }
             }).success(callback);
         },

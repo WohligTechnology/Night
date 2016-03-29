@@ -964,7 +964,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         "image": "img/t3.jpg"
     }];
 
-
     $scope.OpenVideo = function(size) {
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
@@ -1095,7 +1094,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.getDayClass = function(date, mode) {
         if (mode === 'day') {
             var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
             for (var i = 0; i < $scope.events.length; i++) {
                 var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
 
@@ -1104,11 +1102,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             }
         }
-
         return '';
     };
-
-
 })
 
 .controller('EditBlogDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state, $stateParams) {
@@ -1123,30 +1118,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     NavigationService.getBlogEditDetail($stateParams.id, function(data) {
-        //console.log('getArticleEditDetail', data.data);
         $scope.userForm = data.data;
-        console.log('userForm', $scope.userForm);
-        console.log($scope.userForm.status);
     });
 
     $scope.blogSubmitForm = function(formValid) {
-        //console.log('form values: ', formData);
-        // console.log('form values: ', formValid);
-        console.log('form values: ', $scope.userForm);
         if (formValid.$valid) {
             NavigationService.editblogSubmit($scope.userForm, function(data) {
-                console.log('my edit blog', $scope.userForm);
-                console.log('edit status', $scope.userForm.status);
-                // if($scope.userForm.status==0)
-                // {
-                //   $scope.userForm.status='Disable';
-                // }else{
-                //   $scope.userForm.status='Enable';
-                // }
                 $state.go("blogs");
             });
-        } else {
-
         }
     };
 
@@ -1215,16 +1194,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.allArticlesRecord();
 
     $scope.deleteArticle = function(formValid) {
-        console.log('formvalid', formValid);
         NavigationService.deleteArticleData({
             id: formValid
         }, function(data) {
-            console.log('delete data:', data);
             if (data.value === true) {
-
                 $scope.allArticlesRecord();
             }
-
         });
     };
 
@@ -1241,7 +1216,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.page = {
         header: "Create Article"
     };
-
 
     $scope.today = function() {
         $scope.dt = new Date();
@@ -1279,36 +1253,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.getDayClass = function(date, mode) {
         if (mode === 'day') {
             var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
             for (var i = 0; i < $scope.events.length; i++) {
                 var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-
                 if (dayToCheck === currentDay) {
                     return $scope.events[i].status;
                 }
             }
         }
-
         return '';
     };
-    //
-    //   $scope.articleSubmitForm = function() {
-    //
-    //         console.log('in navi');
-    //           NavigationService.articleCreateSubmit($scope.userForm, function(data) {
-    //               console.log('userform', $scope.userForm);
-    //
-    //           });
-    // $state.go("articles");
-    //
-    //
-    //   };
-    //
-    // if($scope.userForm.status=="Enable"){
-    //   $scope.userForm.status=1;
-    // }else{
-    //   $scope.userForm.status=0;
-    // }
 
     $scope.articleSubmitForm = function(formValid) {
         if (formValid.$valid) {
@@ -1324,7 +1277,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 console.log('userform of status', $scope.userForm);
             });
             $state.go("articles");
-
         }
     };
 
@@ -1346,52 +1298,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.userForm = data.data;
         console.log('userForm', $scope.userForm);
         console.log($scope.userForm.status);
-
-
     });
 
-
-
     $scope.articleSubmitForm = function(formValid) {
-        //console.log('form values: ', formData);
-        //console.log('form values: ', formValid);
-        //console.log('form values: ', $scope.userForm);
         if (formValid.$valid) {
             NavigationService.editarticleSubmit($scope.userForm, function(data) {
-                console.log('my edit article', $scope.userForm);
-                console.log('edit status', $scope.userForm.status);
-                // if($scope.userForm.status==0)
-                // {
-                //   $scope.userForm.status='Disable';
-                // }else{
-                //   $scope.userForm.status='Enable';
-                // }
                 $state.go("articles");
             });
-
-            // NavigationService.userSubmit($scope.userForm, function(data) {
-            //
-            // });
-        } else {
-
         }
     };
 
-    //
-    // $scope.submitForm = function(formData, formValid) {
-    //   // console.log('form values: ', formData);
-    //   // console.log('form values: ', formValid);
-    //   console.log('form values: ', $scope.userForm);
-    //   if (formValid.$valid) {
-    //     $scope.formComplete = true;
-    //     $state.go("articles");
-    //     // NavigationService.userSubmit($scope.userForm, function(data) {
-    //     //
-    //     // });
-    //   } else {
-    //
-    //   }
-    // };
     $scope.today = function() {
         $scope.dt = new Date();
     };
@@ -1462,27 +1378,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.allPhotogalRecord();
 
     $scope.userForm = {};
-    // $scope.submitForm = function(formData) {
-    //     console.log('form values: ', formData);
-    //     //console.log('form values: ', $scope.userForm);
-    //     if (formData.content) {
-    //         $scope.formComplete = true;
-    //         $scope.userForm = {};
-    //         // NavigationService.userSubmit($scope.userForm, function(data) {
-    //         //
-    //         // });
-    //     } else {
-    //         $scope.formComplete = false;
-    //     }
-    // };
 
     $scope.photogalEditSubmitForm = function(formValid) {
         if (formValid.$valid) {
-            console.log('in navi');
             NavigationService.edithomeSubmit($scope.photogalForm, function(data) {
-                console.log('photogalForm', $scope.photogalForm);
                 $scope.allPhotogalRecord();
-
             });
             //$state.go("notifications");
         }
@@ -1624,7 +1524,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 })
 
-
 .controller('VideoGalleryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("videogallerydetail");
@@ -1634,18 +1533,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.header = {};
     $scope.header.name = 'Create Video Gallary';
     $scope.userForm = {};
-
-    //     $scope.items = [{
-    //   id: 1,
-    //   label: 'Enable',
-    //
-    // }, {
-    //   id: 2,
-    //   label: 'Disable',
-    //
-    // }];
-
-
 
     $scope.today = function() {
         $scope.dt = new Date();
