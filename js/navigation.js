@@ -1,6 +1,6 @@
-var adminurl = "http://192.168.1.114:1337/";
-// var imgpath = "http://vignesh.com:81/uploadfile/resize?";
-var imgpath = adminurl + "upload/readFile";
+var adminurl = "http://192.168.1.113:1337/";
+var imgpathurl = "http://192.168.1.116:88/";
+var imgpath = imgpathurl + "upload/readFile";
 var navigationservice = angular.module('navigationservice', [])
 
 .factory('NavigationService', function($http) {
@@ -748,7 +748,7 @@ var navigationservice = angular.module('navigationservice', [])
                     "name": formData.name,
                     //  "_id": formData._id,
                     "venue": formData.venue,
-                    //"startdate": formData.startdate,
+                    "images": formData.images,
                     "startTime": formData.startTime,
                     "content": formData.content,
                     "endTime": formData.endTime,

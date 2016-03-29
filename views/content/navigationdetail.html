@@ -1,132 +1,129 @@
 <section class="main">
-  <div class="theme">
-    <div class="chosse-theme">
-      <div class="container-fluid">
-        <div class="">
-          <div class="row">
-            <div class="col-xs-8 max-size">
-              <div class="ionic-template mb30">
-                <h4 class="pad20">Navigation >
-                  {{page.header}}</h4>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="home-slider form-background">
-                      <div class="pull-right "><a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a></div>
-                      <div class="naming">
-                        <h4>
-                          {{page.header}}</h4>
-                      </div>
-                      <div class="form-login">
-                        <form name="user">
-                          <div class="form-group">
-                            <label for="">Name</label>
-                            <input name="name" required  ng-model="userForm.name" type="text" class="form-control" id="name" placeholder="Name">
-                            <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Your Name.</div>
-                          </div>
-                          <div class="icon">
-                            <div class="form-group">
-                              <label for="sel1">Select Icon:</label>
-                              <select ng-model="userForm.iconType" class="form-control" id="sel1">
-                                <option>ln-chart-growth</option>
-                                <option>ln-home3</option>
-                                <option>ln-unlock</option>
-                                <option>ln-bell</option>
-                              </select>
-                            </div>
-                          </div>
+    <div class="theme">
+        <div class="chosse-theme">
+            <div class="container-fluid">
+                <div class="">
+                    <div class="row">
+                        <div class="col-xs-8 max-size">
+                            <div class="ionic-template mb30">
+                                <h4 class="pad20">Navigation >
+                                    {{page.header}}</h4>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="home-slider form-background">
+                                            <div class="pull-right ">
+                                                <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
+                                            </div>
+                                            <div class="naming">
+                                                <h4>
+                                                    {{page.header}}</h4>
+                                            </div>
+                                            <div class="form-login">
+                                                <form name="user">
+                                                    <div class="form-group">
+                                                        <label for="">Name</label>
+                                                        <input name="name" required ng-model="userForm.name" type="text" class="form-control" id="name" placeholder="Name">
+                                                        <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Your Name.</div>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <div class="form-group">
+                                                            <label for="sel1">Select Icon:</label>
+                                                            <select ng-model="userForm.iconType" class="form-control" id="sel1">
+                                                                <option>ln-chart-growth</option>
+                                                                <option>ln-home3</option>
+                                                                <option>ln-unlock</option>
+                                                                <option>ln-bell</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
 
+                                                  
+                                                        <upload-image ng-model="userForm.icon" no-view></upload-image>
 
-
-                          <div class="form-group" ng-controller="UploadCtrl">
-                            <label for="exampleInputFile">Image Icon</label>
-                            <div class="noti-image">
-                              <div class="img-box">
-                                <h4 ng-if="isloading">Loading...</h4>
-                                <img ng-src="{{userForm.icon|uploadpath}}" ng-if="userForm.icon" style="height:200px;">
-                                <!-- <img src="img/slider/s1.jpg"> -->
-                              </div>
-                            </div>
-                            <div ng-if="userForm.icon">
+                                                        <div class="form-group">
+                                                            <label for="exampleInputFile">Image Icon</label>
+                                                            <div class="noti-image">
+                                                                <div class="img-box">
+                                                                    <h4 ng-if="isloading">Loading...</h4>
+                                                                    <img ng-src="{{userForm.icon|uploadpath}}" ng-if="userForm.icon" style="height:200px;">
+                                                                    <!-- <img src="img/slider/s1.jpg"> -->
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div ng-if="userForm.icon">
                               <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
-                            </div>
-                            <!-- <input type="file" name="icon" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" title="Choose File" required ng-model="userForm.icon" accept=".jpg,.png" class="btn-primary" ui-file-upload> -->
-                            <input type="file" name="icon" ng-file-select="onFileSelect($files,1)" onclick="this.value=null"  ng-model="userForm.icon" accept=".jpg,.png" class="form-control ab" ui-file-upload>
-                            <!-- <input name="navigationImg" ng-model="userForm.navigationImg" type="file" id="exampleInputFile"> -->
-                          </div>
+                            </div> -->
+                                                            <!-- <input type="file" name="icon" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" title="Choose File" required ng-model="userForm.icon" accept=".jpg,.png" class="btn-primary" ui-file-upload> -->
+                                                            <!-- <input type="file" name="icon" ng-file-select="onFileSelect($files,1)" onclick="this.value=null"  ng-model="userForm.icon" accept=".jpg,.png" class="form-control ab" ui-file-upload> -->
+                                                            <!-- <input name="navigationImg" ng-model="userForm.navigationImg" type="file" id="exampleInputFile"> -->
+                                                        </div>
 
-
-
-
-
-
-
-                          <div class="display-inline">
-                            <div class="label-opt">
-                              <label for="">Enable</label>
-                            </div>
-                            <div class="onoffswitch">
-                              <input name="status" ng-model="userForm.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch" >
-                              <label class="onoffswitch-label" for="myonoffswitch">
-                                <span class="onoffswitch-inner"></span>
-                                <span class="onoffswitch-switch"></span>
-                              </label>
-                            </div>
-                          </div>
-                          <div class="icon">
-                            <div class="form-group">
-                              <label for="sel1">List Type:</label>
-                              <select name="type" ng-model="userForm.type" class="form-control">
-                                <optgroup label="Main Menu">
-                                  <option value="volvo">Home</option>
-                                  <option value="saab">Notifications</option>
-                                </optgroup>
-                                <optgroup label="Main Menu with Sub Menu">
-                                  <option value="mercedes">Gallery</option>
-                                  <option value="audi">Events</option>
-                                </optgroup>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="icon">
-                            <div class="form-group">
-                              <label for="sel1">Select Inside:</label>
-                              <select ng-model="userForm.order" class="form-control" id="sel1">
-                                <option>Gallery Inside1</option>
-                                <option>Gallery Inside2</option>
-                                <option>Gallery Inside3</option>
-                                <option>Event Inside1</option>
-                              </select>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="">External Link</label>
-                            <input name="link" ng-model="userForm.link" type="text" class="form-control" id="" placeholder="External Link">
-                          </div>
-                          <!-- </div> -->
-                          <div class="upload-img text-center">
-                            <button class="btn btn-primary btn-outline btn-small" ng-click="navigationSubmitForm(user)">Save</button>
-                            <a ui-sref="navigation">
-                              <button class="btn btn-primary btn-outline btn-small">Cancel</button>
-                            </a>
-                          </div>
-                        </form>
-                        <!-- </div> -->
-                        <!-- </div> -->
-                        <!-- <div class="text-center" ng-show="formComplete">
+                                                        <div class="display-inline">
+                                                            <div class="label-opt">
+                                                                <label for="">Enable</label>
+                                                            </div>
+                                                            <div class="onoffswitch">
+                                                                <input name="status" ng-model="userForm.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch">
+                                                                <label class="onoffswitch-label" for="myonoffswitch">
+                                                                    <span class="onoffswitch-inner"></span>
+                                                                    <span class="onoffswitch-switch"></span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="icon">
+                                                            <div class="form-group">
+                                                                <label for="sel1">List Type:</label>
+                                                                <select name="type" ng-model="userForm.type" class="form-control">
+                                                                    <optgroup label="Main Menu">
+                                                                        <option value="volvo">Home</option>
+                                                                        <option value="saab">Notifications</option>
+                                                                    </optgroup>
+                                                                    <optgroup label="Main Menu with Sub Menu">
+                                                                        <option value="mercedes">Gallery</option>
+                                                                        <option value="audi">Events</option>
+                                                                    </optgroup>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="icon">
+                                                            <div class="form-group">
+                                                                <label for="sel1">Select Inside:</label>
+                                                                <select ng-model="userForm.order" class="form-control" id="sel1">
+                                                                    <option>Gallery Inside1</option>
+                                                                    <option>Gallery Inside2</option>
+                                                                    <option>Gallery Inside3</option>
+                                                                    <option>Event Inside1</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="">External Link</label>
+                                                            <input name="link" ng-model="userForm.link" type="text" class="form-control" id="" placeholder="External Link">
+                                                        </div>
+                                                        <!-- </div> -->
+                                                        <div class="upload-img text-center">
+                                                            <button class="btn btn-primary btn-outline btn-small" ng-click="navigationSubmitForm(user)">Save</button>
+                                                            <!-- <a ui-sref="navigation"> -->
+                                                            <button class="btn btn-primary btn-outline btn-small" ui-sref="navigation">Cancel</button>
+                                                            <!-- </a> -->
+                                                        </div>
+                                                    </form>
+                                                    <!-- </div> -->
+                                                    <!-- </div> -->
+                                                    <!-- <div class="text-center" ng-show="formComplete">
                           <h3>Submitted Successfully, Thank You!</h3>
                         </div> -->
-                      </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div ng-include="preview"></div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-            <div class="col-xs-4">
-              <div ng-include="preview"></div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>

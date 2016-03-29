@@ -12,8 +12,9 @@
                 <div class="col-md-12">
                     <div class="linking">
                         <form name="user">
+                          <upload-image ng-model="userForm.image" no-view></upload-image>
 
-                            <div class="form-group" ng-controller="UploadCtrl">
+                            <div class="form-group">
                                 <label for="exampleInputFile">Image Icon</label>
                                 <div class="noti-image">
                                     <div class="img-box">
@@ -22,11 +23,11 @@
 
                                     </div>
                                 </div>
-                                <div ng-if="noti.image">
+                                <!-- <div ng-if="noti.image">
                                     <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
-                                </div>
+                                </div> -->
 
-                                <input type="file" name="image" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-model="noti.image" accept=".jpg,.png" class="form-control ab" ui-file-upload>
+                                <!-- <input type="file" name="image" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-model="noti.image" accept=".jpg,.png" class="form-control ab" ui-file-upload> -->
 
                             </div>
 

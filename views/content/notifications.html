@@ -40,7 +40,9 @@
                     <div class="form-login paddingup">
                         <form name="user">
 
-                            <div class="form-group" ng-controller="UploadCtrl">
+
+<upload-image ng-model="userForm.image" no-view></upload-image>
+                            <div class="form-group">
                                 <label for="exampleInputFile">Image Icon</label>
                                 <div class="noti-image">
                                     <div class="img-box">
@@ -49,11 +51,11 @@
                                         <!-- <img src="img/slider/s1.jpg"> -->
                                     </div>
                                 </div>
-                                <div ng-if="userForm.image">
+                                <!-- <div ng-if="userForm.image">
                                     <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
-                                </div>
+                                </div> -->
                                 <!-- <input type="file" name="icon" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" title="Choose File" required ng-model="userForm.icon" accept=".jpg,.png" class="btn-primary" ui-file-upload> -->
-                                <input type="file" name="image" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-model="userForm.image" accept=".jpg,.png" class="form-control ab" ui-file-upload>
+                                <!-- <input type="file" name="image" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-model="userForm.image" accept=".jpg,.png" class="form-control ab" ui-file-upload> -->
                                 <!-- <input name="navigationImg" ng-model="userForm.navigationImg" type="file" id="exampleInputFile"> -->
                             </div>
                             <div class="display-inline">
@@ -134,7 +136,7 @@
                                     </td>
                                     <td>
                                         <div class="action">
-                                            <a ng-click="open(noti);" class="">
+                                            <a ng-click="open(noti);">
                                                 <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i>
                                             </a>
                                             <a ng-click="deleteNotification(noti._id)">
