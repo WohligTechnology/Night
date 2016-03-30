@@ -343,7 +343,7 @@ textarea {
   border: 1px solid $white-color;
   background: $white-color;
   padding: 10px 15px 25px;
-  min-height: 230px;
+  min-height: 254px;
   @include transition(all 300ms ease);
   cursor: pointer;
   .app-info {
@@ -373,7 +373,9 @@ textarea {
     text-transform: capitalize;
   }
   .app-date {
+    margin-top: 10px;
     p {
+      margin-bottom: 3px;
       span {
         color: #000;
       }
@@ -1055,19 +1057,22 @@ span.input-group-btn.calender-btn {
     border-radius: 50%;
   }
   input[type="radio"] + label span {
-    display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-family: FontAwesome;
     &:before {
-      content: "f006";
+      content: "\f006";
+      font-family: FontAwesome;
+      display: inline-block;
+      padding-right: 3px;
+      vertical-align: middle;
     }
   }
   input[type="radio"]:checked + label span {
     &:before {
-      content: "f005";
+      content: "\f005";
+      font-family: FontAwesome;
+      display: inline-block;
+      padding-right: 3px;
+      vertical-align: middle;
     }
     // background-color: #fff;
     color: gold;
