@@ -13,7 +13,7 @@
                <div class="notification-list mt30">
                   <div class="notification-table">
                      <table class="table">
-                        <thead>
+                        <thead ng-if="eventsdata.length>0">
                            <tr>
                               <th>
                                  <div class="select">
@@ -36,7 +36,7 @@
                               </th>
                            </tr>
                         </thead>
-                        <tbody>
+                        <tbody ng-if="eventsdata.length>0">
                            <tr ng-repeat="event in eventsdata">
                               <td>
                                  <div class="select-check">
@@ -66,7 +66,12 @@
                               </td>
                            </tr>
                         </tbody>
+                        <tr class="text-center list-unstyled grouplist" ng-if="!eventsdata || eventsdata.length==0">
+                          <td><center>No Events Yet</center></td>
+                        </tr>
+
                      </table>
+
                   </div>
                </div>
             </div>

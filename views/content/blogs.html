@@ -33,7 +33,7 @@
               </div>
               <div class="notification-table mt30">
                 <table class="table">
-                  <thead>
+                  <thead ng-if="blogdata.length>0">
                     <tr>
                       <th>
                         <div class="select">
@@ -56,7 +56,7 @@
                       </th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody ng-if="blogdata.length>0">
                     <tr>
                       <td>
                         <div class="select-check">
@@ -89,6 +89,9 @@
                     </tr>
                   </tbody>
                 </table>
+                <tr class="text-center list-unstyled grouplist" ng-if="!blogdata || blogdata.length==0">
+                  <td><center>No Blogs Yet</center></td>
+                </tr>
               </div>
             </div>
           </div>

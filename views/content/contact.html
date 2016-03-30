@@ -13,7 +13,7 @@
           <div class="notification-list mt30">
             <div class="notification-table">
               <table class="table">
-                <thead>
+                <thead ng-if="contactdata.length>0">
                   <tr>
                     <th>
                       <div class="select">
@@ -36,7 +36,7 @@
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody ng-if="contactdata.length>0">
                   <tr ng-repeat="contact in contactdata">
                     <td>
                       <div class="select-check">
@@ -61,7 +61,11 @@
                     </td>
                   </tr>
                 </tbody>
+                <tr class="text-center list-unstyled grouplist" ng-if="!contactdata || contactdata.length==0">
+                  <td><center>No Contacts Yet</center></td>
+                </tr>
               </table>
+
             </div>
           </div>
         </div>
