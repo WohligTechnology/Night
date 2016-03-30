@@ -223,7 +223,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.allHomeRecord = function() {
         NavigationService.homeViewAll($scope.homeForm, function(data) {
             $scope.homedata = data.data;
-
             console.log('$scope.homedata', data.data);
         });
     };
@@ -263,20 +262,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     }];
 
     $scope.open = function(home) {
-        $scope.home = home;
-        if ($scope.home.status == 1) {
-            $scope.home.status = true;
-        } else {
-            $scope.home.status = false;
-        }
-        console.log('in open modal', $scope.home);
-        console.log('notification data: ', $scope.home);
+        // $scope.home = home;
+        // if ($scope.home.status == 1) {
+        //     $scope.home.status = true;
+        // } else {
+        //     $scope.home.status = false;
+        // }
+        // console.log('in open modal', $scope.home);
+        // console.log('notification data: ', $scope.home);
 
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/image-info.html',
             scope: $scope,
-
         });
 
         modalInstance.result.then(function(selectedItem) {
@@ -298,6 +296,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
 
     $scope.eventForm = {};
+    $scope.sortableOptions = {
+        update: function(e, ui) {
+            console.log($scope.navigationdata);
+        }
+    };
 
     $scope.allNavigationRecord = function() {
         NavigationService.navigationViewAll($scope.eventForm, function(data) {
@@ -313,10 +316,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }, function(data) {
             console.log('delete data:', data);
             if (data.value === true) {
-
                 $scope.allNavigationRecord();
             }
-
         });
     };
 
@@ -1464,7 +1465,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         "image": "img/t3.jpg"
     }];
 
-$scope.userForm={};
+    $scope.userForm = {};
     $scope.open = function(size) {
 
         var modalInstance = $uibModal.open({

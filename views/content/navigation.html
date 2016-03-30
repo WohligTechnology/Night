@@ -1,38 +1,42 @@
 <div class="ionic-template mb30">
-  <h4 class="pad20">Navigation</h4>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="home-slider form-background">
-        <div class="create-event float-right">
-          <button class="btn btn-primary btn-outline btn-small create-btn" ui-sref="navigationdetail">Create</button>
-        </div>
-        <div class="naming">
-          <h4>List of Navigations</h4>
-        </div>
+   <h4 class="pad20">Navigation</h4>
+   <div class="row">
+      <div class="col-md-12">
+         <div class="home-slider form-background">
+            <div class="create-event float-right">
+               <button class="btn btn-primary btn-outline btn-small create-btn" ui-sref="navigationdetail">Create</button>
+            </div>
+            <div class="naming">
+               <h4>List of Navigations</h4>
+            </div>
+         </div>
+         <div class="detainavigation">
+            <div class="fill-content">
+               <div class="navigation">
+                  <ul class="list-unstyled grouplist" ui-sortable ng-model="navigationdata" ng-if="navigationdata.length>0">
+                     <li class="items" ng-repeat="nav in navigationdata">
+                        <div class="pull-right">
+                           <a ui-sref="editnavigationdetail({id:nav._id})">
+                              <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i>
+                           </a>
+                           <a ng-click="deleteNavigation(nav._id)">
+                              <i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i>
+                           </a>
+                        </div>
+                        <i class="{{nav.icon | uploadpath}} circle"></i>
+                        <div class="pad-left">
+                           <span class="nav-name">{{nav.name}}</span>
+                           <p ng-if="nav.status==1">Enabled</p>
+                           <p ng-if="nav.status==2">Disabled</p>
+                        </div>
+                     </li>
+                  </ul>
+                  <ul class="text-center list-unstyled grouplist" ng-if="!navigationdata || navigationdata.length==0">
+                     <li class="items">No Navigations Yet</li>
+                  </ul>
+               </div>
+            </div>
+         </div>
       </div>
-      <div class="detainavigation">
-        <div class="fill-content">
-          <div class="navigation">
-            <ul class="list-unstyled grouplist" ui-sortable ng-model="navigationdata">
-              <li class="items" ng-repeat="nav in navigationdata">
-                <div class="pull-right">
-                  <a ui-sref="editnavigationdetail({id:nav._id})">
-                    <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i>
-                  </a>
-                  <a ng-click="deleteNavigation(nav._id)">
-                    <i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i>
-                  </a>
-                </div>
-                <i class="{{nav.icon | uploadpath}} circle"></i>
-                <div class="pad-left">
-                  <span class="nav-name">{{nav.name}}</span>
-                  <p>{{nav.status}}</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+   </div>
 </div>
