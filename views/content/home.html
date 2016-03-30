@@ -17,10 +17,10 @@
                   <div ng-click="open()" class="image-holder" ng-style="{'background-image': 'url({{item.image}})'}"></div>
                 </div> -->
 
-                                <div class="drop-image col-xs-3" ng-repeat="home in homedata">
+                                <div class="drop-image col-xs-3" ng-repeat="home in userForm.images">
 
                                     <!-- <a ui-sref="editvideo-gallerydetail({id:videogal._id})"> -->
-                                    <div class="image-holder" ng-click="open(homeimg)" ng-style="{'background-image': 'url({{homeimg.image | uploadpath}})'}"></div>
+                                    <div class="image-holder" ng-click="open(homeimg)" ng-style="{'background-image': 'url({{home | uploadpath}})'}"></div>
                                 </div>
 
                             </div>

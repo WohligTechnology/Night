@@ -35,7 +35,7 @@
            </span>
                   </p>
                 </div>
-                <!-- <div class="img-upload"> -->
+                <div class="img-upload">
                   <label for="">Upload Image</label>
                   <div class="noti-image">
                     <div class="img-box">
@@ -50,7 +50,7 @@
                     <input type="file" id="exampleInputFile">
                     <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
                   </div> -->
-                <!-- </div> -->
+                </div>
                 <div class="multiple-img">
                   <label for="">Upload Gallery Image</label>
                   <div class="image-set">
@@ -58,23 +58,24 @@
                       <div dnd-list="lists" class="pt15">
                         <div class="image-set">
                           <div class="row" ui-sortable ng-model="lists">
-                            <div class="drop-image col-xs-3" ng-repeat="item in lists">
-                              <div ng-click="open()" class="image-holder" ng-style="{'background-image': 'url({{item.image}})'}"></div>
+                            <div class="drop-image col-xs-3" ng-repeat="item in userForm.images track by $index">
+                              <div ng-click="open()" class="image-holder" ng-style="{'background-image': 'url({{item|uploadpath}})'}"></div>
                             </div>
                           </div>
                           <div class="clearfix"></div>
                         </div>
                       </div>
                     </div>
+                      <upload-image ng-model="userForm.images" multiple no-view></upload-image>
                     <!-- <div class="img-box">
                       <img src="img/slider/s1.jpg" class="img-responsive">
                     </div> -->
                   </div>
-                  <div class="btn-upload">
+                  <!-- <div class="btn-upload">
                     <input type="file">
-                    <!-- <input type="file" id="exampleInputFile"> -->
+                    <input type="file" id="exampleInputFile">
                     <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="upload-img text-center">
                   <button class="btn btn-primary btn-outline btn-small" ng-click="photogalSubmitForm(user)">Save</button>
