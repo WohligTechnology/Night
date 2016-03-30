@@ -35,19 +35,22 @@
            </span>
                   </p>
                 </div>
-                <div class="img-upload">
+                <!-- <div class="img-upload"> -->
                   <label for="">Upload Image</label>
                   <div class="noti-image">
                     <div class="img-box">
-                      <img src="img/slider/s1.jpg" class="img-responsive">
+                      <h4 ng-if="isloading">Loading...</h4>
+                      <img ng-src="{{userForm.image|uploadpath}}" ng-if="userForm.image" style="height:200px;">
+                      <!-- <img src="img/slider/s1.jpg" class="img-responsive"> -->
                     </div>
                   </div>
-                  <div class="btn-upload">
+                    <upload-image ng-model="userForm.image" no-view></upload-image>
+                  <!-- <div class="btn-upload">
                     <input type="file">
-                    <!-- <input type="file" id="exampleInputFile"> -->
+                    <input type="file" id="exampleInputFile">
                     <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
-                  </div>
-                </div>
+                  </div> -->
+                <!-- </div> -->
                 <div class="multiple-img">
                   <label for="">Upload Gallery Image</label>
                   <div class="image-set">
@@ -74,8 +77,8 @@
                   </div>
                 </div>
                 <div class="upload-img text-center">
-                  <button class="btn btn-primary btn-outline btn-small">Save</button>
-                  <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+                  <button class="btn btn-primary btn-outline btn-small" ng-click="photogalSubmitForm(user)">Save</button>
+                  <button class="btn btn-primary btn-outline btn-small" ui-sref="photo-galleries">Cancel</button>
                 </div>
               </form>
             </div>
