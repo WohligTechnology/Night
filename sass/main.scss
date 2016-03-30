@@ -645,19 +645,18 @@ textarea {
   overflow: hidden;
   display: block;
   text-align: center;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
   border: 1px solid #F2F2F2;
   background-repeat: no-repeat;
   background-position: center;
   background-color: white;
   cursor: pointer;
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    margin: 0;
-    display: inline-block;
-    padding: 0;
-  }
+  background-size: contain;
+}
+.image-label {
+  padding: 5px;
+  background: #000;
+  margin-bottom: 10px;
 }
 .all-label {
   font-weight: 400;
@@ -754,6 +753,10 @@ label {
     @include align-self(center);
     max-width: 100%;
     max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
   }
 }
 .img-noti {
