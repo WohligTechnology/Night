@@ -187,7 +187,7 @@ var navigationservice = angular.module('navigationservice', [])
         getNotificationEditDetail: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'notification/get',
+                url: adminurl + 'notification/getOne',
                 method: 'POST',
                 withCredentials: true,
                 data: {
@@ -251,7 +251,7 @@ var navigationservice = angular.module('navigationservice', [])
         },
         getBlogEditDetail: function(id, callback) {
             $http({
-                url: adminurl + 'contact/get',
+                url: adminurl + 'contact/getOne',
                 method: 'POST',
                 withCredentials: true,
                 data: {
@@ -315,7 +315,7 @@ var navigationservice = angular.module('navigationservice', [])
         getContactEditDetail: function(id, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'contact/get',
+                url: adminurl + 'contact/getOne',
                 method: 'POST',
                 withCredentials: true,
                 data: {
@@ -368,7 +368,7 @@ var navigationservice = angular.module('navigationservice', [])
         },
         getVideoGalleryEditDetail: function(id, callback) {
             $http({
-                url: adminurl + 'videogallerycategory/get',
+                url: adminurl + 'videogallerycategory/getOne',
                 method: 'POST',
                 withCredentials: true,
                 data: {
@@ -426,7 +426,7 @@ var navigationservice = angular.module('navigationservice', [])
         getAudioEditDetail: function(id, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'audiogallerycategory/get',
+                url: adminurl + 'audiogallerycategory/getOne',
                 method: 'POST',
                 withCredentials: true,
                 data: {
@@ -507,7 +507,7 @@ var navigationservice = angular.module('navigationservice', [])
         getUserEditDetail: function(id, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'user/get',
+                url: adminurl + 'user/getOne',
                 method: 'POST',
                 withCredentials: true,
                 data: {
@@ -583,7 +583,7 @@ var navigationservice = angular.module('navigationservice', [])
         getArticleEditDetail: function(id, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'article/get',
+                url: adminurl + 'article/getone',
                 method: 'POST',
                 withCredentials: true,
                 data: {
@@ -655,7 +655,7 @@ var navigationservice = angular.module('navigationservice', [])
         getNavigationEditDetail: function(id, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'navigation/get',
+                url: adminurl + 'navigation/getOne',
                 method: 'POST',
                 withCredentials: true,
                 data: {
@@ -726,7 +726,7 @@ var navigationservice = angular.module('navigationservice', [])
         getEventsEditDetail: function(id, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'event/get',
+                url: adminurl + 'event/getOne',
                 method: 'POST',
                 withCredentials: true,
                 data: {
