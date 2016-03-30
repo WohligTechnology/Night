@@ -6,8 +6,7 @@
           <div class="row">
             <div class="col-xs-8 max-size">
               <div class="ionic-template mb30">
-                <h4 class="pad20">Navigation >
-                                    {{page.header}}</h4>
+                <h4 class="pad20">Navigation >{{page.header}}</h4>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="home-slider form-background">
@@ -15,10 +14,9 @@
                         <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
                       </div>
                       <div class="naming">
-                        <h4>
-                                                    {{page.header}}</h4>
+                        <h4>{{page.header}}</h4>
                       </div>
-                      <div class="form-login">
+                      <div class="form-login paddingup">
                         <form name="user">
                           <div class="form-group">
                             <label for="">Name</label>
@@ -42,17 +40,10 @@
                             <div class="noti-image">
                               <div class="img-box">
                                 <h4 ng-if="isloading">Loading...</h4>
-                                <img ng-src="{{userForm.icon|uploadpath}}" ng-if="userForm.icon" style="height:200px;">
-                                <!-- <img src="img/slider/s1.jpg"> -->
+                                <img ng-src="{{userForm.icon|uploadpath}}" ng-if="userForm.icon">                                <!-- <img src="img/slider/s1.jpg"> -->
                               </div>
                             </div>
                             <upload-image ng-model="userForm.icon" no-view></upload-image>
-                            <!-- <div ng-if="userForm.icon">
-                              <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
-                            </div> -->
-                            <!-- <input type="file" name="icon" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" title="Choose File" required ng-model="userForm.icon" accept=".jpg,.png" class="btn-primary" ui-file-upload> -->
-                            <!-- <input type="file" name="icon" ng-file-select="onFileSelect($files,1)" onclick="this.value=null"  ng-model="userForm.icon" accept=".jpg,.png" class="form-control ab" ui-file-upload> -->
-                            <!-- <input name="navigationImg" ng-model="userForm.navigationImg" type="file" id="exampleInputFile"> -->
                           </div>
 
                           <div class="display-inline">

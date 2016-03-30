@@ -1,77 +1,77 @@
 <section>
 
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$dismiss()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 class="modal-title text-center" id="myModalLabel">Edit Notification</h4>
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="linking">
-                        <form name="user">
-                          <upload-image ng-model="userForm.image" no-view></upload-image>
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="modal-title text-center" id="myModalLabel">Edit Notification</h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="linking">
+            <form name="user">
+                <upload-image ng-model="userForm.image" no-view></upload-image>
+              <div class="form-group">
+                <label for="exampleInputFile">Image Icon</label>
+                <div class="noti-image">
+                  <div class="img-box">
+                    <h4 ng-if="isloading">Loading...</h4>
+                    <img ng-src="{{noti.image|uploadpath}}" ng-if="noti.image" style="height:200px;">
 
-                            <div class="form-group">
-                                <label for="exampleInputFile">Image Icon</label>
-                                <div class="noti-image">
-                                    <div class="img-box">
-                                        <h4 ng-if="isloading">Loading...</h4>
-                                        <img ng-src="{{noti.image|uploadpath}}" ng-if="noti.image" style="height:200px;">
-
-                                    </div>
-                                </div>
-                                <!-- <div ng-if="noti.image">
+                  </div>
+                </div>
+                <!-- <div ng-if="noti.image">
                                     <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
                                 </div> -->
 
-                                <!-- <input type="file" name="image" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-model="noti.image" accept=".jpg,.png" class="form-control ab" ui-file-upload> -->
+                <!-- <input type="file" name="image" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-model="noti.image" accept=".jpg,.png" class="form-control ab" ui-file-upload> -->
 
-                            </div>
+              </div>
 
-                            <div class="display-inline">
-                                <div class="label-opt">
-                                    <label for="">Enable</label>
-                                </div>
-                                {{noti.status}}
-                                <div class="onoffswitch">
-                                    <input name="status" ng-model="noti.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch">
-                                    <label class="onoffswitch-label" for="myonoffswitch">
-                                        <span class="onoffswitch-inner"></span>
-                                        <span class="onoffswitch-switch"></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group mt25">
-                                <label for="">Content</label>
-                                <textarea name="content" required ng-model="noti.content" class="form-control resize" rows="3"></textarea>
-                                <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content.</div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Timestamp</label>
-                            <br>
-                            <p class="input-group">
-                                <input name="date" required type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="noti.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" required close-text="Close" alt-input-formats="altInputFormats"/>
-                                <span class="input-group-btn calender-btn">
+              <div class="display-inline">
+                <div class="label-opt">
+                  <label for="">Enable</label>
+                </div>
+                {{noti.status}}
+                <div class="onoffswitch">
+                  <input name="status" ng-model="noti.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch">
+                  <label class="onoffswitch-label" for="myonoffswitch">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                  </label>
+                </div>
+              </div>
+              <div class="form-group mt25">
+                <label for="">Content</label>
+                <textarea name="content" required ng-model="noti.content" class="form-control resize" rows="3"></textarea>
+                <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content.</div>
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="">Timestamp</label>
+            <br>
+            <p class="input-group">
+              <input name="date" required type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="noti.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" required
+                close-text="Close" alt-input-formats="altInputFormats" />
+              <span class="input-group-btn calender-btn">
                                     <button type="button" class="btn btn-default" ng-click="open1()">
                                         <i class="ln-calendar3"></i>
                                     </button>
                                     <div class="error-msg" ng-show="user.date.$error.required && user.date.$touched">Please Enter TimeStamp.</div>
                                 </span>
-                            </p>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
+            </p>
+          </div>
+          </form>
         </div>
+
+      </div>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-small btn-outline" ng-click="notificationEditSubmitForm(noti);$dismiss()">Save</button>
-        <button type="button" class="btn btn-primary btn-small btn-outline" ng-click="$dismiss()">Cancel</button>
-    </div>
-</div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary btn-small btn-outline" ng-click="notificationEditSubmitForm(noti);$dismiss()">Save</button>
+    <button type="button" class="btn btn-primary btn-small btn-outline" ng-click="$dismiss()">Cancel</button>
+  </div>
+  </div>
 </section>

@@ -647,7 +647,6 @@ textarea {
   text-align: center;
   margin-bottom: 10px;
   border: 1px solid #F2F2F2;
-  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   background-color: white;
@@ -751,7 +750,6 @@ label {
   overflow: hidden;
   position: relative;
   border: 1px solid $border-color;
-  @include display(flex);
   img {
     @include align-self(center);
     max-width: 100%;
