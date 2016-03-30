@@ -38,13 +38,15 @@
             <div class="img-upload">
               <label for="">Upload Image</label>
               <div class="slider-box">
-
-                <img src="img/slider/s1.jpg" class="img-responsive">
+                <h4 ng-if="isloading">Loading...</h4>
+                <img ng-src="{{userForm.image|uploadpath}}" ng-if="userForm.image" style="height:200px;">
+                <!-- <img src="img/slider/s1.jpg" class="img-responsive"> -->
               </div>
-              <div class="btn-upload">
+              <upload-image ng-model="userForm.image" no-view></upload-image>
+              <!-- <div class="btn-upload">
                 <input type="file" id="exampleInputFile">
                 <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
-              </div>
+              </div> -->
             </div>
             <div class="multiple-img">
               <label for="">Upload Audio</label>
@@ -61,7 +63,7 @@
             <div class="upload-img text-center">
               <button class="btn btn-primary btn-outline btn-small" ng-click="audioGallerySubmitForm(user)">Save</button>
               <a ui-sref="audio-galleries">
-                <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+                <button class="btn btn-primary btn-outline btn-small" ui-sref="audio-galleries">Cancel</button>
               </a>
             </div>
           </form>

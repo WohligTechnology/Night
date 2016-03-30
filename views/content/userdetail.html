@@ -63,25 +63,31 @@
                 <label for="exampleInputFile">Profile Image</label>
                 <div class="noti-image">
                   <div class="img-box">
-                    <img src="img/slider/s1.jpg" class="doneLoading">
+                    <h4 ng-if="isloading">Loading...</h4>
+                    <img ng-src="{{userForm.image|uploadpath}}" ng-if="userForm.image" style="height:200px;">
+                    <!-- <img src="img/slider/s1.jpg" class="doneLoading"> -->
                   </div>
                 </div>
-                <div class="btn-upload">
+                <upload-image ng-model="userForm.image" no-view></upload-image>
+                <!-- <div class="btn-upload">
                   <input type="file" id="exampleInputFile">
                   <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
-                </div>
+                </div> -->
               </div>
               <div class="form-group">
                 <label for="exampleInputFile">Cover Image</label>
                 <div class="noti-image">
                   <div class="img-box">
-                    <img src="img/slider/s1.jpg" class="doneLoading">
+                    <h4 ng-if="isloading">Loading...</h4>
+                    <img ng-src="{{userForm.image1|uploadpath}}" ng-if="userForm.image1" style="height:200px;">
+                    <!-- <img src="img/slider/s1.jpg" class="doneLoading"> -->
                   </div>
                 </div>
-                <div class="btn-upload">
+                <upload-image ng-model="userForm.image1" no-view></upload-image>
+                <!-- <div class="btn-upload">
                   <input type="file" id="exampleInputFile">
                   <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
-                </div>
+                </div> -->
               </div>
               <div class="upload-img text-center">
                 <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(user)">Save</button>
