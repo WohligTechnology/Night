@@ -575,7 +575,7 @@ textarea {
     position: relative;
     background-color: #fff;
     padding: 6px 20px;
-    min-height: 55px;
+    min-height: 65px;
     margin-bottom: 0;
     cursor: all-scroll;
     .circle {
@@ -657,6 +657,15 @@ textarea {
   padding: 5px;
   background: #000;
   margin-bottom: 10px;
+}
+.edit-delete {
+  padding-left: 10px;
+}
+.make-default {
+  padding: 15px 0;
+  input {
+    vertical-align: sub;
+  }
 }
 .all-label {
   font-weight: 400;
