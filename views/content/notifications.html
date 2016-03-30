@@ -117,8 +117,8 @@
             <h4>List Of Notification</h4>
           </div>
           <div class="notification-table mt30">
-            <table class="table">
-              <thead ng-if="notificationdata.length>0">
+            <table class="table" ng-if="notificationdata.length>0">
+              <thead>
                 <tr>
                   <th>
                     <div class="select">
@@ -170,13 +170,11 @@
                     </div>
                   </td>
                 </tr>
-
-
               </tbody>
-              <tr class="text-center list-unstyled grouplist" ng-if="!notificationdata || notificationdata.length==0">
-                <td>No Notifications Yet</td>
-              </tr>
             </table>
+            <p class="text-center list-unstyled grouplist" ng-if="!notificationdata || notificationdata.length==0">
+              No Notifications Yet
+            </p>
           </div>
         </div>
       </div>
