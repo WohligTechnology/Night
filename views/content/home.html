@@ -1,57 +1,58 @@
 <div class="ionic-template mb30">
-  <h4 class="pad20">Home</h4>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="home-slider form-background">
-        <div class="pull-right ">
-          <a class="btn btn-primary btn-outline btn-small create-btn" href="#" class="btn btn-primary btn-outline btn-small create-btn" target="_blank">Tutorials</a>
-        </div>
-        <div class="naming">
-          <h4>Set Home Slider</h4>
-        </div>
-        <div class="image-picker">
-          <div dnd-list="lists" class="pt15">
-            <div class="image-set">
-              <div class="row" ui-sortable ng-model="lists">
-                <!-- <div class="drop-image col-xs-3" ng-repeat="item in lists">
+    <h4 class="pad20">Home</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="home-slider form-background">
+                <div class="pull-right ">
+                    <a class="btn btn-primary btn-outline btn-small create-btn" href="#" class="btn btn-primary btn-outline btn-small create-btn" target="_blank">Tutorials</a>
+                </div>
+                <div class="naming">
+                    <h4>Set Home Slider</h4>
+                </div>
+                <div class="image-picker">
+                    <div dnd-list="lists" class="pt15">
+                        <div class="image-set">
+                            <div class="row" ui-sortable ng-model="lists">
+                                <!-- <div class="drop-image col-xs-3" ng-repeat="item in lists">
                   <div ng-click="open()" class="image-holder" ng-style="{'background-image': 'url({{item.image}})'}"></div>
                 </div> -->
 
-                <div class="drop-image col-xs-3" ng-repeat="home in homedata">
+                                <div class="drop-image col-xs-3" ng-repeat="home in homedata">
 
-                  <!-- <a ui-sref="editvideo-gallerydetail({id:videogal._id})"> -->
-                  <div class="image-holder" ng-click="open(homeimg)" ng-style="{'background-image': 'url({{homeimg.image | uploadpath}})'}"></div>
+                                    <!-- <a ui-sref="editvideo-gallerydetail({id:videogal._id})"> -->
+                                    <div class="image-holder" ng-click="open(homeimg)" ng-style="{'background-image': 'url({{homeimg.image | uploadpath}})'}"></div>
+                                </div>
+
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
                 </div>
-
-              </div>
-              <div class="clearfix"></div>
+                  <upload-image ng-model="userForm.images" multiple no-view></upload-image>
+                <!-- <div class="upload-img text-center">
+                      <upload-image ng-model="userForm.images" multiple no-view></upload-image>
+                </div> -->
             </div>
-          </div>
+            <div class="home-content form-background mt30">
+                <div class="naming">
+                    <h4>Set Home Content</h4>
+                </div>
+                <div class="fill-content mt15">
+                    <div class="all-label">
+                        <span>Content</span>
+                    </div>
+                    <div class="mt15">
+                        <textarea ui-tinymce ng-model="userForm.content"></textarea>
+                    </div>
+                    <div class="upload-img text-center">
+                        <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm)">Save</button>
+                        <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+                    </div>
+                    <div class="text-center" ng-if="formComplete">
+                        <h3>Submitted Successfully, Thank You!</h3>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="upload-img text-center">
-          <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
-        </div>
-      </div>
-      <div class="home-content form-background mt30">
-        <div class="naming">
-          <h4>Set Home Content</h4>
-        </div>
-        <div class="fill-content mt15">
-          <div class="all-label">
-            <span>Content</span>
-          </div>
-          <div class="mt15">
-            <textarea ui-tinymce ng-model="userForm.content"></textarea>
-          </div>
-          <div class="upload-img text-center">
-            <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm)">Save</button>
-            <button class="btn btn-primary btn-outline btn-small">Cancel</button>
-          </div>
-          <div class="text-center" ng-if="formComplete">
-            <h3>Submitted Successfully, Thank You!</h3>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </div>

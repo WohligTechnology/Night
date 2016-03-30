@@ -35,10 +35,13 @@
                 <label for="exampleInputFile">Image Upload</label>
                 <div class="noti-image">
                   <div class="img-box">
-                    <img src="img/slider/s1.jpg">
+                    <h4 ng-if="isloading">Loading...</h4>
+                    <img ng-src="{{userForm.icon|uploadpath}}" ng-if="userForm.icon" style="height:200px;">
+                    <!-- <img src="img/slider/s1.jpg"> -->
                   </div>
                 </div>
-                <input type="file" id="exampleInputFile">
+                <upload-image ng-model="userForm.icon" no-view></upload-image>
+                <!-- <input type="file" id="exampleInputFile"> -->
               </div>
           </div>
           <div class="upload-img text-center">

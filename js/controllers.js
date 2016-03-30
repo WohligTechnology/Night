@@ -1410,11 +1410,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.open = function(photogal) {
         $scope.photogal = photogal;
-        if ($scope.photogal.status == 1) {
-            $scope.photogal.status = true;
-        } else {
-            $scope.photogal.status = false;
-        }
+        // if ($scope.photogal.status == 1) {
+        //     $scope.photogal.status = true;
+        // } else {
+        //     $scope.photogal.status = false;
+        // }
         console.log('in open modal', $scope.photogal);
         console.log('photogal data: ', $scope.photogal);
 
@@ -1464,6 +1464,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         "image": "img/t3.jpg"
     }];
 
+$scope.userForm={};
     $scope.open = function(size) {
 
         var modalInstance = $uibModal.open({
