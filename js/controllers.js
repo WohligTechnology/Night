@@ -440,6 +440,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Login & Signup");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    $scope.login = {};
+    $scope.login.hasLogin = true;
+    $scope.login.google = true;
+    $scope.login.facebook = true;
+    $scope.login.twitter = true;
+
 })
 
 .controller('NotificationsCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $stateParams) {
@@ -1377,7 +1384,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.photogalForm = {};
     $scope.photogaldata = [];
     $scope.allPhotogalRecord = function() {
-        NavigationService.homeViewAll($scope.photogalForm, function(data) {
+        NavigationService.homeViewAll(function(data) {
             $scope.photogaldata = data.data;
 
             console.log('$scope.photogaldata', data.data);
