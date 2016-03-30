@@ -15,6 +15,9 @@
                      <div class="row" ui-sortable ng-model="lists">
                         <div class="drop-image col-xs-3" ng-repeat="item in userForm.images">
                            <div ng-click="open()" class="image-holder" ng-style="{'background-image': 'url({{item.image | uploadpath}})'}"></div>
+                           <div class="caption">
+                             <p>PicsPicsPicsPicsPics</p>
+                           </div>
                         </div>
                      </div>
                      <div class="clearfix"></div>
