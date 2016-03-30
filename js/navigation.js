@@ -1,6 +1,7 @@
 var adminurl = "http://192.168.1.114:1337/";
 var adminurl = "http://192.168.1.116:88/";
 var imgpath = adminurl + "upload/readFile";
+var uploadurl = adminurl + "upload";
 var navigationservice = angular.module('navigationservice', [])
 
 .factory('NavigationService', function($http) {
@@ -113,18 +114,19 @@ var navigationservice = angular.module('navigationservice', [])
         getnav: function() {
             return navigation;
         },
-        homeViewAll: function(formData, callback) {
+        homeViewAll: function(callback) {
+            $http({
+                url: adminurl + 'homeslider/getAll',
+                method: 'POST'
+            }).success(callback);
+        },
+        saveHomeContent: function(homeData, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'home/getAll',
+                url: adminurl + 'homeslider/save',
                 method: 'POST',
                 withCredentials: true,
-                data: {
-                    "title": formData.title,
-                    "externallink": formData.externallink,
-                    "image": formData.image,
-                    "status": formData.status
-                }
+                data: homeData
             }).success(callback);
         },
         edithomeSubmit: function(formData, callback) {
@@ -450,9 +452,6 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
-
-
-
         userViewAll: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -474,7 +473,6 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
-
         deleteUserData: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -482,8 +480,7 @@ var navigationservice = angular.module('navigationservice', [])
                 method: 'POST',
                 withCredentials: true,
                 data: {
-                    "_id": formData.id,
-
+                    "_id": formData.id
                 }
             }).success(callback);
         },
@@ -515,7 +512,6 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true,
                 data: {
                     "_id": id
-
                 }
             }).success(callback);
         },
@@ -536,19 +532,10 @@ var navigationservice = angular.module('navigationservice', [])
                     "accesslevel": formData.accesslevel,
                     "address": formData.address,
                     "image": formData.image,
-                    "image1": formData.image1,
-
+                    "image1": formData.image1
                 }
             }).success(callback);
         },
-
-
-
-
-
-
-
-
         articleViewAll: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -562,11 +549,9 @@ var navigationservice = angular.module('navigationservice', [])
                     //"modificationTime": formData.modificationTime,
                     "status": formData.status,
                     //"views": formData.views,
-
                 }
             }).success(callback);
         },
-
         deleteArticleData: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -574,8 +559,7 @@ var navigationservice = angular.module('navigationservice', [])
                 method: 'POST',
                 withCredentials: true,
                 data: {
-                    "_id": formData.id,
-
+                    "_id": formData.id
                 }
             }).success(callback);
         },
@@ -604,7 +588,6 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true,
                 data: {
                     "_id": id
-
                 }
             }).success(callback);
         },
@@ -622,13 +605,9 @@ var navigationservice = angular.module('navigationservice', [])
                     //"modificationTime": formData.modificationTime,
                     "status": formData.status,
                     "image": formData.image
-
                 }
             }).success(callback);
         },
-
-
-
         navigationViewAll: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -642,11 +621,9 @@ var navigationservice = angular.module('navigationservice', [])
                     //"order": formData.order,
                     "status": formData.status,
                     "icon": formData.icon,
-
                 }
             }).success(callback);
         },
-
         deleteNavigationData: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -655,11 +632,9 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true,
                 data: {
                     "_id": formData.id,
-
                 }
             }).success(callback);
         },
-
         navigationCreateSubmit: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -674,11 +649,9 @@ var navigationservice = angular.module('navigationservice', [])
                     "status": formData.status,
                     "icon": formData.icon,
                     "link": formData.link
-
                 }
             }).success(callback);
         },
-
         getNavigationEditDetail: function(id, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -690,7 +663,6 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
-
         editNavigationSubmit: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -706,13 +678,9 @@ var navigationservice = angular.module('navigationservice', [])
                     "status": formData.status,
                     "icon": formData.icon,
                     "link": formData.link
-
                 }
             }).success(callback);
         },
-
-
-
         eventsViewAll: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -737,7 +705,6 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
-
         eventCreateSubmit: function(formData, callback) {
             console.log('Navigation event create form data: ', formData);
             $http({
@@ -767,7 +734,6 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
-
         editEventSubmit: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -784,11 +750,24 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
-
-
-
-
-
+        sortNavigation: function(navArray, callback) {
+            $http({
+                url: adminurl + 'navigation/sort',
+                method: 'POST',
+                withCredentials: true,
+                data: navArray
+            }).success(callback);
+        },
+        setDefault: function(navid, callback) {
+            $http({
+                url: adminurl + 'navigation/setDefault',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": navid
+                }
+            }).success(callback);
+        },
         makeactive: function(menuname) {
             for (var i = 0; i < navigation.length; i++) {
                 if (navigation[i].name == menuname) {

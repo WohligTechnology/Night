@@ -220,25 +220,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.homeForm = {};
     $scope.homedata = [];
+    $scope.userForm = {};
+
     $scope.allHomeRecord = function() {
-        NavigationService.homeViewAll($scope.homeForm, function(data) {
-            $scope.homedata = data.data;
-            console.log('$scope.homedata', data.data);
+        NavigationService.homeViewAll(function(data) {
+            if (data.value == true) {
+                if (data.data && data.data.length > 0) {
+                    $scope.userForm = data.data[0];
+                }
+            }
         });
     };
     $scope.allHomeRecord();
 
-    $scope.userForm = {};
-
-    $scope.homeEditSubmitForm = function(formValid) {
-        if (formValid.$valid) {
-            console.log('in navi');
-            NavigationService.edithomeSubmit($scope.homeForm, function(data) {
-                console.log('homeForm', $scope.homeForm);
-                $scope.allHomeRecord();
-
-            });
-        }
+    $scope.homeEditSubmitForm = function() {
+        NavigationService.saveHomeContent($scope.userForm, function(data) {
+            console.log(data);
+        });
     };
 
     $scope.lists = [{
@@ -298,7 +296,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.eventForm = {};
     $scope.sortableOptions = {
         update: function(e, ui) {
-            console.log($scope.navigationdata);
+            NavigationService.sortNavigation($scope.navigationdata, function(data) {
+
+            })
         }
     };
 
@@ -320,6 +320,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         });
     };
+
+    $scope.makeDefault = function(nav) {
+        console.log(nav);
+        NavigationService.setDefault(nav._id, function(data) {
+
+        });
+    }
 
     // $scope.navigation2 = [{
     //     name: "Home",

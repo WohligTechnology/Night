@@ -307,6 +307,7 @@ firstapp.directive('uploadImage', function($http) {
         },
         link: function($scope, element, attrs) {
             $scope.isMultiple = false;
+            $scope.inObject = false;
             if (attrs.multiple || attrs.multiple === "") {
                 $scope.isMultiple = true;
 
@@ -315,25 +316,31 @@ firstapp.directive('uploadImage', function($http) {
             if (attrs.noView || attrs.noView === "") {
                 $scope.noShow = true;
             }
-
+            if (attrs.inobj || attrs.inobj === "") {
+                $scope.inObject = true;
+            }
             $scope.clearOld = function() {
                 $scope.model = [];
             };
-
             $scope.upload = function(image) {
                 var Template = this;
                 image.hide = true;
                 var formData = new FormData();
                 formData.append('file', image.file, image.name);
-                $http.post(imgpathurl + 'upload', formData, {
+                $http.post(uploadurl, formData, {
                     headers: {
                         'Content-Type': undefined
                     },
                     transformRequest: angular.identity
                 }).success(function(data) {
                     if ($scope.isMultiple) {
-                        $scope.model.push(data.data[0]);
-
+                        if ($scope.inObject) {
+                            $scope.model.push({
+                                "image": data.data[0]
+                            });
+                        } else {
+                            $scope.model.push(data.data[0]);
+                        }
                     } else {
                         $scope.model = data.data[0];
                     }
