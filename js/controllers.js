@@ -272,9 +272,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     var modalInstance = '';
     $scope.editSingleSlider = function(modalData) {
-        console.log(modalInstance);
-        modalInstance.dismiss();
+        console.log(modalData);
+        NavigationService.saveHomeContent(modalData, function(data) {
+            if (data.value) {
+                $scope.allHomeRecord();
+                modalInstance.dismiss();
+            }
+        })
     }
+
+    $scope.sortableOptions = {
+        update: function(e, ui) {
+            NavigationService.sortHomeSlider($scope.userForm.images, function(data) {
+
+            })
+        }
+    };
 
     $scope.lists = [{
         "image": "img/t1.jpg"
@@ -299,14 +312,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.open = function(home) {
         console.log(home);
         $scope.modalData = home;
-        // $scope.home = home;
-        // if ($scope.home.status == 1) {
-        //     $scope.home.status = true;
-        // } else {
-        //     $scope.home.status = false;
-        // }
-        // console.log('in open modal', $scope.home);
-        // console.log('notification data: ', $scope.home);
 
         modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,

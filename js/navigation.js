@@ -138,20 +138,12 @@ var navigationservice = angular.module('navigationservice', [])
                 data: sliderArr
             }).success(callback);
         },
-        edithomeSubmit: function(formData, callback) {
-            // console.log('form data: ', formData);
+        sortHomeSlider: function(homeArray, callback) {
             $http({
-                url: adminurl + 'home/save',
+                url: adminurl + 'homeslider/sort',
                 method: 'POST',
                 withCredentials: true,
-                data: {
-                    "_id": formData._id,
-                    "title": formData.title,
-                    "externallink": formData.externallink,
-                    "image": formData.image,
-                    "status": formData.status
-
-                }
+                data: homeArray
             }).success(callback);
         },
         notificationViewAll: function(formData, callback) {
