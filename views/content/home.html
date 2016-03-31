@@ -14,11 +14,10 @@
                   <div class="image-set">
                      <div class="row" ui-sortable ng-model="lists">
                         <div class="drop-image col-xs-3" ng-repeat="item in userForm.images">
-                           <div ng-click="open()" class="image-holder" ng-style="{'background-image': 'url({{item.image | uploadpath}})'}"></div>
+                           <div ng-click="open(item);" class="image-holder" ng-style="{'background-image': 'url({{item.image | uploadpath}})'}"></div>
                            <div class="caption">
-                             <p>Pics</p>
-                           </div
-                           
+                              <p>Pics</p>
+                           </div>
                         </div>
                      </div>
                      <div class="clearfix"></div>

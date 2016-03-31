@@ -129,6 +129,15 @@ var navigationservice = angular.module('navigationservice', [])
                 data: homeData
             }).success(callback);
         },
+        insertData: function(sliderArr, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'homeslider/insertData',
+                method: 'POST',
+                withCredentials: true,
+                data: sliderArr
+            }).success(callback);
+        },
         edithomeSubmit: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -212,17 +221,11 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
-        blogViewAll: function(formData, callback) {
-            // console.log('form data: ', formData);
+        blogViewAll: function(callback) {
             $http({
                 url: adminurl + 'blog/getAll',
                 method: 'POST',
-                withCredentials: true,
-                data: {
-                    "blogtitle": formData.blogtitle,
-                    "content": formData.content,
-                    "timestamp": formData.timestamp,
-                }
+                withCredentials: true
             }).success(callback);
         },
         deleteBlogData: function(formData, callback) {
@@ -238,20 +241,15 @@ var navigationservice = angular.module('navigationservice', [])
         },
         blogCreateSubmit: function(formData, callback) {
             $http({
-                url: adminurl + 'contact/save',
+                url: adminurl + 'blog/save',
                 method: 'POST',
                 withCredentials: true,
-                data: {
-                    "blogtitle": formData.blogtitle,
-                    "content": formData.content,
-                    "timestamp": formData.timestamp,
-                    "image": formData.image,
-                }
+                data: formData
             }).success(callback);
         },
         getBlogEditDetail: function(id, callback) {
             $http({
-                url: adminurl + 'contact/getOne',
+                url: adminurl + 'blog/getOne',
                 method: 'POST',
                 withCredentials: true,
                 data: {
@@ -564,20 +562,11 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         articleCreateSubmit: function(formData, callback) {
-            // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'article/save',
                 method: 'POST',
                 withCredentials: true,
-                data: {
-                    "name": formData.name,
-                    "content": formData.content,
-                    "tags": formData.tags,
-                    "image": formData.image,
-                    "status": formData.status,
-                    //"views": formData.views,
-
-                }
+                data: formData
             }).success(callback);
         },
         getArticleEditDetail: function(id, callback) {

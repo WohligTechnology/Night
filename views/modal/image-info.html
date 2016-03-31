@@ -27,26 +27,22 @@
                         <div class="noti-image">
                            <div class="img-box">
                               <h4 ng-if="isloading">Loading...</h4>
-                              <img ng-src="{{home.image|uploadpath}}" ng-if="home.image" style="height:200px;">
+                              <img ng-src="{{modalData.image|uploadpath}}" ng-if="modalData.image" style="height:200px;">
                            </div>
                         </div>
-                        <div ng-if="home.image">
-                           <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
-                        </div>
-
-                        <input type="file" name="image" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-model="home.image" accept=".jpg,.png" class="form-control ab" ui-file-upload>
+                        <upload-image ng-model="modalData.image" no-view></upload-image>
 
                      </div>
                      <div class="slider-title mt25">
                         <div class="form-group">
                            <label for="">Title </label>
-                           <input type="text" class="form-control" ng-model="home.title">
+                           <input type="text" class="form-control" ng-model="modalData.name">
                         </div>
                      </div>
                      <div class="slider-link">
                         <div class="form-group">
-                           <label for="">Link</label>
-                           <select class="form-control">
+                           <label for="">Link Type</label>
+                           <select class="form-control" ng-model="modalData.type">
                               <optgroup label="Swedish Cars">
                                  <option value="volvo">Volvo</option>
                                  <option value="saab">Saab</option>
@@ -59,7 +55,7 @@
                         </div>
                         <div class="form-group">
                            <label for="">External Link </label>
-                           <input type="text" class="form-control" ng-model="home.externallink">
+                           <input type="text" class="form-control" ng-model="modalData.link">
                         </div>
                      </div>
                      <!-- <div class="form-group">
@@ -74,7 +70,7 @@
                         <label for="">Enable</label>
                      </div>
                      <div class="onoffswitch">
-                        <input name="status" ng-model="home.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch">
+                        <input name="status" ng-model="modalData.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch">
                         <label class="onoffswitch-label" for="myonoffswitch">
                            <span class="onoffswitch-inner"></span>
                            <span class="onoffswitch-switch"></span>
@@ -87,8 +83,7 @@
 
       </div>
       <div class="modal-footer">
-
-         <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="homeEditSubmitForm(home)">Save</button>
+         <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="editSingleSlider(modalData)">Save</button>
          <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss()">Cancel</button>
       </div>
    </div>
