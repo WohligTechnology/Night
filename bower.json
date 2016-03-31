@@ -34,6 +34,8 @@
     "angular-drag-and-drop-lists": "^1.4.0",
     "angular-ui-sortable": "^0.13.4",
     "jStorage": "^0.4.12",
+    "highcharts-ng": "~0.0.8",
+    "moment": "~2.10.3",
     "tinymce": "tinymce-dist#^4.3.4",
     "angularjs-toaster": "~1.2.0",
     "angularjs-imageupload-directive": "https://github.com/Mischi/angularjs-imageupload-directive.git"

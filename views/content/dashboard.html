@@ -44,35 +44,46 @@
           </div>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              User data
+      <div class="form-background">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                User data
+              </div>
+              <div class="panel-body">
+                <div class="highcharts">
+                  <hc-pie-chart title="Browser usage" data="pieData">Placeholder for pie chart</hc-pie-chart>
+                </div>
+                <div class="highcharts">
+                  <hc-chart options="chartOptions">Placeholder for generic chart</hc-chart>
+                </div>
+                <!-- <div class="highcharts2">
+                <highchart id="chart2" config="pieChart"></highchart>
+              </div> -->
+              </div>
             </div>
-            <div class="panel-body"></div>
           </div>
-        </div>
-        <div class="col-md-12">
-          <div class="panel panel-default">
-            <div class="panel-heading">Recent Enquiries</div>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Subject</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>1</th>
-                  <td>Mark</td>
-                  <td>Lorem ipsum dolor sit amet.</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="col-md-4">
+            <div class="panel panel-default">
+              <div class="panel-heading">Recent Enquiries</div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Subject</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>1</th>
+                    <td>Mark</td>
+                    <td>Lorem ipsum dolor sit amet.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
