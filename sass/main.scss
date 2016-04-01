@@ -410,6 +410,9 @@ textarea {
 .mt15 {
   margin-top: 15px;
 }
+.mt10 {
+  margin-top: 10px;
+}
 .mt20 {
   margin-top: 20px;
 }
@@ -572,6 +575,18 @@ textarea {
   h4 {
     font-size: 16px;
     margin: 5px 0 10px;
+  }
+  &.simple {
+    border-bottom: 0px;
+    padding: 0;
+    h4 {
+      font-family: $font-family-serif;
+      font-weight: 400;
+      color: #8D8D8D;
+      text-transform: uppercase;
+      font-size: 14px;
+      margin: 0;
+    }
   }
 }
 .grouplist {
@@ -944,7 +959,7 @@ label {
   }
 }
 .fadeInOut.ng-enter {
-  transition: 0.5s linear all;
+  @include transition(300ms ease all);
   opacity: 0;
 }
 .fadeInOut.ng-enter.ng-enter-active {
@@ -1024,7 +1039,7 @@ span.input-group-btn.calender-btn {
   }
 }
 .pd20 {
-  padding: 20px;
+  padding: 20px 5px;
 }
 .radio-opt {
   padding: 2px;

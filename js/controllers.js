@@ -383,9 +383,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   $scope.login = {};
   $scope.login.hasLogin = true;
-  $scope.login.google = true;
-  $scope.login.facebook = true;
-  $scope.login.twitter = true;
+  $scope.login.custom = true;
+  $scope.login.google = false;
+  $scope.login.facebook = false;
+  $scope.login.twitter = false;
 
 })
 
