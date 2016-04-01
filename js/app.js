@@ -21,7 +21,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
     .state('dashboard', {
         url: "/dashboard",
-        templateUrl: "views/template-sidemenu.html",
+        templateUrl: "views/template.html",
         controller: 'DashboardCtrl'
     })
 

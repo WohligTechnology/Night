@@ -416,6 +416,9 @@ textarea {
 .mt25 {
   margin-top: 25px;
 }
+.mt7 {
+  margin-top: 7px;
+}
 .mt60 {
   margin-top: 60px;
 }
@@ -1087,6 +1090,27 @@ span.input-group-btn.calender-btn {
   font-weight: 600;
   overflow: hidden;
   padding: 2px 10px;
+}
+.group {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  ul {
+    margin: 0;
+  }
+  li {
+    line-height: 200%;
+    cursor: pointer;
+  }
+}
+.modal-nav ul li {
+  cursor: pointer;
+  line-height: 200%;
+  margin-bottom: 1px;
+  @include transition(all ease 300ms);
+  &:hover {
+    color: $brand-primary;
+  }
 }
 // .pophover{
 //   position: absolute;
