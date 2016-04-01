@@ -1362,15 +1362,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   }];
 
   $scope.open = function(photogal) {
-    $scope.photogal = photogal;
-    // if ($scope.photogal.status == 1) {
-    //     $scope.photogal.status = true;
-    // } else {
-    //     $scope.photogal.status = false;
-    // }
-    console.log('in open modal', $scope.photogal);
-    console.log('photogal data: ', $scope.photogal);
-
+    console.log(photogal);
+    $scope.modalData = photogal;
 
     var modalInstance = $uibModal.open({
       animation: $scope.animationsEnabled,

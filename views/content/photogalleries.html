@@ -27,9 +27,12 @@
                <div class="image-picker" ng-if="photogaldata.length>0">
                   <div dnd-list="lists" class="pt15">
                      <div class="image-set">
-                        <div class="row" ui-sortable ng-model="lists">
+                        <div class="row" ui-sortable ng-model="photogaldata">
                            <div class="drop-image col-xs-3" ng-repeat="item in photogaldata track by $index">
                               <div ng-click="open(item)" class="image-holder" ng-style="{'background-image': 'url({{item.icon|uploadpath}})'}"></div>
+                              <div class="caption">
+                                 <p ng-if="item.title">{{item.title}}</p>
+                              </div>
                            </div>
                         </div>
                         <div class="clearfix"></div>

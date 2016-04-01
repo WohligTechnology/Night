@@ -108,7 +108,7 @@ var navigationservice = angular.module('navigationservice', [])
             anchor: "configuration",
             icon: "ln-gear2",
         }, {
-            name: "enquiry",
+            name: "Enquiry",
             classis: "active",
             anchor: "enquiry",
             icon: "ln-comments",
@@ -752,6 +752,14 @@ var navigationservice = angular.module('navigationservice', [])
             $http({
                 url: adminurl + 'photogallery/getAll',
                 method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        photogalSubmitForm: function(formData, callback) {
+            $http({
+                url: adminurl + 'photogallery/save',
+                method: 'POST',
+                data: formData,
                 withCredentials: true
             }).success(callback);
         },
