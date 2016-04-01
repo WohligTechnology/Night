@@ -34,7 +34,7 @@ $nav-link-padding: 12px 15px 15px 20px;
 @mixin button-outline($color) {
   color: $color;
   background-color: transparent;
-  border-color: $color;
+  border-color: $color !important;
   &:hover,
   &:focus {
     color: white;
@@ -96,6 +96,9 @@ nav {
   margin-bottom: 0;
   min-height: 50px;
 }
+.primary {
+  color: $brand-primary;
+}
 .logo {
   font-size: 24px;
   line-height: 50px;
@@ -118,7 +121,7 @@ a,
     text-decoration: none;
     outline: 0;
     box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075), 0 0 0 rgba(102, 175, 233, 0.6);
-    border-color: #ccc;
+    // border-color: #ccc;
   }
 }
 .btn {
@@ -1148,6 +1151,48 @@ span.input-group-btn.calender-btn {
   }
   &.border-warning {
     border-color: $brand-warning;
+  }
+}
+.primary-accordion {
+  .radio-inline input[type="radio"] {
+    outline: 0 !important;
+    @include appearance(none);
+    &:checked {
+      &:after {
+        color: $brand-primary;
+      }
+    }
+    &:after {
+      @include transition(all 300ms ease);
+      content: '\f00c';
+      height: 12px;
+      width: 12px;
+      background-color: white;
+      display: block;
+      font-family: 'FontAwesome';
+      color: white;
+      font-size: 10px;
+      text-align: center;
+      line-height: 12px;
+    }
+  }
+  .panel-group {
+    margin: 0;
+    margin-top: -25px;
+  }
+  .panel {
+    background-color: $brand-primary;
+    box-shadow: none;
+    color: white;
+  }
+  label {
+    color: white;
+  }
+}
+.border-transparent {
+  border-color: transparent !important;
+  &.btn-primary:focus, &.btn-primary:hover {
+    background-color: $brand-primary !important;
   }
 }
 @import "toggle";

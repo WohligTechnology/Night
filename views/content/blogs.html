@@ -8,15 +8,14 @@
 
       <div class="display-inline float-right pd20">
          <div class="setting-on">
-            <button href="" class="btn btn-primary btn-small create-btn" ng-click="status.open = !status.open">
+            <div href="" class="btn btn-primary btn-small create-btn border-transparent" ng-class="{'btn-outline': status.open == false}" ng-init="status.open=true" ng-click="status.open = !status.open">
                <i class="ln-gear2 f10"></i> Settings
-            </button>
+            </div>
          </div>
       </div>
       <h4 class="pad20">Blog</h4>
-      <div class="row">
-         <div class="col-md-12">
-            <uib-accordion>
+
+            <uib-accordion class="primary-accordion">
                <uib-accordion-group is-open="status.open">
                   <div class="row">
                      <div class="col-sm-6">
@@ -51,6 +50,7 @@
                   </div>
                </uib-accordion-group>
             </uib-accordion>
+
             <uib-accordion>
                <uib-accordion-group is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
                   <div class="home-content">
@@ -120,9 +120,9 @@
                                     </tr>
                                  </tbody>
                               </table>
-                              <p class="text-center list-unstyled grouplist" ng-if="!blogdata || blogdata.length==0">
-                                 No Blogs Yet
-                              </p>
+                              <div class="text-center" ng-if="!blogdata || blogdata.length==0">
+                                 No blog added, please click on <span class="primary">Create</span> to add blog.
+                              </div>
                            </div>
                         </div>
                      </div>
@@ -191,8 +191,8 @@
                      </div>
                   </div>
                </uib-accordion-group>
-               <uib-accordion>
-         </div>
-      </div>
+             </uib-accordion>
+
+
    </div>
 </div>
