@@ -1,5 +1,8 @@
 <div class="max-size">
   <div class="ionic-template mb30">
+    <div class="pull-right ">
+       <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
+    </div>
     <h4 class="pad20">Video Gallery</h4>
     <div class="row">
       <div class="col-md-12">
@@ -15,7 +18,7 @@
               <div class="image-set">
                 <div class="row" ui-sortable ng-model="lists">
                   <div class="drop-image col-xs-3" ui-sref="editvideo-gallerydetail({id:videogal._id})" ng-repeat="videogal in videogalleries">
-            
+
                     <!-- <a ui-sref="editvideo-gallerydetail({id:videogal._id})"> -->
                     <div class="image-holder" ng-style="{'background-image': 'url({{videogal.image | uploadpath}})'}"></div>
                   </div>

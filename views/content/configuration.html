@@ -9,8 +9,10 @@
       <uib-accordion close-others="oneAtATime" class="cutom-accordion">
         <uib-accordion-group is-open="status.isFirstOpen">
           <uib-accordion-heading>
+            <div class="open" ng-click="status1.open = !status1.open">
             <i class="ln-magnifier"></i> Search
             <i class="right-arrow" ng-class="{'ln-chevron-right down': status.isFirstOpen, 'ln-chevron-right': !status.isFirstOpen}"></i>
+          </div>
           </uib-accordion-heading>
           <div class="search">
             <form action="">
@@ -36,8 +38,10 @@
         </uib-accordion-group>
         <uib-accordion-group is-open="status.open2">
           <uib-accordion-heading>
+            <div class="open" ng-click="status2.open = !status2.open">
             <i class="ln-thumbs-up"></i> Social Feeds
             <i class="right-arrow" ng-class="{'ln-chevron-right down': status.open2, 'ln-chevron-right': !status.open2}"></i>
+          </div>
           </uib-accordion-heading>
           <div class="soical-feeds">
             <form action="" name="user">
@@ -92,8 +96,10 @@
         </uib-accordion-group>
         <uib-accordion-group is-open="status.open3">
           <uib-accordion-heading>
+              <div class="open" ng-click="status3.open = !status3.open">
             <i class="ln-graph"></i> Google Analytics
             <i class="right-arrow" ng-class="{'ln-chevron-right down': status.open3, 'ln-chevron-right': !status.open3}"></i>
+          </div>
           </uib-accordion-heading>
           <div class="google-analytics">
             <form action="" name="user1">
@@ -107,6 +113,54 @@
                 <button class="btn btn-primary btn-outline btn-small">Cancel</button>
               </div>
             </form>
+          </div>
+        </uib-accordion-group>
+        <uib-accordion-group is-open="status.open4">
+          <uib-accordion-heading>
+            <div class="open" ng-click="status4.open = !status4.open">
+            <i class="ln-user"></i> Make Admin
+            <i class="right-arrow" ng-class="{'ln-chevron-right down': status.open4, 'ln-chevron-right': !status.open4}"></i>
+          </div>
+          </uib-accordion-heading>
+          <div class="google-analytics">
+            <form action="" name="user1">
+              <div class="form-group">
+                <label for="">
+                  Make Admin
+                </label>
+                <input type="text" name="admin" ng-model="userForm.admin" class="form-control" placeholder="Admin">
+              </div>
+              <div class="upload-img text-center">
+                <button class="btn btn-primary btn-outline btn-small">Save</button>
+                <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+              </div>
+            </form>
+            <div class="notification-list mt30">
+              <div class="notification-table">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>
+                        <div class="select">
+                          <!-- <span>Select All</span> -->
+                          <div class="checkbox">
+                            <label>
+                              <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                            </label>
+                          </div>
+                        </div>
+                      </th>
+                      <th>
+                        <span>Name</span>
+                      </th>
+                      <th>
+                        <span>Role</span>
+                      </th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
           </div>
         </uib-accordion-group>
       </uib-accordion>
