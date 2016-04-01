@@ -1,14 +1,14 @@
 <div class="max-size">
-  <div class="ionic-template mb30">
-    <h4 class="pad20">Photo Gallery</h4>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="home-slider form-background">
-          <div class="pull-right "><a class="btn btn-primary btn-outline btn-small create-btn" ui-sref="photo-gallerydetail">Create</a></div>
-          <div class="naming">
-            <h4>Set Photo Gallery</h4>
-          </div>
-          <!-- <div class="image-picker">
+   <div class="ionic-template mb30">
+      <h4 class="pad20">Photo Gallery</h4>
+      <div class="row">
+         <div class="col-md-12">
+            <div class="home-slider form-background">
+               <div class="pull-right "><a class="btn btn-primary btn-outline btn-small create-btn" ui-sref="photo-gallerydetail">Create</a></div>
+               <div class="naming">
+                  <h4>Set Photo Gallery</h4>
+               </div>
+               <!-- <div class="image-picker">
             <div dnd-list="lists" class="pt15">
               <div class="image-set">
                 <div class="row" ui-sortable ng-model="lists">
@@ -24,26 +24,23 @@
             <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
           </div> -->
 
-          <div class="image-picker">
-            <div dnd-list="lists" class="pt15">
-              <div class="image-set">
-                <div class="row" ui-sortable ng-model="lists">
-                  <div class="drop-image col-xs-3" ng-repeat="item in userForm.image track by $index">
-                    <div ng-click="open()" class="image-holder" ng-style="{'background-image': 'url({{item|uploadpath}})'}"></div>
+               <div class="image-picker" ng-if="photogaldata.length>0">
+                  <div dnd-list="lists" class="pt15">
+                     <div class="image-set">
+                        <div class="row" ui-sortable ng-model="lists">
+                           <div class="drop-image col-xs-3" ng-repeat="item in photogaldata track by $index">
+                              <div ng-click="open(item)" class="image-holder" ng-style="{'background-image': 'url({{item.icon|uploadpath}})'}"></div>
+                           </div>
+                        </div>
+                        <div class="clearfix"></div>
+                     </div>
                   </div>
-                </div>
-                <div class="clearfix"></div>
-              </div>
+               </div>
+               <div class="text-center pt15" ng-if="!photogaldata || photogaldata.length==0">
+                  <p>Not Photo Gallery Yet</p>
+               </div>
             </div>
-          </div>
-          <upload-image ng-model="userForm.image" multiple no-view></upload-image>
-
-          <!-- <div class="upload-img text-center">
-            <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
-          </div> -->
-
-        </div>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
 </div>
