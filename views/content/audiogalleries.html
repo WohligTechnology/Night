@@ -3,9 +3,9 @@
   <div class="row">
     <div class="col-md-12">
       <div class="home-slider form-background">
-        <div class="create-event pull-right">
+        <!-- <div class="create-event pull-right">
           <button class="btn btn-primary btn-outline btn-small" ui-sref="audio-gallerydetail">Create Playlist</button>
-        </div>
+        </div> -->
         <div class="naming">
           <h4>Set Audio Gallery</h4>
         </div>
@@ -15,22 +15,20 @@
               <!-- <a ui-sref="audio-gallerydetail({id:audiogal._id})" ng-repeat="audiogal in audioGallerydata"> <img ng-src="{{audiogal.image | uploadpath}}"></a> -->
           <!-- </div>
         </div> -->
-
-
-        <div class="image-picker">
-          <div dnd-list="lists" class="pt15">
-            <div class="image-set">
-              <div class="row" ui-sortable ng-model="lists">
-                <div class="drop-image col-xs-3" ui-sref="editvideo-gallerydetail({id:videogal._id})" ng-repeat="audiogal in audiogalleries">
-
-                  <!-- <a ui-sref="editvideo-gallerydetail({id:videogal._id})"> -->
-                  <div class="image-holder" ng-style="{'background-image': 'url({{audiogal.image | uploadpath}})'}"></div>
-                </div>
-              </div>
-              <div class="clearfix"></div>
+        <div class="form-login paddingup">
+          <form>
+            <div class="form-group">
+              <label for="">User Name</label>
+              <input type="text" class="form-control" id="" placeholder="Please Enter your Sound Cloud User Name">
             </div>
+          </form>
+          <div class="upload-img text-center pt15">
+             <button class="btn btn-primary btn-outline btn-small">Save</button>
+             <button class="btn btn-primary btn-outline btn-small">Reset</button>
           </div>
         </div>
+
+
 
       </div>
     </div>
