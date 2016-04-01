@@ -21,8 +21,19 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
     .state('dashboard', {
         url: "/dashboard",
-        templateUrl: "views/template.html",
+        templateUrl: "views/template-sidemenu.html",
         controller: 'DashboardCtrl'
+    })
+
+    .state('enquiry', {
+        url: "/enquiry",
+        templateUrl: "views/template-sidemenu.html",
+        controller: 'EnquiryCtrl'
+    })
+    .state('enquirydetail', {
+        url: "/enquirydetail",
+        templateUrl: "views/template-sidemenu.html",
+        controller: 'EnquiryDetailCtrl'
     })
 
     .state('theme', {
