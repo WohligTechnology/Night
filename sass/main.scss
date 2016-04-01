@@ -15,7 +15,7 @@ $brand-warning: #f78b34 !default;
 $brand-danger: #F33232 !default;
 $brand-info: #000072 !default;
 $brand-base: #666 !default;
-$border-color: #e7e7e7 !default;
+$border-color: #ececec !default;
 $white-color: #fff !default;
 $hover-color: #00bbd3!default;
 $grey-color: #c7c7c7!default;
@@ -707,7 +707,7 @@ label {
   margin-bottom: 10px;
   width: 100%;
   height: 40px;
-  border: 2px solid #ECECEC;
+  border: 1px solid $border-color;
   padding: 2px 14px;
   -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
@@ -882,7 +882,7 @@ label {
   margin-bottom: 25px;
   width: 100%;
   height: 40px;
-  border: 2px solid #ECECEC;
+  border: 1px solid $border-color;
   padding: 8px 14px;
   -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.075);
@@ -923,7 +923,7 @@ label {
     transform: translateX(-50%);
   }
   .iphone-upload {
-    border: 2px solid #ECECEC;
+    border: 1px solid $border-color;
     float: left;
     position: relative;
     cursor: pointer;
@@ -1215,6 +1215,11 @@ span.input-group-btn.calender-btn {
   .panel-heading {
     padding: 0;
   }
+}
+.mce-btn,
+.mce-panel {
+  background-color: #fff !important;
+  border-color: $border-color !important;
 }
 @import "toggle";
 @import "mobile";
