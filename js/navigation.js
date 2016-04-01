@@ -16,7 +16,7 @@ var navigationservice = angular.module('navigationservice', [])
             anchor: "theme",
             icon: "ln-paintbrush",
         }, {
-            name: "Home",
+            name: "App Home",
             classis: "active",
             anchor: "home",
             icon: "ln-home3",

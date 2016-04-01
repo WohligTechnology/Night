@@ -580,7 +580,7 @@ textarea {
     margin: 5px 0 10px;
   }
   &.simple {
-    border-bottom: 0px;
+    border-bottom: 0;
     padding: 0;
     h4 {
       font-family: $font-family-serif;
@@ -1138,7 +1138,7 @@ span.input-group-btn.calender-btn {
 // }
 // .checkbox-custom-label { // position: relative; // font-weight: 400; // &:before { // content: ''; // background: $border-color; // border: 1px solid $grey-color; // display: inline-block; // vertical-align: middle; // width: 16px; // height: 16px; // padding: 2px; // text-align: center; // } // } // .checkbox-custom:checked + .checkbox-custom-label:before { // background: $brand-primary; // }
 .border-left {
-  border: 0px;
+  border: 0;
   border-left: 3px solid;
   &.border-primary {
     border-color: $brand-primary;
@@ -1192,13 +1192,28 @@ span.input-group-btn.calender-btn {
 }
 .border-transparent {
   border-color: transparent !important;
-  &.btn-primary:focus, &.btn-primary:hover {
+  &.btn-primary:focus,
+  &.btn-primary:hover {
     background-color: $brand-primary !important;
   }
 }
 .one-time {
   .panel+.panel {
     margin: 0;
+  }
+}
+.panel-body {
+  padding: 20px;
+}
+.drop-image {
+  margin-bottom: 10px;
+}
+.config {
+  .open {
+    padding: 10px 15px;
+  }
+  .panel-heading {
+    padding: 0;
   }
 }
 @import "toggle";
