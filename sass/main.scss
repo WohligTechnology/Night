@@ -19,7 +19,7 @@ $border-color: #e7e7e7 !default;
 $white-color: #fff !default;
 $hover-color: #00bbd3!default;
 $grey-color: #c7c7c7!default;
-$head-color: #767676!default;
+$head-color: #444!default;
 $label-color: #afb3bc!default;
 $border-radius-base: 0 !default;
 $border-radius-large: 0 !default;
@@ -720,7 +720,7 @@ label {
       th {
         font-size: 14px;
         font-weight: 600;
-        color: #444;
+        color: $head-color;
       }
     }
   }
