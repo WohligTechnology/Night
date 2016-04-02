@@ -1203,6 +1203,13 @@ span.input-group-btn.calender-btn {
   label {
     color: white;
   }
+  .form-control {
+    background-color: transparent;
+    color: white;
+    &:focus {
+      border-color: white;
+    }
+  }
 }
 .border-transparent {
   border-color: transparent !important;
@@ -1234,6 +1241,12 @@ span.input-group-btn.calender-btn {
 .mce-panel {
   background-color: #fff !important;
   border-color: $border-color !important;
+}
+.mce-btn {
+  border: none !important;
+}
+.white-btn .btn {
+    background-color: white !important;
 }
 @import "toggle";
 @import "mobile";

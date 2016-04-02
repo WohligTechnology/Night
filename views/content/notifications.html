@@ -4,45 +4,36 @@
   </div>
   <div class="display-inline float-right pd20">
     <div class="setting-on">
-      <button href="" class="btn btn-primary btn-small create-btn" ng-click="status.open = !status.open">
+      <div class="btn btn-primary btn-small create-btn border-transparent" ng-init="status.open=true" ng-class="{'btn-outline': !status.open}" ng-click="status.open = !status.open">
         <i class="ln-gear2 f10"></i> Settings
-      </button>
+      </div>
     </div>
   </div>
-  <h4 class="pad20">Notifications</h4>
-  <div class="row">
-    <div class="col-md-12">
-      <uib-accordion>
+  <h4 class="pad20">Notification</h4>
+
+      <uib-accordion class="primary-accordion">
         <uib-accordion-group is-open="status.open">
           <div class="home-slider">
-            <div class="naming">
-              <h4>Notification Setting</h4>
-            </div>
-            <!-- <div class="set-login paddingup">
-          <div class="custom-login display-inline">
-            <span class="all-label"></span>
-          </div>
-        </div> -->
-            <div class="google-login mt30">
+            <div class="google-login mt10">
               <div class="form-login">
                 <form>
                   <div class="form-group">
                     <label for="">Google Cloud Messaging(GCM) Server Key</label>
-                    <input type="text" class="form-control" id="">
+                    <input type="text" class="form-control">
                   </div>
                 </form>
               </div>
             </div>
-            <div class="google-login mt30">
+            <div class="google-login">
               <div class="form-login">
                 <form>
                   <div class="form-group">
-                    <label for="">Passphrase for .pem</label>
-                    <input type="text" class="form-control" id="">
+                    <label>Passphrase for .pem</label>
+                    <input type="text" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label for="">.pem File Upload</label>
-                    <input type="file" class="form-control" id="">
+                    <label>Please upload .pem file</label>
+                    <upload-image class="white-btn" no-view></upload-image>
                   </div>
                 </form>
               </div>
@@ -50,7 +41,8 @@
           </div>
         </uib-accordion-group>
       </uib-accordion>
-      <div class="form-background mt30">
+
+      <div class="form-background">
         <div class="google-login">
           <div class="naming">
             <h4>Send Notification</h4>
@@ -108,8 +100,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+
   <div class="form-background mt30">
     <div class="row">
       <div class="col-md-12">
@@ -174,7 +165,7 @@
               </tbody>
             </table>
             <p class="text-center list-unstyled grouplist" ng-if="!notificationdata || notificationdata.length==0">
-              No Notifications Yet
+              No notifications yet.
             </p>
           </div>
         </div>
