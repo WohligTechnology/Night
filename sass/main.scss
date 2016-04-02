@@ -1045,6 +1045,10 @@ span.input-group-btn.calender-btn {
   }
 }
 .config {
+  a.accordion-toggle {
+    display: block;
+    padding: 10px 5px;
+  }
   .panel-default {
     border: 0;
     border-bottom: 1px solid #ddd;

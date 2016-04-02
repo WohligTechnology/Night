@@ -74,7 +74,7 @@ var navigationservice = angular.module('navigationservice', [])
         //   icon: "ln-magnifier",
         // }
         {
-            name: "Audio Galleries",
+            name: "Audio Gallery",
             classis: "active",
             anchor: "audio-galleries",
             icon: "ln-headset",
