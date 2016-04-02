@@ -9,24 +9,32 @@
 @import "../bower_components/flexslider/flexslider.css";
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
 /* Bootstrap Variables Goes Here */
+
 $brand-primary: #1aa3eb !default;
 $brand-success: #42cd48 !default;
 $brand-warning: #f78b34 !default;
 $brand-danger: #F33232 !default;
 $brand-info: #000072 !default;
 $brand-base: #666 !default;
+
 $border-color: #ececec !default;
 $white-color: #fff !default;
 $hover-color: #00bbd3!default;
 $grey-color: #c7c7c7!default;
 $head-color: #444!default;
 $label-color: #afb3bc!default;
+
+$nav-bg: #2f333c !default;
+$nav-text: #adb2b6 !default;
+
 $border-radius-base: 0 !default;
 $border-radius-large: 0 !default;
 $border-radius-small: 0 !default;
+
 $font-family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif: "Lato", Georgia, "Times New Roman", Times, serif !default;
 $head-font: 12px;
+
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 /* Custom Variable */
 $navbar-padding-horizontal: 0 !important;
@@ -198,15 +206,17 @@ textarea {
   border-color: $border-color;
 }
 .nav {
+  background-color: $nav-bg;
   > li {
     margin: 0;
     &.active {
       a {
-        background-color: #ccc;
+        background-color: $brand-primary;
+        color: white;
       }
     }
     > a {
-      color: $brand-base;
+      color: $nav-text;
       font-size: 14px;
       cursor: pointer;
       padding: $nav-link-padding;
