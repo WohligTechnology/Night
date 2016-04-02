@@ -765,6 +765,44 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true
             }).success(callback);
         },
+        updateAudio: function(audioData, callback) {
+            $http({
+                url: adminurl + 'audiogallery/save',
+                method: 'POST',
+                data: audioData,
+                withCredentials: true
+            }).success(callback);
+        },
+        getAllAudio: function(callback) {
+            $http({
+                url: adminurl + 'audiogallery/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        resetAudio: function(audioData, callback) {
+            $http({
+                url: adminurl + 'audiogallery/delete',
+                method: 'POST',
+                data: audioData,
+                withCredentials: true
+            }).success(callback);
+        },
+        getAllIntro: function(callback) {
+            $http({
+                url: adminurl + 'introslider/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        saveIntroData: function(sliderData, callback) {
+            $http({
+                url: adminurl + 'introslider/insertData',
+                method: 'POST',
+                data: sliderData,
+                withCredentials: true
+            }).success(callback);
+        },
         makeactive: function(menuname) {
             for (var i = 0; i < navigation.length; i++) {
                 if (navigation[i].name == menuname) {

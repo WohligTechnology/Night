@@ -171,7 +171,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.changeit = function(data) {
-      console.log(data);
+        console.log(data);
         if (data.value) {
             _.each(data.data, function(n) {
                 $scope.userForm.images.push({
@@ -1977,16 +1977,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Audio Gallery");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    $scope.userForm = {};
-    $scope.audioGalleryForm = {};
-    NavigationService.audioGalleryViewAll($scope.audioGalleryForm, function(data) {
-        $scope.audioGallerydata = data.data;
-        // $scope.audioGallerydata.modificationTime = new Date($scope.audioGallerydata.modificationTime);
-        //console.log('$scope.articledata.modificationTime',$scope.articledata.modificationTime);
-        console.log('$scope.audioGallerydata', data.data);
-    });
 
+    $scope.audio = {};
 
+    $scope.updateAudio = function() {
+        NavigationService.updateAudio($scope.audio, function(data) {
+
+        })
+    }
+
+    NavigationService.getAllAudio(function(data) {
+        console.log(data);
+        if (data.value) {
+            $scope.audio.username = data.data[0].username;
+            $scope.withId = data.data[0];
+        }
+    })
+
+    $scope.resetAudio = function() {
+        if ($scope.withId) {
+            NavigationService.resetAudio($scope.withId, function(data) {
+                if (data.value) {
+                    $scope.audio = {};
+                }
+            })
+        }
+    }
 
 })
 
@@ -2214,31 +2230,65 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 })
 
-.controller('IntroSliderCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('IntroSliderCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("introslider");
     $scope.menutitle = NavigationService.makeactive("Intro Slider");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    $scope.lists = [{
-        "image": "img/t1.jpg"
-    }, {
-        "image": "img/t2.jpg"
-    }, {
-        "image": "img/t3.jpg"
-    }, {
-        "image": "img/t1.jpg"
-    }, {
-        "image": "img/t2.jpg"
-    }, {
-        "image": "img/t3.jpg"
-    }, {
-        "image": "img/t1.jpg"
-    }, {
-        "image": "img/t2.jpg"
-    }, {
-        "image": "img/t3.jpg"
-    }];
+    $scope.userForm = [];
+    var modalInstance = '';
+
+    NavigationService.getAllIntro(function(data) {
+        console.log(data);
+        if (data.value) {
+            $scope.userForm = data.data;
+        } else {
+            $scope.userForm = [];
+        }
+    })
+
+    $scope.saveModalData = function(modalData) {
+        console.log($scope.userForm);
+        NavigationService.saveIntroData($scope.userForm, function(data) {
+            modalInstance.dismiss();
+        })
+    }
+
+    $scope.changeit = function(data) {
+        if (data.value) {
+            _.each(data.data, function(n) {
+                $scope.userForm.push({
+                    "image": n
+                })
+            })
+        }
+    }
+
+    $scope.open = function(image) {
+        console.log(image);
+        $scope.modalData = image;
+
+        modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/image-info.html',
+            scope: $scope,
+        });
+
+        modalInstance.result.then(function(selectedItem) {
+            $scope.selected = selectedItem;
+        }, function() {
+
+        });
+    };
+
+    $scope.sortableOptions = {
+        update: function(e, ui) {
+            NavigationService.sortArray($scope.userForm, 'introslider', function(data) {
+
+            })
+        }
+    };
 
 })
 
