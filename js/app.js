@@ -312,14 +312,14 @@ firstapp.directive('uploadImage', function($http) {
     return {
         templateUrl: 'views/directive/uploadFile.html',
         scope: {
-            model: '=ngModel'
+            model: '=ngModel',
+            callback: "=ngCallback"
         },
         link: function($scope, element, attrs) {
             $scope.isMultiple = false;
             $scope.inObject = false;
             if (attrs.multiple || attrs.multiple === "") {
                 $scope.isMultiple = true;
-
                 $("#inputImage").attr("multiple", "ADD");
             }
             if (attrs.noView || attrs.noView === "") {
@@ -342,11 +342,18 @@ firstapp.directive('uploadImage', function($http) {
                     },
                     transformRequest: angular.identity
                 }).success(function(data) {
+                    $scope.callback(data);
                     if ($scope.isMultiple) {
+                      if($scope.callback)
+                      {
+
+                      }
+
                         if ($scope.inObject) {
                             $scope.model.push({
                                 "image": data.data[0]
                             });
+
                         } else {
                             $scope.model.push(data.data[0]);
                         }

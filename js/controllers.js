@@ -25,6 +25,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
+        $scope.changeit = function(data) {
+          console.log("data");
+          console.log(data);
+        };
         $scope.toggleAnimation = function() {
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
