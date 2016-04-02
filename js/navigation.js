@@ -763,6 +763,16 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true
             }).success(callback);
         },
+        getSingleGallery: function(gallid, callback) {
+            $http({
+                url: adminurl + 'photogallery/getOne',
+                method: 'POST',
+                data: {
+                    "_id": gallid
+                },
+                withCredentials: true
+            }).success(callback);
+        },
         makeactive: function(menuname) {
             for (var i = 0; i < navigation.length; i++) {
                 if (navigation[i].name == menuname) {
