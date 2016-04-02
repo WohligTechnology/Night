@@ -1974,7 +1974,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 .controller('AudioGalleriesCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("audiogalleries");
-    $scope.menutitle = NavigationService.makeactive("Audio Galleries");
+    $scope.menutitle = NavigationService.makeactive("Audio Gallery");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.userForm = {};
@@ -2444,7 +2444,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }, {
             name: "Contact",
         }, {
-            name: "Audio Galleries",
+            name: "Audio Gallery",
         }, {
             name: "Users",
         }];

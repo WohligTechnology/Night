@@ -210,7 +210,7 @@ textarea {
   > li {
     margin: 0;
     &.active {
-      a {
+      a, a:hover, a:focus {
         background-color: $brand-primary;
         color: white;
       }
@@ -226,7 +226,7 @@ textarea {
         vertical-align: sub;
       }
       &:hover, &:focus {
-        background-color: $brand-primary;
+        background-color: transparentize($brand-primary, 0.5);
         color: white;
       }
     }
@@ -712,7 +712,6 @@ textarea {
 }
 label {
   color: $label-color;
-  text-transform: capitalize;
   font-weight: 400;
   font-size: 13px;
   margin-bottom: 10px;
@@ -1046,6 +1045,10 @@ span.input-group-btn.calender-btn {
   }
 }
 .config {
+  a.accordion-toggle {
+    display: block;
+    padding: 10px 5px;
+  }
   .panel-default {
     border: 0;
     border-bottom: 1px solid #ddd;
@@ -1203,6 +1206,13 @@ span.input-group-btn.calender-btn {
   label {
     color: white;
   }
+  .form-control {
+    background-color: transparent;
+    color: white;
+    &:focus {
+      border-color: white;
+    }
+  }
 }
 .border-transparent {
   border-color: transparent !important;
@@ -1234,6 +1244,12 @@ span.input-group-btn.calender-btn {
 .mce-panel {
   background-color: #fff !important;
   border-color: $border-color !important;
+}
+.mce-btn {
+  border: none !important;
+}
+.white-btn .btn {
+    background-color: white !important;
 }
 @import "toggle";
 @import "mobile";
