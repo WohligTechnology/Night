@@ -8,7 +8,7 @@
       <div class="home-slider form-background">
         <div class="display-inline pull-right">
           <div class="onoffswitch" ng-click="loginOff();">
-            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch1" ng-model="login.hasLogin">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch1" ng-change = "changeLogin()" ng-model="login.hasLogin">
             <label class="onoffswitch-label" for="myonoffswitch1">
               <span class="onoffswitch-inner"></span>
               <span class="onoffswitch-switch"></span>
@@ -23,7 +23,7 @@
           <div class="google-login">
             <div class="display-inline float-right">
               <div class="onoffswitch">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch2" ng-model="login.custom">
+                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch2" ng-model="login.custom"  ng-change = "changeLoginForOther(login.custom)" >
                 <label class="onoffswitch-label" for="myonoffswitch2">
                   <span class="onoffswitch-inner"></span>
                   <span class="onoffswitch-switch"></span>
@@ -39,7 +39,7 @@
           <div class="google-login mt30">
             <div class="display-inline float-right">
               <div class="onoffswitch">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch3" ng-model="login.google">
+                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch3" ng-model="login.google" ng-change = "changeLoginForOther(login.google)" >
                 <label class="onoffswitch-label" for="myonoffswitch3">
                   <span class="onoffswitch-inner"></span>
                   <span class="onoffswitch-switch"></span>
@@ -67,7 +67,7 @@
           <div class="google-login mt30">
             <div class="display-inline float-right">
               <div class="onoffswitch">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch4" ng-model="login.facebook">
+                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch4" ng-model="login.facebook" ng-change = "changeLoginForOther(login.facebook)" >
                 <label class="onoffswitch-label" for="myonoffswitch4">
                   <span class="onoffswitch-inner"></span>
                   <span class="onoffswitch-switch"></span>
@@ -94,7 +94,7 @@
           <div class="google-login mt30">
             <div class="display-inline float-right">
               <div class="onoffswitch">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch5" ng-model="login.twitter">
+                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch5" ng-model="login.twitter" ng-change = "changeLoginForOther(login.twitter)" >
                 <label class="onoffswitch-label" for="myonoffswitch5">
                   <span class="onoffswitch-inner"></span>
                   <span class="onoffswitch-switch"></span>
@@ -121,7 +121,7 @@
           <div class="google-login mt30">
             <div class="display-inline float-right">
               <div class="onoffswitch">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch6" ng-model="login.insta">
+                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch6" ng-model="login.insta" ng-change = "changeLoginForOther(login.insta)" >
                 <label class="onoffswitch-label" for="myonoffswitch6">
                   <span class="onoffswitch-inner"></span>
                   <span class="onoffswitch-switch"></span>

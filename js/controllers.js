@@ -388,6 +388,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.login.facebook = false;
   $scope.login.twitter = false;
 
+
+  $scope.changeLogin = function() {
+    if(!$scope.login.hasLogin)
+    {
+      $scope.login.custom = false;
+      $scope.login.google = false;
+      $scope.login.facebook = false;
+      $scope.login.twitter = false;
+    }
+  };
+  $scope.changeLoginForOther = function(val) {
+    if(val)
+    {
+      $scope.login.hasLogin = true;
+    }
+  };
 })
 
 .controller('NotificationsCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $stateParams) {
