@@ -1,30 +1,11 @@
-<div class="icon">
-   <div class="form-group">
-      <label for="sel1">List Type:{{userForm.type}}</label>
-      <select name="type" ng-model="userForm.type" class="form-control">
-         <optgroup label="Main Menu">
-            <option value="volvo">Home</option>
-            <option value="saab">Notifications</option>
-         </optgroup>
-         <optgroup label="Main Menu with Sub Menu">
-            <option value="mercedes">Gallery</option>
-            <option value="audi">Events</option>
-         </optgroup>
-      </select>
-   </div>
-</div>
-<div class="icon">
-   <div class="form-group">
-      <label for="sel1">Select Inside:</label>
-      <select ng-model="userForm.order" class="form-control" id="sel1">
-         <option>Gallery Inside1</option>
-         <option>Gallery Inside2</option>
-         <option>Gallery Inside3</option>
-         <option>Event Inside1</option>
-      </select>
-   </div>
-</div>
 <div class="form-group">
-   <label for="">External Link</label>
-   <input name="link" ng-model="userForm.link" type="text" class="form-control" id="" placeholder="External Link">
+  <label for="">Link</label>
+  <div class="row">
+    <div class="col-md-9">
+      <!-- <input name="name" ng-model="userForm.link" type="text" class="form-control" id="link" placeholder="" disabled=""> -->
+      <div class="input-group blue-border">
+        <input type="text" ng-model="userForm.link" type="text" class="form-control" id="link" aria-describedby="inputGroupSuccess4Status" ng-model="userForm.link" disabled> <span class="btn btn-primary btn-outline btn-small create-btn input-group-addon" ng-click="open();">Change Link</span>
+      </div>
+    </div>
+  </div>
 </div>

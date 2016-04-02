@@ -375,14 +375,20 @@ firstapp.directive('uploadImage', function($http) {
     };
 });
 
-firstapp.directive('listType', function() {
+firstapp.directive('listType', function($uibModal) {
     return {
         templateUrl: 'views/directive/listType.html',
         scope: {
             model: '=ngModel'
         },
         link: function($scope, element, attrs) {
-
+            $scope.open = function(size) {
+                var modalInstance = $uibModal.open({
+                    animation: $scope.animationsEnabled,
+                    templateUrl: 'views/modal/nav-modal.html',
+                    scope: $scope
+                });
+            };
         }
     };
 });

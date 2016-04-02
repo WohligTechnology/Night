@@ -333,21 +333,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.animationsEnabled = true;
-    $scope.open = function(size) {
-
-        var modalInstance = $uibModal.open({
-            animation: $scope.animationsEnabled,
-            templateUrl: 'views/modal/nav-modal.html',
-            controller: 'NavigationDetailCtrl',
-            size: size,
-            resolve: {
-                items: function() {
-                    return $scope.items;
-                }
-            }
-        });
-
-    };
+    // $scope.open = function(size) {
+    //
+    //     var modalInstance = $uibModal.open({
+    //         animation: $scope.animationsEnabled,
+    //         templateUrl: 'views/modal/nav-modal.html',
+    //         controller: 'NavigationDetailCtrl',
+    //         size: size,
+    //         resolve: {
+    //             items: function() {
+    //                 return $scope.items;
+    //             }
+    //         }
+    //     });
+    //
+    // };
     $scope.toggleAnimation = function() {
         $scope.animationsEnabled = !$scope.animationsEnabled;
     };
