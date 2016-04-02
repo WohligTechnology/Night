@@ -1,8 +1,8 @@
 <div class="max-size">
    <div class="ionic-template mb30">
-     <div class="pull-right pd20">
-        <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
-     </div>
+      <div class="pull-right pd20">
+         <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
+      </div>
       <h4 class="pad20">Photo Gallery</h4>
       <div class="row">
          <div class="col-md-12">
@@ -30,9 +30,11 @@
                <div class="image-picker" ng-if="photogaldata.length>0">
                   <div dnd-list="lists" class="pt15">
                      <div class="image-set">
-                        <div class="row" ui-sortable ng-model="photogaldata">
+                        <div class="row" ui-sortable="sortableOptions" ng-model="photogaldata">
                            <div class="drop-image col-xs-3" ng-repeat="item in photogaldata track by $index">
-                              <div ui-sref="photo-gallerydetail({id:item._id})" class="image-holder" ng-style="{'background-image': 'url({{item.icon|uploadpath}})'}"></div>
+                              <div ui-sref="photo-gallerydetail({id:item._id})" class="image-holder">
+                                 <img ng-src="{{item.icon|uploadpath:100:100:'fill'}}">
+                              </div>
                               <div class="caption">
                                  <p ng-if="item.title">{{item.title}}</p>
                               </div>

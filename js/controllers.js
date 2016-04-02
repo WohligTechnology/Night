@@ -26,8 +26,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.changeit = function(data) {
-          console.log("data");
-          console.log(data);
+            console.log("data");
+            console.log(data);
         };
         $scope.toggleAnimation = function() {
             $scope.animationsEnabled = !$scope.animationsEnabled;
@@ -129,7 +129,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 .controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("home");
-    $scope.menutitle = NavigationService.makeactive("Home");
+    $scope.menutitle = NavigationService.makeactive("App Home");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
@@ -164,11 +164,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.sortableOptions = {
         update: function(e, ui) {
-            NavigationService.sortHomeSlider($scope.userForm.images, function(data) {
+            NavigationService.sortArray($scope.userForm.images, 'homeSlider', function(data) {
 
             })
         }
     };
+
+    $scope.changeit = function(data) {
+      console.log(data);
+        if (data.value) {
+            _.each(data.data, function(n) {
+                $scope.userForm.images.push({
+                    "image": n
+                });
+            });
+        }
+    }
 
     $scope.lists = [{
         "image": "img/t1.jpg"
@@ -221,7 +232,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.eventForm = {};
     $scope.sortableOptions = {
         update: function(e, ui) {
-            NavigationService.sortNavigation($scope.navigationdata, function(data) {
+            NavigationService.sortArray($scope.navigationdata, 'navigation', function(data) {
 
             })
         }
@@ -1401,9 +1412,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.animationsEnabled = !$scope.animationsEnabled;
     };
 
+    $scope.sortableOptions = {
+        update: function(e, ui) {
+            NavigationService.sortArray($scope.photogaldata, 'photogallery', function(data) {
+
+            })
+        }
+    };
+
 })
 
-.controller('PhotoGalleryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state, $uibModal, $stateParams) {
+.controller('PhotoGalleryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state, $uibModal, $stateParams, $timeout) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("photogallerydetail");
     $scope.menutitle = NavigationService.makeactive("Photo Galleries");
@@ -1463,6 +1482,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.toggleAnimation = function() {
         $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
+
+    $scope.changeit = function(data) {
+        if (data.value) {
+            _.each(data.data, function(n) {
+                $scope.userForm.images.push({
+                    image: n
+                });
+            })
+        }
     };
 })
 

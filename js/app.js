@@ -26,15 +26,15 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
     })
 
     .state('enquiry', {
-        url: "/enquiry",
-        templateUrl: "views/template-sidemenu.html",
-        controller: 'EnquiryCtrl'
-    })
-    .state('enquirydetail', {
-        url: "/enquirydetail",
-        templateUrl: "views/template-sidemenu.html",
-        controller: 'EnquiryDetailCtrl'
-    })
+            url: "/enquiry",
+            templateUrl: "views/template-sidemenu.html",
+            controller: 'EnquiryCtrl'
+        })
+        .state('enquirydetail', {
+            url: "/enquirydetail",
+            templateUrl: "views/template-sidemenu.html",
+            controller: 'EnquiryDetailCtrl'
+        })
 
     .state('theme', {
         url: "/theme",
@@ -267,9 +267,19 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
 });
 firstapp.filter('uploadpath', function() {
-    return function(input) {
+    return function(input, width, height, style) {
+        var other = "";
+        if (width && width != "") {
+            other += "&width=" + width;
+        }
+        if (height && height != "") {
+            other += "&height=" + height;
+        }
+        if (style && style != "") {
+            other += "&style=" + style;
+        }
         if (input) {
-            return imgpath + "?file=" + input;
+            return imgpath + "?file=" + input + other;
         }
     };
 });
@@ -344,10 +354,9 @@ firstapp.directive('uploadImage', function($http) {
                 }).success(function(data) {
                     $scope.callback(data);
                     if ($scope.isMultiple) {
-                      if($scope.callback)
-                      {
+                        if ($scope.callback) {
 
-                      }
+                        }
 
                         if ($scope.inObject) {
                             $scope.model.push({

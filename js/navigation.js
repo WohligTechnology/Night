@@ -1,5 +1,5 @@
 var adminurl = "http://192.168.1.114:1337/";
-var adminurl = "http://192.168.1.125:88/";
+var adminurl = "http://192.168.1.122:88/";
 var imgpath = adminurl + "upload/readFile";
 var uploadurl = adminurl + "upload";
 var navigationservice = angular.module('navigationservice', [])
@@ -143,12 +143,12 @@ var navigationservice = angular.module('navigationservice', [])
                 data: sliderArr
             }).success(callback);
         },
-        sortHomeSlider: function(homeArray, callback) {
+        sortArray: function(array, collection, callback) {
             $http({
-                url: adminurl + 'homeslider/sort',
+                url: adminurl + collection + '/sort',
                 method: 'POST',
                 withCredentials: true,
-                data: homeArray
+                data: array
             }).success(callback);
         },
         notificationViewAll: function(formData, callback) {
@@ -728,14 +728,6 @@ var navigationservice = angular.module('navigationservice', [])
                     "content": formData.content,
                     "endTime": formData.endTime,
                 }
-            }).success(callback);
-        },
-        sortNavigation: function(navArray, callback) {
-            $http({
-                url: adminurl + 'navigation/sort',
-                method: 'POST',
-                withCredentials: true,
-                data: navArray
             }).success(callback);
         },
         setDefault: function(navid, callback) {
