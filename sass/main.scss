@@ -225,6 +225,10 @@ textarea {
         padding-right: 15px;
         vertical-align: sub;
       }
+      &:hover, &:focus {
+        background-color: $brand-primary;
+        color: white;
+      }
     }
   }
 }
