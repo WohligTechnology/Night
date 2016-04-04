@@ -1,69 +1,69 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="firstapp">
 
-<head ng-controller="headerctrl">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <head ng-controller="headerctrl">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <title ng-bind="'Blazen - '+template.title">Blazen</title>
+    <title ng-bind="'Blazen - '+template.title">Blazen</title>
 
-  <link rel="shortcut icon" href="img/favicon.ico" />
+    <link rel="shortcut icon" href="img/favicon.ico"/>
 
-  <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
 
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
 
-  <script src="bower_components/flexslider/jquery.flexslider-min.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
-  <script src="bower_components/moment/min/moment.min.js"></script>
-  <script src="bower_components/highcharts/lib/highcharts.js"></script>
-  <script src="bower_components/angular-flexslider/angular-flexslider.js"></script>
-  <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-  <script src="bower_components/ui-router/release/angular-ui-router.min.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-  <script src="bower_components/tinymce/tinymce.js"></script>
-  <script src="bower_components/angular-ui-tinymce/src/tinymce.js"></script>
-  <script src="bower_components/angular-ui-sortable/sortable.js"></script>
-  <script src="bower_components/jquery-ui/jquery-ui.js"></script>
-  <script src="bower_components/lodash/lodash.js"></script>
-  <script src="bower_components/jStorage/jstorage.js"></script>
-  <script src="bower_components/angularjs-toaster/toaster.js"></script>
-  <script src="bower_components/angularjs-imageupload-directive/public/javascripts/imageupload.js"></script>
-  <script src="bower_components/highcharts-ng/dist/highcharts-ng.min.js"></script>
+    <script src="bower_components/flexslider/jquery.flexslider-min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="bower_components/highcharts/lib/highcharts.js"></script>
+    <script src="bower_components/angular-flexslider/angular-flexslider.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/tinymce/tinymce.js"></script>
+    <script src="bower_components/angular-ui-tinymce/src/tinymce.js"></script>
+    <script src="bower_components/angular-ui-sortable/sortable.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/jStorage/jstorage.js"></script>
+    <script src="bower_components/angularjs-toaster/toaster.js"></script>
+    <script src="bower_components/angularjs-imageupload-directive/public/javascripts/imageupload.js"></script>
+    <script src="bower_components/highcharts-ng/dist/highcharts-ng.min.js"></script>
+    <script src="bower_components/angular-websql/angular-websql.js"></script>
+    <script src="bower_components/jQuery-MD5/jquery.md5.js"></script>
 
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/templateservice.js"></script>
+    <script src="js/httpService.js"></script>
 
-
-  <script src="js/app.js"></script>
-  <script src="js/controllers.js"></script>
-  <script src="js/navigation.js"></script>
-  <script src="js/templateservice.js"></script>
-
-  <!-- <script src="http://maps.googleapis.com/maps/api/js"></script> -->
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqoHt9DpuP2vCOS-aDNyqN6pBIf7L9yyE&callback=initMap"
+    <!-- <script src="http://maps.googleapis.com/maps/api/js"></script> -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqoHt9DpuP2vCOS-aDNyqN6pBIf7L9yyE&callback=initMap"
   async defer></script> -->
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqoHt9DpuP2vCOS-aDNyqN6pBIf7L9yyE&sensor=false" type="text/javascript"></script> -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqoHt9DpuP2vCOS-aDNyqN6pBIf7L9yyE&sensor=false" type="text/javascript"></script> -->
 
-
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqoHt9DpuP2vCOS-aDNyqN6pBIf7L9yyE&libraries=places&callback=initMap"
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqoHt9DpuP2vCOS-aDNyqN6pBIf7L9yyE&libraries=places&callback=initMap"
     async defer></script> -->
 
-  <script>
-    var isproduction = false;
-  </script>
-  <!--[if IE]> <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script> <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script> <![endif]-->
-</head>
+    <script>
+      var isproduction = false;
+    </script>
+    <!--[if IE]> <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script> <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script> <![endif]-->
+  </head>
 
-<body>
+  <body>
 
-  <div class="repeated-item" ui-view></div>
+    <div class="repeated-item" ui-view></div>
 
-</body>
+  </body>
 
 </html>
