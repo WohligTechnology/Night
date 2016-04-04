@@ -2,6 +2,7 @@ var db;
 var httpService = angular.module('httpService', ['angular-websql']);
 templateservicemod.service('httpService', function($http, $webSql) {
   //SHOULD ADD LOADER AS WELL
+  var maxTableLimit = 50;
   this.db = $webSql.openDatabase('httpService', '1.0', 'HTTP SERVICE Database', 2 * 1024 * 1024);
   var DB = this.db;
   db = DB;
@@ -101,6 +102,9 @@ templateservicemod.service('httpService', function($http, $webSql) {
               "response": JSON.stringify(data),
               "use": 0
             });
+            if (callback) {
+              callback(data, status);
+            }
 
           } else if (sqlResponse && md5 == sqlResponse.md5) {
             console.log("No Change");
@@ -138,7 +142,6 @@ templateservicemod.service('httpService', function($http, $webSql) {
         "value": reqString
       }
     }).then(function(results) {
-
       if (results.rows.length > 0) {
         sqlResponse = results.rows.item(0);
         sqlResponse.jsonResponse = JSON.parse(sqlResponse.response);
@@ -150,19 +153,22 @@ templateservicemod.service('httpService', function($http, $webSql) {
       } else {
         makeHttpCall();
       }
-
-
-
     });
-
   }
-
   this.post = function(url, data, callback, errorCallback) {
     startCall(url, data, callback, errorCallback, "POST");
   };
   this.get = function(url, data, callback, errorCallback) {
     startCall(url, data, callback, errorCallback, "GET");
   };
-
-
+  this.clearMemory = function() {
+    DB.executeQuery("SELECT COUNT(*) as `count` FROM `httpCall`").then(function(data) {
+      var diff = 0;
+      var count = data.rows.item(0).count;
+      if (count > maxTableLimit) {
+        diff = count - maxTableLimit;
+        DB.executeQuery("DELETE FROM `httpCall` WHERE `id` IN (SELECT `id` FROM `httpCall` ORDER BY `use` ASC,`modified` ASC LIMIT 0," + diff + " )").then(function(data) {});
+      }
+    });
+  };
 });

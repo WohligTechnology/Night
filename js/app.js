@@ -655,4 +655,4 @@ firstapp.directive('hcChart', function() {
             Highcharts.chart(element[0], scope.options);
         }
     };
-})
+});
