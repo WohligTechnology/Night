@@ -679,16 +679,7 @@ var navigationservice = angular.module('navigationservice', [])
                 url: adminurl + 'event/save',
                 method: 'POST',
                 withCredentials: true,
-                data: {
-                    "name": formData.name,
-                    //  "_id": formData._id,
-                    "venue": formData.venue,
-                    "images": formData.images,
-                    "startTime": formData.startTime,
-                    "content": formData.content,
-                    "endTime": formData.endTime,
-
-                }
+                data: formData
             }).success(callback);
         },
         getEventsEditDetail: function(id, callback) {
