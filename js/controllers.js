@@ -365,9 +365,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     NavigationService.getNavigationEditDetail($stateParams.id, function(data) {
-        console.log('getNavigationEditDetail', data.data);
         $scope.userForm = data.data;
-        console.log('status', $scope.userForm.status);
         if ($scope.userForm.status == 1) {
             $scope.userForm.status = true;
         } else {
@@ -378,12 +376,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigationSubmitForm = function(formValid) {;
         if (formValid.$valid) {
             NavigationService.editNavigationSubmit($scope.userForm, function(data) {
-                console.log('my edit navigation', $scope.userForm);
-                console.log('edit status', $scope.userForm.status);
-                //console.log('response:', data);
                 $state.go("navigation");
             });
-
         }
     };
 
@@ -1541,6 +1535,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.header.name = 'Create Video Gallary';
     $scope.userForm = {};
 
+    $scope.extractVideoId = function(url) {
+        var videoid = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
+        if (videoid != null) {
+            console.log("video id = ", videoid[1]);
+        } else {
+            console.log("The youtube url is not valid.");
+        }
+    }
+
     $scope.today = function() {
         $scope.dt = new Date();
     };
@@ -1577,7 +1580,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.getDayClass = function(date, mode) {
         if (mode === 'day') {
             var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
             for (var i = 0; i < $scope.events.length; i++) {
                 var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
 
@@ -1586,7 +1588,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             }
         }
-
         return '';
     };
 
@@ -1632,23 +1633,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         "image": "img/t3.jpg"
     }];
 
-
-    // $scope.videoGallerySubmitForm = function(formValid) {
-    //     if (formValid.$valid) {
-    //         console.log('in navi');
-    //         NavigationService.videoGalleryCreateSubmit($scope.userForm, function(data) {
-    //             console.log('userform', $scope.userForm);
-    //             console.log('$scope.userForm.status', $scope.userForm.status);
-    //             if ($scope.userForm.status =="Enable") {
-    //                 $scope.userForm.status ="1";
-    //             } else {
-    //                 $scope.userForm.status ="0";
-    //             }
-    //         });
-    //         $state.go("video-galleries");
-    //     }
-    // };
-
     $scope.videoGallerySubmitForm = function(formValid) {
         if (formValid.$valid) {
             console.log('in navi');
@@ -1663,12 +1647,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 console.log('userform of status', $scope.userForm);
             });
             $state.go("video-galleries");
-
         }
     };
 })
-
-
 
 .controller('EditVideoGalleryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, $stateParams) {
     //Used to name the .html file

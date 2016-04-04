@@ -803,6 +803,13 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true
             }).success(callback);
         },
+        getListypeData: function(callback) {
+            $http({
+                url: adminurl + 'config/getData',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
         makeactive: function(menuname) {
             for (var i = 0; i < navigation.length; i++) {
                 if (navigation[i].name == menuname) {

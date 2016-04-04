@@ -1,113 +1,92 @@
 <section>
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$dismiss()"><span aria-hidden="true">&times;</span></button>
-      <h4 class="modal-title text-center" id="myModalLabel">Links</h4>
-    </div>
-    <div class="modal-body">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="modal-nav">
-            <div class="group">
-              <ul class="list-unstyled">
-                <li>
-                  Home
-                </li>
-                <li class="makenav" ng-click="show = !show">Single Article</li>
-              </ul>
-              <div class="save-link" ng-show="show">
-                <select name="" id="" class="form-control">
-                  <option value="">Nav1</option>
-                  <option value="">nav2</option>
-                  <option value="">nav3</option>
-                  <option value="">nav4</option>
-                </select>
-                <button type="button" class="btn btn-small btn-primary btn-outline">Save</button>
-              </div>
-            </div>
-            <div class="group">
-              <ul class="list-unstyled">
-                <li>Blog</li>
-                <li ng-click="show1 = !show1">Single Blog</li>
-              </ul>
-              <div class="save-link" ng-show="show1">
-                <select name="" id="" class="form-control">
-                  <option value="">Nav1</option>
-                  <option value="">nav2</option>
-                  <option value="">nav3</option>
-                  <option value="">nav4</option>
-                </select>
-                <button type="button" class="btn btn-small btn-primary btn-outline">Save</button>
-              </div>
-            </div>
-
-            <div class="group">
-              <ul class="list-unstyled">
-                <li>Events</li>
-                <li ng-click="show2 = !show2">Single Event</li>
-              </ul>
-              <div class="save-link" ng-show="show2">
-                <select name="" id="" class="form-control">
-                  <option value="">Nav1</option>
-                  <option value="">nav2</option>
-                  <option value="">nav3</option>
-                  <option value="">nav4</option>
-                </select>
-                <button type="button" class="btn btn-small btn-primary btn-outline">Save</button>
-              </div>
-            </div>
-            <div class="group">
-              <ul class="list-unstyled">
-                <li>All PhotoGallery</li>
-                <li ng-click="show3 = !show3">Single PhotoGallery</li>
-              </ul>
-              <div class="save-link" ng-show="show3">
-                <select name="" id="" class="form-control">
-                  <option value="">Nav1</option>
-                  <option value="">nav2</option>
-                  <option value="">nav3</option>
-                  <option value="">nav4</option>
-                </select>
-                <button type="button" class="btn btn-small btn-primary btn-outline">Save</button>
-              </div>
-            </div>
-
-            <div class="group">
-              <ul class="list-unstyled">
-                <li>All Video Gallery</li>
-                <li ng-click="show4 = !show4">Single Video Gallery</li>
-              </ul>
-              <div class="save-link" ng-show="show4">
-                <select name="" id="" class="form-control">
-                  <option value="">Nav1</option>
-                  <option value="">nav2</option>
-                  <option value="">nav3</option>
-                  <option value="">nav4</option>
-                </select>
-                <button type="button" class="btn btn-small btn-primary btn-outline">Save</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="single-nav modal-nav">
-            <ul class="list-unstyled nav-list">
-              <li>Audio Gallery</li>
-              <li>Enquiry Page</li>
-              <li>Seperator</li>
-              <li ng-click="show5 = !show5">External Link</li>
-              <div class="save-link" ng-show="show5">
-                <input type="text" name="" id="" class="form-control" placeholder="Please Enter External Link here ">
-                <button type="button" class="btn btn-small btn-primary btn-outline">Save</button>
-              </div>
-              <li>Contact Detail</li>
-            </ul>
-          </div>
-        </div>
+   <div class="modal-content">
+      <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$dismiss()"><span aria-hidden="true">&times;</span></button>
+         <h4 class="modal-title text-center" id="myModalLabel">Links</h4>
       </div>
-    </div>
-    <!-- <div class="modal-footer">
+      <div class="modal-body">
+         <div class="row">
+            <div class="col-md-6">
+               <div class="modal-nav">
+                  <div class="group" ng-if="modalData.home && modalData.home.length>0">
+                     <ul class="list-unstyled">
+                        <li>
+                           Home
+                        </li>
+                        <li class="makenav" ng-click="show = !show">Single Article</li>
+                     </ul>
+                     <div class="save-link" ng-show="show">
+                        <select name="" id="" class="form-control" ng-model="model.link" ng-options="link.name as link.name for link in modalData.home" ng-change="setType('Home');">
+                        </select>
+                        <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss()">Save</button>
+                     </div>
+                  </div>
+                  <div class="group" ng-if="modalData.blog && modalData.blog.length>0">
+                     <ul class="list-unstyled">
+                        <li>Blog</li>
+                        <li ng-click="show1 = !show1">Single Blog</li>
+                     </ul>
+                     <div class="save-link" ng-show="show1">
+                        <select name="" id="" class="form-control" ng-model="model.link" ng-options="link.blogtitle as link.blogtitle for link in modalData.blog" ng-change="setType('Blog');">
+                        </select>
+                        <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss()">Save</button>
+                     </div>
+                  </div>
+                  <div class="group" ng-if="modalData.event && modalData.event.length>0">
+                     <ul class="list-unstyled">
+                        <li>Events</li>
+                        <li ng-click="show2 = !show2">Single Event</li>
+                     </ul>
+                     <div class="save-link" ng-show="show2">
+                        <select name="" id="" class="form-control" ng-model="model.link" ng-options="link.name as link.name for link in modalData.event" ng-change="setType('Event');">
+                        </select>
+                        <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss()">Save</button>
+                     </div>
+                  </div>
+                  <div class="group" ng-if="modalData.photo && modalData.photo.length>0">
+                     <ul class="list-unstyled">
+                        <li>All PhotoGallery</li>
+                        <li ng-click="show3 = !show3">Single PhotoGallery</li>
+                     </ul>
+                     <div class="save-link" ng-show="show3">
+                        <select name="" id="" class="form-control" ng-model="model.link" ng-options="link.title as link.title for link in modalData.photo" ng-change="setType('Photo Gallery');">
+                        </select>
+                        <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss()">Save</button>
+                     </div>
+                  </div>
+
+                  <div class="group" ng-if="modalData.video && modalData.video.length>0">
+                     <ul class="list-unstyled">
+                        <li>All Video Gallery</li>
+                        <li ng-click="show4 = !show4">Single Video Gallery</li>
+                     </ul>
+                     <div class="save-link" ng-show="show4">
+                        <select name="" id="" class="form-control" ng-model="model.link" ng-options="link.title as link.title for link in modalData.video" ng-change="setType('Video Gallery');">
+                        </select>
+                        <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss()">Save</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-6">
+               <div class="single-nav modal-nav">
+                  <ul class="list-unstyled nav-list">
+                     <li>Audio Gallery</li>
+                     <li>Enquiry Page</li>
+                     <li>Seperator</li>
+                     <li ng-click="show5 = !show5">External Link</li>
+                     <div class="save-link" ng-show="show5">
+                        <input type="text" name="" id="" class="form-control" placeholder="Please Enter External Link here" ng-model="model.link" ng-change="setType('External Link');">
+                        <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss()">Save</button>
+                     </div>
+                     <li>Contact Detail</li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- <div class="modal-footer">
       <button type="button" class="btn btn-small btn-primary btn-outline">Save</button>
     </div> -->
-  </div>
+   </div>
 </section>

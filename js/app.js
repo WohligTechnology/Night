@@ -352,22 +352,20 @@ firstapp.directive('uploadImage', function($http) {
                     },
                     transformRequest: angular.identity
                 }).success(function(data) {
-                    $scope.callback(data);
-                    if ($scope.isMultiple) {
-                        if ($scope.callback) {
-
-                        }
-
-                        if ($scope.inObject) {
-                            $scope.model.push({
-                                "image": data.data[0]
-                            });
-
-                        } else {
-                            $scope.model.push(data.data[0]);
-                        }
+                    if ($scope.callback) {
+                        $scope.callback(data);
                     } else {
-                        $scope.model = data.data[0];
+                        if ($scope.isMultiple) {
+                            if ($scope.inObject) {
+                                $scope.model.push({
+                                    "image": data.data[0]
+                                });
+                            } else {
+                                $scope.model.push(data.data[0]);
+                            }
+                        } else {
+                            $scope.model = data.data[0];
+                        }
                     }
                 });
             };
@@ -375,13 +373,38 @@ firstapp.directive('uploadImage', function($http) {
     };
 });
 
-firstapp.directive('listType', function($uibModal) {
+firstapp.directive('listType', function($uibModal, NavigationService) {
     return {
         templateUrl: 'views/directive/listType.html',
         scope: {
             model: '=ngModel'
         },
         link: function($scope, element, attrs) {
+            if ($scope.model.type) {
+                switch ($scope.model.type) {
+                    case 'Home':
+                        $scope.show = true;
+                        break;
+                    case 'Blog':
+                        $scope.show1 = true;
+                        break;
+                    case 'Event':
+                        $scope.show2 = true;
+                        break;
+                    case 'Photo Gallery':
+                        $scope.show3 = true;
+                        break;
+                    case 'Video Gallery':
+                        $scope.show4 = true;
+                        break;
+                    case 'External Link':
+                        $scope.show5 = true;
+                        break;
+                    default:
+                        break;
+                }
+                document.getElementById('linkText').value = $scope.model.type + " -> " + $scope.model.link;
+            }
             $scope.open = function(size) {
                 var modalInstance = $uibModal.open({
                     animation: $scope.animationsEnabled,
@@ -389,6 +412,18 @@ firstapp.directive('listType', function($uibModal) {
                     scope: $scope
                 });
             };
+
+            NavigationService.getListypeData(function(data) {
+                if (data.value) {
+                    $scope.modalData = data.data;
+                    // $scope.model = data.data;
+                }
+            });
+
+            $scope.setType = function(type) {
+                $scope.model.type = type;
+                document.getElementById('linkText').value = $scope.model.type + " -> " + $scope.model.link;
+            }
         }
     };
 });
