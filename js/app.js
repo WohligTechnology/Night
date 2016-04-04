@@ -380,33 +380,36 @@ firstapp.directive('listType', function($uibModal, NavigationService) {
             model: '=ngModel'
         },
         link: function($scope, element, attrs) {
+            var modalInstance = '';
             if ($scope.model.type) {
                 switch ($scope.model.type) {
                     case 'Home':
-                        $scope.show = true;
-                        break;
-                    case 'Blog':
                         $scope.show1 = true;
                         break;
-                    case 'Event':
+                    case 'Blog':
                         $scope.show2 = true;
                         break;
-                    case 'Photo Gallery':
+                    case 'Event':
                         $scope.show3 = true;
                         break;
-                    case 'Video Gallery':
+                    case 'Photo Gallery':
                         $scope.show4 = true;
                         break;
-                    case 'External Link':
+                    case 'Video Gallery':
                         $scope.show5 = true;
+                        break;
+                    case 'External Link':
+                        $scope.show6 = true;
                         break;
                     default:
                         break;
                 }
                 document.getElementById('linkText').value = $scope.model.type + " -> " + $scope.model.link;
+            } else {
+                document.getElementById('linkText').value = $scope.model.link;
             }
             $scope.open = function(size) {
-                var modalInstance = $uibModal.open({
+                modalInstance = $uibModal.open({
                     animation: $scope.animationsEnabled,
                     templateUrl: 'views/modal/nav-modal.html',
                     scope: $scope
@@ -420,9 +423,72 @@ firstapp.directive('listType', function($uibModal, NavigationService) {
                 }
             });
 
-            $scope.setType = function(type) {
-                $scope.model.type = type;
-                document.getElementById('linkText').value = $scope.model.type + " -> " + $scope.model.link;
+            $scope.setTypeLink = function(type, link) {
+                if (type) {
+                    $scope.model.type = type;
+                    document.getElementById('linkText').value = $scope.model.type + " -> " + $scope.model.link;
+                }
+                if (link) {
+                    modalInstance.dismiss();
+                    $scope.model.type = null;
+                    $scope.model.link = link;
+                    document.getElementById('linkText').value = link;
+                }
+            }
+
+            $scope.closeOthers = function(toskip) {
+                switch (toskip) {
+                    case 1:
+                        $scope.show1 = true;
+                        $scope.show2 = false;
+                        $scope.show3 = false;
+                        $scope.show4 = false;
+                        $scope.show5 = false;
+                        $scope.show6 = false;
+                        break;
+                    case 2:
+                        $scope.show1 = false;
+                        $scope.show2 = true;
+                        $scope.show3 = false;
+                        $scope.show4 = false;
+                        $scope.show5 = false;
+                        $scope.show6 = false;
+                        break;
+                    case 3:
+                        $scope.show1 = false;
+                        $scope.show2 = false;
+                        $scope.show3 = true;
+                        $scope.show4 = false;
+                        $scope.show5 = false;
+                        $scope.show6 = false;
+                        break;
+                    case 4:
+                        $scope.show1 = false;
+                        $scope.show2 = false;
+                        $scope.show3 = false;
+                        $scope.show4 = true;
+                        $scope.show5 = false;
+                        $scope.show6 = false;
+                        break;
+                    case 5:
+                        $scope.show1 = false;
+                        $scope.show2 = false;
+                        $scope.show3 = false;
+                        $scope.show4 = false;
+                        $scope.show5 = true;
+                        $scope.show6 = false;
+                        break;
+                    case 6:
+                        $scope.show1 = false;
+                        $scope.show2 = false;
+                        $scope.show3 = false;
+                        $scope.show4 = false;
+                        $scope.show5 = false;
+                        $scope.show6 = true;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     };

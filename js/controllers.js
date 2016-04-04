@@ -1592,16 +1592,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.VideoEdit = function(size) {
-
         var modalInstances = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/video-edit.html',
-            size: size,
-            resolve: {
-                items: function() {
-                    return $scope.items;
-                }
-            }
+            scope: $scope
         });
 
         modalInstances.result.then(function(selectedItem) {
@@ -1613,40 +1607,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.toggleAnimation = function() {
         $scope.animationsEnabled = !$scope.animationsEnabled;
     };
-    $scope.lists = [{
-        "image": "img/t1.jpg"
-    }, {
-        "image": "img/t2.jpg"
-    }, {
-        "image": "img/t3.jpg"
-    }, {
-        "image": "img/t1.jpg"
-    }, {
-        "image": "img/t2.jpg"
-    }, {
-        "image": "img/t3.jpg"
-    }, {
-        "image": "img/t1.jpg"
-    }, {
-        "image": "img/t2.jpg"
-    }, {
-        "image": "img/t3.jpg"
-    }];
 
     $scope.videoGallerySubmitForm = function(formValid) {
         if (formValid.$valid) {
-            console.log('in navi');
             NavigationService.videoGalleryCreateSubmit($scope.userForm, function(data) {
-                console.log('userform', $scope.userForm);
-                console.log('$scope.userForm.status', $scope.userForm.status);
-                if ($scope.userForm.status == "Enable") {
-                    $scope.userForm.status = 1;
-                } else {
-                    $scope.userForm.status = 0;
+                if (data.value) {
+                    $state.go("video-galleries");
                 }
-                console.log('userform of status', $scope.userForm);
             });
-            $state.go("video-galleries");
         }
     };
 })
