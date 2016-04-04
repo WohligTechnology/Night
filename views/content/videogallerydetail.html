@@ -12,10 +12,10 @@
                </div>
                <div class="google-login paddingup">
                   <div class="form-login">
-                     <form name="user" action="">
+                     <form name="user">
                         <div class="form-group">
                            <label for="">Category Title</label>
-                           <input name="name" required ng-model="userForm.name" type="text" class="form-control" id="" placeholder="Category Title">
+                           <input name="name" required ng-model="userForm.title" type="text" class="form-control" id="" placeholder="Category Title">
                            <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Category Title.</div>
                         </div>
                         <div class="form-group">
@@ -26,8 +26,8 @@
                         <div class="form-group">
                            <label>Status</label>
                            <select name="status" ng-model="userForm.status" class="form-control">
-                              <option value=1>Enable</option>
-                              <option value=0>Disable</option>
+                              <option value="1">Enable</option>
+                              <option value="0">Disable</option>
                            </select>
                         </div>
                         <!-- <div class="form-group">
@@ -59,9 +59,14 @@
                            <div class="image-picker mt15">
                               <div dnd-list="lists" class="pt15">
                                  <div class="image-set">
-                                    <div class="row" ui-sortable ng-model="lists">
-                                       <div class="drop-image col-xs-3" ng-repeat="item in lists">
-                                          <div ng-click="open()" class="image-holder" ng-style="{'background-image': 'url({{item.image}})'}"></div>
+                                    <div class="row" ui-sortable ng-model="userForm.videos">
+                                       <div class="drop-image col-xs-3" ng-repeat="item in userForm.videos track by $index">
+                                          <div ng-click="open(item);" class="image-holder">
+                                             <img ng-src="{{item.thumbnail}}">
+                                          </div>
+                                          <div class="caption">
+                                             <p ng-if="item.name">{{item.name}}</p>
+                                          </div>
                                        </div>
                                     </div>
                                     <div class="clearfix"></div>

@@ -1496,12 +1496,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.articleForm = {};
-    NavigationService.videoGalleriesViewAll($scope.articleForm, function(data) {
+    NavigationService.videoGalleriesViewAll(function(data) {
         $scope.videogalleries = data.data;
-        $scope.videogalleries.modificationTime = new Date($scope.videogalleries.modificationTime);
-        //console.log('$scope.articledata.modificationTime',$scope.articledata.modificationTime);
-        console.log('$scope.videogalleries', data.data);
     });
+
+    $scope.sortableOptions = {
+        update: function(e, ui) {
+            NavigationService.sortArray($scope.videogalleries, 'videogallery', function(data) {
+
+            })
+        }
+    };
 
     // $scope.lists = [{
     //   "image": "img/t1.jpg"
@@ -1534,10 +1539,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.header = {};
     $scope.header.name = 'Create Video Gallary';
     $scope.userForm = {};
+    $scope.modalData = {};
+    var modalInstances = '';
 
     $scope.extractVideoId = function(url) {
         var videoid = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
         if (videoid != null) {
+            $scope.modalData.thumbnail = "http://img.youtube.com/vi/" + videoid[1] + "/mqdefault.jpg";
             console.log("video id = ", videoid[1]);
         } else {
             console.log("The youtube url is not valid.");
@@ -1591,8 +1599,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         return '';
     };
 
-    $scope.VideoEdit = function(size) {
-        var modalInstances = $uibModal.open({
+    $scope.VideoEdit = function() {
+        modalInstances = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/video-edit.html',
             scope: $scope
@@ -1600,10 +1608,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         modalInstances.result.then(function(selectedItem) {
             $scope.selected = selectedItem;
-        }, function() {
-            $log.info('Modal dismissed at: ' + new Date());
-        });
+        }, function() {});
     };
+
+    $scope.open = function(singleVideo) {
+        $scope.modalData = singleVideo;
+        modalInstances = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/video-edit.html',
+            scope: $scope
+        });
+
+        modalInstances.result.then(function(selectedItem) {
+            $scope.selected = selectedItem;
+        }, function() {});
+    };
+
+    $scope.pushVideo = function(video) {
+        console.log(video);
+        if (!$scope.userForm.videos) {
+            $scope.userForm.videos = [];
+        }
+        $scope.userForm.videos.push(video);
+        modalInstances.dismiss();
+        $scope.modalData = {};
+    }
+
     $scope.toggleAnimation = function() {
         $scope.animationsEnabled = !$scope.animationsEnabled;
     };
@@ -1628,75 +1658,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.header = {};
     $scope.header.name = 'Edit Video Gallary';
     $scope.userForm = {};
+    $scope.modalData = {};
+    var modalInstances = '';
 
-
-
-    //     $scope.items = [{
-    //   value: 0,
-    //   label: 'Enable',
-    //
-    // }, {
-    //   value: 1,
-    //   label: 'Disable',
-    //
-    // }];
     NavigationService.getVideoGalleryEditDetail($stateParams.id, function(data) {
-        //console.log('getArticleEditDetail', data.data);
-        // if($scope.userForm.status==0)
-        // {
-        //   $scope.userForm.status='Disable';
-        // }else{
-        //   $scope.userForm.status='Enable';
-        // }
         $scope.userForm = data.data;
-        console.log('userForm', $scope.userForm);
-        console.log($scope.userForm.status);
-
     });
 
-
-
     $scope.videoGallerySubmitForm = function(formValid) {
-        //console.log('form values: ', formData);
-        //console.log('form values: ', formValid);
-        //console.log('form values: ', $scope.userForm);
         if (formValid.$valid) {
-            NavigationService.editvideogallerySubmit($scope.userForm, function(data) {
-                console.log('my edit article', $scope.userForm);
-                console.log('edit status', $scope.userForm.status);
-                // if($scope.userForm.status==0)
-                // {
-                //   $scope.userForm.status='Disable';
-                // }else{
-                //   $scope.userForm.status='Enable';
-                // }
-                $state.go("video-galleries");
+            NavigationService.videoGalleryCreateSubmit($scope.userForm, function(data) {
+                if (data.value) {
+                    $state.go("video-galleries");
+                }
             });
-
-            // NavigationService.userSubmit($scope.userForm, function(data) {
-            //
-            // });
-        } else {
-
         }
     };
-
-
-    // $scope.submitForm = function(formData, formValid) {
-    //   // console.log('form values: ', formData);
-    //   // console.log('form values: ', formValid);
-    //   console.log('form values: ', $scope.userForm);
-    //   if (formValid.$valid) {
-    //     $scope.formComplete = true;
-    //     $state.go("video-galleries");
-    //     // NavigationService.userSubmit($scope.userForm, function(data) {
-    //     //
-    //     // });
-    //   } else {
-    //
-    //   }
-    // };
-
 
     $scope.today = function() {
         $scope.dt = new Date();
@@ -1747,47 +1724,55 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         return '';
     };
 
-    $scope.VideoEdit = function(size) {
-
-        var modalInstances = $uibModal.open({
+    $scope.VideoEdit = function() {
+        modalInstances = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/video-edit.html',
-            size: size,
-            resolve: {
-                items: function() {
-                    return $scope.items;
-                }
-            }
+            scope: $scope
         });
 
         modalInstances.result.then(function(selectedItem) {
             $scope.selected = selectedItem;
-        }, function() {
-            $log.info('Modal dismissed at: ' + new Date());
-        });
+        }, function() {});
     };
+
+    $scope.open = function(singleVideo) {
+        $scope.modalData = singleVideo;
+        modalInstances = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/video-edit.html',
+            scope: $scope
+        });
+
+        modalInstances.result.then(function(selectedItem) {
+            $scope.selected = selectedItem;
+        }, function() {});
+    };
+
     $scope.toggleAnimation = function() {
         $scope.animationsEnabled = !$scope.animationsEnabled;
     };
-    $scope.lists = [{
-        "image": "img/t1.jpg"
-    }, {
-        "image": "img/t2.jpg"
-    }, {
-        "image": "img/t3.jpg"
-    }, {
-        "image": "img/t1.jpg"
-    }, {
-        "image": "img/t2.jpg"
-    }, {
-        "image": "img/t3.jpg"
-    }, {
-        "image": "img/t1.jpg"
-    }, {
-        "image": "img/t2.jpg"
-    }, {
-        "image": "img/t3.jpg"
-    }];
+
+    $scope.extractVideoId = function(url) {
+        var videoid = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
+        if (videoid != null) {
+            $scope.modalData.thumbnail = "http://img.youtube.com/vi/" + videoid[1] + "/mqdefault.jpg";
+            console.log("video id = ", videoid[1]);
+        } else {
+            console.log("The youtube url is not valid.");
+        }
+    }
+
+    $scope.pushVideo = function(video) {
+        console.log(video);
+        if (!$scope.userForm.videos) {
+            $scope.userForm.videos = [];
+        }
+        $scope.userForm.videos.push(video);
+        modalInstances.dismiss();
+        $scope.modalData = {};
+    }
+
 })
 
 

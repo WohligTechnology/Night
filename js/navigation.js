@@ -330,34 +330,22 @@ var navigationservice = angular.module('navigationservice', [])
         },
         videoGalleryCreateSubmit: function(formData, callback) {
             $http({
-                url: adminurl + 'videogallerycategory/save',
+                url: adminurl + 'videogallery/save',
                 method: 'POST',
                 withCredentials: true,
-                data: {
-                    "name": formData.name,
-                    "image": formData.image,
-                    "order": formData.order,
-                    "status": formData.status
-                }
+                data: formData
             }).success(callback);
         },
-        videoGalleriesViewAll: function(formData, callback) {
+        videoGalleriesViewAll: function(callback) {
             $http({
-                url: adminurl + 'videogallerycategory/getAll',
+                url: adminurl + 'videogallery/getAll',
                 method: 'POST',
-                withCredentials: true,
-                data: {
-                    "name": formData.name,
-                    "image": formData.image,
-                    "order": formData.order,
-                    "modificationTime": formData.modificationTime,
-                    "status": formData.status
-                }
+                withCredentials: true
             }).success(callback);
         },
         getVideoGalleryEditDetail: function(id, callback) {
             $http({
-                url: adminurl + 'videogallerycategory/getOne',
+                url: adminurl + 'videogallery/getOne',
                 method: 'POST',
                 withCredentials: true,
                 data: {
