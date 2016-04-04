@@ -50,23 +50,22 @@ templateservicemod.service('httpService', function($http, $webSql) {
 
 
 
-  this.post = function(url, data, callback, errorCallback) {
-    var httpCall = $http.post(url, data);
-    if (callback) {
-      httpCall.success(callback);
-    }
-    if (errorCallback) {
-      httpCall.error(errorCallback);
-    }
-  };
 
-  this.get = function(url, req, callback, errorCallback) {
+  function startCall(url, req, callback, errorCallback, type) {
 
     function makeHttpCall(sqlResponse) {
       //HTTP SERVER CALL
-      var httpCall = $http.get(url, {
-        params: req
-      });
+      var httpCall;
+      if (type == "GET") {
+        httpCall = $http.get(url, {
+          params: req
+        });
+      } else if (type == "POST") {
+        httpCall = $http.POST(url, {
+          params: req
+        });
+      }
+
 
       //HTTP SUCCESS
       httpCall.success(function(data, status) {
@@ -79,7 +78,7 @@ templateservicemod.service('httpService', function($http, $webSql) {
             DB.update("httpCall", {
               "md5": md5,
               "url": url,
-              "type": "GET",
+              "type": type,
               "request": JSON.stringify(req),
               "response": JSON.stringify(data),
               "use": sqlResponse.use + 1
@@ -97,7 +96,7 @@ templateservicemod.service('httpService', function($http, $webSql) {
             DB.insert("httpCall", {
               "md5": md5,
               "url": url,
-              "type": "GET",
+              "type": type,
               "request": JSON.stringify(req),
               "response": JSON.stringify(data),
               "use": 0
@@ -156,9 +155,14 @@ templateservicemod.service('httpService', function($http, $webSql) {
 
     });
 
+  }
+
+  this.post = function(url, data, callback, errorCallback) {
+    startCall(url, data, callback, errorCallback, "POST");
   };
-
-
+  this.get = function(url, data, callback, errorCallback) {
+    startCall(url, data, callback, errorCallback, "GET");
+  };
 
 
 });
