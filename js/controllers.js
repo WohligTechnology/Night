@@ -1,10 +1,13 @@
 //window.uploadurl = "http://192.168.0.126:81/uploadfile/upload/";
 window.uploadurl = "http://vignesh.com:81/uploadfile/upload/";
 
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'toaster', 'imageupload'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice','httpService', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'toaster', 'imageupload'])
 
-.controller('AllAppsCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
+.controller('AllAppsCtrl', function($scope, TemplateService, NavigationService,httpService, $timeout, $uibModal, $log) {
         //Used to name the .html file
+        httpService.get("./bower.json",{name:"Chintan"},function(data) {
+          console.log(data);
+        });
         $scope.template = TemplateService.changecontent("allapps");
         $scope.menutitle = NavigationService.makeactive("All Apps");
         TemplateService.title = $scope.menutitle;
