@@ -1,154 +1,152 @@
 <div class="ionic-template mb30">
-  <div class="float-right pd20">
-    <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
-  </div>
-  <h4 class="pad20">Login &amp; Signup Page</h4>
-  <div class="row fadeInOut">
-    <div class="col-md-12">
-      <div class="home-slider form-background">
-        <div class="display-inline pull-right">
-          <div class="onoffswitch" ng-click="loginOff();">
-            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch1" ng-change = "changeLogin()" ng-model="login.hasLogin">
-            <label class="onoffswitch-label" for="myonoffswitch1">
-              <span class="onoffswitch-inner"></span>
-              <span class="onoffswitch-switch"></span>
-            </label>
-          </div>
-        </div>
-        <div class="naming">
-          <h4>Set Login Signup</h4>
-        </div>
-        <div class="set-login paddingup">
-
-          <div class="google-login">
-            <div class="display-inline float-right">
-              <div class="onoffswitch">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch2" ng-model="login.custom"  ng-change = "changeLoginForOther(login.custom)" >
-                <label class="onoffswitch-label" for="myonoffswitch2">
-                  <span class="onoffswitch-inner"></span>
-                  <span class="onoffswitch-switch"></span>
-                </label>
-              </div>
-            </div>
-            <div class="naming simple">
-              <h4>Custom Login / Signup</h4>
-            </div>
-
-          </div>
-
-          <div class="google-login mt30">
-            <div class="display-inline float-right">
-              <div class="onoffswitch">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch3" ng-model="login.google" ng-change = "changeLoginForOther(login.google)" >
-                <label class="onoffswitch-label" for="myonoffswitch3">
-                  <span class="onoffswitch-inner"></span>
-                  <span class="onoffswitch-switch"></span>
-                </label>
-              </div>
-            </div>
-            <div class="naming" ng-class="{'simple': !login.google}">
-              <h4>Google Login</h4>
-            </div>
-            <div class="form-login mt10 fadeInOut" ng-if="login.google">
-              <form action="">
-                <div class="form-group">
-                  <label for="">Google Client ID
+   <div class="float-right pd20">
+      <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
+   </div>
+   <h4 class="pad20">Login &amp; Signup Page</h4>
+   <div class="row fadeInOut">
+      <div class="col-md-12">
+         <div class="home-slider form-background">
+            <div class="display-inline pull-right">
+               <div class="onoffswitch" ng-click="loginOff();">
+                  <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch1" ng-change="changeLogin()" ng-model="login.hasLogin">
+                  <label class="onoffswitch-label" for="myonoffswitch1">
+                     <span class="onoffswitch-inner"></span>
+                     <span class="onoffswitch-switch"></span>
                   </label>
-                  <input type="text" class="form-control" id="">
-                </div>
-                <div class="form-group">
-                  <label for="">Google Client secret</label>
-                  <input type="text" class="form-control" id="">
-                </div>
-              </form>
+               </div>
             </div>
-          </div>
+            <div class="naming">
+               <h4>Set Login Signup</h4>
+            </div>
+            <div class="set-login paddingup">
+               <div class="google-login">
+                  <div class="display-inline float-right">
+                     <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch2" ng-model="login.custom" ng-change="changeLoginForOther(login.custom)">
+                        <label class="onoffswitch-label" for="myonoffswitch2">
+                           <span class="onoffswitch-inner"></span>
+                           <span class="onoffswitch-switch"></span>
+                        </label>
+                     </div>
+                  </div>
+                  <div class="naming simple">
+                     <h4>Custom Login / Signup</h4>
+                  </div>
+               </div>
+               <div class="google-login mt30">
+                  <div class="display-inline float-right">
+                     <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch3" ng-model="login.google" ng-change="changeLoginForOther(login.google)">
+                        <label class="onoffswitch-label" for="myonoffswitch3">
+                           <span class="onoffswitch-inner"></span>
+                           <span class="onoffswitch-switch"></span>
+                        </label>
+                     </div>
+                  </div>
+                  <div class="naming" ng-class="{'simple': !login.google}">
+                     <h4>Google Login</h4>
+                  </div>
+                  <div class="form-login mt10 fadeInOut" ng-if="login.google">
+                     <form>
+                        <div class="form-group">
+                           <label for="">Google Client ID
+                           </label>
+                           <input type="text" class="form-control" id="" ng-model="login.googleCredentials.id" required>
+                        </div>
+                        <div class="form-group">
+                           <label for="">Google Client secret</label>
+                           <input type="text" class="form-control" id="" ng-model="login.googleCredentials.secret" required>
+                        </div>
+                     </form>
+                  </div>
+               </div>
 
-          <div class="google-login mt30">
-            <div class="display-inline float-right">
-              <div class="onoffswitch">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch4" ng-model="login.facebook" ng-change = "changeLoginForOther(login.facebook)" >
-                <label class="onoffswitch-label" for="myonoffswitch4">
-                  <span class="onoffswitch-inner"></span>
-                  <span class="onoffswitch-switch"></span>
-                </label>
-              </div>
-            </div>
-            <div class="naming" ng-class="{'simple': !login.facebook}">
-              <h4>Facebook Login</h4>
-            </div>
-            <div class="form-login mt10 fadeInOut" ng-if="login.facebook">
-              <form action="">
-                <div class="form-group">
-                  <label for="">Facebook App ID</label>
-                  <input type="text" class="form-control" id="">
-                </div>
-                <div class="form-group">
-                  <label for="">Facebook App Secret</label>
-                  <input type="text" class="form-control" id="">
-                </div>
-              </form>
-            </div>
-          </div>
+               <div class="google-login mt30">
+                  <div class="display-inline float-right">
+                     <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch4" ng-model="login.facebook" ng-change="changeLoginForOther(login.facebook)">
+                        <label class="onoffswitch-label" for="myonoffswitch4">
+                           <span class="onoffswitch-inner"></span>
+                           <span class="onoffswitch-switch"></span>
+                        </label>
+                     </div>
+                  </div>
+                  <div class="naming" ng-class="{'simple': !login.facebook}">
+                     <h4>Facebook Login</h4>
+                  </div>
+                  <div class="form-login mt10 fadeInOut" ng-if="login.facebook">
+                     <form>
+                        <div class="form-group">
+                           <label for="">Facebook App ID</label>
+                           <input type="text" class="form-control" id="" ng-model="login.facebookCredentials.id">
+                        </div>
+                        <div class="form-group">
+                           <label for="">Facebook App Secret</label>
+                           <input type="text" class="form-control" id="" ng-model="login.facebookCredentials.secret">
+                        </div>
+                     </form>
+                  </div>
+               </div>
 
-          <div class="google-login mt30">
-            <div class="display-inline float-right">
-              <div class="onoffswitch">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch5" ng-model="login.twitter" ng-change = "changeLoginForOther(login.twitter)" >
-                <label class="onoffswitch-label" for="myonoffswitch5">
-                  <span class="onoffswitch-inner"></span>
-                  <span class="onoffswitch-switch"></span>
-                </label>
-              </div>
-            </div>
-            <div class="naming" ng-class="{'simple': !login.twitter}">
-              <h4>Twitter Login</h4>
-            </div>
-            <div class="form-login mt10 fadeInOut" ng-if="login.twitter">
-              <form action="">
-                <div class="form-group">
-                  <label for="">Twitter Consumer Key (API Key)</label>
-                  <input type="text" class="form-control" id="">
-                </div>
-                <div class="form-group">
-                  <label for="">Twitter Consumer Secret (API Secret)</label>
-                  <input type="text" class="form-control" id="">
-                </div>
-              </form>
-            </div>
-          </div>
+               <div class="google-login mt30">
+                  <div class="display-inline float-right">
+                     <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch5" ng-model="login.twitter" ng-change="changeLoginForOther(login.twitter)">
+                        <label class="onoffswitch-label" for="myonoffswitch5">
+                           <span class="onoffswitch-inner"></span>
+                           <span class="onoffswitch-switch"></span>
+                        </label>
+                     </div>
+                  </div>
+                  <div class="naming" ng-class="{'simple': !login.twitter}">
+                     <h4>Twitter Login</h4>
+                  </div>
+                  <div class="form-login mt10 fadeInOut" ng-if="login.twitter">
+                     <form>
+                        <div class="form-group">
+                           <label for="">Twitter Consumer Key (API Key)</label>
+                           <input type="text" class="form-control" id="" ng-model="login.twitterCredentials.id">
+                        </div>
+                        <div class="form-group">
+                           <label for="">Twitter Consumer Secret (API Secret)</label>
+                           <input type="text" class="form-control" id="" ng-model="login.twitterCredentials.secret">
+                        </div>
+                     </form>
+                  </div>
+               </div>
 
-          <div class="google-login mt30">
-            <div class="display-inline float-right">
-              <div class="onoffswitch">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch6" ng-model="login.insta" ng-change = "changeLoginForOther(login.insta)" >
-                <label class="onoffswitch-label" for="myonoffswitch6">
-                  <span class="onoffswitch-inner"></span>
-                  <span class="onoffswitch-switch"></span>
-                </label>
-              </div>
+               <div class="google-login mt30">
+                  <div class="display-inline float-right">
+                     <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch6" ng-model="login.insta" ng-change="changeLoginForOther(login.insta)">
+                        <label class="onoffswitch-label" for="myonoffswitch6">
+                           <span class="onoffswitch-inner"></span>
+                           <span class="onoffswitch-switch"></span>
+                        </label>
+                     </div>
+                  </div>
+                  <div class="naming" ng-class="{'simple': !login.insta}">
+                     <h4>Instagram Login</h4>
+                  </div>
+                  <div class="form-login mt10 fadeInOut" ng-if="login.insta">
+                     <form>
+                        <div class="form-group">
+                           <label for="">Instagram Client ID</label>
+                           <input type="text" class="form-control" id="" ng-model="login.instaCredentials.id">
+                        </div>
+                        <div class="form-group">
+                           <label for="">Instagram Client Secret</label>
+                           <input type="text" class="form-control" id="" ng-model="login.instaCredentials.secret">
+                        </div>
+                     </form>
+                  </div>
+               </div>
             </div>
-            <div class="naming" ng-class="{'simple': !login.insta}">
-              <h4>Instagram Login</h4>
+            <div class="upload-img text-center pt15">
+               <button class="btn btn-primary btn-outline btn-small" ng-click="saveConfigData()">Save</button>
+               <p ng-show="showErrMsg">Please provide id(key) and/or secret</p>
             </div>
-            <div class="form-login mt10 fadeInOut" ng-if="login.insta">
-              <form action="">
-                <div class="form-group">
-                  <label for="">Instagram Client ID</label>
-                  <input type="text" class="form-control" id="">
-                </div>
-                <div class="form-group">
-                  <label for="">Instagram Client Secret</label>
-                  <input type="text" class="form-control" id="">
-                </div>
-              </form>
-            </div>
-          </div>
-
-        </div>
+         </div>
       </div>
-
-
-    </div>
-  </div>
+   </div>
 </div>

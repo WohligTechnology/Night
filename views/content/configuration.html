@@ -20,10 +20,10 @@
                 <div class="col-md-12">
                   <label class="mrg0">Please Enable Search</label>
                 </div>
-                <div class="col-md-3" ng-repeat="items in navigation">
+                <div class="col-md-3" ng-repeat="items in searchFor">
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">{{items.name}}</label>
+                      <input type="checkbox" value="" ng-model="items.enabled">{{items.name}}</label>
                   </div>
                 </div>
                 <div class="col-md-12">

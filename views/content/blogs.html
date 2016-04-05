@@ -1,11 +1,10 @@
 <div class="max-size">
-   <div class="ionic-template noheading-according mb30">
+   <div class="ionic-template noheading-according mb30" ng-if="configData">
       <div class="pull-right pd20">
          <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">
         Tutorials
       </a>
       </div>
-
       <div class="display-inline float-right pd20">
          <div class="setting-on">
             <div class="btn btn-primary btn-small create-btn border-transparent" ng-class="{'btn-outline': !status.open}" ng-init="status.open=true" ng-click="status.open = !status.open">
@@ -14,184 +13,178 @@
          </div>
       </div>
       <h4 class="pad20">Blog</h4>
-            <uib-accordion class="primary-accordion">
-               <uib-accordion-group is-open="status.open">
-                  <div class="row">
-                     <div class="col-sm-6">
-                        <div class="radio-opt">
-                           <label class="radio-inline">
-                              <input type="radio" name="optradio" ng-click="status.isFirstOpen = !status.isFirstOpen" checked="checked">CMS
-                           </label>
-                        </div>
-                     </div>
-                     <div class="col-sm-6">
-                        <div class="radio-opt">
-                           <label class="radio-inline">
-                              <input type="radio" name="optradio" ng-click="status.open2 = !status.open2">Wordpress Blog
-                           </label>
-                        </div>
-                     </div>
-                     <div class="col-sm-6">
-                        <div class="radio-opt">
-                           <label class="radio-inline">
-                              <input type="radio" name="optradio" ng-click="status.open3 = !status.open3">Self Hosted Wordpress
-                           </label>
-                        </div>
-                     </div>
-                     <div class="col-sm-6">
-                        <div class="radio-opt">
-                           <label class="radio-inline">
-                              <input type="radio" name="optradio" ng-click="status.open4 = !status.open4">Tumblr Blog
-                           </label>
-                        </div>
-                     </div>
-
+      <uib-accordion class="primary-accordion">
+         <uib-accordion-group is-open="status.open">
+            <div class="row">
+               <div class="col-sm-6">
+                  <div class="radio-opt">
+                     <label class="radio-inline">
+                        <input type="radio" name="optradio" ng-click="status.isFirstOpen = !status.isFirstOpen" ng-model="configData.blog.blogType" value="CMS">CMS
+                     </label>
                   </div>
-               </uib-accordion-group>
-            </uib-accordion>
+               </div>
+               <div class="col-sm-6">
+                  <div class="radio-opt">
+                     <label class="radio-inline">
+                        <input type="radio" name="optradio" ng-click="status.open2 = !status.open2" ng-model="configData.blog.blogType" value="Wordpress Blog">Wordpress Blog
+                     </label>
+                  </div>
+               </div>
+               <div class="col-sm-6">
+                  <div class="radio-opt">
+                     <label class="radio-inline">
+                        <input type="radio" name="optradio" ng-click="status.open3 = !status.open3" ng-model="configData.blog.blogType" value="Self Hosted Wordpress">Self Hosted Wordpress
+                     </label>
+                  </div>
+               </div>
+               <div class="col-sm-6">
+                  <div class="radio-opt">
+                     <label class="radio-inline">
+                        <input type="radio" name="optradio" ng-click="status.open4 = !status.open4" ng-model="configData.blog.blogType" value="Tumblr Blog">Tumblr Blog
+                     </label>
+                  </div>
+               </div>
+            </div>
+         </uib-accordion-group>
+      </uib-accordion>
 
-            <uib-accordion  class="one-time">
-               <uib-accordion-group is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
-                  <div class="home-content">
-                     <div class="list-blog  ">
-                        <div class="notification-list">
-                           <div class="naming">
-                              <h4 class="display-inline">List Of Blog</h4>
-                              <div class="create-event float-right">
-                                 <button class="btn btn-primary btn-outline btn-small create-btn" ui-sref="blogdetail">Create</button>
-                              </div>
-                           </div>
-                           <div class="notification-table pbt20">
-                              <table class="table" ng-if="blogdata.length>0">
-                                 <thead ng-if="blogdata.length>0">
-                                    <tr>
-                                       <th>
-                                          <div class="select">
-                                             <!-- <span>Select All</span> -->
-                                             <div class="checkbox">
-                                                <label>
-                                                   <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-                                                </label>
-                                             </div>
-                                          </div>
-                                       </th>
-                                       <th>
-                                          <span>Title</span>
-                                       </th>
-                                       <th>
-                                          <span>Timestamp</span>
-                                       </th>
-                                       <th>
-                                          <span>Action</span>
-                                       </th>
-                                    </tr>
-                                 </thead>
-                                 <tbody>
-                                    <tr ng-repeat="blog in blogdata">
-                                       <td>
-                                          <div class="select-check">
-                                             <div class="checkbox">
-                                                <label>
-                                                   <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-                                                </label>
-                                             </div>
-                                          </div>
-                                       </td>
-                                       <td>
-                                          <span>{{blog.blogtitle}}</span>
-                                       </td>
-                                       <td>
-                                          <span>{{blog.date | date:'fullDate'}}</span>
-                                       </td>
-
-                                       <!-- <td>
-                        <span>{{blog.blogtitle}}</span>
-                      </td>
-                      <td>
-                        <span>{{blog.timestamp}} </span>
-                      </td> -->
-                                       <td>
-                                          <div class="action">
-                                             <a ui-sref="editblogdetail({id:blog._id})"> <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i></a>
-                                             <a ng-click="deleteBlog(blog._id)"><i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i></a>
-                                          </div>
-                                       </td>
-                                    </tr>
-                                 </tbody>
-                              </table>
-                              <div class="text-center" ng-if="!blogdata || blogdata.length==0">
-                                 No blog added, please click on <span class="primary">Create</span> to add blog.
-                              </div>
-                           </div>
+      <uib-accordion class="one-time">
+         <uib-accordion-group is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+            <div class="home-content">
+               <div class="list-blog  ">
+                  <div class="notification-list">
+                     <div class="naming">
+                        <h4 class="display-inline">List Of Blog</h4>
+                        <div class="create-event float-right">
+                           <button class="btn btn-primary btn-outline btn-small create-btn" ui-sref="blogdetail">Create</button>
+                        </div>
+                     </div>
+                     <div class="notification-table pbt20">
+                        <table class="table" ng-if="blogdata.length>0">
+                           <thead ng-if="blogdata.length>0">
+                              <tr>
+                                 <th>
+                                    <div class="select">
+                                       <!-- <span>Select All</span> -->
+                                       <div class="checkbox">
+                                          <label>
+                                             <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                          </label>
+                                       </div>
+                                    </div>
+                                 </th>
+                                 <th>
+                                    <span>Title</span>
+                                 </th>
+                                 <th>
+                                    <span>Timestamp</span>
+                                 </th>
+                                 <th>
+                                    <span>Action</span>
+                                 </th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr ng-repeat="blog in blogdata">
+                                 <td>
+                                    <div class="select-check">
+                                       <div class="checkbox">
+                                          <label>
+                                             <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                          </label>
+                                       </div>
+                                    </div>
+                                 </td>
+                                 <td>
+                                    <span>{{blog.blogtitle}}</span>
+                                 </td>
+                                 <td>
+                                    <span>{{blog.date | date:'fullDate'}}</span>
+                                 </td>
+                                 <td>
+                                    <div class="action">
+                                       <a ui-sref="editblogdetail({id:blog._id})"> <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i></a>
+                                       <a ng-click="deleteBlog(blog._id)"><i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i></a>
+                                    </div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <div class="text-center" ng-if="!blogdata || blogdata.length==0">
+                           No blog added, please click on <span class="primary">Create</span> to add blog.
                         </div>
                      </div>
                   </div>
-               </uib-accordion-group>
-               <uib-accordion-group is-open="status.open2">
-                  <div class="row">
-                     <div class="col-md-12">
-                        <div class="set-login">
-                           <div class="home-slider">
-                              <div class="naming">
-                                 <h4>Wordpress Blog</h4>
-                              </div>
-                           </div>
-                           <div class="blog-link mt20">
-                              <form action="">
-                                 <div class="form-group">
-                                    <label for="">Wordpress User Name</label>
-                                    <input type="text" class="form-control" id="">
-                                 </div>
-                              </form>
-                           </div>
+               </div>
+            </div>
+         </uib-accordion-group>
+         <uib-accordion-group is-open="status.open2">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="set-login">
+                     <div class="home-slider">
+                        <div class="naming">
+                           <h4>Wordpress Blog</h4>
                         </div>
                      </div>
-                  </div>
-               </uib-accordion-group>
-               <uib-accordion-group is-open="status.open3">
-                  <div class="row">
-                     <div class="col-md-12">
-                        <div class="set-login">
-                           <div class="home-slider">
-                              <div class="naming">
-                                 <h4>Self Hosted Wordpress</h4>
-                              </div>
+                     <div class="blog-link mt20">
+                        <form action="">
+                           <div class="form-group">
+                              <label for="">Wordpress User Name</label>
+                              <input type="text" class="form-control" id="" ng-model="configData.blog.username">
                            </div>
-                           <div class="blog-link mt20">
-                              <form action="">
-                                 <div class="form-group">
-                                    <label for="">Self Hosted Wordpress Blog URL</label>
-                                    <input type="text" class="form-control" id="">
-                                 </div>
-                              </form>
-                           </div>
-                        </div>
+                        </form>
                      </div>
                   </div>
-               </uib-accordion-group>
-               <uib-accordion-group is-open="status.open4">
-                  <div class="row">
-                     <div class="col-md-12">
-                        <div class="set-login">
-                           <div class="home-slider">
-                              <div class="naming">
-                                 <h4>Tumblr Blog</h4>
-                              </div>
-                           </div>
-                           <div class="blog-link mt20">
-                              <form action="">
-                                 <div class="form-group">
-                                    <label for="">Tumblr User Name</label>
-                                    <input type="text" class="form-control" id="">
-                                 </div>
-                              </form>
-                           </div>
+               </div>
+            </div>
+         </uib-accordion-group>
+         <uib-accordion-group is-open="status.open3">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="set-login">
+                     <div class="home-slider">
+                        <div class="naming">
+                           <h4>Self Hosted Wordpress</h4>
                         </div>
                      </div>
+                     <div class="blog-link mt20">
+                        <form action="">
+                           <div class="form-group">
+                              <label for="">Self Hosted Wordpress Blog URL</label>
+                              <input type="text" class="form-control" id="" ng-model="configData.blog.username">
+                           </div>
+                        </form>
+                     </div>
                   </div>
-               </uib-accordion-group>
-             </uib-accordion>
-
-
+               </div>
+            </div>
+         </uib-accordion-group>
+         <uib-accordion-group is-open="status.open4">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="set-login">
+                     <div class="home-slider">
+                        <div class="naming">
+                           <h4>Tumblr Blog</h4>
+                        </div>
+                     </div>
+                     <div class="blog-link mt20">
+                        <form action="">
+                           <div class="form-group">
+                              <label for="">Tumblr User Name</label>
+                              <input type="text" class="form-control" id="" ng-model="configData.blog.username">
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </uib-accordion-group>
+      </uib-accordion>
+      <div class="upload-img text-center pt15">
+         <button class="btn btn-primary btn-outline btn-small" ng-click="saveConfigData()">Save</button>
+         <p ng-show="showErrMsg">Please provide username or url</p>
+      </div>
    </div>
 </div>

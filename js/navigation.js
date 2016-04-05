@@ -789,6 +789,21 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true
             }).success(callback);
         },
+        getConfig: function(callback) {
+            $http({
+                url: adminurl + 'config/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        saveConfigData: function(configData, callback) {
+            $http({
+                url: adminurl + 'config/save',
+                method: 'POST',
+                data: configData,
+                withCredentials: true
+            }).success(callback);
+        },
         makeactive: function(menuname) {
             for (var i = 0; i < navigation.length; i++) {
                 if (navigation[i].name == menuname) {
