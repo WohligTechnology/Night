@@ -6,7 +6,7 @@
           <div class="col-xs-12">
             <div class="ionic-template mb30">
               <div class="pull-right pd20">
-                 <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
+                <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
               </div>
               <h4 class="pad20">PUBLISHING</h4>
               <uib-tabset justified="true">
@@ -508,7 +508,7 @@
                         <h4>Screen Shots</h4>
                       </div>
                       <uib-tabset active="activeJustified" justified="true">
-                        <uib-tab index="0" heading="iphone4" class="paddingup">
+                        <uib-tab index="0" heading="iPhone4" class="">
                           <div class="paddingup">
                             <div class="iphone-screenshot min-hight">
                               <div class="head">
@@ -559,7 +559,7 @@
                             </div>
                           </div>
                         </uib-tab>
-                        <uib-tab index="1" heading="iphone5">
+                        <uib-tab index="1" heading="iPhone5">
                           <div class="paddingup">
                             <div class="iphone-screenshot min-hight">
                               <div class="head">
@@ -619,7 +619,7 @@
                             </div>
                           </div>
                         </uib-tab>
-                        <uib-tab index="2" heading="iphone6">
+                        <uib-tab index="2" heading="iPhone6">
                           <div class="paddingup">
                             <div class="iphone-screenshot min-hight">
                               <div class="head">
@@ -678,7 +678,7 @@
                             </div>
                           </div>
                         </uib-tab>
-                        <uib-tab index="2" heading="iphone6 Plus">
+                        <uib-tab index="2" heading="iPhone6 Plus">
                           <div class="paddingup">
                             <div class="iphone-screenshot min-hight">
                               <div class="head">
@@ -787,6 +787,108 @@
                                   </div>
                                   <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
                                     <!-- <input type="file" class="form-control"> -->
+                                    <div class="upload-text text-center">
+                                      <i class="ln-circle-plus"></i>
+                                      <br> Select
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </uib-tab>
+                        <uib-tab index="5" heading="Android Nexus 6P" class="">
+                          <div class="paddingup">
+                            <div class="iphone-screenshot min-hight">
+                              <div class="head">
+                                <p>Upload a custom screen shot for your Nexus 6P app.</p>
+                                <p>5 screen shots Maximum</p>
+                                <p>435X731px in PNG Format</p>
+                              </div>
+                              <div class="or">- or -</div>
+                              <div class="head">
+                                <p class="pd5">Genrate high resolution screenShot with just click of a button</p>
+                                <div class="btn-grp">
+                                  <button class="btn btn-primary btn-outline">
+                                    Generate
+                                  </button>
+                                </div>
+                              </div>
+                              <div class="wrapper-iphone">
+                                <div class="iphone" ui-sortable ng-model="lists">
+                                  <div class="iphone-upload iphone-upload-screen" ng-repeat="item in lists">
+                                    <div class="image-hold">
+                                      <img ng-src="{{item.image}}" alt="" class="drop-image" />
+                                    </div>
+                                    <div class="text-center mr10">
+                                      <button class="btn btn-danger btn-outline btn-small">delete</button>
+                                    </div>
+                                  </div>
+
+                                  <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
+                                    <div class="upload-text text-center">
+                                      <i class="ln-circle-plus"></i>
+                                      <br> Select
+                                    </div>
+                                  </div>
+                                  <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
+                                    <div class="upload-text text-center">
+                                      <i class="ln-circle-plus"></i>
+                                      <br> Select
+                                    </div>
+                                  </div>
+                                  <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
+                                    <div class="upload-text text-center">
+                                      <i class="ln-circle-plus"></i>
+                                      <br> Select
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </uib-tab>
+                        <uib-tab index="0" heading="Tablet" class="">
+                          <div class="paddingup">
+                            <div class="iphone-screenshot min-hight">
+                              <div class="head">
+                                <p>Upload a custom screen shot for your  app.</p>
+                                <p>5 screen shots Maximum</p>
+                                <p>600x960px in PNG Format</p>
+                              </div>
+                              <div class="or">- or -</div>
+                              <div class="head">
+                                <p class="pd5">Genrate high resolution screenShot with just click of a button</p>
+                                <div class="btn-grp">
+                                  <button class="btn btn-primary btn-outline">
+                                    Generate
+                                  </button>
+                                </div>
+                              </div>
+                              <div class="wrapper-iphone">
+                                <div class="iphone" ui-sortable ng-model="lists">
+                                  <div class="iphone-upload iphone-upload-screen" ng-repeat="item in lists">
+                                    <div class="image-hold">
+                                      <img ng-src="{{item.image}}" alt="" class="drop-image" />
+                                    </div>
+                                    <div class="text-center mr10">
+                                      <button class="btn btn-danger btn-outline btn-small">delete</button>
+                                    </div>
+                                  </div>
+
+                                  <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
+                                    <div class="upload-text text-center">
+                                      <i class="ln-circle-plus"></i>
+                                      <br> Select
+                                    </div>
+                                  </div>
+                                  <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
+                                    <div class="upload-text text-center">
+                                      <i class="ln-circle-plus"></i>
+                                      <br> Select
+                                    </div>
+                                  </div>
+                                  <div class="iphone-upload iphone-upload-screen" ng-click="openscreenshot()">
                                     <div class="upload-text text-center">
                                       <i class="ln-circle-plus"></i>
                                       <br> Select
