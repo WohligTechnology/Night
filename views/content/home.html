@@ -26,7 +26,7 @@
                   </div>
                </div>
             </div>
-            <div class="upload-img text-center mt30">
+            <div class="upload-img text-right mt30">
                <upload-image ng-model="imageArr" multiple no-view ng-callback="changeit"></upload-image>
             </div>
          </div>
@@ -41,9 +41,9 @@
                <div class="mt15">
                   <textarea ui-tinymce ng-model="configData.homeContent"></textarea>
                </div>
-               <div class="upload-img text-center pt15">
+               <div class="upload-img text-right pt15">
                   <button class="btn btn-primary btn-outline btn-small" ng-click="homeEditSubmitForm()">Save</button>
-                  <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+                  <!-- <button class="btn btn-primary btn-outline btn-small">Cancel</button> -->
                </div>
                <div class="text-center" ng-if="formComplete">
                   <h3>Submitted Successfully, Thank You!</h3>

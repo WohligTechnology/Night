@@ -38,6 +38,10 @@
                 </form>
               </div>
             </div>
+            <div class="upload-img text-right mt15">
+               <button class="btn btn-secondary btn-outline btn-small">Save</button>
+
+            </div>
           </div>
         </uib-accordion-group>
       </uib-accordion>
@@ -93,7 +97,7 @@
                 <textarea name="content" required ng-model="userForm.content" class="form-control"></textarea>
                 <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content.</div>
               </div>
-              <div class="upload-img text-center">
+              <div class="upload-img text-right">
                 <button class="btn btn-primary btn-outline btn-small" ng-click="notificationSubmitForm(user)">Save</button>
               </div>
             </form>

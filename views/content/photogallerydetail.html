@@ -20,10 +20,13 @@
                         </div>
                         <div class="form-group">
                            <label for="">Status</label>
-                           <select class="form-control" ng-model="userForm.status">
-                              <option>Enable</option>
-                              <option>Disable</option>
-                           </select>
+                           <div class="onoffswitch">
+                             <input name="status" ng-model="userForm.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch">
+                             <label class="onoffswitch-label" for="myonoffswitch">
+                               <span class="onoffswitch-inner"></span>
+                               <span class="onoffswitch-switch"></span>
+                             </label>
+                           </div>
                         </div>
                         <!-- <div class="form-group">
                            <label for="">Date</label>
@@ -68,7 +71,7 @@
                               </div>
                               <upload-image ng-model="imagesArr" multiple no-view ng-callback="changeit"></upload-image>
                            </div>
-                           <div class="upload-img text-center">
+                           <div class="upload-img text-right">
                               <button class="btn btn-primary btn-outline btn-small" ng-click="photogalSubmitForm(user)">Save</button>
                               <button class="btn btn-primary btn-outline btn-small" ui-sref="photo-galleries">Cancel</button>
                            </div>

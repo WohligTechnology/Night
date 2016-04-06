@@ -37,10 +37,19 @@ $nav-link-padding: 12px 15px 15px 20px;
   color: $color;
   background-color: transparent;
   border-color: $color !important;
-  &:hover,
-  &:focus {
+  &:hover{
     color: white;
     background-color: $color;
+    border-color: $color;
+  }
+  &:active{
+    color: white;
+    background-color: $color;
+    border-color: $color;
+  }
+  &:focus {
+    color: $color;
+    background-color: transparent;
     border-color: $color;
   }
 }
@@ -126,10 +135,26 @@ a,
     // border-color: #ccc;
   }
 }
+.btn-secondary{
+  background-color:#fff;
+  border: 1px solid $brand-primary;
+  color:$brand-primary;
+  &:hover{
+    background-color:$brand-primary;
+    border: 1px solid #fff;
+    color:#fff;
+  }
+  &:focus{
+    // background-color:$brand-primary;
+    // border: 1px solid #fff;
+    color:$brand-primary !important;
+  }
+}
 .btn {
   padding: 8px 20px;
   text-transform: uppercase;
   &.btn-outline {
+
     &.btn-primary {
       @include button-outline($brand-primary);
     }
