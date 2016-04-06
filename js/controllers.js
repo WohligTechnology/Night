@@ -1,7 +1,7 @@
 //window.uploadurl = "http://192.168.0.126:81/uploadfile/upload/";
 window.uploadurl = "http://vignesh.com:81/uploadfile/upload/";
-
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'toaster', 'imageupload', 'httpService'])
+var globalfunction = {};
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'toaster', 'imageupload', 'httpService', 'toastr'])
 
 .controller('AllAppsCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log, httpService) {
     //Used to name the .html file
@@ -149,7 +149,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 })
 
-.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal, httpService) {
+.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal, httpService, toastr) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("home");
     $scope.menutitle = NavigationService.makeactive("App Home");
@@ -176,10 +176,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.homeEditSubmitForm = function() {
         NavigationService.insertData($scope.userForm.images, function(data) {
-            console.log(data);
+            if (data.value) {
+                globalfunction.successToaster();
+            } else {
+                globalfunction.errorToaster();
+            }
         });
         NavigationService.saveConfigData($scope.configData, function(data) {
-            console.log(data);
+            if (data.value) {
+
+            } else {
+                globalfunction.errorToaster();
+            }
         })
     };
     var modalInstance = '';
@@ -187,8 +195,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log(modalData);
         NavigationService.saveHomeContent(modalData, function(data) {
             if (data.value) {
-                $scope.allHomeRecord();
+                globalfunction.successToaster();
                 modalInstance.dismiss();
+            } else {
+                globalfunction.errorToaster();
             }
         });
     };
@@ -271,13 +281,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.allNavigationRecord();
 
     $scope.deleteNavigation = function(formValid) {
-        console.log('formvalid', formValid);
-        NavigationService.deleteNavigationData({
-            id: formValid
-        }, function(data) {
-            console.log('delete data:', data);
-            if (data.value === true) {
-                $scope.allNavigationRecord();
+        globalfunction.confDel(function(val) {
+            if (val) {
+                NavigationService.deleteNavigationData({
+                    id: formValid
+                }, function(data) {
+                    if (data.value) {
+                        globalfunction.delSuccessToaster();
+                        $scope.allNavigationRecord();
+                    }
+                });
             }
         });
     };
@@ -349,10 +362,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.navigationSubmitForm = function(formValid) {
         if (formValid.$valid) {
-            console.log('in navi');
             NavigationService.navigationCreateSubmit($scope.userForm, function(data) {
-                console.log('userform', $scope.userForm);
-                $state.go("navigation");
+                if (data.value) {
+                    globalfunction.successToaster();
+                    $state.go("navigation");
+                } else {
+                    globalfunction.errorToaster();
+                }
             });
         }
     };
@@ -401,7 +417,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigationSubmitForm = function(formValid) {;
         if (formValid.$valid) {
             NavigationService.editNavigationSubmit($scope.userForm, function(data) {
-                $state.go("navigation");
+                if (data.value) {
+                    globalfunction.successToaster();
+                    $state.go("navigation");
+                } else {
+                    globalfunction.errorToaster();
+                }
             });
         }
     };
@@ -492,7 +513,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if ($scope.valid) {
             $scope.showErrMsg = false;
             NavigationService.saveConfigData($scope.configData, function(data) {
-                console.log(data);
+                if (data.value) {
+                    globalfunction.successToaster();
+                } else {
+                    globalfunction.errorToaster();
+                }
             })
         } else {
             $scope.showErrMsg = true;
@@ -535,13 +560,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.allNotificationRecord();
 
     $scope.deleteNotification = function(formValid) {
-        console.log('formvalid', formValid);
-        NavigationService.deleteNotificationData({
-            id: formValid
-        }, function(data) {
-            console.log('delete data:', data);
-            if (data.value === true) {
-                $scope.allNotificationRecord();
+        globalfunction.confDel(function(val) {
+            if (val) {
+                NavigationService.deleteNotificationData({
+                    id: formValid
+                }, function(data) {
+                    if (data.value) {
+                        globalfunction.delSuccessToaster();
+                        $scope.allNavigationRecord();
+                    }
+                });
             }
         });
     };
@@ -552,6 +580,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.notificationCreateSubmit($scope.userForm, function(data) {
                 if (data.value) {
                     $scope.allNotificationRecord();
+                    globalfunction.successToaster();
+                } else {
+                    globalfunction.errorToaster();
                 }
             });
         }
@@ -560,8 +591,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.notificationEditSubmitForm = function(noti) {
         NavigationService.notificationCreateSubmit(noti, function(data) {
             if (data.value) {
+                globalfunction.successToaster();
                 modalInstance.dismiss();
                 $scope.allNotificationRecord();
+            } else {
+                globalfunction.errorToaster();
             }
         });
     };
@@ -648,13 +682,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.allEventsRecord();
 
     $scope.deleteEvent = function(formValid) {
-        console.log('formvalid', formValid);
-        NavigationService.deleteEventsData({
-            id: formValid
-        }, function(data) {
-            console.log('delete data:', data);
-            if (data.value === true) {
-                $scope.allEventsRecord();
+        globalfunction.confDel(function(val) {
+            if (val) {
+                NavigationService.deleteEventsData({
+                    id: formValid
+                }, function(data) {
+                    if (data.value) {
+                        globalfunction.delSuccessToaster();
+                        $scope.allNavigationRecord();
+                    }
+                });
             }
         });
     };
@@ -674,7 +711,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.eventSubmitForm = function(formValid) {
         if (formValid.$valid) {
             NavigationService.eventCreateSubmit($scope.userForm, function(data) {
-                $state.go("events");
+                if (data.value) {
+                    globalfunction.successToaster();
+                    $state.go("events");
+                } else {
+                    globalfunction.errorToaster();
+                }
             });
         }
     };
@@ -963,10 +1005,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.eventSubmitForm = function(formValid) {
         if (formValid.$valid) {
             NavigationService.editEventSubmit($scope.userForm, function(data) {
-                $state.go("events");
+                if (data.value) {
+                    globalfunction.successToaster();
+                    $state.go("events");
+                } else {
+                    globalfunction.errorToaster();
+                }
             });
-        } else {
-
         }
     };
 
@@ -1095,13 +1140,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.allBlogsRecord();
 
     $scope.deleteBlog = function(formValid) {
-        console.log('formvalid', formValid);
-        NavigationService.deleteBlogData({
-            id: formValid
-        }, function(data) {
-            console.log('delete data:', data);
-            if (data.value === true) {
-                $scope.allBlogsRecord();
+        globalfunction.confDel(function(val) {
+            if (val) {
+                NavigationService.deleteBlogData({
+                    id: formValid
+                }, function(data) {
+                    if (data.value) {
+                        globalfunction.delSuccessToaster();
+                        $scope.allNavigationRecord();
+                    }
+                });
             }
         });
     };
@@ -1122,7 +1170,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if ($scope.valid) {
             $scope.showErrMsg = false;
             NavigationService.saveConfigData($scope.configData, function(data) {
-                console.log(data);
+                if (data.value) {
+                    globalfunction.successToaster();
+                } else {
+                    globalfunction.errorToaster();
+                }
             })
         } else {
             $scope.showErrMsg = true;
@@ -1206,7 +1258,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.blogCreateSubmit($scope.userForm, function(data) {
                 console.log('userform', $scope.userForm);
                 if (data.value) {
+                    globalfunction.successToaster();
                     $state.go("blogs");
+                } else {
+                    globalfunction.errorToaster();
                 }
             });
         }
@@ -1283,7 +1338,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (formValid.$valid) {
             NavigationService.blogCreateSubmit($scope.userForm, function(data) {
                 if (data.value) {
+                    globalfunction.successToaster();
                     $state.go("blogs");
+                } else {
+                    globalfunction.errorToaster();
                 }
             });
         }
@@ -1354,11 +1412,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.allArticlesRecord();
 
     $scope.deleteArticle = function(formValid) {
-        NavigationService.deleteArticleData({
-            id: formValid
-        }, function(data) {
-            if (data.value === true) {
-                $scope.allArticlesRecord();
+        globalfunction.confDel(function(val) {
+            if (val) {
+                NavigationService.deleteArticleData({
+                    id: formValid
+                }, function(data) {
+                    if (data.value) {
+                        globalfunction.delSuccessToaster();
+                        $scope.allNavigationRecord();
+                    }
+                });
             }
         });
     };
@@ -1427,7 +1490,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (formValid.$valid) {
             NavigationService.articleCreateSubmit($scope.userForm, function(data) {
                 if (data.value) {
+                    globalfunction.successToaster();
                     $state.go("articles");
+                } else {
+                    globalfunction.errorToaster();
                 }
             });
         }
@@ -1459,7 +1525,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (formValid.$valid) {
             NavigationService.articleCreateSubmit($scope.userForm, function(data) {
                 if (data.value) {
+                    globalfunction.successToaster();
                     $state.go("articles");
+                } else {
+                    globalfunction.errorToaster();
                 }
             });
         }
@@ -1607,8 +1676,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.photogalSubmitForm = function() {
         NavigationService.photogalSubmitForm($scope.userForm, function(data) {
             if (data.value) {
+                globalfunction.successToaster();
                 $scope.getSingleGallery();
                 $state.go('photo-galleries');
+            } else {
+                globalfunction.errorToaster();
             }
         })
     }
@@ -1820,7 +1892,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (formValid.$valid) {
             NavigationService.videoGalleryCreateSubmit($scope.userForm, function(data) {
                 if (data.value) {
+                    globalfunction.successToaster();
                     $state.go("video-galleries");
+                } else {
+                    globalfunction.errorToaster();
                 }
             });
         }
@@ -1847,7 +1922,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (formValid.$valid) {
             NavigationService.videoGalleryCreateSubmit($scope.userForm, function(data) {
                 if (data.value) {
+                    globalfunction.successToaster();
                     $state.go("video-galleries");
+                } else {
+                    globalfunction.errorToaster();
                 }
             });
         }
@@ -2000,17 +2078,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         header: "Create Contact"
     };
     $scope.contactSubmitForm = function(formValid) {
-        // console.log('form values: ', formData);
-        // console.log('formvalid values: ', formValid);
-        console.log('form values: ', $scope.userForm);
         if (formValid.$valid) {
             console.log('in navi');
             NavigationService.contactCreateSubmit($scope.userForm, function(data) {
-
-                console.log('create contact userform', $scope.userForm);
+                if (data.value) {
+                    $state.go("contact");
+                    globalfunction.successToaster();
+                } else {
+                    globalfunction.errorToaster();
+                }
             });
-            $state.go("contact");
-
         }
     };
 
@@ -2030,48 +2107,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     NavigationService.getContactEditDetail($stateParams.id, function(data) {
         //console.log('getArticleEditDetail', data.data);
         $scope.userForm = data.data;
-        console.log('userForm', $scope.userForm);
-        console.log($scope.userForm.status);
-
-
     });
+
     $scope.contactSubmitForm = function(formValid) {
-        // console.log('form values: ', formData);
-        // console.log('form values: ', formValid);
-        console.log('form values: ', $scope.userForm);
         if (formValid.$valid) {
             NavigationService.editContactSubmit($scope.userForm, function(data) {
-                console.log('my edit contact', $scope.userForm);
-                console.log('edit status', $scope.userForm.status);
-                // if($scope.userForm.status==0)
-                // {
-                //   $scope.userForm.status='Disable';
-                // }else{
-                //   $scope.userForm.status='Enable';
-                // }
-                $state.go("contact");
+                if (data.value) {
+                    globalfunction.successToaster();
+                    $state.go("contact");
+                } else {
+                    globalfunction.errorToaster();
+                }
             });
-
-            // NavigationService.userSubmit($scope.userForm, function(data) {
-            //
-            // });
-        } else {
-
         }
     };
-    //
-    // <script>
-    // function initialize() {
-    //   var mapProp = {
-    //     center:new google.maps.LatLng(51.508742,-0.120850),
-    //     zoom:5,
-    //     mapTypeId:google.maps.MapTypeId.ROADMAP
-    //   };
-    //   var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
-    // }
-    // google.maps.event.addDomListener(window, 'load', initialize);
-    // </script>
-
 
 })
 
@@ -2094,7 +2143,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.updateAudio = function() {
         NavigationService.updateAudio($scope.audio, function(data) {
-
+            if (data.value) {
+                globalfunction.successToaster();
+            } else {
+                globalfunction.errorToaster();
+            }
         })
     }
 
@@ -2363,7 +2416,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.saveModalData = function(modalData) {
         console.log($scope.userForm);
         NavigationService.saveIntroData($scope.userForm, function(data) {
-            modalInstance.dismiss();
+            if (data.value) {
+                globalfunction.successToaster();
+                modalInstance.dismiss();
+            } else {
+                globalfunction.errorToaster();
+            }
         })
     }
 
@@ -2635,7 +2693,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
 })
 
-.controller('headerctrl', function($scope, TemplateService) {
+.controller('headerctrl', function($scope, TemplateService, toastr, $uibModal) {
     $scope.template = TemplateService;
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
         $(window).scrollTop(0);
@@ -2645,4 +2703,36 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.showBar = function() {
         $scope.searchBar = !$scope.searchBar;
     };
+    globalfunction.successToaster = function() {
+        toastr.success('Saved Successfully');
+    }
+    globalfunction.delSuccessToaster = function() {
+        toastr.success('Deleted Successfully');
+    }
+    globalfunction.errorToaster = function() {
+        toastr.error('Something went wrong', 'Sorry');
+    }
+    var modalInstance = '';
+    $scope.callback = "";
+    globalfunction.confDel = function(callback) {
+        modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/confDelete.html',
+            size: 'sm',
+            scope: $scope
+        });
+
+        modalInstance.result.then(function(selectedItem) {
+            $scope.selected = selectedItem;
+        }, function() {
+
+        });
+        $scope.callback = callback;
+    };
+
+    $scope.close = function(val) {
+        modalInstance.dismiss();
+        $scope.callback(val);
+    }
+
 });

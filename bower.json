@@ -41,7 +41,8 @@
     "angularjs-imageupload-directive": "https://github.com/Mischi/angularjs-imageupload-directive.git",
     "highcharts": "https://github.com/highcharts/highcharts.git#^4.2.3",
     "angular-websql": "^1.0.2",
-    "jQuery-MD5": "https://github.com/placemarker/jQuery-MD5.git"
+    "jQuery-MD5": "https://github.com/placemarker/jQuery-MD5.git",
+    "angular-toastr": "~1.7.0"
   },
   "resolutions": {
     "angular": "~1.4.8"

@@ -6,10 +6,22 @@ var firstapp = angular.module('firstapp', [
     'navigationservice'
 ]);
 
-firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, toastrConfig) {
 
     // for http request with session
     $httpProvider.defaults.withCredentials = true;
+    angular.extend(toastrConfig, {
+        autoDismiss: true,
+        containerId: 'toast-container',
+        maxOpened: 0,
+        newestOnTop: true,
+        positionClass: 'toast-top-right',
+        preventDuplicates: false,
+        preventOpenDuplicates: false,
+        target: 'body',
+        timeOut: 5000,
+        progressBar: true
+    });
 
     $stateProvider
 
