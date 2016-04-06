@@ -408,6 +408,10 @@ firstapp.directive('listType', function($uibModal, NavigationService) {
             } else {
                 document.getElementById('linkText').value = $scope.model.link;
             }
+
+            if (!$scope.model.type && !$scope.model.link) {
+                document.getElementById('linkText').value = "";
+            }
             $scope.open = function(size) {
                 modalInstance = $uibModal.open({
                     animation: $scope.animationsEnabled,

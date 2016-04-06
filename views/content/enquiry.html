@@ -35,11 +35,11 @@
                       <span>Email</span>
                     </th>
                     <th>
-                      <span>Timestamp</span>
+                      <span>Subject</span>
                     </th>
-                    <th>
+                    <!-- <th>
                       <span>Action</span>
-                    </th>
+                    </th> -->
                   </tr>
                 </thead>
                 <tbody ng-if="enquirydata.length>0">
@@ -54,17 +54,17 @@
                       </div>
                     </td>
                     <td>
-                      <span>{{enuiry.name}}</span>
+                      <span>{{enquiry.name}}</span>
                     </td>
                     <td>
                       <span>{{enquiry.email}}
                       </span>
                     </td>
                     <td>
-                      <span>{{enquiry.timestamp}}
+                      <span>{{enquiry.subject}}
                       </span>
                     </td>
-                    <td>
+                    <!-- <td>
                       <div class="action">
                         <a ui-sref="editeventdetail({id:enquiry._id})">
                           <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i>
@@ -73,7 +73,7 @@
                           <i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i>
                         </a>
                       </div>
-                    </td>
+                    </td> -->
                   </tr>
                 </tbody>
               </table>

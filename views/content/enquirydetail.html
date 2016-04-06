@@ -1,60 +1,57 @@
 <div class="max-size">
-  <div class="ionic-template mb30">
-    <div class="pull-right pd20">
-       <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
-    </div>
-    <h4 class="pad20">Enquiry >
-            {{page.header}}</h4>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="home-slider form-background">
-          <div class="naming">
-            <h4>{{page.header}}</h4>
-          </div>
-          <div class="google-login paddingup">
-            <div class="form-login">
-              <form name="user">
-                <div class="form-group">
-                  <label for="">Name</label>
-                  <input name="name" required ng-model="userForm.name" type="text" class="form-control" id="" placeholder="Name">
-                  <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Name.</div>
-                </div>
-                <div class="form-group">
-                  <label for="">Email</label>
-                  <input name="email" required ng-model="userForm.email" type="email" class="form-control" id="" placeholder="Email">
-                  <div class="error-msg" ng-show="user.venue.$error.required && user.venue.$touched">Please Enter valid Email.</div>
-                </div>
-                <div class="form-group">
-                  <label for="">Subject</label>
-                  <input name="subject" required ng-model="userForm.subject" type="text" class="form-control" id="" placeholder="SUbject">
-                  <div class="error-msg" ng-show="user.venue.$error.required && user.venue.$touched">Please Enter Subject.</div>
-                </div>
-                <div class="form-group">
-                  <label for="">TimeStamp</label>
-                  <input name="timestamp" required ng-model="userForm.subject" type="text" class="form-control" id="" placeholder="Timestamp">
-                  <div class="error-msg" ng-show="user.venue.$error.required && user.venue.$touched">Please Enter Timestamp.</div>
-                </div>
-                <div class="form-group" required>
-                  <label for="">Comments</label>
-                  <textarea name="content" required ui-tinymce ng-model="userForm.comment" class="form-control"></textarea>
-                  <div class="error-msg" ng-show="user.comment.$error.required && user.comment.$touched">Please Enter Comments.</div>
-                </div>
-                <div class="upload-img text-center">
-                  <button class="btn btn-primary btn-outline btn-small" ng-click="enquirySubmitForm(user)">Save</button>
-                  <!-- <button class="btn btn-primary btn-outline btn-small" ng-click="pop()">Save</button> -->
-                  <toaster-container toaster-options="{'close-button': true,'position-class': 'toast-bottom-right'}"></toaster-container>
-                  <!-- <a href="#/events"> -->
-                  <button class="btn btn-primary btn-outline btn-small ml12" ui-sref="enquiry">Cancel</button>
-                  <!-- </a> -->
-                </div>
-              </form>
-            </div>
-          </div>
-          <!-- <div class="text-center" ng-show="formComplete">
-                          <h3>Submitted Successfully, Thank You!</h3>
-                      </div> -->
-        </div>
+   <div class="ionic-template mb30">
+      <div class="pull-right pd20">
+         <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
       </div>
-    </div>
-  </div>
+      <h4 class="pad20">Enquiry >
+            {{page.header}}</h4>
+      <div class="row">
+         <div class="col-md-12">
+            <div class="home-slider form-background">
+               <div class="naming">
+                  <h4>{{page.header}}</h4>
+               </div>
+               <div class="google-login paddingup">
+                  <div class="form-login">
+                     <form name="user">
+                        <div class="form-group">
+                           <label for="">Name</label>
+                           <input name="name" required ng-model="userForm.name" type="text" class="form-control" id="" placeholder="Name">
+                           <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Name.</div>
+                        </div>
+                        <div class="form-group">
+                           <label for="">Email</label>
+                           <input name="email" required ng-model="userForm.email" type="email" class="form-control" id="" placeholder="Email">
+                           <div class="error-msg" ng-show="user.venue.$error.required && user.venue.$touched">Please Enter valid Email.</div>
+                        </div>
+                        <div class="form-group">
+                           <label for="">Subject</label>
+                           <input name="subject" required ng-model="userForm.subject" type="text" class="form-control" id="" placeholder="Subject">
+                           <div class="error-msg" ng-show="user.venue.$error.required && user.venue.$touched">Please Enter Subject.</div>
+                        </div>
+                        <!-- <div class="form-group">
+                           <label for="">TimeStamp</label>
+                           <input name="timestamp" required ng-model="userForm.subject" type="text" class="form-control" id="" placeholder="Timestamp">
+                           <div class="error-msg" ng-show="user.venue.$error.required && user.venue.$touched">Please Enter Timestamp.</div>
+                        </div> -->
+                        <div class="form-group" required>
+                           <label for="">Comments</label>
+                           <textarea name="content" required ui-tinymce ng-model="userForm.comment" class="form-control"></textarea>
+                           <div class="error-msg" ng-show="user.comment.$error.required && user.comment.$touched">Please Enter Comments.</div>
+                        </div>
+                        <div class="upload-img text-center">
+                           <button class="btn btn-primary btn-outline btn-small" ng-click="enquirySubmitForm(user)">Save</button>
+                           <!-- <button class="btn btn-primary btn-outline btn-small" ng-click="pop()">Save</button> -->
+                           <toaster-container toaster-options="{'close-button': true,'position-class': 'toast-bottom-right'}"></toaster-container>
+                           <!-- <a href="#/events"> -->
+                           <button class="btn btn-primary btn-outline btn-small ml12" ui-sref="enquiry">Cancel</button>
+                           <!-- </a> -->
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>

@@ -4,53 +4,73 @@ window.uploadurl = "http://vignesh.com:81/uploadfile/upload/";
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'toaster', 'imageupload', 'httpService'])
 
 .controller('AllAppsCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log, httpService) {
-        //Used to name the .html file
-        // httpService.get("./bower.json", {}, function(data) {
-        //   console.log(data);
-        // });
-        $scope.template = TemplateService.changecontent("allapps");
-        $scope.menutitle = NavigationService.makeactive("All Apps");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        TemplateService.sidemenu = "";
-        $scope.animationsEnabled = true;
-        $scope.open = function(size) {
-            var modalInstance = $uibModal.open({
-                animation: $scope.animationsEnabled,
-                templateUrl: 'views/modal/new-app.html',
-                controller: 'NewappCtrl',
-                size: size,
-                resolve: {
-                    items: function() {
-                        return $scope.items;
-                    }
+    //Used to name the .html file
+    // httpService.get("./bower.json", {}, function(data) {
+    //   console.log(data);
+    // });
+    $scope.template = TemplateService.changecontent("allapps");
+    $scope.menutitle = NavigationService.makeactive("All Apps");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    TemplateService.sidemenu = "";
+    $scope.animationsEnabled = true;
+    $scope.open = function(size) {
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/new-app.html',
+            controller: 'NewappCtrl',
+            size: size,
+            resolve: {
+                items: function() {
+                    return $scope.items;
                 }
-            });
-        };
+            }
+        });
+    };
 
-        $scope.changeit = function(data) {
-            console.log("data");
-            console.log(data);
-        };
-        $scope.toggleAnimation = function() {
-            $scope.animationsEnabled = !$scope.animationsEnabled;
-        };
+    $scope.changeit = function(data) {
+        console.log("data");
+        console.log(data);
+    };
+    $scope.toggleAnimation = function() {
+        $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
 
+})
+
+.controller('EnquiryCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("enquiry");
+    $scope.menutitle = NavigationService.makeactive("Enquiry");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    NavigationService.getAllEnquiry(function(data) {
+        if (data.value) {
+            $scope.enquirydata = data.data;
+        }
     })
-    .controller('EnquiryCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
-        //Used to name the .html file
-        $scope.template = TemplateService.changecontent("enquiry");
-        $scope.menutitle = NavigationService.makeactive("Enquiry");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
-    .controller('EnquiryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
-        //Used to name the .html file
-        $scope.template = TemplateService.changecontent("enquirydetail");
-        $scope.menutitle = NavigationService.makeactive("Enquiry");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
+
+})
+
+.controller('EnquiryDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("enquirydetail");
+    $scope.menutitle = NavigationService.makeactive("Enquiry");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+
+    $scope.enquirySubmitForm = function() {
+        console.log($scope.userForm);
+        NavigationService.submitEnquiry($scope.userForm, function(data) {
+            if (data.value) {
+                $state.go('enquiry');
+            }
+        })
+    }
+
+})
 
 .controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file
@@ -129,7 +149,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 })
 
-.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal) {
+.controller('HomeCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal, httpService) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("home");
     $scope.menutitle = NavigationService.makeactive("App Home");
@@ -146,6 +166,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.userForm.images = data.data;
             }
         });
+        // httpService.post(adminurl + 'homeslider/getAll', {}, function(data, status) {
+        //     if (data.value == true) {
+        //         $scope.userForm.images = data.data;
+        //     }
+        // }, function(err, status) {})
     };
     $scope.allHomeRecord();
 
@@ -2548,18 +2573,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.userForm = {};
-    $scope.submitForm = function(formData, formValid) {
-        console.log('form values: ', formData);
-        console.log('form values: ', formValid);
-        console.log('form values: ', $scope.userForm);
-        if (formValid.$valid) {
-            $scope.formComplete = true;
-            // NavigationService.userSubmit($scope.userForm, function(data) {
-            //
-            // });
-        } else {
 
-        }
+    $scope.saveConfigData = function() {
+        NavigationService.saveConfigData($scope.configData, function(data) {
+            console.log(data);
+        })
     };
 
     $scope.oneAtATime = true;
@@ -2597,6 +2615,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         name: "Users",
         enabled: false
     }];
+
+    NavigationService.getConfig(function(data) {
+        console.log(data);
+        if (data.value) {
+            if (data.data && data.data.length > 0) {
+                $scope.configData = data.data[0];
+                if (!$scope.configData.search) {
+                    $scope.configData.search = $scope.searchFor;
+                }
+            } else {
+                $scope.configData = {};
+                $scope.configData.socialfeeds = {};
+            }
+        } else {
+            $scope.configData = {};
+            $scope.configData.socialfeeds = {};
+        }
+    })
 })
 
 .controller('headerctrl', function($scope, TemplateService) {

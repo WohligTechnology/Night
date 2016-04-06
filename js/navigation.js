@@ -804,6 +804,21 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true
             }).success(callback);
         },
+        submitEnquiry: function(enquiry, callback) {
+            $http({
+                url: adminurl + 'enquiry/save',
+                method: 'POST',
+                data: enquiry,
+                withCredentials: true
+            }).success(callback);
+        },
+        getAllEnquiry: function(callback) {
+            $http({
+                url: adminurl + 'enquiry/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
         makeactive: function(menuname) {
             for (var i = 0; i < navigation.length; i++) {
                 if (navigation[i].name == menuname) {

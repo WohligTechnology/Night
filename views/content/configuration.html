@@ -1,174 +1,174 @@
 <div class="ionic-template mb30">
-  <div class="pull-right pd20"><a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a></div>
-  <h4 class="pad20">Configuration</h4>
-  <div class="col-md-12 form-background">
-    <div class="naming">
-      <h4 class="display-inline">List Of Configuration</h4>
-    </div>
-    <div class="config">
-      <uib-accordion close-others="oneAtATime" class="cutom-accordion">
-        <uib-accordion-group is-open="status.isFirstOpen">
-          <uib-accordion-heading>
-            <div class="open" ng-click="status1.open = !status1.open">
-              <i class="ln-magnifier"></i> Search
-              <i class="right-arrow" ng-class="{'ln-chevron-right down': status.isFirstOpen, 'ln-chevron-right': !status.isFirstOpen}"></i>
-            </div>
-          </uib-accordion-heading>
-          <div class="search">
-            <form action="">
-              <div class="row">
-                <div class="col-md-12">
-                  <label class="mrg0">Please Enable Search</label>
-                </div>
-                <div class="col-md-3" ng-repeat="items in searchFor">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" value="" ng-model="items.enabled">{{items.name}}</label>
+   <div class="pull-right pd20"><a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a></div>
+   <h4 class="pad20">Configuration</h4>
+   <div class="col-md-12 form-background">
+      <div class="naming">
+         <h4 class="display-inline">List Of Configuration</h4>
+      </div>
+      <div class="config">
+         <uib-accordion close-others="oneAtATime" class="cutom-accordion">
+            <uib-accordion-group is-open="status.isFirstOpen">
+               <uib-accordion-heading>
+                  <div class="open" ng-click="status1.open = !status1.open">
+                     <i class="ln-magnifier"></i> Search
+                     <i class="right-arrow" ng-class="{'ln-chevron-right down': status.isFirstOpen, 'ln-chevron-right': !status.isFirstOpen}"></i>
                   </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="upload-img text-center">
-                    <button class="btn btn-primary btn-outline btn-small">Save</button>
-                    <button class="btn btn-primary btn-outline btn-small">Reset</button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </uib-accordion-group>
-        <uib-accordion-group is-open="status.open2">
-          <uib-accordion-heading>
-            <div class="open" ng-click="status2.open = !status2.open">
-              <i class="ln-thumbs-up"></i> Social Feeds
-              <i class="right-arrow" ng-class="{'ln-chevron-right down': status.open2, 'ln-chevron-right': !status.open2}"></i>
-            </div>
-          </uib-accordion-heading>
-          <div class="soical-feeds">
-            <form action="" name="user">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Facebook Page Url</label>
-                    <input name="facebookUrl" ng-model="userForm.facebookUrl" type="text" class="form-control" id="" placeholder="Facebook Page Url">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Twitter Page Url</label>
-                    <input name="twitterUrl" ng-model="userForm.twitterUrl" type="text" class="form-control" id="" placeholder="Twitter Page Url">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Instagram Page Url</label>
-                    <input name="instagramUrl" ng-model="userForm.instagramUrl" type="text" class="form-control" id="" placeholder="Instagram Page Url">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Google+ Page Url</label>
-                    <input name="googleUrl" ng-model="userForm.googleUrl" type="text" class="form-control" id="" placeholder="Google+ Page Url">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Youtube Page Url</label>
-                    <input name="youtubeUrl" ng-model="userForm.youtubeUrl" type="text" class="form-control" id="" placeholder="Youtube Page Url">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="">Tumblr Page Url</label>
-                    <input name="tumblrUrl" ng-model="userForm.tumblrUrl" type="text" class="form-control" id="" placeholder="Tumblr Page Url">
-                  </div>
-                </div>
-              </div>
-              <div class="upload-img text-center">
-                <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user)">Save</button>
-                <button class="btn btn-primary btn-outline btn-small">Cancel</button>
-              </div>
-            </form>
-          </div>
-        </uib-accordion-group>
-        <uib-accordion-group is-open="status.open3">
-          <uib-accordion-heading>
-            <div class="open" ng-click="status3.open = !status3.open">
-              <i class="ln-graph"></i> Google Analytics
-              <i class="right-arrow" ng-class="{'ln-chevron-right down': status.open3, 'ln-chevron-right': !status.open3}"></i>
-            </div>
-          </uib-accordion-heading>
-          <div class="google-analytics">
-            <form action="" name="user1">
-              <div class="form-group">
-                <label for="">Google Analytics
-                </label>
-                <input type="text" name="googleid" ng-model="userForm.googleid" class="form-control" placeholder="Please enter the Google Analytics ID here">
-              </div>
-              <div class="upload-img text-center">
-                <button class="btn btn-primary btn-outline btn-small" ng-click="submitForm(userForm,user1)">Save</button>
-                <button class="btn btn-primary btn-outline btn-small">Cancel</button>
-              </div>
-            </form>
-          </div>
-        </uib-accordion-group>
-        <uib-accordion-group is-open="status.open4">
-          <uib-accordion-heading>
-            <div class="open" ng-click="status4.open = !status4.open">
-              <i class="ln-user"></i> Make Admin
-              <i class="right-arrow" ng-class="{'ln-chevron-right down': status.open4, 'ln-chevron-right': !status.open4}"></i>
-            </div>
-          </uib-accordion-heading>
-          <div class="google-analytics">
-            <form action="" name="user1">
-              <div class="form-group">
-                <label for="">
-                  Make Admin
-                </label>
-                <input type="text" name="admin" ng-model="userForm.admin" class="form-control" placeholder="Email">
-                <input type="text" name="admin" ng-model="userForm.admin" class="form-control" placeholder="Password">
-                <input type="text" name="admin" ng-model="userForm.admin" class="form-control" placeholder="Confirm Password">
-              </div>
-              <div class="upload-img text-center">
-                <button class="btn btn-primary btn-outline btn-small">Save</button>
-                <button class="btn btn-primary btn-outline btn-small">Cancel</button>
-              </div>
-            </form>
-            <div class="notification-list mt30">
-              <div class="notification-table">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>
-                        <div class="select">
-                          <!-- <span>Select All</span> -->
-                          <div class="checkbox">
-                            <label>
-                              <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-                            </label>
-                          </div>
+               </uib-accordion-heading>
+               <div class="search">
+                  <form>
+                     <div class="row">
+                        <div class="col-md-12">
+                           <label class="mrg0">Please Enable Search</label>
                         </div>
-                      </th>
-                      <th>
-                        <span>Name</span>
-                      </th>
-                      <th>
-                        <span>Role</span>
-                      </th>
-                    </tr>
-                  </thead>
-                </table>
-              </div>
-            </div>
-          </div>
-        </uib-accordion-group>
-      </uib-accordion>
-    </div>
-  </div>
+                        <div class="col-md-3" ng-repeat="items in configData.search">
+                           <div class="checkbox">
+                              <label>
+                                 <input type="checkbox" value="" ng-model="items.enabled">{{items.name}}</label>
+                           </div>
+                        </div>
+                        <div class="col-md-12">
+                           <div class="upload-img text-center">
+                              <button class="btn btn-primary btn-outline btn-small" ng-click="saveConfigData();">Save</button>
+                              <button class="btn btn-primary btn-outline btn-small">Reset</button>
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+            </uib-accordion-group>
+            <uib-accordion-group is-open="status.open2">
+               <uib-accordion-heading>
+                  <div class="open" ng-click="status2.open = !status2.open">
+                     <i class="ln-thumbs-up"></i> Social Feeds
+                     <i class="right-arrow" ng-class="{'ln-chevron-right down': status.open2, 'ln-chevron-right': !status.open2}"></i>
+                  </div>
+               </uib-accordion-heading>
+               <div class="soical-feeds">
+                  <form name="user">
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="">Facebook Page Url</label>
+                              <input name="facebookUrl" ng-model="configData.socialfeeds.facebookPageUrl" type="text" class="form-control" id="" placeholder="Facebook Page Url">
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="">Twitter Page Url</label>
+                              <input name="twitterUrl" ng-model="configData.socialfeeds.twitterPageUrl" type="text" class="form-control" id="" placeholder="Twitter Page Url">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="">Instagram Page Url</label>
+                              <input name="instagramUrl" ng-model="configData.socialfeeds.instagramPageUrl" type="text" class="form-control" id="" placeholder="Instagram Page Url">
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="">Google+ Page Url</label>
+                              <input name="googleUrl" ng-model="configData.socialfeeds.googlePageUrl" type="text" class="form-control" id="" placeholder="Google+ Page Url">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="">Youtube Page Url</label>
+                              <input name="youtubeUrl" ng-model="configData.socialfeeds.youtubePageUrl" type="text" class="form-control" id="" placeholder="Youtube Page Url">
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="">Tumblr Page Url</label>
+                              <input name="tumblrUrl" ng-model="configData.socialfeeds.tumblrPageUrl" type="text" class="form-control" id="" placeholder="Tumblr Page Url">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="upload-img text-center">
+                        <button class="btn btn-primary btn-outline btn-small" ng-click="saveConfigData();">Save</button>
+                        <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+                     </div>
+                  </form>
+               </div>
+            </uib-accordion-group>
+            <uib-accordion-group is-open="status.open3">
+               <uib-accordion-heading>
+                  <div class="open" ng-click="status3.open = !status3.open">
+                     <i class="ln-graph"></i> Google Analytics
+                     <i class="right-arrow" ng-class="{'ln-chevron-right down': status.open3, 'ln-chevron-right': !status.open3}"></i>
+                  </div>
+               </uib-accordion-heading>
+               <div class="google-analytics">
+                  <form name="user1">
+                     <div class="form-group">
+                        <label for="">Google Analytics
+                        </label>
+                        <input type="text" name="googleid" ng-model="configData.gaid" class="form-control" placeholder="Please enter the Google Analytics ID here">
+                     </div>
+                     <div class="upload-img text-center">
+                        <button class="btn btn-primary btn-outline btn-small" ng-click="saveConfigData();">Save</button>
+                        <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+                     </div>
+                  </form>
+               </div>
+            </uib-accordion-group>
+            <uib-accordion-group is-open="status.open4">
+               <uib-accordion-heading>
+                  <div class="open" ng-click="status4.open = !status4.open">
+                     <i class="ln-user"></i> Make Admin
+                     <i class="right-arrow" ng-class="{'ln-chevron-right down': status.open4, 'ln-chevron-right': !status.open4}"></i>
+                  </div>
+               </uib-accordion-heading>
+               <div class="google-analytics">
+                  <form name="user1">
+                     <div class="form-group">
+                        <label for="">
+                           Make Admin
+                        </label>
+                        <input type="text" name="admin" ng-model="userForm.admin" class="form-control" placeholder="Email">
+                        <input type="text" name="admin" ng-model="userForm.admin" class="form-control" placeholder="Password">
+                        <input type="text" name="admin" ng-model="userForm.admin" class="form-control" placeholder="Confirm Password">
+                     </div>
+                     <div class="upload-img text-center">
+                        <button class="btn btn-primary btn-outline btn-small">Save</button>
+                        <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+                     </div>
+                  </form>
+                  <div class="notification-list mt30">
+                     <div class="notification-table">
+                        <table class="table">
+                           <thead>
+                              <tr>
+                                 <th>
+                                    <div class="select">
+                                       <!-- <span>Select All</span> -->
+                                       <div class="checkbox">
+                                          <label>
+                                             <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                          </label>
+                                       </div>
+                                    </div>
+                                 </th>
+                                 <th>
+                                    <span>Name</span>
+                                 </th>
+                                 <th>
+                                    <span>Role</span>
+                                 </th>
+                              </tr>
+                           </thead>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+            </uib-accordion-group>
+         </uib-accordion>
+      </div>
+   </div>
 </div>
 <div class="text-center" ng-show="formComplete">
-  <h3>Submitted Successfully, Thank You!</h3>
+   <h3>Submitted Successfully, Thank You!</h3>
 </div>
