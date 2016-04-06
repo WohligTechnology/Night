@@ -1285,5 +1285,12 @@ span.input-group-btn.calender-btn {
     border-right-color: #1AA3EB;
   }
 }
+.config {
+  .panel-title{
+    i{
+      padding-right: 5px;
+    }
+  }
+}
 @import "toggle";
 @import "mobile";
