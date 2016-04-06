@@ -136,6 +136,10 @@
                         </form>
                      </div>
                   </div>
+                  <div class="upload-img text-right pt15">
+                     <button class="btn btn-primary btn-outline btn-small" ng-click="saveConfigData()">Save</button>
+                     <p ng-show="showErrMsg">Please provide username or url</p>
+                  </div>
                </div>
             </div>
          </uib-accordion-group>
@@ -157,7 +161,12 @@
                         </form>
                      </div>
                   </div>
+                  <div class="upload-img text-right pt15">
+                     <button class="btn btn-primary btn-outline btn-small" ng-click="saveConfigData()">Save</button>
+                     <p ng-show="showErrMsg">Please provide username or url</p>
+                  </div>
                </div>
+
             </div>
          </uib-accordion-group>
          <uib-accordion-group is-open="status.open4">
@@ -178,13 +187,16 @@
                         </form>
                      </div>
                   </div>
+                  <div class="upload-img text-right pt15">
+                     <button class="btn btn-primary btn-outline btn-small" ng-click="saveConfigData()">Save</button>
+                     <p ng-show="showErrMsg">Please provide username or url</p>
+                  </div>
                </div>
+
             </div>
+
          </uib-accordion-group>
       </uib-accordion>
-      <div class="upload-img text-center pt15">
-         <button class="btn btn-primary btn-outline btn-small" ng-click="saveConfigData()">Save</button>
-         <p ng-show="showErrMsg">Please provide username or url</p>
-      </div>
+
    </div>
 </div>
