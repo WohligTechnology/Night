@@ -37,12 +37,12 @@ $nav-link-padding: 12px 15px 15px 20px;
   color: $color;
   background-color: transparent;
   border-color: $color !important;
-  &:hover{
+  &:hover {
     color: white;
     background-color: $color;
     border-color: $color;
   }
-  &:active{
+  &:active {
     color: white;
     background-color: $color;
     border-color: $color;
@@ -135,26 +135,25 @@ a,
     // border-color: #ccc;
   }
 }
-.btn-secondary{
-  background-color:#fff;
+.btn-secondary {
+  background-color: #fff;
   border: 1px solid $brand-primary;
-  color:$brand-primary;
-  &:hover{
-    background-color:$brand-primary;
+  color: $brand-primary;
+  &:hover {
+    background-color: $brand-primary;
     border: 1px solid #fff;
-    color:#fff;
+    color: #fff;
   }
-  &:focus{
+  &:focus {
     // background-color:$brand-primary;
     // border: 1px solid #fff;
-    color:$brand-primary !important;
+    color: $brand-primary !important;
   }
 }
 .btn {
   padding: 8px 20px;
   text-transform: uppercase;
   &.btn-outline {
-
     &.btn-primary {
       @include button-outline($brand-primary);
     }
@@ -498,7 +497,7 @@ textarea {
     border-radius: 0;
   }
 }
-.bold{
+.bold {
   font-weight: 800;
 }
 // .modal-dialog {
@@ -1260,6 +1259,25 @@ span.input-group-btn.calender-btn {
 }
 .drop-image {
   margin-bottom: 10px;
+  position: relative;
+  .caption {
+    opacity: 0;
+    background: rgba(47, 51, 60, 0.70);
+    color: #fff;
+    width: 100%;
+    @include transition(all ease 300ms);
+    position: absolute;
+    bottom: 0;
+    p {
+      margin-bottom: 0;
+      font-weight: 400;
+    }
+  }
+  &:hover {
+    .caption {
+      opacity: 1;
+    }
+  }
 }
 .config {
   .open {
@@ -1286,18 +1304,21 @@ span.input-group-btn.calender-btn {
   }
 }
 .config {
-  .panel-title{
-    i{
+  .panel-title {
+    i {
       padding-right: 5px;
     }
   }
 }
-.action{
+.action {
   width: 70px;
-display: block;
-a{
-  display: inline-block;
+  display: block;
+  a {
+    display: inline-block;
+  }
 }
+upload-image {
+  cursor: pointer;
 }
 @import "toggle";
 @import "mobile";

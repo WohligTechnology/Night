@@ -20,9 +20,9 @@
                            <div class="drop-image col-xs-3" ui-sref="editvideo-gallerydetail({id:videogal._id})" ng-repeat="videogal in videogalleries">
                               <div class="image-holder">
                                  <img ng-src="{{videogal.image | uploadpath}}" alt="">
-                              </div>
-                              <div class="caption">
-                                 <p ng-if="videogal.title">{{videogal.title}}</p>
+                                 <div class="caption">
+                                    <p ng-if="videogal.title">{{videogal.title}}</p>
+                                 </div>
                               </div>
                            </div>
                         </div>

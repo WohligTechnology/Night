@@ -1,144 +1,144 @@
 <div class="max-size">
-   <div class="ionic-template mb30">
-      <div class="pull-right pd20">
-         <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
-      </div>
-      <h4 class="pad20">Events > {{page.header}}</h4>
-      <div class="row">
-         <div class="col-md-12">
-            <div class="home-slider form-background">
-               <div class="naming" <h4>{{page.header}}</h4>
-               </div>
-               <div class="google-login paddingup">
-                  <div class="form-login">
-                     <form name="user">
-                        <div class="form-group">
-                           <label for="">Event Title</label>
-                           <input name="name" required ng-model="userForm.name" type="text" class="form-control" id="" placeholder="Event Title">
-                           <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Event Title.</div>
-                        </div>
-                        <div class="form-group">
-                           <label for="">Venue</label>
-                           <input name="venue" required ng-model="userForm.venue" type="text" class="form-control" id="" placeholder="Venue">
-                           <div class="error-msg" ng-show="user.venue.$error.required && user.venue.$touched">Please Enter Venue.</div>
-                        </div>
-                        <div class="form-group" required>
-                           <label for="">Content</label>
-                           <textarea name="content" required ui-tinymce ng-model="userForm.content" class="form-control"></textarea>
-                           <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content.</div>
-                        </div>
-                        <div class="form-group mt25">
-                           <label for="">Start Date</label>
-                           <p class="input-group">
-                              <input name="sdate" id="sdate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.sdate" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
-                              close-text="Close" alt-input-formats="altInputFormats" />
-                              <span class="input-group-btn calender-btn">
+  <div class="ionic-template mb30">
+    <div class="pull-right pd20">
+      <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
+    </div>
+    <h4 class="pad20">Events > {{page.header}}</h4>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="home-slider form-background">
+          <div class="naming" <h4>{{page.header}}</h4>
+          </div>
+          <div class="google-login paddingup">
+            <div class="form-login">
+              <form name="user">
+                <div class="form-group">
+                  <label for="">Event Title</label>
+                  <input name="name" required ng-model="userForm.name" type="text" class="form-control" id="" placeholder="Event Title">
+                  <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Event Title.</div>
+                </div>
+                <div class="form-group">
+                  <label for="">Venue</label>
+                  <input name="venue" required ng-model="userForm.venue" type="text" class="form-control" id="" placeholder="Venue">
+                  <div class="error-msg" ng-show="user.venue.$error.required && user.venue.$touched">Please Enter Venue.</div>
+                </div>
+                <div class="form-group" required>
+                  <label for="">Content</label>
+                  <textarea name="content" required ui-tinymce ng-model="userForm.content" class="form-control"></textarea>
+                  <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content.</div>
+                </div>
+                <div class="form-group mt25">
+                  <label for="">Start Date</label>
+                  <p class="input-group">
+                    <input name="sdate" id="sdate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.sdate" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                      close-text="Close" alt-input-formats="altInputFormats" />
+                    <span class="input-group-btn calender-btn">
                                 <button type="button" class="btn btn-default" ng-click="open1()">
                                     <i class="ln-calendar3"></i>
                                 </button>
                                 <div class="error-msg" ng-show="user.sdate.$error.required && user.sdate.$touched">Please Enter Date.
                                 </div>
                               </span>
-                           </p>
-                        </div>
-                        <!-- {{userForm.stime}} -->
-                        <div class="form-group mt25">
-                           <label for="">Start Time</label>
-                           <input name="stime" ng-model="userForm.stime" type="time" class="form-control">
-                           <div class="error-msg" ng-show="user.stime.$error.required && user.stime.$touched">Please Enter Time.</div>
-                        </div>
-                        <div class="form-group mt25">
-                           <label for="">End Date</label>
-                           <p class="input-group">
-                              <input name="edate" id="enddate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.edate" is-open="popup10.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
-                              close-text="Close" alt-input-formats="altInputFormats" />
-                              <span class="input-group-btn calender-btn">
+                  </p>
+                </div>
+                <!-- {{userForm.stime}} -->
+                <div class="form-group mt25">
+                  <label for="">Start Time</label>
+                  <input name="stime" ng-model="userForm.stime" type="time" class="form-control">
+                  <div class="error-msg" ng-show="user.stime.$error.required && user.stime.$touched">Please Enter Time.</div>
+                </div>
+                <div class="form-group mt25">
+                  <label for="">End Date</label>
+                  <p class="input-group">
+                    <input name="edate" id="enddate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.edate" is-open="popup10.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                      close-text="Close" alt-input-formats="altInputFormats" />
+                    <span class="input-group-btn calender-btn">
                                 <button type="button" class="btn btn-default" ng-click="open10()">
                                     <i class="ln-calendar3"></i>
                                 </button>
                                 <div class="error-msg" ng-show="user.edate.$error.required && user.edate.$touched">Please Enter Date.
                                 </div>
                               </span>
-                           </p>
-                        </div>
-                        <!-- {{userForm.endTime}} -->
-                        <div class="form-group mt25">
-                           <label for="">End Time</label>
-                           <input name="etime" ng-model="userForm.etime" type="time" class="form-control">
-                           <div class="error-msg" ng-show="user.etime.$error.required && user.etime.$touched">Please Enter Time.</div>
-                        </div>
-                        <div class="form-group">
-                           <label for="">Event Main Banner</label>
-                           <div class="noti-image">
-                              <div class="img-box">
-                                 <h4 ng-if="isloading">Loading...</h4>
-                                 <img ng-src="{{userForm.image|uploadpath}}" ng-if="userForm.image">
-                              </div>
-                           </div>
-                           <div class="create-event">
-                              <upload-image ng-model="userForm.image" no-view></upload-image>
-                           </div>
-                        </div>
-                        <div class="form-group">
-                           <label for="">Event Banner</label>
-                           <div class="create-event float-right">
-                              <upload-image ng-model="imageArr" multiple no-view ng-callback="changeit"></upload-image>
-                           </div>
-                           <div class="image-set mt15" ng-if="userForm.images && userForm.images.length>0">
-                              <div class="image-picker">
-                                 <div dnd-list="lists" class="pt15">
-                                    <div class="image-set">
-                                       <div class="row" ui-sortable ng-model="userForm.images">
-                                          <div class="drop-image col-xs-3" ng-repeat="item in userForm.images">
-                                             <div ng-click="open(item);" class="image-holder">
-                                                <img ng-src="{{item.image | uploadpath:100:100:'fill'}}" alt="">
-                                             </div>
-                                             <div class="caption">
-                                                <p ng-if="item.name">{{item.name}}</p>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="clearfix"></div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="form-group">
-                           <label for="" class="display-inline">Event Video</label>
-                           <div class="create-event float-right">
-                              <a class="btn btn-primary btn-outline btn-small create-btn" ng-click="VideoEdit();">Upload Video</a>
-                           </div>
-                           <div class="image-set mt15">
-                              <div class="image-picker">
-                                 <div dnd-list="lists" class="pt15">
-                                    <div class="image-set">
-                                      <div class="row" ui-sortable ng-model="userForm.videos">
-                                         <div class="drop-image col-xs-3" ng-repeat="item in userForm.videos track by $index">
-                                            <div ng-click="openVideo(item);" class="image-holder">
-                                               <img ng-src="{{item.thumbnail}}">
-                                            </div>
-                                            <div class="caption">
-                                               <p ng-if="item.name">{{item.name}}</p>
-                                            </div>
-                                         </div>
-                                      </div>
-                                       <div class="clearfix"></div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="upload-img text-right">
-                           <button class="btn btn-primary btn-outline btn-small" ng-click="eventSubmitForm(user)">Save</button>
-                           <toaster-container toaster-options="{'close-button': true,'position-class': 'toast-bottom-right'}"></toaster-container>
-                           <button class="btn btn-primary btn-outline btn-small ml12" ui-sref="events">Cancel</button>
-                        </div>
-                     </form>
+                  </p>
+                </div>
+                <!-- {{userForm.endTime}} -->
+                <div class="form-group mt25">
+                  <label for="">End Time</label>
+                  <input name="etime" ng-model="userForm.etime" type="time" class="form-control">
+                  <div class="error-msg" ng-show="user.etime.$error.required && user.etime.$touched">Please Enter Time.</div>
+                </div>
+                <div class="form-group">
+                  <label for="">Event Main Banner</label>
+                  <div class="noti-image">
+                    <div class="img-box">
+                      <h4 ng-if="isloading">Loading...</h4>
+                      <img ng-src="{{userForm.image|uploadpath}}" ng-if="userForm.image">
+                    </div>
                   </div>
-               </div>
+                  <div class="create-event">
+                    <upload-image ng-model="userForm.image" no-view></upload-image>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="">Event Banner</label>
+                  <div class="create-event float-right">
+                    <upload-image ng-model="imageArr" multiple no-view ng-callback="changeit"></upload-image>
+                  </div>
+                  <div class="image-set mt15" ng-if="userForm.images && userForm.images.length>0">
+                    <div class="image-picker">
+                      <div dnd-list="lists" class="pt15">
+                        <div class="image-set">
+                          <div class="row" ui-sortable ng-model="userForm.images">
+                            <div class="drop-image col-xs-3" ng-repeat="item in userForm.images">
+                              <div ng-click="open(item);" class="image-holder">
+                                <img ng-src="{{item.image | uploadpath:100:100:'fill'}}" alt="">
+                                <div class="caption">
+                                  <p ng-if="item.name">{{item.name}}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="" class="display-inline">Event Video</label>
+                  <div class="create-event float-right">
+                    <a class="btn btn-primary btn-outline btn-small create-btn" ng-click="VideoEdit();">Upload Video</a>
+                  </div>
+                  <div class="image-set mt15">
+                    <div class="image-picker">
+                      <div dnd-list="lists" class="pt15">
+                        <div class="image-set">
+                          <div class="row" ui-sortable ng-model="userForm.videos">
+                            <div class="drop-image col-xs-3" ng-repeat="item in userForm.videos track by $index">
+                              <div ng-click="openVideo(item);" class="image-holder">
+                                <img ng-src="{{item.thumbnail}}">
+                              </div>
+                              <div class="caption">
+                                <p ng-if="item.name">{{item.name}}</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="upload-img text-right">
+                  <button class="btn btn-primary btn-outline btn-small" ng-click="eventSubmitForm(user)">Save</button>
+                  <toaster-container toaster-options="{'close-button': true,'position-class': 'toast-bottom-right'}"></toaster-container>
+                  <button class="btn btn-primary btn-outline btn-small ml12" ui-sref="events">Cancel</button>
+                </div>
+              </form>
             </div>
-         </div>
+          </div>
+        </div>
       </div>
-   </div>
+    </div>
+  </div>
 </div>
