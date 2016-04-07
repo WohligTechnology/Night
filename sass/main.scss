@@ -223,8 +223,8 @@ textarea {
   background-color: $white-color;
   border-color: $border-color;
 }
+
 .nav {
-  background-color: $nav-bg;
   > li {
     margin: 0;
     &.active {
@@ -366,7 +366,7 @@ textarea {
 }
 .sidemenu {
   width: 225px;
-  background: #fff;
+  background-color: $nav-bg;
   padding-top: 0;
   padding-bottom: 60px;
   left: 0;
@@ -1303,10 +1303,11 @@ span.input-group-btn.calender-btn {
 }
 .white-btn .btn {
   background-color: white !important;
+  color: $brand-primary !important;
 }
 .input-group {
   .form-control {
-    border-right-color: #1AA3EB;
+    border-right-color: $brand-primary;
   }
 }
 .config {
