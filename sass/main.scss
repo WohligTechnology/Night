@@ -223,7 +223,6 @@ textarea {
   background-color: $white-color;
   border-color: $border-color;
 }
-
 .nav {
   > li {
     margin: 0;
@@ -861,6 +860,9 @@ label {
   height: 600px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+.width30 {
+  width: 30px;
 }
 .checkbox-custom {
   opacity: 1;
