@@ -1108,6 +1108,53 @@ span.input-group-btn.calender-btn {
     border: 0;
   }
 }
+.select-checkbox {
+  .checkbox {
+    margin: 0;
+  }
+}
+.custom-checkbox {
+  input[type="checkbox"] {
+    display: none;
+    width: 30px;
+  }
+  input[type="checkbox"] + label {
+    color: #292321;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+  input[type="checkbox"] + label span {
+    display: inline-block;
+    width: 19px;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  input[type="checkbox"] + label span {
+    font-family: FontAwesome;
+    &:before {
+      content: "\f096";
+      font-family: FontAwesome;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 16px;
+    }
+  }
+  input[type="checkbox"]:checked + label span {
+    &:before {
+      content: "\f046";
+      font-family: FontAwesome;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 16px;
+    }
+    color: $brand-primary;
+  }
+  input[type="checkbox"] + label span,
+  input[type="checkbox"]:checked + label span {
+    @include transition(background-color 0.4s linear);
+  }
+}
 .custom-radio {
   input[type="radio"] {
     display: none;
