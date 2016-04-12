@@ -24,19 +24,19 @@
                               <div class="row">
                                 <div class="col-md-9">
                                   <div class="form-group">
-                                    <label for="">App Name <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i></label>
+                                    <label for="">App Name <i class="ln-circle-question info" uib-tooltip="Please Enter Your App Name" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                     <input type="text" class="form-control" id="" placeholder="App Name">
                                   </div>
                                 </div>
                                 <div class="col-md-3">
                                   <div class="form-group">
-                                    <label for="">App Icon Name <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i></label>
+                                    <label for="">App Icon Name <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                     <input type="text" class="form-control" id="" placeholder="App Icon Name">
                                   </div>
                                 </div>
                                 <div class="col-md-12">
                                   <div class="form-group">
-                                    <label for="">App Keywords <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i></label>
+                                    <label for="">App Keywords <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                     <input type="text" class="form-control" id="" placeholder="App Keywords">
                                   </div>
                                 </div>
@@ -58,7 +58,7 @@
                           <div class="row">
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for="" style="margin-bottom:30px;">App Description <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i></label>
+                                <label for="">App Description <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                 <textarea type="text" class="form-control" id="" placeholder="App Description" rows="4"> </textarea>
                               </div>
                             </div>
@@ -73,19 +73,19 @@
                           <div class="row">
                             <div class="col-md-4">
                               <div class="form-group">
-                                <label for="">Emails <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i></label>
+                                <label for="">Emails <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                 <input type="email" class="form-control" id="" placeholder="Emails">
                               </div>
                             </div>
                             <div class="col-md-4">
                               <div class="form-group">
-                                <label for="">Phone Number <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i></label>
+                                <label for="">Phone Number <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                 <input type="text" class="form-control" id="" placeholder="Phone Numbers">
                               </div>
                             </div>
                             <div class="col-md-4">
                               <div class="form-group">
-                                <label for="">Offical Websites <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i></label>
+                                <label for="">Offical Websites <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                 <input type="text" class="form-control" id="" placeholder="App Keywords">
                               </div>
                             </div>
@@ -94,13 +94,13 @@
                           <div class="row">
                             <div class="col-md-4">
                               <div class="form-group">
-                                <label for="">Copyright <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i></label>
+                                <label for="">Copyright <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                 <input type="email" class="form-control" id="" placeholder="Emails">
                               </div>
                             </div>
                             <div class="col-md-4">
                               <div class="form-group">
-                                <label for="">App Category <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i></label>
+                                <label for="">App Category <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                 <select name="apple_app_category" id="apple_app_category" class="form-control">
                                   <option value="">Select category</option>
                                   <option value="Books">Books</option>
@@ -132,7 +132,7 @@
                             </div>
                             <div class="col-md-4">
                               <div class="form-group">
-                                <label for="">App Price <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i></label>
+                                <label for="">App Price <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                 <select name="app_price" class="form-control">
                                   <option value="0">Free</option>
                                   <option value="0.99">0.99</option>
@@ -232,7 +232,7 @@
                           <div class="row">
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for=""> Default Language <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i></label>
+                                <label for=""> Default Language <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                 <select id="app_default_language" name="app_default_language" class="form-control">
                                   <option value="">Select language</option>
                                   <option value="Australian English" selected="">Australian English</option>
@@ -270,16 +270,20 @@
                               <div class="form-group">
                                 <div class="checkbox checkbox-box mt29">
                                   <label>
-                                    <input type="checkbox"> Disable ALL commenting ability in your application
-                                    <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i>
+                                      <span class="select-checkbox">
+                                        <span class="checkbox">
+                                          <span class="custom-checkbox">
+                                            <input type="checkbox" id="checkbox{{$index}}" name="checkbox" value="true" />
+                                            <label for="checkbox{{$index}}"><span></span></label>
+                                          </span>
+                                        </span>
+                                      </span>Disable ALL commenting ability in your application
+                                    <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
                                   </label>
                                 </div>
                               </div>
                             </div>
                           </div>
-
-
-
                           <div class="row">
                             <div class="col-md-6">
                               <div class="form-group">
@@ -287,7 +291,7 @@
                                 </label>
                                 <label>
                                   <input type="checkbox"> Audio Background Play
-                                  <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i>
+                                  <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
                                 </label>
                                 <!-- <label>
                                     <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i> Adjust your App Store content rating
@@ -852,7 +856,7 @@
                           <div class="paddingup">
                             <div class="iphone-screenshot min-hight">
                               <div class="head">
-                                <p>Upload a custom screen shot for your  app.</p>
+                                <p>Upload a custom screen shot for your app.</p>
                                 <p>5 screen shots Maximum</p>
                                 <p>600x960px in PNG Format</p>
                               </div>

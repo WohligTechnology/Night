@@ -1113,6 +1113,10 @@ span.input-group-btn.calender-btn {
 .select-checkbox {
   .checkbox {
     margin: 0;
+    display: inline-block;
+  }
+  label {
+    padding: 0;
   }
 }
 .custom-checkbox {

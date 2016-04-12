@@ -18,13 +18,13 @@
               <table class="table" ng-if="contactdata.length>0">
                 <thead>
                   <tr>
-                    <th>
-                      <div class="select">
-
+                    <th class="width30">
+                      <div class="select-checkbox">
                         <div class="checkbox">
-                          <label>
-                            <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-                          </label>
+                          <div class="custom-checkbox">
+                            <input type="checkbox" id="checkbox{{$index}}" name="checkbox" value="true" />
+                            <label for="checkbox{{$index}}"><span uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></span></label>
+                          </div>
                         </div>
                       </div>
                     </th>
@@ -41,12 +41,13 @@
                 </thead>
                 <tbody ng-if="contactdata.length>0">
                   <tr ng-repeat="contact in contactdata">
-                    <td>
-                      <div class="select-check">
+                    <td class="width30">
+                      <div class="select-checkbox">
                         <div class="checkbox">
-                          <label>
-                            <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-                          </label>
+                          <div class="custom-checkbox">
+                            <input type="checkbox" id="checkbox{{$index}}" name="checkbox" value="true" />
+                            <label for="checkbox{{$index}}"><span uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></span></label>
+                          </div>
                         </div>
                       </div>
                     </td>
