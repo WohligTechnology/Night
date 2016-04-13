@@ -8,6 +8,7 @@
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap-sprockets";
 @import "../bower_components/flexslider/flexslider.css";
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
+@import "../bower_components/angular-toastr/dist/angular-toastr.css";
 /* Bootstrap Variables Goes Here */
 $brand-primary: #1aa3eb !default;
 $brand-success: #42cd48 !default;
@@ -224,7 +225,6 @@ textarea {
   border-color: $border-color;
 }
 .nav {
-  background-color: $nav-bg;
   > li {
     margin: 0;
     &.active {
@@ -366,7 +366,7 @@ textarea {
 }
 .sidemenu {
   width: 225px;
-  background: #fff;
+  background-color: $nav-bg;
   padding-top: 0;
   padding-bottom: 60px;
   left: 0;
@@ -862,6 +862,9 @@ label {
   overflow-y: auto;
   overflow-x: hidden;
 }
+.width30 {
+  width: 30px;
+}
 .checkbox-custom {
   opacity: 1;
   position: absolute;
@@ -1108,6 +1111,57 @@ span.input-group-btn.calender-btn {
     border: 0;
   }
 }
+.select-checkbox {
+  .checkbox {
+    margin: 0;
+    display: inline-block;
+  }
+  label {
+    padding: 0;
+  }
+}
+.custom-checkbox {
+  input[type="checkbox"] {
+    display: none;
+    width: 30px;
+  }
+  input[type="checkbox"] + label {
+    color: #292321;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+  input[type="checkbox"] + label span {
+    display: inline-block;
+    width: 19px;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  input[type="checkbox"] + label span {
+    font-family: FontAwesome;
+    &:before {
+      content: "\f096";
+      font-family: FontAwesome;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 16px;
+    }
+  }
+  input[type="checkbox"]:checked + label span {
+    &:before {
+      content: "\f046";
+      font-family: FontAwesome;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 16px;
+    }
+    color: $brand-primary;
+  }
+  input[type="checkbox"] + label span,
+  input[type="checkbox"]:checked + label span {
+    @include transition(background-color 0.4s linear);
+  }
+}
 .custom-radio {
   input[type="radio"] {
     display: none;
@@ -1303,10 +1357,11 @@ span.input-group-btn.calender-btn {
 }
 .white-btn .btn {
   background-color: white !important;
+  color: $brand-primary !important;
 }
 .input-group {
   .form-control {
-    border-right-color: #1AA3EB;
+    border-right-color: $brand-primary;
   }
 }
 .config {
