@@ -1,5 +1,5 @@
 //window.uploadurl = "http://192.168.0.126:81/uploadfile/upload/";
-window.uploadurl = "http://vignesh.com:81/uploadfile/upload/";
+window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
 var globalfunction = {};
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'toaster', 'imageupload', 'httpService', 'toastr'])
 
@@ -2692,6 +2692,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             } else {
                 $scope.configData = {};
                 $scope.configData.socialfeeds = {};
+                $scope.configData.search = $scope.searchFor;
             }
         } else {
             $scope.configData = {};
