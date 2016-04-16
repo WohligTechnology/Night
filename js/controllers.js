@@ -421,8 +421,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     });
 
-    $scope.navigationSubmitForm = function(formValid) {;
+    $scope.navigationSubmitForm = function(formValid) {
         if (formValid.$valid) {
+          console.log($scope.userForm);
             NavigationService.editNavigationSubmit($scope.userForm, function(data) {
                 if (data.value) {
                     globalfunction.successToaster();

@@ -393,22 +393,28 @@ firstapp.directive('listType', function($uibModal, NavigationService) {
         },
         link: function($scope, element, attrs) {
             var modalInstance = '';
+            var link = "";
             if ($scope.model.type) {
                 switch ($scope.model.type) {
                     case 'Home':
                         $scope.show1 = true;
+                        link = $scope.model.link.name;
                         break;
                     case 'Blog':
                         $scope.show2 = true;
+                        link = $scope.model.link.blogtitle;
                         break;
                     case 'Event':
                         $scope.show3 = true;
+                        link = $scope.model.link.name;
                         break;
                     case 'Photo Gallery':
                         $scope.show4 = true;
+                        link = $scope.model.link.title;
                         break;
                     case 'Video Gallery':
                         $scope.show5 = true;
+                        link = $scope.model.link.title;
                         break;
                     case 'External Link':
                         $scope.show6 = true;
@@ -416,7 +422,7 @@ firstapp.directive('listType', function($uibModal, NavigationService) {
                     default:
                         break;
                 }
-                document.getElementById('linkText').value = $scope.model.type + " -> " + $scope.model.link;
+                document.getElementById('linkText').value = $scope.model.type + " :: " + link;
             } else {
                 document.getElementById('linkText').value = $scope.model.link;
             }
@@ -439,18 +445,21 @@ firstapp.directive('listType', function($uibModal, NavigationService) {
                 }
             });
 
-            $scope.setTypeLink = function(type, link) {
+            $scope.setTypeLink = function(type, link, data) {
+              console.log(type);
+              console.log(data);
                 if (type) {
                     $scope.model.type = type;
-                    document.getElementById('linkText').value = $scope.model.type + " -> " + $scope.model.link;
+                    document.getElementById('linkText').value = $scope.model.type + " :: " + data;
                 }
                 if (link) {
+
                     modalInstance.dismiss();
                     $scope.model.type = null;
                     $scope.model.link = link;
                     document.getElementById('linkText').value = link;
                 }
-            }
+            };
 
             $scope.closeOthers = function(toskip) {
                 switch (toskip) {
@@ -505,7 +514,7 @@ firstapp.directive('listType', function($uibModal, NavigationService) {
                     default:
                         break;
                 }
-            }
+            };
         }
     };
 });

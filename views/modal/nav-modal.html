@@ -16,7 +16,7 @@
                         <li class="makenav" ng-click="closeOthers(1);">Single Article</li>
                      </ul>
                      <div class="save-link" ng-show="show1">
-                        <select name="" id="" class="form-control" ng-model="model.link" ng-options="link.name as link.name for link in modalData.home" ng-change="setTypeLink('Home',null);">
+                        <select name="" id="" class="form-control" ng-model="model.link" ng-options="link as link.name for link in modalData.home" ng-change="setTypeLink('Home',null,model.link.name);">
                         </select>
                         <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss()">Save</button>
                      </div>
@@ -27,7 +27,7 @@
                         <li ng-click="closeOthers(2);">Single Blog</li>
                      </ul>
                      <div class="save-link" ng-show="show2">
-                        <select name="" id="" class="form-control" ng-model="model.link" ng-options="link.blogtitle as link.blogtitle for link in modalData.blog" ng-change="setTypeLink('Blog',null);">
+                        <select name="" id="" class="form-control" ng-model="model.link" ng-options="link as link.blogtitle for link in modalData.blog" ng-change="setTypeLink('Blog',null,model.link.blogtitle);">
                         </select>
                         <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss()">Save</button>
                      </div>
@@ -38,7 +38,7 @@
                         <li ng-click="closeOthers(3);">Single Event</li>
                      </ul>
                      <div class="save-link" ng-show="show3">
-                        <select name="" id="" class="form-control" ng-model="model.link" ng-options="link.name as link.name for link in modalData.event" ng-change="setTypeLink('Event',null);">
+                        <select name="" id="" class="form-control" ng-model="model.link" ng-options="link as link.name for link in modalData.event" ng-change="setTypeLink('Event',null,model.link.name);">
                         </select>
                         <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss()">Save</button>
                      </div>
@@ -49,7 +49,7 @@
                         <li ng-click="closeOthers(4);">Single PhotoGallery</li>
                      </ul>
                      <div class="save-link" ng-show="show4">
-                        <select name="" id="" class="form-control" ng-model="model.link" ng-options="link.title as link.title for link in modalData.photo" ng-change="setTypeLink('Photo Gallery',null);">
+                        <select name="" id="" class="form-control" ng-model="model.link" ng-options="link as link.title for link in modalData.photo" ng-change="setTypeLink('Photo Gallery',null,model.link.title);">
                         </select>
                         <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss()">Save</button>
                      </div>
@@ -61,7 +61,7 @@
                         <li ng-click="closeOthers(5);">Single Video Gallery</li>
                      </ul>
                      <div class="save-link" ng-show="show5">
-                        <select name="" id="" class="form-control" ng-model="model.link" ng-options="link.title as link.title for link in modalData.video" ng-change="setTypeLink('Video Gallery',null);">
+                        <select name="" id="" class="form-control" ng-model="model.link" ng-options="link as link.title for link in modalData.video" ng-change="setTypeLink('Video Gallery',null,model.link.title);">
                         </select>
                         <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss()">Save</button>
                      </div>
