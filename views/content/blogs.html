@@ -47,7 +47,6 @@
         </div>
       </uib-accordion-group>
     </uib-accordion>
-
     <uib-accordion class="one-time">
       <uib-accordion-group is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
         <div class="home-content">
@@ -135,7 +134,9 @@
               <div class="blog-link mt20">
                 <form action="">
                   <div class="form-group">
-                    <label for="">Wordpress User Name</label>
+                    <label for="">Wordpress User Name
+                      <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
+                    </label>
                     <input type="text" class="form-control" id="" ng-model="configData.blog.username">
                   </div>
                 </form>
@@ -160,7 +161,9 @@
               <div class="blog-link mt20">
                 <form action="">
                   <div class="form-group">
-                    <label for="">Self Hosted Wordpress Blog URL</label>
+                    <label for="">Self Hosted Wordpress Blog URL
+                      <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
+                    </label>
                     <input type="text" class="form-control" id="" ng-model="configData.blog.username">
                   </div>
                 </form>
@@ -171,7 +174,6 @@
               <p ng-show="showErrMsg">Please provide username or url</p>
             </div>
           </div>
-
         </div>
       </uib-accordion-group>
       <uib-accordion-group is-open="status.open4">
@@ -186,7 +188,9 @@
               <div class="blog-link mt20">
                 <form action="">
                   <div class="form-group">
-                    <label for="">Tumblr User Name</label>
+                    <label for="">Tumblr User Name
+                      <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
+                    </label>
                     <input type="text" class="form-control" id="" ng-model="configData.blog.username">
                   </div>
                 </form>
@@ -197,11 +201,8 @@
               <p ng-show="showErrMsg">Please provide username or url</p>
             </div>
           </div>
-
         </div>
-
       </uib-accordion-group>
     </uib-accordion>
-
   </div>
 </div>
