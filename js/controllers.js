@@ -423,7 +423,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.navigationSubmitForm = function(formValid) {
         if (formValid.$valid) {
-          console.log($scope.userForm);
+            console.log($scope.userForm);
             NavigationService.editNavigationSubmit($scope.userForm, function(data) {
                 if (data.value) {
                     globalfunction.successToaster();
@@ -538,7 +538,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (data.value) {
             if (data.data && data.data.length > 0) {
                 $scope.configData = data.data[0];
-                $scope.login = data.data[0].login;
+                if (data.data[0].login) {
+                  $scope.login = data.data[0].login;
+                }
             } else {
                 $scope.configData = {};
             }
