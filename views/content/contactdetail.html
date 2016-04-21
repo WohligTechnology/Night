@@ -1,24 +1,24 @@
 <div class="max-size">
    <div class="ionic-template mb30">
-     <div class="pull-right pd20">
-        <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
-     </div>
+      <div class="pull-right pd20">
+         <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
+      </div>
       <h4 class="pad20">Contact >
             {{page.header}}
         </h4>
       <div class="row">
          <div class="col-md-12">
             <div class="home-slider form-background">
-               <div class="naming">
-                  <h4>{{page.header}}
+               <form name="user" ng-click="contactSubmitForm(user)">
+                  <div class="naming">
+                     <h4>{{page.header}}
                         </h4>
-               </div>
-               <div class="google-login mt10">
-                  <div class="form-login">
-                     <form action="" name="user">
+                  </div>
+                  <div class="google-login mt10">
+                     <div class="form-login">
                         <div class="form-group">
                            <label for="">Contact Title</label>
-                           <input name="title" required ng-model="userForm.title" type="text" class="form-control" id="" placeholder="Contact Title">
+                           <input name="title" required ng-model="userForm.title" type="text" class="form-control" id="" placeholder="Contact Title" required>
                            <div class="error-msg" ng-show="user.title.$error.required && user.title.$touched">Please Enter Contact Title.</div>
                         </div>
                         <div class="form-group">
@@ -28,31 +28,36 @@
                         </div>
                         <div class="form-group">
                            <label for="">Email</label>
-                           <input name="email" required ng-model="userForm.email" type="email" class="form-control" id="" placeholder="Email">
+                           <input name="email" required ng-model="userForm.email" type="email" class="form-control" id="" placeholder="Email" required>
                            <div class="error-msg" ng-show="user.email.$error.required && user.email.$touched">Please Enter Your Email id.</div>
+                        </div>
+                        <div class="form-group">
+                           <label for="">Contact Number</label>
+                           <input name="contactno" required ng-model="userForm.contactno" type="text" class="form-control" id="" placeholder="Contact Number" required>
+                           <div class="error-msg" ng-show="user.contactno.$error.required && user.contactno.$touched">Please Enter Your Contact Number.</div>
                         </div>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.424518709648!2d72.86076331490068!3d19.04506398710566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8d1dc2d4e93%3A0xaac7b2a8db110f47!2sWohlig+Technology!5e0!3m2!1sen!2sin!4v1455852051126"
                         width="400" height="300" frameborder="0" style="border:0" allowfullscreen>
                         </iframe>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Latitude</label>
+                        <textarea name="maplink" ng-model="userForm.lat" type="text" class="form-control" id="" placeholder="Enter Latitude" rows="3"></textarea>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Longitude</label>
+                        <textarea name="maplink" ng-model="userForm.long" type="text" class="form-control" id="" placeholder="Enter Longitude" rows="3"></textarea>
+                     </div>
                   </div>
-                  <div class="form-group">
-                     <label for="">Latitude</label>
-                     <textarea name="maplink" ng-model="userForm.lat" type="text" class="form-control" id="" placeholder="Enter Latitude" rows="3"></textarea>
-                  </div>
-                  <div class="form-group">
-                     <label for="">Longitude</label>
-                     <textarea name="maplink" ng-model="userForm.long" type="text" class="form-control" id="" placeholder="Enter Longitude" rows="3"></textarea>
-                  </div>
-               </div>
-               <!-- <div class="upload-img text-right">
+                  <!-- <div class="upload-img text-right">
               <button class="btn btn-primary btn-outline btn-small">Add More</button>
             </div> -->
-               <div class="upload-img text-right">
-                  <button class="btn btn-primary btn-outline btn-small" ng-click="contactSubmitForm(user)">Save</button>
-                  <a ui-sref="contact">
-                     <button class="btn btn-primary btn-outline btn-small">Cancel</button>
-                  </a>
-               </div>
+                  <div class="upload-img text-right">
+                     <button type="submit" class="btn btn-primary btn-outline btn-small">Save</button>
+                     <a ui-sref="contact">
+                        <button class="btn btn-primary btn-outline btn-small">Cancel</button>
+                     </a>
+                  </div>
                </form>
             </div>
          </div>
