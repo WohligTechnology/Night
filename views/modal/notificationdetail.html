@@ -14,12 +14,13 @@
                      <div class="form-group">
                         <div class="icon">
                            <div class="form-group">
-                              <label for="sel1">Link Type:</label>
+                              <!-- <label for="sel1">Link Type:</label>
                               <select class="form-control" ng-model="noti.type">
                                  <option>Home</option>
                                  <option>Image Gallery</option>
                                  <option>Events</option>
-                              </select>
+                              </select> -->
+                              <list-type ng-model="noti" ng-if="noti"></list-type>
                            </div>
                         </div>
                         <label for="exampleInputFile">Image Icon</label>

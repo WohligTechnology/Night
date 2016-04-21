@@ -394,6 +394,7 @@ firstapp.directive('listType', function($uibModal, NavigationService) {
         link: function($scope, element, attrs) {
             var modalInstance = '';
             var link = "";
+            console.log($scope.model);
             if ($scope.model.type) {
                 switch ($scope.model.type) {
                     case 'Home':
@@ -446,8 +447,8 @@ firstapp.directive('listType', function($uibModal, NavigationService) {
             });
 
             $scope.setTypeLink = function(type, link, data) {
-              console.log(type);
-              console.log(data);
+                console.log(type);
+                console.log(data);
                 if (type) {
                     $scope.model.type = type;
                     document.getElementById('linkText').value = $scope.model.type + " :: " + data;

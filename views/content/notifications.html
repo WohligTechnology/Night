@@ -1,195 +1,196 @@
 <div class="ionic-template noheading-according  mb30">
-  <div class="pull-right pd20">
-    <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
-  </div>
-  <div class="display-inline float-right pd20">
-    <div class="setting-on">
-      <div class="btn btn-primary btn-small create-btn border-transparent" ng-init="status.open=true" ng-class="{'btn-outline': !status.open}" ng-click="status.open = !status.open">
-        <i class="ln-gear2 f10"></i> Settings
+   <div class="pull-right pd20">
+      <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
+   </div>
+   <div class="display-inline float-right pd20">
+      <div class="setting-on">
+         <div class="btn btn-primary btn-small create-btn border-transparent" ng-init="status.open=true" ng-class="{'btn-outline': !status.open}" ng-click="status.open = !status.open">
+            <i class="ln-gear2 f10"></i> Settings
+         </div>
       </div>
-    </div>
-  </div>
-  <h4 class="pad20">Notification</h4>
+   </div>
+   <h4 class="pad20">Notification</h4>
 
-  <uib-accordion class="primary-accordion">
-    <uib-accordion-group is-open="status.open">
-      <div class="home-slider">
-        <div class="google-login mt10">
-          <div class="form-login">
-            <form>
-              <div class="form-group">
-                <label for="">Google Cloud Messaging(GCM) Server Key
-                  <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
-                </label>
-                <input type="text" class="form-control">
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="google-login">
-          <div class="form-login">
-            <form>
-              <div class="form-group">
-                <label>Passphrase for .pem
-                  <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
-                </label>
-                <input type="text" class="form-control">
-              </div>
-              <div class="form-group">
-                <label>Please upload .pem file
-                  <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
-                </label>
-                <upload-image class="white-btn" no-view></upload-image>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="upload-img text-right mt15">
-          <button class="btn btn-secondary btn-outline btn-small">Save</button>
+   <uib-accordion class="primary-accordion">
+      <uib-accordion-group is-open="status.open">
+         <div class="home-slider">
+            <div class="google-login mt10">
+               <div class="form-login">
+                  <form>
+                     <div class="form-group">
+                        <label for="">Google Cloud Messaging(GCM) Server Key
+                           <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
+                        </label>
+                        <input type="text" class="form-control">
+                     </div>
+                  </form>
+               </div>
+            </div>
+            <div class="google-login">
+               <div class="form-login">
+                  <form>
+                     <div class="form-group">
+                        <label>Passphrase for .pem
+                           <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
+                        </label>
+                        <input type="text" class="form-control">
+                     </div>
+                     <div class="form-group">
+                        <label>Please upload .pem file
+                           <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
+                        </label>
+                        <upload-image class="white-btn" no-view></upload-image>
+                     </div>
+                  </form>
+               </div>
+            </div>
+            <div class="upload-img text-right mt15">
+               <button class="btn btn-secondary btn-outline btn-small">Save</button>
 
-        </div>
-      </div>
-    </uib-accordion-group>
-  </uib-accordion>
+            </div>
+         </div>
+      </uib-accordion-group>
+   </uib-accordion>
 
-  <div class="form-background">
-    <div class="google-login">
-      <div class="naming">
-        <h4>Send Notification</h4>
-      </div>
-      <div class="form-login paddingup">
-        <form name="user">
-          <div class="form-group">
-            <div class="icon">
-              <div class="form-group">
-                <label for="sel1">Link Type:</label>
+   <div class="form-background">
+      <div class="google-login">
+         <div class="naming">
+            <h4>Send Notification</h4>
+         </div>
+         <div class="form-login paddingup">
+            <form name="user">
+               <div class="form-group">
+                  <div class="icon">
+                     <div class="form-group">
+                        <!-- <label for="sel1">Link Type:</label>
                 <select class="form-control" ng-model="userForm.type">
                   <option>Home</option>
                   <option>Image Gallery</option>
                   <option>Events</option>
-                </select>
-              </div>
-            </div>
-            <label for="exampleInputFile">Image Icon</label>
-            <div class="noti-image">
-              <div class="img-box">
-                <h4 ng-if="isloading">Loading...</h4>
-                <img ng-src="{{userForm.image|uploadpath}}" ng-if="userForm.image" style="height:200px;">
-                <!-- <img src="img/slider/s1.jpg"> -->
-              </div>
-            </div>
-            <upload-image ng-model="userForm.image" no-view></upload-image>
-            <!-- <div ng-if="userForm.image">
+                </select> -->
+                        <list-type ng-model="userForm" ng-if="userForm"></list-type>
+                     </div>
+                  </div>
+                  <label for="exampleInputFile">Image Icon</label>
+                  <div class="noti-image">
+                     <div class="img-box">
+                        <h4 ng-if="isloading">Loading...</h4>
+                        <img ng-src="{{userForm.image|uploadpath}}" ng-if="userForm.image" style="height:200px;">
+                        <!-- <img src="img/slider/s1.jpg"> -->
+                     </div>
+                  </div>
+                  <upload-image ng-model="userForm.image" no-view></upload-image>
+                  <!-- <div ng-if="userForm.image">
                                     <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
                                 </div> -->
-            <!-- <input type="file" name="icon" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" title="Choose File" required ng-model="userForm.icon" accept=".jpg,.png" class="btn-primary" ui-file-upload> -->
-            <!-- <input type="file" name="image" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-model="userForm.image" accept=".jpg,.png" class="form-control ab" ui-file-upload> -->
-            <!-- <input name="navigationImg" ng-model="userForm.navigationImg" type="file" id="exampleInputFile"> -->
-          </div>
-          <div class="display-inline">
-            <div class="label-opt">
-              <label for="">Enable</label>
-            </div>
-            <div class="onoffswitch">
-              <input name="status" ng-model="userForm.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch">
-              <label class="onoffswitch-label" for="myonoffswitch">
-                <span class="onoffswitch-inner"></span>
-                <span class="onoffswitch-switch"></span>
-              </label>
-            </div>
-          </div>
-          <div class="form-group mt25">
-            <label for="">Message</label>
-            <textarea name="content" required ng-model="userForm.content" class="form-control"></textarea>
-            <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content.</div>
-          </div>
-          <div class="upload-img text-right">
-            <button class="btn btn-primary btn-outline btn-small" ng-click="notificationSubmitForm(user)">Save</button>
-          </div>
-        </form>
+                  <!-- <input type="file" name="icon" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" title="Choose File" required ng-model="userForm.icon" accept=".jpg,.png" class="btn-primary" ui-file-upload> -->
+                  <!-- <input type="file" name="image" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" ng-model="userForm.image" accept=".jpg,.png" class="form-control ab" ui-file-upload> -->
+                  <!-- <input name="navigationImg" ng-model="userForm.navigationImg" type="file" id="exampleInputFile"> -->
+               </div>
+               <div class="display-inline">
+                  <div class="label-opt">
+                     <label for="">Enable</label>
+                  </div>
+                  <div class="onoffswitch">
+                     <input name="status" ng-model="userForm.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch">
+                     <label class="onoffswitch-label" for="myonoffswitch">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                     </label>
+                  </div>
+               </div>
+               <div class="form-group mt25">
+                  <label for="">Message</label>
+                  <textarea name="content" required ng-model="userForm.content" class="form-control"></textarea>
+                  <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content.</div>
+               </div>
+               <div class="upload-img text-right">
+                  <button class="btn btn-primary btn-outline btn-small" ng-click="notificationSubmitForm(user)">Save</button>
+               </div>
+            </form>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
 
-  <div class="form-background mt30">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="notification-list">
-          <div class="naming">
-            <h4>List Of Notification</h4>
-          </div>
-          <div class="notification-table mt30">
-            <table class="table" ng-if="notificationdata.length>0">
-              <thead>
-                <tr>
-                  <th class="width30">
-                    <div class="select-checkbox">
-                      <div class="checkbox">
-                        <div class="custom-checkbox">
-                          <input type="checkbox" id="checkbox{{$index}}" name="checkbox" value="true" />
-                          <label for="checkbox{{$index}}"><span uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></span></label>
-                        </div>
-                      </div>
-                    </div>
-                  </th>
-                  <th>
-                    <span>Image</span>
-                  </th>
-                  <th>
-                    <span>Timestamp</span>
-                  </th>
-                  <th>
-                    <span>Action</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody ng-if="notificationdata.length>0">
-                <tr ng-repeat="noti in notificationdata">
-                  <td class="width30">
-                    <div class="select-checkbox">
-                      <div class="checkbox">
-                        <div class="custom-checkbox">
-                          <input type="checkbox" id="checkbox{{$index}}" name="checkbox" value="true" />
-                          <label for="checkbox{{$index}}"><span></span></label>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="select-check">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-                        </label>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="image-holder" ng-style="{'background-image': 'url({{noti.image | uploadpath}})'}"></div>
-                  </td>
-                  <td>
-                    <span>{{noti.sendingTime| date:'mediumDate'}}
+   <div class="form-background mt30">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="notification-list">
+               <div class="naming">
+                  <h4>List Of Notification</h4>
+               </div>
+               <div class="notification-table mt30">
+                  <table class="table" ng-if="notificationdata.length>0">
+                     <thead>
+                        <tr>
+                           <th class="width30">
+                              <div class="select-checkbox">
+                                 <div class="checkbox">
+                                    <div class="custom-checkbox">
+                                       <input type="checkbox" id="checkbox{{$index}}" name="checkbox" value="true" />
+                                       <label for="checkbox{{$index}}"><span uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></span></label>
+                                    </div>
+                                 </div>
+                              </div>
+                           </th>
+                           <th>
+                              <span>Image</span>
+                           </th>
+                           <th>
+                              <span>Timestamp</span>
+                           </th>
+                           <th>
+                              <span>Action</span>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody ng-if="notificationdata.length>0">
+                        <tr ng-repeat="noti in notificationdata">
+                           <td class="width30">
+                              <div class="select-checkbox">
+                                 <div class="checkbox">
+                                    <div class="custom-checkbox">
+                                       <input type="checkbox" id="checkbox{{$index}}" name="checkbox" value="true" />
+                                       <label for="checkbox{{$index}}"><span></span></label>
+                                    </div>
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="select-check">
+                                 <div class="checkbox">
+                                    <label>
+                                       <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                    </label>
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="image-holder" ng-style="{'background-image': 'url({{noti.image | uploadpath}})'}"></div>
+                           </td>
+                           <td>
+                              <span>{{noti.sendingTime| date:'mediumDate'}}
                                         </span>
-                  </td>
-                  <td>
-                    <div class="action">
-                      <a ng-click="open(noti);">
-                        <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i>
-                      </a>
-                      <a ng-click="deleteNotification(noti._id)">
-                        <i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i>
-                      </a>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="text-center list-unstyled grouplist" ng-if="!notificationdata || notificationdata.length==0">
-              No notifications yet.
-            </p>
-          </div>
-        </div>
+                           </td>
+                           <td>
+                              <div class="action">
+                                 <a ng-click="open(noti);">
+                                    <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i>
+                                 </a>
+                                 <a ng-click="deleteNotification(noti._id)">
+                                    <i class="ln-trash2 delete" tooltip-placement="top" uib-tooltip="Delete"></i>
+                                 </a>
+                              </div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <p class="text-center list-unstyled grouplist" ng-if="!notificationdata || notificationdata.length==0">
+                     No notifications yet.
+                  </p>
+               </div>
+            </div>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
 </div>

@@ -698,14 +698,7 @@ var navigationservice = angular.module('navigationservice', [])
                 url: adminurl + 'event/save',
                 method: 'POST',
                 withCredentials: true,
-                data: {
-                    "_id": formData._id,
-                    "name": formData.name,
-                    "venue": formData.venue,
-                    "startTime": formData.startTime,
-                    "content": formData.content,
-                    "endTime": formData.endTime,
-                }
+                data: formData
             }).success(callback);
         },
         setDefault: function(navid, callback) {
