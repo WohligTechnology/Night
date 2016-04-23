@@ -5,10 +5,10 @@
          <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$dismiss()"><span aria-hidden="true">&times;</span></button>
          <h4 class="modal-title text-center" id="myModalLabel">Edit Image</h4>
       </div>
+      <form name="modalData">
       <div class="modal-body">
          <div class="row">
             <div class="col-md-12">
-               <form name="user">
                   <div class="uploaded-img">
                      <!-- <div class="form-group">
                 <label for="exampleInputFile">Image Upload</label>
@@ -22,23 +22,23 @@
                   <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
                 </div>
               </div> -->
-                     <div class="form-group">
-                        <label for="exampleInputFile">Image Icon</label>
-                        <div class="noti-image">
-                           <div class="img-box">
-                              <h4 ng-if="isloading">Loading...</h4>
-                              <img ng-src="{{modalData.image|uploadpath}}" ng-if="modalData.image" >
-                           </div>
-                        </div>
-                        <upload-image ng-model="modalData.image" no-view></upload-image>
+              <div class="slider-title">
+                 <div class="form-group">
+                    <label for="">Title </label>
+                    <input type="text" class="form-control" ng-model="modalData.name" required>
+                 </div>
+              </div>
+             <div class="form-group">
+                <label for="exampleInputFile">Image Icon</label>
+                <div class="noti-image">
+                   <div class="img-box">
+                      <h4 ng-if="isloading">Loading...</h4>
+                      <img ng-src="{{modalData.image|uploadpath}}" ng-if="modalData.image">
+                   </div>
+                </div>
+                <upload-image ng-model="modalData.image" no-view></upload-image>
+             </div>
 
-                     </div>
-                     <div class="slider-title mt25">
-                        <div class="form-group">
-                           <label for="">Title </label>
-                           <input type="text" class="form-control" ng-model="modalData.name">
-                        </div>
-                     </div>
                      <list-type ng-model="modalData" ng-if="modalData"></list-type>
                      <!-- <div class="slider-link">
                         <div class="form-group">
@@ -78,7 +78,6 @@
                         </label>
                      </div>
                   </div>
-               </form>
             </div>
          </div>
 
@@ -87,6 +86,7 @@
          <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="saveModalData(modalData)">Save</button>
          <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss()">Cancel</button>
       </div>
+    </form>
    </div>
 
 </section>

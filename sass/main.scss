@@ -152,6 +152,9 @@ a,
   }
 }
 .btn {
+  +.btn {
+    margin-left: 10px;
+  }
   padding: 8px 20px;
   text-transform: uppercase;
   &.btn-outline {

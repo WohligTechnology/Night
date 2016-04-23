@@ -19,16 +19,17 @@
             <!-- </div>
         </div> -->
             <div class="form-login paddingup">
-               <form ng-submit="updateAudio();">
+               <form ng-submit="updateAudio();" name="configData">
                   <div class="form-group">
-                     <label for="">We will require your soundcloud username
+                     <label>Soundcloud username
                         <i class="ln-circle-question info" uib-tooltip="Please enter your soundcloud username" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
                      </label>
-                     <input type="text" class="form-control" id="" placeholder="Please enter your soundcloud username" ng-model="configData.soundCloudUsername" required>
+                     <input type="text" class="form-control" placeholder="Please enter your soundcloud username" ng-model="configData.soundCloudUsername" required>
+                     <div class="error-msg" ng-show="configData.soundCloudUsername.$error.required && configData.soundCloudUsername.$touched">Please enter your soundcloud username</div>
                   </div>
                   <div class="upload-img text-right pt15">
                      <button type="submit" class="btn btn-primary btn-outline btn-small">Save</button>
-                     <!-- <button class="btn btn-primary btn-outline btn-small" ng-click="resetAudio();">Reset</button> -->
+                     <button class="btn btn-success btn-outline btn-small" type="reset">Reset</button>
                   </div>
                </form>
             </div>
