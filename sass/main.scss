@@ -1338,6 +1338,24 @@ span.input-group-btn.calender-btn {
 .drop-image {
   margin-bottom: 10px;
   position: relative;
+  .delete-image {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: #000;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    padding: 6px;
+    color: #fff;
+    font-size: 8px;
+    cursor: pointer;
+    opacity: 0;
+    @include transition(all ease 300ms);
+    &:hover {
+      background: lighten(#000, 20%);
+    }
+  }
   .caption {
     opacity: 0;
     background: rgba(47, 51, 60, 0.70);
@@ -1352,7 +1370,8 @@ span.input-group-btn.calender-btn {
     }
   }
   &:hover {
-    .caption {
+    .caption,
+    .delete-image {
       opacity: 1;
     }
   }
