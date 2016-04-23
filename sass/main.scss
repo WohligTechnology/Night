@@ -910,6 +910,10 @@ textarea.form-control {
 .info {
   cursor: pointer;
   @include transform(rotate(180deg));
+  font-size: 16px;
+padding-left: 5px;
+vertical-align: sub;
+color:$brand-primary;
 }
 .img-box-icon {
   height: 120px;
