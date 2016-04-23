@@ -1391,7 +1391,10 @@ upload-image {
   cursor: pointer;
 }
 .error-msg {
-    color: red;
+    color: $brand-danger;
+    text-align: right;
+    margin-top: -7px;
+    font-size: 12px;
 }
 @import "toggle";
 @import "mobile";
