@@ -1850,7 +1850,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.header = {};
-    $scope.header.name = 'Create Video Gallary';
+    $scope.header.name = 'Create Video Gallery';
     $scope.userForm = {};
     $scope.modalData = {};
     var modalInstances = '';
@@ -1972,7 +1972,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.header = {};
-    $scope.header.name = 'Edit Video Gallary';
+    $scope.header.name = 'Edit Video Gallery';
     $scope.userForm = {};
     $scope.modalData = {};
     var modalInstances = '';
