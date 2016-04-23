@@ -2,49 +2,49 @@
   <div class="pull-right pd20">
     <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
   </div>
-   <h4 class="pad20">Article  <i class="fa fa-angle-right"></i>  {{page.header}}</h4>
-   <div class="row">
-      <div class="col-md-12">
-         <div class="home-slider form-background">
-            <div class="naming">
-               <h4>{{page.header}}</h4>
-            </div>
-            <div class="google-login paddingup">
-               <div class="form-login">
-                  <form action="" name="user">
-                     <div class="form-group">
-                        <label for="">Article Title</label>
-                        <input name="name" ng-model="userForm.name" type="text" class="form-control" id="" placeholder="Article Title">
-                        <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Article Title.</div>
-                     </div>
-                     <div class="form-group">
-                        <label for="">Status</label>
-                        <div class="onoffswitch">
-                          <input name="status" ng-model="userForm.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch">
-                          <label class="onoffswitch-label" for="myonoffswitch">
-                            <span class="onoffswitch-inner"></span>
-                            <span class="onoffswitch-switch"></span>
-                          </label>
-                        </div>
-                     </div>
+  <h4 class="pad20">Article  <i class="fa fa-angle-right"></i>  {{page.header}}</h4>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="home-slider form-background">
+        <div class="naming">
+          <h4>{{page.header}}</h4>
+        </div>
+        <div class="google-login paddingup">
+          <div class="form-login">
+            <form action="" name="user">
+              <div class="form-group">
+                <label for="">Title</label>
+                <input name="name" ng-model="userForm.name" type="text" class="form-control" id="" placeholder="Title" required>
+                <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Title</div>
+              </div>
+              <div class="form-group">
+                <label for="">Status</label>
+                <div class="onoffswitch">
+                  <input name="status" ng-model="userForm.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch">
+                  <label class="onoffswitch-label" for="myonoffswitch">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                  </label>
+                </div>
+              </div>
 
-                     <div class="form-group">
-                        <label for="">Content</label>
-                        <textarea name="content" required ui-tinymce ng-model="userForm.content" class="form-control"></textarea>
-                        <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content.</div>
-                     </div>
-                     <div class="form-group">
-                        <label for="">Date</label>
-                        <p class="input-group">
-                           <input name="modificationTime" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
-                           close-text="Close" alt-input-formats="altInputFormats" />
-                           <span class="input-group-btn calender-btn">
+              <div class="form-group">
+                <label for="">Content</label>
+                <textarea name="content" required ui-tinymce ng-model="userForm.content" class="form-control"></textarea>
+                <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content</div>
+              </div>
+              <div class="form-group">
+                <label for="">Date</label>
+                <p class="input-group">
+                  <input name="modificationTime" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+                    close-text="Close" alt-input-formats="altInputFormats" />
+                  <span class="input-group-btn calender-btn">
              <button type="button" class="btn btn-default" ng-click="open1()"><i class="ln-calendar3"></i></button>
-             <div class="error-msg" ng-show="user.modificationTime.$error.required && user.modificationTime.$touched">Please Enter Date.</div>
+             <div class="error-msg" ng-show="user.modificationTime.$error.required && user.modificationTime.$touched">Please Enter Date</div>
            </span>
-                        </p>
-                     </div>
-                     <!-- <div class="form-group">
+                </p>
+              </div>
+              <!-- <div class="form-group">
                 <label for="exampleInputFile">Image Upload</label>
                 <div class="noti-image">
                   <div class="img-box">
@@ -57,35 +57,35 @@
                 </div>
               </div> -->
 
-                     <div class="form-group">
-                        <label for="exampleInputFile">Image Upload</label>
-                        <div class="noti-image">
-                           <div class="img-box">
-                              <h4 ng-if="isloading">Loading...</h4>
-                              <img ng-src="{{userForm.image|uploadpath}}" ng-if="userForm.image">
-                           </div>
-                        </div>
-                        <upload-image ng-model="userForm.image" no-view></upload-image>
-                        <!-- <div ng-if="userForm.image">
+              <div class="form-group">
+                <label for="exampleInputFile">Image Upload</label>
+                <div class="noti-image">
+                  <div class="img-box">
+                    <h4 ng-if="isloading">Loading...</h4>
+                    <img ng-src="{{userForm.image|uploadpath}}" ng-if="userForm.image">
+                  </div>
+                </div>
+                <upload-image ng-model="userForm.image" no-view></upload-image>
+                <!-- <div ng-if="userForm.image">
                   <div ng-init="httpMethod = 'POST';howToSend = 1;"></div>
                 </div> -->
-                        <!-- <div class="btn-upload">
+                <!-- <div class="btn-upload">
                   <input type="file" name="image" ng-file-select="onFileSelect($files,1)" onclick="this.value=null" title="Choose File" required ng-model="userForm.image" accept=".jpg,.png" class="btn-primary" ui-file-upload>
                   <input type="file" id="exampleInputFile">
                   <button class="btn btn-primary btn-outline btn-small">Upload Image</button>
                 </div> -->
-                     </div>
-               </div>
-               <div class="upload-img text-right">
-                  <button class="btn btn-primary btn-outline btn-small" ng-click="articleSubmitForm(user)">Save</button>
-                  <button ui-sref="articles" class="btn btn-primary btn-outline btn-small ml12">Cancel</button>
-               </div>
-               </form>
-            </div>
-            <!-- <div class="text-center" ng-show="formComplete">
+              </div>
+          </div>
+          <div class="upload-img text-right">
+            <button class="btn btn-primary btn-outline btn-small" ng-click="articleSubmitForm(user)">Save</button>
+            <button ui-sref="articles" class="btn btn-primary btn-outline btn-small ml12">Cancel</button>
+          </div>
+          </form>
+        </div>
+        <!-- <div class="text-center" ng-show="formComplete">
           <h3>Submitted Successfully, Thank You!</h3>
         </div> -->
-         </div>
       </div>
-   </div>
+    </div>
+  </div>
 </div>
