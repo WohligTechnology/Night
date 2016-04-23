@@ -1386,5 +1386,8 @@ span.input-group-btn.calender-btn {
 upload-image {
   cursor: pointer;
 }
+.error-msg {
+    color: red;
+}
 @import "toggle";
 @import "mobile";
