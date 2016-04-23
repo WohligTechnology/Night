@@ -50,7 +50,8 @@
                   <div class="form-group">
                     <label for="">Facebook Page Url
                       <i class="ln-circle-question info" uib-tooltip="Please enter Facebook Page Url " tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
-                    <input name="facebookUrl" ng-model="configData.socialfeeds.facebookPageUrl" type="text" class="form-control" id="" placeholder="Facebook Page Url">
+                    <input name="facebookUrl" ng-model="configData.socialfeeds.facebookPageUrl" type="text" class="form-control" id="" placeholder="Facebook Page Url" required>
+                       <div class="error-msg" ng-show="user.facebookPageUrl.$error.required && user.facebookPageUrl.$touched">Please Enter Valid URL</div>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -58,7 +59,8 @@
                     <label for="">Twitter Page Url
                       <i class="ln-circle-question info" uib-tooltip="Please enter Twitter Page Url" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                     </label>
-                    <input name="twitterUrl" ng-model="configData.socialfeeds.twitterPageUrl" type="text" class="form-control" id="" placeholder="Twitter Page Url">
+                    <input name="twitterUrl" ng-model="configData.socialfeeds.twitterPageUrl" type="text" class="form-control" id="" placeholder="Twitter Page Url" required>
+                    <div class="error-msg" ng-show="user.twitterPageUrl.$error.required && user.twitterPageUrl.$touched">Please Enter Valid URL</div>
                   </div>
                 </div>
               </div>
@@ -68,7 +70,8 @@
                     <label for="">Instagram Page Url
                       <i class="ln-circle-question info" uib-tooltip="Please enter Instagram Page Url" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                     </label>
-                    <input name="instagramUrl" ng-model="configData.socialfeeds.instagramPageUrl" type="text" class="form-control" id="" placeholder="Instagram Page Url">
+                    <input name="instagramUrl" ng-model="configData.socialfeeds.instagramPageUrl" type="text" class="form-control" id="" placeholder="Instagram Page Url" required>
+                      <div class="error-msg" ng-show="user.instagramPageUrl.$error.required && user.instagramPageUrl.$touched">Please Enter Valid URL</div>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -76,7 +79,8 @@
                     <label for="">Google+ Page Url
                       <i class="ln-circle-question info" uib-tooltip="Please enter Google+ Page Url" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                     </label>
-                    <input name="googleUrl" ng-model="configData.socialfeeds.googlePageUrl" type="text" class="form-control" id="" placeholder="Google+ Page Url">
+                    <input name="googleUrl" ng-model="configData.socialfeeds.googlePageUrl" type="text" class="form-control" id="" placeholder="Google+ Page Url" required>
+                      <div class="error-msg" ng-show="user.googlePageUrl.$error.required && user.googlePageUrl.$touched">Please Enter Valid URL</div>
                   </div>
                 </div>
               </div>
@@ -86,7 +90,8 @@
                     <label for="">Youtube Page Url
                       <i class="ln-circle-question info" uib-tooltip="Please enter Youtube Page Url" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                     </label>
-                    <input name="youtubeUrl" ng-model="configData.socialfeeds.youtubePageUrl" type="text" class="form-control" id="" placeholder="Youtube Page Url">
+                    <input name="youtubeUrl" ng-model="configData.socialfeeds.youtubePageUrl" type="text" class="form-control" id="" placeholder="Youtube Page Url" required>
+                    <div class="error-msg" ng-show="user.youtubePageUrl.$error.required && user.youtubePageUrl.$touched">Please Enter Valid URL</div>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -94,7 +99,8 @@
                     <label for="">Tumblr Page Url
                       <i class="ln-circle-question info" uib-tooltip="Please enter Tumblr Page Url" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                     </label>
-                    <input name="tumblrUrl" ng-model="configData.socialfeeds.tumblrPageUrl" type="text" class="form-control" id="" placeholder="Tumblr Page Url">
+                    <input name="tumblrUrl" ng-model="configData.socialfeeds.tumblrPageUrl" type="text" class="form-control" id="" placeholder="Tumblr Page Url" required>
+                    <div class="error-msg" ng-show="user.tumblrPageUrl.$error.required && user.tumblrPageUrl.$touched">Please Enter Valid URL</div>
                   </div>
                 </div>
               </div>

@@ -17,17 +17,17 @@
                         <div class="form-group">
                            <label for="">Name</label>
                            <input name="name" required ng-model="userForm.name" type="text" class="form-control" id="" placeholder="Name">
-                           <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Name.</div>
+                           <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Name</div>
                         </div>
                         <div class="form-group">
                            <label for="">Email</label>
                            <input name="email" required ng-model="userForm.email" type="email" class="form-control" id="" placeholder="Email">
-                           <div class="error-msg" ng-show="user.venue.$error.required && user.venue.$touched">Please Enter valid Email.</div>
+                           <div class="error-msg" ng-show="user.venue.$error.required && user.venue.$touched">Please Enter valid Email</div>
                         </div>
                         <div class="form-group">
                            <label for="">Subject</label>
                            <input name="subject" required ng-model="userForm.subject" type="text" class="form-control" id="" placeholder="Subject">
-                           <div class="error-msg" ng-show="user.venue.$error.required && user.venue.$touched">Please Enter Subject.</div>
+                           <div class="error-msg" ng-show="user.venue.$error.required && user.venue.$touched">Please Enter Subject</div>
                         </div>
                         <!-- <div class="form-group">
                            <label for="">TimeStamp</label>
@@ -37,7 +37,7 @@
                         <div class="form-group" required>
                            <label for="">Comments</label>
                            <textarea name="content" required ui-tinymce ng-model="userForm.comment" class="form-control"></textarea>
-                           <div class="error-msg" ng-show="user.comment.$error.required && user.comment.$touched">Please Enter Comments.</div>
+                           <div class="error-msg" ng-show="user.comment.$error.required && user.comment.$touched">Please Enter Comments</div>
                         </div>
                         <div class="upload-img text-right">
                            <button class="btn btn-primary btn-outline btn-small" ng-click="enquirySubmitForm(user)">Save</button>
