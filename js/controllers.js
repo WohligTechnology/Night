@@ -169,7 +169,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.allHomeRecord = function() {
         NavigationService.homeViewAll(function(data) {
-            if (data.value == true) {
+            if (data.value === true) {
                 $scope.userForm.images = data.data;
             }
         });
@@ -195,7 +195,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             } else {
                 globalfunction.errorToaster();
             }
-        })
+        });
     };
     var modalInstance = '';
     $scope.saveModalData = function(modalData) {
@@ -214,7 +214,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         update: function(e, ui) {
             NavigationService.sortArray($scope.userForm.images, 'homeSlider', function(data) {
 
-            })
+            });
         }
     };
 
