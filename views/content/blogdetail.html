@@ -18,19 +18,20 @@
               <div class="form-group">
                 <label for="">Content</label>
                 <textarea name="content" required class="form-control" ui-tinymce ng-model="userForm.content"></textarea>
-                <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content</div>
               </div>
+              <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content</div>
               <div class="form-group">
                 <label for="">Date</label>
                 <p class="input-group">
                   <input name="date" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
-                    close-text="Close" alt-input-formats="altInputFormats" />
+                    close-text="Close" alt-input-formats="altInputFormats" required />
                   <span class="input-group-btn calender-btn">
              <button type="button" class="btn btn-default" ng-click="open1()"><i class=" ln-calendar3"></i></button>
                  <div class="error-msg" ng-show="user.date.$error.required && user.date.$touched">Please Enter Date</div>
            </span>
                 </p>
               </div>
+                      <div class="error-msg" ng-show="user.date.$error.required && user.date.$touched">Please Enter Content</div>
               <div class="form-group">
                 <label for="exampleInputFile">Image Upload</label>
                 <div class="noti-image">

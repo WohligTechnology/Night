@@ -15,28 +15,28 @@
                         <div class="form-group">
                            <label for="">Event Title</label>
                            <input name="name" required ng-model="userForm.name" type="text" class="form-control" id="" placeholder="Event Title">
-                           <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Event Title.</div>
+                           <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Title</div>
                         </div>
                         <div class="form-group">
                            <label for="">Venue</label>
                            <input name="venue" required ng-model="userForm.venue" type="text" class="form-control" id="" placeholder="Venue">
-                           <div class="error-msg" ng-show="user.venue.$error.required && user.venue.$touched">Please Enter Venue.</div>
+                           <div class="error-msg" ng-show="user.venue.$error.required && user.venue.$touched">Please Enter Venue</div>
                         </div>
                         <div class="form-group" required>
                            <label for="">Content</label>
                            <textarea name="content" required ui-tinymce ng-model="userForm.content" class="form-control"></textarea>
-                           <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content.</div>
                         </div>
+                        <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content</div>
                         <div class="form-group mt25">
                            <label for="">Start Date</label>
                            <p class="input-group">
                               <input name="sdate" id="sdate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.sdate" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
-                              close-text="Close" alt-input-formats="altInputFormats" />
+                              close-text="Close" alt-input-formats="altInputFormats" required/>
                               <span class="input-group-btn calender-btn">
                                 <button type="button" class="btn btn-default" ng-click="open1()">
                                     <i class="ln-calendar3"></i>
                                 </button>
-                                <div class="error-msg" ng-show="user.sdate.$error.required && user.sdate.$touched">Please Enter Date.
+                                <div class="error-msg" ng-show="user.sdate.$error.required && user.sdate.$touched">Please Enter Date
                                 </div>
                               </span>
                            </p>
@@ -44,19 +44,19 @@
                         <!-- {{userForm.stime}} -->
                         <div class="form-group mt25">
                            <label for="">Start Time</label>
-                           <input name="stime" ng-model="userForm.stime" type="time" class="form-control">
-                           <div class="error-msg" ng-show="user.stime.$error.required && user.stime.$touched">Please Enter Time.</div>
+                           <input name="stime" ng-model="userForm.stime" type="time" class="form-control" required>
+                           <div class="error-msg" ng-show="user.stime.$error.required && user.stime.$touched">Please Enter Time</div>
                         </div>
                         <div class="form-group mt25">
                            <label for="">End Date</label>
                            <p class="input-group">
                               <input name="edate" id="enddate" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.edate" is-open="popup10.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
-                              close-text="Close" alt-input-formats="altInputFormats" />
+                              close-text="Close" alt-input-formats="altInputFormats" required/>
                               <span class="input-group-btn calender-btn">
                                 <button type="button" class="btn btn-default" ng-click="open10()">
                                     <i class="ln-calendar3"></i>
                                 </button>
-                                <div class="error-msg" ng-show="user.edate.$error.required && user.edate.$touched">Please Enter Date.
+                                <div class="error-msg" ng-show="user.edate.$error.required && user.edate.$touched">Please Enter Date
                                 </div>
                               </span>
                            </p>
@@ -64,8 +64,8 @@
                         <!-- {{userForm.endTime}} -->
                         <div class="form-group mt25">
                            <label for="">End Time</label>
-                           <input name="etime" ng-model="userForm.etime" type="time" class="form-control">
-                           <div class="error-msg" ng-show="user.etime.$error.required && user.etime.$touched">Please Enter Time.</div>
+                           <input name="etime" ng-model="userForm.etime" type="time" class="form-control" required>
+                           <div class="error-msg" ng-show="user.etime.$error.required && user.etime.$touched">Please Enter Time</div>
                         </div>
                         <div class="form-group">
                            <label for="">Event Main Banner</label>
