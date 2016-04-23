@@ -28,7 +28,7 @@
                      <div class="error-msg" ng-show="modelData.soundCloudUsername.$error.required && modelData.soundCloudUsername.$touched">Please enter your soundcloud username</div>
                   </div>
                   <div class="upload-img text-right pt15">
-                     <button type="submit" class="btn btn-primary btn-outline btn-small">Save</button>
+                     <button type="submit" class="btn btn-primary btn-outline btn-small" ng-disabled="modelData.$invalid">Save</button>
                      <button class="btn btn-success btn-outline btn-small" type="reset">Reset</button>
                   </div>
                </form>
