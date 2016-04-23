@@ -27,7 +27,7 @@
                         <div class="noti-image">
                            <div class="img-box">
                               <h4 ng-if="isloading">Loading...</h4>
-                              <img ng-src="{{modalData.image|uploadpath}}" ng-if="modalData.image" style="height:200px;">
+                              <img ng-src="{{modalData.image|uploadpath}}" ng-if="modalData.image" >
                            </div>
                         </div>
                         <upload-image ng-model="modalData.image" no-view></upload-image>
