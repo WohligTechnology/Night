@@ -16,24 +16,25 @@
          <div class="home-slider">
             <div class="google-login mt10">
                <div class="form-login">
-                  <form>
+                  <form name="gcmForm">
                      <div class="form-group">
                         <label for="">Google Cloud Messaging(GCM) Server Key
                            <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
                         </label>
-                        <input type="text" class="form-control">
+                        <input type="text" name="gcmkey" ng-model="form.data" class="form-control" required><div class="error-msg" ng-show="gcmForm.gcmkey.$error.required && gcmForm.gcmkey.$touched">Please Enter Google Cloud Messaging(GCM) Server Key.</div>
                      </div>
                   </form>
                </div>
             </div>
             <div class="google-login">
                <div class="form-login">
-                  <form>
+                  <form name="gcmPemForm">
                      <div class="form-group">
                         <label>Passphrase for .pem
                            <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
                         </label>
-                        <input type="text" class="form-control">
+                        <input type="text" name="gcmpem" ng-model="form.data" class="form-control" required>
+                        <div class="error-msg" ng-show="gcmPemForm.gcmpem.$error.required && gcmPemForm.gcmpem.$touched">Please Enter Passphrase for pem.</div>
                      </div>
                      <div class="form-group">
                         <label>Please upload .pem file

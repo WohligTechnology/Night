@@ -47,17 +47,19 @@
               <h4>Google Login</h4>
             </div>
             <div class="form-login mt10 fadeInOut" ng-if="login.google">
-              <form>
+              <form name="googleForm">
                 <div class="form-group">
                   <label for="">Google Client ID <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
                   </label>
-                  <input type="text" class="form-control" id="" ng-model="login.googleCredentials.id" required>
+                  <input type="text" name="googleid" class="form-control" id="" ng-model="login.googleCredentials.id" required>
+                  <div class="error-msg" ng-show="googleForm.googleid.$error.required && googleForm.googleid.$touched">Please Enter Google Client ID.</div>
                 </div>
                 <div class="form-group">
                   <label for="">Google Client secret
                     <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client Secret Password " tooltip-placement="top" tooltip-trigger="mouseenter"></i>
                   </label>
-                  <input type="text" class="form-control" id="" ng-model="login.googleCredentials.secret" required>
+                  <input type="text" name="googlesecret" class="form-control" id="" ng-model="login.googleCredentials.secret" required>
+                  <div class="error-msg" ng-show="googleForm.googlesecret.$error.required && googleForm.googlesecret.$touched">Please Enter Google Client Secret.</div>
                 </div>
               </form>
             </div>
@@ -77,17 +79,19 @@
               <h4>Facebook Login</h4>
             </div>
             <div class="form-login mt10 fadeInOut" ng-if="login.facebook">
-              <form>
+              <form name="facebookForm">
                 <div class="form-group">
                   <label for="">Facebook App ID
                     <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i> </label>
-                  <input type="text" class="form-control" id="" ng-model="login.facebookCredentials.id">
+                  <input type="text" name="fbid" class="form-control" id="" ng-model="login.facebookCredentials.id" required>
+                  <div class="error-msg" ng-show="facebookForm.fbid.$error.required && facebookForm.fbid.$touched">Please Enter Facebook App ID.</div>
                 </div>
                 <div class="form-group">
                   <label for="">Facebook App Secret
                     <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
                   </label>
-                  <input type="text" class="form-control" id="" ng-model="login.facebookCredentials.secret">
+                  <input type="text" name="fbsecret" class="form-control" id="" ng-model="login.facebookCredentials.secret" required>
+                  <div class="error-msg" ng-show="facebookForm.fbsecret.$error.required && facebookForm.fbsecret.$touched">Please Enter Facebook App Secret.</div>
                 </div>
               </form>
             </div>
@@ -107,16 +111,18 @@
               <h4>Twitter Login</h4>
             </div>
             <div class="form-login mt10 fadeInOut" ng-if="login.twitter">
-              <form>
+              <form name="twitterForm">
                 <div class="form-group">
                   <label for="">Twitter Consumer Key (API Key)
                     <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
-                  <input type="text" class="form-control" id="" ng-model="login.twitterCredentials.id">
+                  <input type="text" name="twitterid" class="form-control" id="" ng-model="login.twitterCredentials.id" required>
+                  <div class="error-msg" ng-show="twitterForm.twitterid.$error.required && twitterForm.twitterid.$touched">Please Enter Twitter Key.</div>
                 </div>
                 <div class="form-group">
                   <label for="">Twitter Consumer Secret (API Secret)
                     <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
-                  <input type="text" class="form-control" id="" ng-model="login.twitterCredentials.secret">
+                  <input type="text" name="twittersecret" class="form-control" id="" ng-model="login.twitterCredentials.secret" required>
+                  <div class="error-msg" ng-show="twitterForm.twittersecret.$error.required && twitterForm.twittersecret.$touched">Please Enter Twitter Secret.</div>
                 </div>
               </form>
             </div>
@@ -136,18 +142,20 @@
               <h4>Instagram Login</h4>
             </div>
             <div class="form-login mt10 fadeInOut" ng-if="login.insta">
-              <form>
+              <form name="instagramForm">
                 <div class="form-group">
                   <label for="">Instagram Client ID
                     <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
                   </label>
-                  <input type="text" class="form-control" id="" ng-model="login.instaCredentials.id">
+                  <input type="text" name="instagramid" class="form-control" id="" ng-model="login.instaCredentials.id" required>
+                  <div class="error-msg" ng-show="instagramForm.instagramid.$error.required && instagramForm.instagramid.$touched">Please Enter Instagram Client ID.</div>
                 </div>
                 <div class="form-group">
                   <label for="">Instagram Client Secret
                     <i class="ln-circle-question info" uib-tooltip="Please Enter your Google Client ID" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
                   </label>
-                  <input type="text" class="form-control" id="" ng-model="login.instaCredentials.secret">
+                  <input type="text" name="instagramsecret" class="form-control" id="" ng-model="login.instaCredentials.secret" required>
+                  <div class="error-msg" ng-show="instagramForm.instagramsecret.$error.required && instagramForm.instagramsecret.$touched">Please Enter Instagram Client Secret.</div>
                 </div>
               </form>
             </div>
