@@ -7,10 +7,10 @@
       <div class="modal-body">
          <div class="row">
             <div class="col-md-offset-2 col-md-8">
-               <form action="">
+               <form name="modelData">
                   <div class="uploaded-img">
                      <div class="slider-box" ng-if="modalData.thumbnail">
-                        <label for="">Video Thumbnail </label>
+                        <label>Video Thumbnail </label>
                         <img ng-src="{{modalData.thumbnail}}" class="img-responsive">
                         <!-- <div class="form-group">
                            <label for="exampleInputFile">Upload Image</label>
@@ -20,16 +20,18 @@
                            </div>
                         </div> -->
                      </div>
-                     <div class="slider-link">
-                        <div class="form-group">
-                           <label for="">Video Link </label>
-                           <input type="text" class="form-control" id="" ng-model="modalData.link" ng-change="extractVideoId(modalData.link);">
-                        </div>
-                     </div>
                      <div class="slider-title">
                         <div class="form-group">
-                           <label for="">Video Title </label>
-                           <input type="text" class="form-control" id="" ng-model="modalData.name">
+                           <label>Title</label>
+                           <input type="text" class="form-control" name="name" ng-model="modalData.name" required>
+                           <div class="error-msg" ng-show="modelData.name.$error.required && modelData.name.$touched">Please enter title</div>
+                        </div>
+                     </div>
+                     <div class="slider-link">
+                        <div class="form-group">
+                           <label>Video Link</label>
+                           <input type="text" name="link" class="form-control" ng-model="modalData.link" ng-change="extractVideoId(modalData.link);" required>
+                           <div class="error-msg" ng-show="modelData.link.$error.required && modelData.link.$touched">Please enter youtube link</div>
                         </div>
                      </div>
                      <div class="status-slider">
@@ -50,8 +52,8 @@
          </div>
       </div>
       <div class="modal-footer">
-         <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="pushVideo(modalData);">Save</button>
-         <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss();">Cancel</button>
+         <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="pushVideo(modalData);" ng-disabled="modelData.$invalid">Save</button>
+         <button type="button" class="btn btn-small btn-danger btn-outline" ng-click="$dismiss();">Cancel</button>
       </div>
    </div>
 </section>
