@@ -13,7 +13,7 @@
                </div>
                <div class="google-login paddingup">
                   <div class="form-login">
-                     <form name="user">
+                     <form name="user" ng-submit="enquirySubmitForm(user);">
                         <div class="form-group">
                            <label for="">Name</label>
                            <input name="name" required ng-model="userForm.name" type="text" class="form-control" id="" placeholder="Name">
@@ -36,14 +36,11 @@
                         </div> -->
                         <div class="form-group" required>
                            <label for="">Comments</label>
-                           <textarea name="content" required ui-tinymce ng-model="userForm.comment" class="form-control"></textarea>
+                           <textarea name="content" ui-tinymce ng-model="userForm.comment" class="form-control"></textarea>
                            <div class="error-msg" ng-show="user.comment.$error.required && user.comment.$touched">Please Enter Comments</div>
                         </div>
                         <div class="upload-img text-right">
-                           <button class="btn btn-primary btn-outline btn-small" ng-click="enquirySubmitForm(user)">Save</button>
-                           <!-- <button class="btn btn-primary btn-outline btn-small" ng-click="pop()">Save</button> -->
-                           <toaster-container toaster-options="{'close-button': true,'position-class': 'toast-bottom-right'}"></toaster-container>
-                           <!-- <a href="#/events"> -->
+                           <button type="submit" class="btn btn-primary btn-outline btn-small">Save</button>
                            <button class="btn btn-primary btn-outline btn-small ml12" ui-sref="enquiry">Cancel</button>
                            <!-- </a> -->
                         </div>

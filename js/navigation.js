@@ -1,5 +1,5 @@
-var adminurl = "http://wohlig.biz/";
-var adminurl = "http://192.168.1.132/";
+var adminurl = "http://blazen.io/";
+// var adminurl = "http://192.168.1.131/";
 var imgpath = adminurl + "upload/readFile";
 var uploadurl = adminurl + "upload";
 var navigationservice = angular.module('navigationservice', [])
@@ -810,6 +810,26 @@ var navigationservice = angular.module('navigationservice', [])
                 url: adminurl + 'enquiry/getAll',
                 method: 'POST',
                 withCredentials: true
+            }).success(callback);
+        },
+        getOneEnquiry: function(id, callback) {
+            $http({
+                url: adminurl + 'enquiry/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        deleteEnquiry: function(formData, callback) {
+            $http({
+                url: adminurl + 'enquiry/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": formData.id,
+                }
             }).success(callback);
         },
         makeactive: function(menuname) {

@@ -38,15 +38,22 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, toas
     })
 
     .state('enquiry', {
-            url: "/enquiry",
-            templateUrl: "views/template-sidemenu.html",
-            controller: 'EnquiryCtrl'
-        })
-        .state('enquirydetail', {
-            url: "/enquirydetail",
-            templateUrl: "views/template-sidemenu.html",
-            controller: 'EnquiryDetailCtrl'
-        })
+        url: "/enquiry",
+        templateUrl: "views/template-sidemenu.html",
+        controller: 'EnquiryCtrl'
+    })
+
+    .state('enquirydetail', {
+        url: "/enquirydetail",
+        templateUrl: "views/template-sidemenu.html",
+        controller: 'EnquiryDetailCtrl'
+    })
+
+    .state('editenquiry', {
+        url: "/editenquiry/:id",
+        templateUrl: "views/template-sidemenu.html",
+        controller: 'EditEnquiryCtrl'
+    })
 
     .state('theme', {
         url: "/theme",

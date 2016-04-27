@@ -1,5 +1,5 @@
 //window.uploadurl = "http://192.168.0.126:81/uploadfile/upload/";
-window.uploadurl = "http://wohlig.biz/uploadfile/upload/";
+window.uploadurl = "http://blazen.io/uploadfile/upload/";
 var globalfunction = {};
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'toaster', 'imageupload', 'httpService', 'toastr'])
 
@@ -45,11 +45,29 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
-    NavigationService.getAllEnquiry(function(data) {
-        if (data.value) {
-            $scope.enquirydata = data.data;
-        }
-    })
+    $scope.allEnquiry = function() {
+        NavigationService.getAllEnquiry(function(data) {
+            if (data.value) {
+                $scope.enquirydata = data.data;
+            }
+        })
+    }
+    $scope.allEnquiry();
+
+    $scope.deleteEnquiry = function(formValid) {
+        globalfunction.confDel(function(val) {
+            if (val) {
+                NavigationService.deleteEnquiry({
+                    id: formValid
+                }, function(data) {
+                    if (data.value) {
+                        globalfunction.delSuccessToaster();
+                        $scope.allEnquiry();
+                    }
+                });
+            }
+        });
+    };
 
 })
 
@@ -60,6 +78,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.userForm = {};
+
+    $scope.enquirySubmitForm = function() {
+        console.log($scope.userForm);
+        NavigationService.submitEnquiry($scope.userForm, function(data) {
+            if (data.value) {
+                $state.go('enquiry');
+            }
+        })
+    }
+
+})
+
+.controller('EditEnquiryCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, $stateParams) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("enquirydetail");
+    $scope.menutitle = NavigationService.makeactive("Enquiry");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+
+    NavigationService.getOneEnquiry($stateParams.id, function(data) {
+        console.log(data);
+        if (data.value)
+            $scope.userForm = data.data;
+    })
 
     $scope.enquirySubmitForm = function() {
         console.log($scope.userForm);
