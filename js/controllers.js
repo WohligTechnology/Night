@@ -620,7 +620,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }, function(data) {
                     if (data.value) {
                         globalfunction.delSuccessToaster();
-                        $scope.allNavigationRecord();
+                        $scope.allNotificationRecord();
                     }
                 });
             }
@@ -630,8 +630,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.notificationSubmitForm = function(formValid) {
         if (formValid.$valid) {
             console.log('in navi');
+            $scope.userForm.timestamp = new Date();
             NavigationService.notificationCreateSubmit($scope.userForm, function(data) {
                 if (data.value) {
+                    $scope.userForm = {};
                     $scope.allNotificationRecord();
                     globalfunction.successToaster();
                 } else {
@@ -1253,7 +1255,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }, function(data) {
                     if (data.value) {
                         globalfunction.delSuccessToaster();
-                        $scope.allNavigationRecord();
+                        $scope.allBlogsRecord();
                     }
                 });
             }
@@ -1441,16 +1443,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     });
 
     $scope.blogSubmitForm = function(formValid) {
-        if (formValid.$valid) {
-            NavigationService.blogCreateSubmit($scope.userForm, function(data) {
-                if (data.value) {
-                    globalfunction.successToaster();
-                    $state.go("blogs");
-                } else {
-                    globalfunction.errorToaster();
-                }
-            });
-        }
+        console.log("here");
+        NavigationService.blogCreateSubmit($scope.userForm, function(data) {
+            if (data.value) {
+                globalfunction.successToaster();
+                $state.go("blogs");
+            } else {
+                globalfunction.errorToaster();
+            }
+        });
     };
 
     $scope.today = function() {
@@ -1835,6 +1836,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.changeit = function(data) {
+        if (!$scope.userForm.images) {
+            $scope.userForm.images = [];
+        }
         if (data.value) {
             _.each(data.data, function(n) {
                 $scope.userForm.images.push({
@@ -2607,8 +2611,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userForm = {};
     $scope.allUsersRecord = function() {
         NavigationService.userViewAll($scope.userForm, function(data) {
-            $scope.useredata = data.data;
-            console.log('$scope.userdata', data.data);
+            if (data.value)
+                $scope.userdata = data.data;
         });
     };
     $scope.allUsersRecord();
@@ -2620,120 +2624,107 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }, function(data) {
             console.log('delete data:', data);
             if (data.value === true) {
-
                 $scope.allUsersRecord();
             }
-
         });
     };
-
-
 })
 
 .controller('UserDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state) {
-        //Used to name the .html file
-        $scope.template = TemplateService.changecontent("userdetail");
-        $scope.menutitle = NavigationService.makeactive("Users");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.userForm = {};
-        $scope.page = {
-            header: "Create User"
-        };
-        $scope.userSubmitForm = function(formValid) {
-            // console.log('form values: ', formData);
-            // console.log('form values: ', formValid);
-            console.log('form values: ', $scope.userForm);
-            if (formValid.$valid) {
-                NavigationService.userCreateSubmit($scope.userForm, function(data) {
-                    console.log('userform', $scope.userForm);
-
-                });
-                $state.go("users");
-
-            }
-        };
-
-
-    })
-    .controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state, $stateParams) {
-        //Used to name the .html file
-        $scope.template = TemplateService.changecontent("userdetail");
-        $scope.menutitle = NavigationService.makeactive("Users");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.userForm = {};
-        $scope.page = {
-            header: "Edit User"
-        };
-
-        NavigationService.getUserEditDetail($stateParams.id, function(data) {
-            $scope.userForm = data.data;
-            console.log('userForm', $scope.userForm);
-
-        });
-
-        $scope.userSubmitForm = function(formValid) {
-            // console.log('form values: ', formData);
-            // console.log('form values: ', formValid);
-            console.log('form values: ', $scope.userForm);
-            if (formValid.$valid) {
-                NavigationService.editUserSubmit($scope.userForm, function(data) {
-                    console.log('my edit users', $scope.userForm);
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("userdetail");
+    $scope.menutitle = NavigationService.makeactive("Users");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+    $scope.page = {
+        header: "Create User"
+    };
+    $scope.userSubmitForm = function(formValid) {
+        if (formValid.$valid) {
+            NavigationService.userCreateSubmit($scope.userForm, function(data) {
+                if (data.value) {
+                    globalfunction.successToaster();
                     $state.go("users");
-                });
-
-            } else {
-
-            }
-        };
-
-    })
-    .controller('BillingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
-        //Used to name the .html file
-        $scope.template = TemplateService.changecontent("billing");
-        $scope.menutitle = NavigationService.makeactive("Billing");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
-    .controller('AccountCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
-        //Used to name the .html file
-        $scope.template = TemplateService.changecontent("account");
-        $scope.menutitle = NavigationService.makeactive("Account");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
-    .controller('PublishingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
-        //Used to name the .html file
-        $scope.template = TemplateService.changecontent("publishing");
-        $scope.menutitle = NavigationService.makeactive("Publishing");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.animationsEnabled = true;
-        $scope.lists = [{
-            "image": "img/t1.jpg"
-        }, {
-            "image": "img/t2.jpg"
-        }];
-        $scope.openscreenshot = function(size) {
-            var modalInstance = $uibModal.open({
-                animation: $scope.animationsEnabled,
-                templateUrl: 'views/modal/screenshots.html',
-                controller: 'PublishingCtrl',
-                size: size,
-                resolve: {
-                    items: function() {
-                        return $scope.items;
-                    }
                 }
             });
+        }
+    };
+})
 
-        };
+.controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $state, $stateParams) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("userdetail");
+    $scope.menutitle = NavigationService.makeactive("Users");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.userForm = {};
+    $scope.page = {
+        header: "Edit User"
+    };
 
-        $scope.toggleAnimation = function() {
-            $scope.animationsEnabled = !$scope.animationsEnabled;
-        };
-    })
+    NavigationService.getUserEditDetail($stateParams.id, function(data) {
+        $scope.userForm = data.data;
+    });
+
+    $scope.userSubmitForm = function(formValid) {
+        if (formValid.$valid) {
+            NavigationService.editUserSubmit($scope.userForm, function(data) {
+                console.log('my edit users', $scope.userForm);
+                $state.go("users");
+            });
+        }
+    };
+
+})
+
+.controller('BillingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("billing");
+    $scope.menutitle = NavigationService.makeactive("Billing");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
+
+.controller('AccountCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("account");
+    $scope.menutitle = NavigationService.makeactive("Account");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
+
+.controller('PublishingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("publishing");
+    $scope.menutitle = NavigationService.makeactive("Publishing");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.animationsEnabled = true;
+    $scope.lists = [{
+        "image": "img/t1.jpg"
+    }, {
+        "image": "img/t2.jpg"
+    }];
+    $scope.openscreenshot = function(size) {
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/screenshots.html',
+            controller: 'PublishingCtrl',
+            size: size,
+            resolve: {
+                items: function() {
+                    return $scope.items;
+                }
+            }
+        });
+
+    };
+
+    $scope.toggleAnimation = function() {
+        $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
+})
 
 .controller('ConfigurationCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
     //Used to name the .html file
@@ -2746,7 +2737,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.saveConfigData = function() {
         NavigationService.saveConfigData($scope.configData, function(data) {
             console.log(data);
+            if (data.value) {
+                globalfunction.successToaster();
+            }
         })
+    };
+
+    $scope.resetSearch = function() {
+        if ($scope.configData && $scope.configData.search) {
+            globalfunction.confDel(function(val) {
+                if (val) {
+                    _.each($scope.configData.search, function(n) {
+                        n.enabled = false;
+                    })
+                    NavigationService.saveConfigData($scope.configData, function(data) {
+                        console.log(data);
+                        if (data.value) {
+                            globalfunction.delSuccessToaster();
+                        }
+                    })
+                }
+            });
+        }
     };
 
     $scope.oneAtATime = true;

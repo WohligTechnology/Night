@@ -45,7 +45,7 @@
                 </tr>
               </thead>
               <tbody ng-if="userdata.length>0">
-                <tr>
+                <tr ng-repeat="user in userdata">
                   <td class="width30">
                     <div class="select-checkbox">
                       <div class="checkbox">
@@ -57,18 +57,6 @@
                     </div>
                   </td>
                   <td>
-                    <span>Mahesh Maurya</span>
-                  </td>
-                  <td>
-                    <span>mahesh@wohlig.com</span>
-                  </td>
-                  <td>
-                    <span>Email</span>
-                  </td>
-                  <td>
-                    <span>Admin</span>
-                  </td>
-                  <!-- <td>
                     <span>{{user.name}}</span>
                   </td>
                   <td>
@@ -79,8 +67,7 @@
                   </td>
                   <td>
                     <span>{{user.accesslevel}}</span>
-                  </td> -->
-
+                  </td>
                   <td>
                     <div class="action">
                       <a ui-sref="edituserdetail({id:user._id})"> <i class="ln-edit2 edit" tooltip-placement="top" uib-tooltip="Edit"></i></a>

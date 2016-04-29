@@ -1,60 +1,59 @@
 <div class="ionic-template mb30">
-  <div class="pull-right pd20"><a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a></div>
-  <h4 class="pad20">Blog >{{page.header}}</h4>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="home-slider form-background">
-        <div class="naming">
-          <h4>{{page.header}}</h4>
-        </div>
-        <div class="google-login paddingup">
-          <div class="form-login">
-            <form action="" name="user">
-              <div class="form-group">
-                <label for="">Title</label>
-                <input type="text" name="blogTitle" required ng-model="userForm.blogtitle" class="form-control" id="" placeholder="Title">
-                <div class="error-msg" ng-show="user.blogTitle.$error.required && user.blogTitle.$touched">Please Enter Title</div>
-              </div>
-              <div class="form-group">
-                <label for="">Content</label>
-                <textarea name="content" required class="form-control" ui-tinymce ng-model="userForm.content"></textarea>
-              </div>
-              <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content</div>
-              <div class="form-group">
-                <label for="">Date</label>
-                <p class="input-group">
-                  <input name="date" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true"
-                    close-text="Close" alt-input-formats="altInputFormats" required />
-                  <span class="input-group-btn calender-btn">
-             <button type="button" class="btn btn-default" ng-click="open1()"><i class=" ln-calendar3"></i></button>
-                 <div class="error-msg" ng-show="user.date.$error.required && user.date.$touched">Please Enter Date</div>
-           </span>
-                </p>
-              </div>
-                      <div class="error-msg" ng-show="user.date.$error.required && user.date.$touched">Please Enter Content</div>
-              <div class="form-group">
-                <label for="exampleInputFile">Image Upload</label>
-                <div class="noti-image">
-                  <div class="img-box">
-                    <h4 ng-if="isloading">Loading...</h4>
-                    <img ng-src="{{userForm.image|uploadpath}}" ng-if="userForm.image" >
-                    <!-- <img src="img/slider/s1.jpg"> -->
+   <div class="pull-right pd20"><a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a></div>
+   <h4 class="pad20">Blog >{{page.header}}</h4>
+   <div class="row">
+      <div class="col-md-12">
+         <div class="home-slider form-background">
+            <div class="naming">
+               <h4>{{page.header}}</h4>
+            </div>
+            <div class="google-login paddingup">
+               <form name="user" ng-submit="blogSubmitForm(user)">
+                  <div class="form-login">
+                     <div class="form-group">
+                        <label for="">Title</label>
+                        <input type="text" name="blogTitle" required ng-model="userForm.blogtitle" class="form-control" id="" placeholder="Title">
+                        <div class="error-msg" ng-show="user.blogTitle.$error.required && user.blogTitle.$touched">Please Enter Title</div>
+                     </div>
+                     <div class="form-group">
+                        <label for="">Content</label>
+                        <textarea name="content" required class="form-control" ui-tinymce ng-model="userForm.content"></textarea>
+                     </div>
+                     <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content</div>
+                     <div class="form-group">
+                        <label for="">Date</label>
+                        <p class="input-group">
+                           <input name="date" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" required
+                           close-text="Close" alt-input-formats="altInputFormats" required />
+                           <span class="input-group-btn calender-btn">
+                              <button type="button" class="btn btn-default" ng-click="open1()">
+                                <i class=" ln-calendar3"></i>
+                              </button>
+                              <div class="error-msg" ng-show="user.date.$error.required && user.date.$touched">Please Enter Date</div>
+                             </span>
+                        </p>
+                     </div>
+                     <div class="error-msg" ng-show="user.date.$error.required && user.date.$touched">Please Enter Content</div>
+                     <div class="form-group">
+                        <label for="exampleInputFile">Image Upload</label>
+                        <div class="noti-image">
+                           <div class="img-box">
+                              <h4 ng-if="isloading">Loading...</h4>
+                              <img ng-src="{{userForm.image|uploadpath}}" ng-if="userForm.image">
+                           </div>
+                        </div>
+                        <upload-image ng-model="userForm.image" no-view></upload-image>
+                     </div>
                   </div>
-                </div>
-                <upload-image ng-model="userForm.image" no-view></upload-image>
-                <!-- <input type="file" id="exampleInputFile"> -->
-              </div>
-          </div>
-          <div class="upload-img text-right">
-            <button class="btn btn-primary btn-outline btn-small" ng-click="blogSubmitForm(user)">Save</button>
-            <a ui-sref="blogs">
-              <button class="btn btn-primary btn-outline btn-small ml12">Cancel</button>
-            </a>
-          </div>
-          </form>
-        </div>
-
+                  <div class="upload-img text-right">
+                     <button type="submit" class="btn btn-primary btn-outline btn-small">Save</button>
+                     <a ui-sref="blogs">
+                        <button class="btn btn-primary btn-outline btn-small ml12">Cancel</button>
+                     </a>
+                  </div>
+               </form>
+            </div>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
 </div>

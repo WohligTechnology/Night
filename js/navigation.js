@@ -222,7 +222,7 @@ var navigationservice = angular.module('navigationservice', [])
         deleteBlogData: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'contact/delete',
+                url: adminurl + 'blog/delete',
                 method: 'POST',
                 withCredentials: true,
                 data: {
@@ -467,18 +467,7 @@ var navigationservice = angular.module('navigationservice', [])
                 url: adminurl + 'user/save',
                 method: 'POST',
                 withCredentials: true,
-                data: {
-                    "name": formData.name,
-                    "email": formData.email,
-                    "tags": formData.tags,
-                    "logintype": formData.logintype,
-                    "socialid": formData.socialid,
-                    "contact": formData.contact,
-                    "accesslevel": formData.accesslevel,
-                    "address": formData.address,
-                    "image": formData.image,
-                    "image1": formData.image1,
-                }
+                data: formData
             }).success(callback);
         },
         getUserEditDetail: function(id, callback) {
