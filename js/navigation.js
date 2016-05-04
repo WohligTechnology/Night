@@ -1,5 +1,5 @@
-var adminurl = "http://blazen.io/";
-// var adminurl = "http://192.168.1.131/";
+
+// var adminurl = "http://192.168.1.102/";
 var imgpath = adminurl + "upload/readFile";
 var uploadurl = adminurl + "upload";
 var navigationservice = angular.module('navigationservice', [])
