@@ -16,6 +16,9 @@
                 <div class="drop-image col-xs-3" ng-repeat="item in userForm.images">
                   <div ng-click="open(item);" class="image-holder">
                     <img ng-src="{{item.image | uploadpath:100:100:'fill'}}" alt="">
+                    <div class="delete-image" ng-click="deleteHomeSlide($index, item);  $event.stopPropagation();">
+                     <i class="ln ln-cross"></i>
+                    </div>
                     <div class="caption">
                       <p ng-if="item.name">{{item.name}}</p>
                     </div>

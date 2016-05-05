@@ -1,5 +1,5 @@
-var adminurl = "http://blazen.io/";
-// var adminurl = "http://192.168.1.102/";
+var adminurl = "http://wohlig.biz/";
+var adminurl = "http://192.168.1.131/";
 var imgpath = adminurl + "upload/readFile";
 var uploadurl = adminurl + "upload";
 var navigationservice = angular.module('navigationservice', [])
@@ -129,6 +129,15 @@ var navigationservice = angular.module('navigationservice', [])
             // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'homeslider/save',
+                method: 'POST',
+                withCredentials: true,
+                data: homeData
+            }).success(callback);
+        },
+        deleteHomeSlider: function(homeData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'homeslider/delete',
                 method: 'POST',
                 withCredentials: true,
                 data: homeData

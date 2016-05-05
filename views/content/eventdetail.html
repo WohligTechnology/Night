@@ -82,16 +82,16 @@
                         <div class="form-group">
                            <label for="">Event Banner</label>
                            <div class="create-event float-right">
-                              <upload-image ng-model="imageArr" multiple no-view ng-callback="changeit"></upload-image>
-                           </div>
+                              <upload-image ng-model="userForm.images" multiple no-view ng-callback="changeit"></upload-image>
+                           </div>{{userForm.images}}
                            <div class="image-set mt15" ng-if="userForm.images && userForm.images.length>0">
                               <div class="image-picker">
                                  <div dnd-list="lists" class="pt15">
                                     <div class="image-set">
-                                       <div class="row" ui-sortable ng-model="userForm.images">
+                                       <div class="row" ui-sortable nteg-model="userForm.images">
                                           <div class="drop-image col-xs-3" ng-repeat="item in userForm.images">
                                              <div ng-click="ImageEdit(item);" class="image-holder">
-                                                <img ng-src="{{item.image | uploadpath:100:100:'fill'}}" alt="">
+                                                <img ng-src="{{item.image | uploadpath}}" alt="">
                                                 <div class="caption">
                                                    <p ng-if="item.name">{{item.name}}</p>
                                                 </div>
@@ -122,7 +122,7 @@
                                              <div class="caption">
                                                 <p ng-if="item.name">{{item.name}}</p>
                                              </div>
-                                             <div class="delete-image">
+                                             <div class="delete-image" ng-click="popVideo($index)">
                                               <i class="ln ln-cross"></i>
                                              </div>
                                           </div>

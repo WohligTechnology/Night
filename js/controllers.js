@@ -271,9 +271,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         }
     };
-
     $scope.open = function(home) {
-        console.log(home);
+
         $scope.modalData = home;
 
         modalInstance = $uibModal.open({
@@ -303,7 +302,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         } else {
             $scope.configData = {};
         }
-    })
+    });
+
+    $scope.deleteHomeSlide = function(index, item){
+      console.log(item);
+      NavigationService.deleteHomeSlider({"_id":item._id},function(data){
+        console.log($scope.userForm.images);
+        $scope.userForm.images.splice(index, 1);
+        console.log($scope.userForm.images);
+
+      });
+    };
 
 })
 
@@ -602,7 +611,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
     $scope.userForm = {};
     $scope.notificationForm = {};
+    $scope.config = {};
     var modalInstance = '';
+
+    NavigationService.getConfig(function(data){
+      if (data.value) {
+          if (data.data && data.data.length > 0) {
+              $scope.configData = data.data[0];
+            }
+          }
+    });
 
     $scope.notificationdata = [];
     $scope.allNotificationRecord = function() {
@@ -962,6 +980,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }, function() {});
     };
 
+    $scope.popVideo = function(video){
+      console.log("sdflashdfkljahskljdfh");
+      console.log($scope.userForm.videos);
+    };
+
     $scope.pushVideo = function(video) {
         console.log(video);
         if (!$scope.userForm.videos) {
@@ -977,7 +1000,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
         modalInstances.dismiss();
         $scope.modalData = {};
-    }
+    };
 
     var modalInstance = '';
     $scope.ImageEdit = function(image) {
@@ -999,13 +1022,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.saveModalData = function(image) {
         modalInstance.dismiss();
-    }
+    };
 
     $scope.toggleAnimation = function() {
         $scope.animationsEnabled = !$scope.animationsEnabled;
     };
 
     $scope.changeit = function(data) {
+      console.log(data);
+      console.log($scope.userForm.images);
         if (data.value) {
             _.each(data.data, function(n) {
                 $scope.userForm.images.push({
@@ -1184,6 +1209,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }, function() {});
     };
 
+    $scope.popVideo = function(index){
+      $scope.userForm.videos.splice(index, 1);
+    };
+    $scope.changeit = function(data) {
+      console.log(data);
+      console.log($scope.userForm.images);
+        if (!$scope.userForm.images) {
+            $scope.userForm.images = [];
+        }
+        if (data.value) {
+            _.each(data.data, function(n) {
+                $scope.userForm.images.push({
+                    image: n
+                });
+            });
+        }
+    };
+
     $scope.pushVideo = function(video) {
         console.log(video);
         if (!$scope.userForm.videos) {
@@ -1199,7 +1242,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
         modalInstances.dismiss();
         $scope.modalData = {};
-    }
+    };
 
     var modalInstance = '';
     $scope.ImageEdit = function(image) {
