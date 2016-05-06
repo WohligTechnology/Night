@@ -1,5 +1,5 @@
 var adminurl = "http://wohlig.biz/";
-var adminurl = "http://192.168.1.131/";
+var adminurl = "http://192.168.1.131:81/";
 var imgpath = adminurl + "upload/readFile";
 var uploadurl = adminurl + "upload";
 var navigationservice = angular.module('navigationservice', [])
@@ -193,6 +193,15 @@ var navigationservice = angular.module('navigationservice', [])
                 data: formData
             }).success(callback);
         },
+        deleteIntroSlider: function(id, callback, errCallback) {
+          return $http({
+            url: adminurl + 'introslider/delete',
+            method: "POST",
+            data: {
+              '_id': id
+            }
+          }).success(callback).error(errCallback);
+        },
         getNotificationEditDetail: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -307,6 +316,7 @@ var navigationservice = angular.module('navigationservice', [])
                     "address": formData.address,
                     "lat": formData.lat,
                     "long": formData.long,
+                    "contactno": formData.contactno
                 }
             }).success(callback);
         },
@@ -334,6 +344,7 @@ var navigationservice = angular.module('navigationservice', [])
                     "address": formData.address,
                     "lat": formData.lat,
                     "long": formData.long,
+                    "contactno": formData.contactno
                 }
             }).success(callback);
         },
@@ -728,6 +739,16 @@ var navigationservice = angular.module('navigationservice', [])
         getSingleGallery: function(gallid, callback) {
             $http({
                 url: adminurl + 'photogallery/getOne',
+                method: 'POST',
+                data: {
+                    "_id": gallid
+                },
+                withCredentials: true
+            }).success(callback);
+        },
+        deleteGallery: function(gallid, callback) {
+            $http({
+                url: adminurl + 'photogallery/delete',
                 method: 'POST',
                 data: {
                     "_id": gallid

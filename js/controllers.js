@@ -622,6 +622,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
           }
     });
 
+    $scope.saveGoogleCloud = function(){
+      console.log($scope.configData);
+      NavigationService.saveConfigData($scope.configData, function(data){
+
+      });
+    };
+
     $scope.notificationdata = [];
     $scope.allNotificationRecord = function() {
         NavigationService.notificationViewAll($scope.notificationForm, function(data) {
@@ -1032,20 +1039,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       console.log(data);
       console.log($scope.userForm.images);
         if (data.value) {
+          // if ($scope.userForm.images && $scope.userForm.images.length<1) {
             _.each(data.data, function(n) {
                 $scope.userForm.images.push({
                     "image": n
-                })
-            })
+                });
+            });
+          // }
+
         }
-    }
+    };
 
 })
 
 .controller('EditEventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, toaster, $stateParams, $filter) {
 
     //Used to name the .html file
-
+console.log("in edit event");
     $scope.template = TemplateService.changecontent("eventdetail");
     $scope.menutitle = NavigationService.makeactive("Events");
     TemplateService.title = $scope.menutitle;
@@ -1212,9 +1222,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.popVideo = function(index){
       $scope.userForm.videos.splice(index, 1);
     };
+
+    $scope.popImage = function(index){
+      $scope.userForm.images.splice(index, 1);
+    };
+
     $scope.changeit = function(data) {
       console.log(data);
       console.log($scope.userForm.images);
+
         if (!$scope.userForm.images) {
             $scope.userForm.images = [];
         }
@@ -1225,6 +1241,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 });
             });
         }
+    };
+
+    $scope.addVideo = function() {
+        $scope.modalData = {};
+        modalInstances = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/video-edit.html',
+            scope: $scope
+        });
+
+        modalInstances.result.then(function(selectedItem) {
+            $scope.selected = selectedItem;
+        }, function() {});
     };
 
     $scope.pushVideo = function(video) {
@@ -1807,8 +1836,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         update: function(e, ui) {
             NavigationService.sortArray($scope.photogaldata, 'photogallery', function(data) {
 
-            })
+            });
         }
+    };
+
+    $scope.deleteGallery = function(id, index){
+      NavigationService.deleteGallery(id, function(data){
+        if (data.value) {
+          $scope.photogaldata.splice(index,1);
+        }
+      });
     };
 
 })
@@ -2027,18 +2064,40 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }, function() {});
     };
 
+    // $scope.pushVideo = function(video) {
+    //     console.log(video);
+    //     if (!$scope.userForm.videos) {
+    //         $scope.userForm.videos = [];
+    //     }
+    //     $scope.userForm.videos.push(video);
+    //     modalInstances.dismiss();
+    //     $scope.modalData = {};
+    // };
     $scope.pushVideo = function(video) {
         console.log(video);
         if (!$scope.userForm.videos) {
             $scope.userForm.videos = [];
         }
-        $scope.userForm.videos.push(video);
+        var found = _.findIndex($scope.userForm.videos, {
+            'link': video.link
+        });
+        if (found == -1) {
+            $scope.userForm.videos.push(video);
+        } else {
+            $scope.userForm.videos[found] = video;
+        }
         modalInstances.dismiss();
         $scope.modalData = {};
-    }
+    };
 
     $scope.toggleAnimation = function() {
         $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
+
+    $scope.popVideo = function(index){
+      console.log("sdflashdfkljahskljdfh");
+      console.log($scope.userForm.videos);
+      $scope.userForm.videos.splice(index, 1);
     };
 
     $scope.videoGallerySubmitForm = function(formValid) {
@@ -2158,6 +2217,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }, function() {});
     };
 
+    // $scope.open = function(singleVideo) {
+    //     $scope.modalData = singleVideo;
+    //     modalInstances = $uibModal.open({
+    //         animation: $scope.animationsEnabled,
+    //         templateUrl: 'views/modal/video-edit.html',
+    //         scope: $scope
+    //     });
+    //
+    //     modalInstances.result.then(function(selectedItem) {
+    //         $scope.selected = selectedItem;
+    //     }, function() {});
+    // };
+
     $scope.toggleAnimation = function() {
         $scope.animationsEnabled = !$scope.animationsEnabled;
     };
@@ -2170,17 +2242,39 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         } else {
             console.log("The youtube url is not valid.");
         }
-    }
+    };
 
+    $scope.popVideo = function(index){
+      console.log("sdflashdfkljahskljdfh");
+      console.log($scope.userForm.videos);
+      $scope.userForm.videos.splice(index, 1);
+    };
+
+    // $scope.pushVideo = function(video) {
+    //     console.log(video);
+    //     if (!$scope.userForm.videos) {
+    //         $scope.userForm.videos = [];
+    //     }
+    //     $scope.userForm.videos.push(video);
+    //     modalInstances.dismiss();
+    //     $scope.modalData = {};
+    // };
     $scope.pushVideo = function(video) {
         console.log(video);
         if (!$scope.userForm.videos) {
             $scope.userForm.videos = [];
         }
-        $scope.userForm.videos.push(video);
+        var found = _.findIndex($scope.userForm.videos, {
+            'link': video.link
+        });
+        if (found == -1) {
+            $scope.userForm.videos.push(video);
+        } else {
+            $scope.userForm.videos[found] = video;
+        }
         modalInstances.dismiss();
         $scope.modalData = {};
-    }
+    };
 
 })
 
@@ -2263,6 +2357,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     });
 
     $scope.contactSubmitForm = function(formValid) {
+      console.log($scope.userForm);
         if (formValid.$valid) {
             NavigationService.editContactSubmit($scope.userForm, function(data) {
                 if (data.value) {
@@ -2569,7 +2664,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         } else {
             $scope.userForm = [];
         }
-    })
+    });
 
     $scope.saveModalData = function(modalData) {
         console.log($scope.userForm);
@@ -2580,18 +2675,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             } else {
                 globalfunction.errorToaster();
             }
-        })
-    }
+        });
+    };
 
     $scope.changeit = function(data) {
         if (data.value) {
             _.each(data.data, function(n) {
                 $scope.userForm.push({
                     "image": n
-                })
-            })
+                });
+            });
         }
-    }
+    };
 
     $scope.open = function(image) {
         console.log(image);
@@ -2610,11 +2705,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     };
 
+    $scope.popSlider = function(index, id){
+      NavigationService.deleteIntroSlider(id, function(data){
+        if (data.value) {
+          $scope.userForm.splice(index, 1);
+        }
+      }, function(data){console.log(data);});
+    };
+
     $scope.sortableOptions = {
         update: function(e, ui) {
             NavigationService.sortArray($scope.userForm, 'introslider', function(data) {
 
-            })
+            });
         }
     };
 

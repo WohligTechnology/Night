@@ -37,6 +37,9 @@
                       <div class="caption">
                         <p ng-if="item.title">{{item.title}}</p>
                       </div>
+                      <div class="delete-image" ng-click="deleteGallery(item._id, $index); $event.stopPropagation();">
+                        <i class="ln ln-cross"></i>
+                      </div>
                     </div>
                   </div>
                 </div>

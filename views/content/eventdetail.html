@@ -81,27 +81,28 @@
                         </div>
                         <div class="form-group">
                            <label for="">Event Banner</label>
-                           <div class="create-event float-right">
-                              <upload-image ng-model="userForm.images" multiple no-view ng-callback="changeit"></upload-image>
-                           </div>{{userForm.images}}
-                           <div class="image-set mt15" ng-if="userForm.images && userForm.images.length>0">
-                              <div class="image-picker">
-                                 <div dnd-list="lists" class="pt15">
-                                    <div class="image-set">
-                                       <div class="row" ui-sortable nteg-model="userForm.images">
-                                          <div class="drop-image col-xs-3" ng-repeat="item in userForm.images">
-                                             <div ng-click="ImageEdit(item);" class="image-holder">
-                                                <img ng-src="{{item.image | uploadpath}}" alt="">
-                                                <div class="caption">
-                                                   <p ng-if="item.name">{{item.name}}</p>
-                                                </div>
-                                             </div>
-                                          </div>
+                           <div class="image-set">
+                             <div class="image-picker">
+                               <div dnd-list="lists" class="pt15">
+                                 <div class="image-set">
+                                   <div class="row" ui-sortable ng-model="userForm.images">
+                                     <div class="drop-image col-xs-3" ng-repeat="item in userForm.images track by $index" ng-click="ImageEdit(item);">
+                                       <div class="image-holder">
+                                         <img ng-src="{{item.image|uploadpath:100:100:'fill'}}">
+                                         <div class="caption">
+                                           <p ng-if="item.name">{{item.name}}</p>
+                                         </div>
+                                         <div class="delete-image" ng-click="popImage($index); ">
+                                           <i class="ln ln-cross"></i>
+                                         </div>
                                        </div>
-                                       <div class="clearfix"></div>
-                                    </div>
+                                     </div>
+                                   </div>
+                                   <div class="clearfix"></div>
                                  </div>
-                              </div>
+                               </div>
+                             </div>
+                             <upload-image ng-model="imagesArr" multiple no-view ng-callback="changeit"></upload-image>
                            </div>
                         </div>
                         <div class="clearfix"></div>

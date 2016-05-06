@@ -69,6 +69,9 @@
                               <div class="caption">
                                 <p ng-if="item.name">{{item.name}}</p>
                               </div>
+                              <div class="delete-image" ng-click="popVideo($index); $event.stopPropagation();">
+                               <i class="ln ln-cross"></i>
+                              </div>
                             </div>
                           </div>
                         </div>
