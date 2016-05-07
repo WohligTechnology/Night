@@ -417,6 +417,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.userForm = {};
+    $scope.userForm.status = true;
     $scope.page = {
         header: "Create Navigation"
     };
@@ -612,6 +613,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.userForm = {};
+    $scope.userForm.status = true;
     $scope.notificationForm = {};
     $scope.config = {};
     var modalInstance = '';
@@ -1628,6 +1630,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.userForm = {};
+    $scope.userForm.status = true;
     //$scope.userForm.status=1;
     $scope.page = {
         header: "Create Article"
@@ -1873,6 +1876,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     var modalInstance = '';
 
     $scope.userForm = {};
+    $scope.userForm.status = true;
 
     $scope.photogalSubmitForm = function() {
         NavigationService.photogalSubmitForm($scope.userForm, function(data) {
@@ -1901,6 +1905,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.open = function(image) {
         console.log(image);
         $scope.modalData = image;
+        $scope.modalData.status = true;
 
         modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
@@ -1993,6 +1998,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.header = {};
     $scope.header.name = 'Create Video Gallery';
     $scope.userForm = {};
+    $scope.userForm.status = true;
     $scope.modalData = {};
     var modalInstances = '';
 
@@ -2054,6 +2060,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.VideoEdit = function() {
+        $scope.modalData = {};
+        $scope.modalData.status = true;
         modalInstances = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/video-edit.html',
