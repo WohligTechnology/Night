@@ -304,14 +304,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     });
 
-    $scope.deleteHomeSlide = function(index, item){
-      console.log(item);
-      NavigationService.deleteHomeSlider({"_id":item._id},function(data){
-        console.log($scope.userForm.images);
-        $scope.userForm.images.splice(index, 1);
-        console.log($scope.userForm.images);
+    $scope.deleteHomeSlide = function(index, item) {
+        console.log(item);
+        NavigationService.deleteHomeSlider({
+            "_id": item._id
+        }, function(data) {
+            console.log($scope.userForm.images);
+            $scope.userForm.images.splice(index, 1);
+            console.log($scope.userForm.images);
 
-      });
+        });
     };
 
 })
@@ -614,19 +616,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.config = {};
     var modalInstance = '';
 
-    NavigationService.getConfig(function(data){
-      if (data.value) {
-          if (data.data && data.data.length > 0) {
-              $scope.configData = data.data[0];
+    NavigationService.getConfig(function(data) {
+        if (data.value) {
+            if (data.data && data.data.length > 0) {
+                $scope.configData = data.data[0];
             }
-          }
+        }
     });
 
-    $scope.saveGoogleCloud = function(){
-      console.log($scope.configData);
-      NavigationService.saveConfigData($scope.configData, function(data){
+    $scope.saveGoogleCloud = function() {
+        console.log($scope.configData);
+        NavigationService.saveConfigData($scope.configData, function(data) {
 
-      });
+        });
     };
 
     $scope.notificationdata = [];
@@ -987,9 +989,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }, function() {});
     };
 
-    $scope.popVideo = function(video){
-      console.log("sdflashdfkljahskljdfh");
-      console.log($scope.userForm.videos);
+    $scope.popVideo = function(video) {
+        console.log("sdflashdfkljahskljdfh");
+        console.log($scope.userForm.videos);
     };
 
     $scope.pushVideo = function(video) {
@@ -1036,16 +1038,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.changeit = function(data) {
-      console.log(data);
-      console.log($scope.userForm.images);
+        console.log(data);
+        console.log($scope.userForm.images);
         if (data.value) {
-          // if ($scope.userForm.images && $scope.userForm.images.length<1) {
+            // if ($scope.userForm.images && $scope.userForm.images.length<1) {
             _.each(data.data, function(n) {
                 $scope.userForm.images.push({
                     "image": n
                 });
             });
-          // }
+            // }
 
         }
     };
@@ -1055,7 +1057,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 .controller('EditEventDetailCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $state, toaster, $stateParams, $filter) {
 
     //Used to name the .html file
-console.log("in edit event");
+    console.log("in edit event");
     $scope.template = TemplateService.changecontent("eventdetail");
     $scope.menutitle = NavigationService.makeactive("Events");
     TemplateService.title = $scope.menutitle;
@@ -1219,17 +1221,17 @@ console.log("in edit event");
         }, function() {});
     };
 
-    $scope.popVideo = function(index){
-      $scope.userForm.videos.splice(index, 1);
+    $scope.popVideo = function(index) {
+        $scope.userForm.videos.splice(index, 1);
     };
 
-    $scope.popImage = function(index){
-      $scope.userForm.images.splice(index, 1);
+    $scope.popImage = function(index) {
+        $scope.userForm.images.splice(index, 1);
     };
 
     $scope.changeit = function(data) {
-      console.log(data);
-      console.log($scope.userForm.images);
+        console.log(data);
+        console.log($scope.userForm.images);
 
         if (!$scope.userForm.images) {
             $scope.userForm.images = [];
@@ -1339,14 +1341,26 @@ console.log("in edit event");
         $scope.valid = false;
         if ($scope.configData.blog && $scope.configData.blog.blogType == 'CMS') {
             $scope.valid = true;
-        }
-        if ($scope.configData.blog && $scope.configData.blog.blogType != 'CMS') {
-            if ($scope.configData.blog && $scope.configData.blog.username) {
+        } else if ($scope.configData.blog && $scope.configData.blog.blogType == 'Wordpress') {
+            if ($scope.configData.blog && $scope.configData.blog.wordpressUsername) {
+                $scope.valid = true;
+            } else {
+                $scope.valid = false;
+            }
+        } else if ($scope.configData.blog && $scope.configData.blog.blogType == 'SelfHosted') {
+            if ($scope.configData.blog && $scope.configData.blog.selfHostedUsername) {
+                $scope.valid = true;
+            } else {
+                $scope.valid = false;
+            }
+        } else if ($scope.configData.blog && $scope.configData.blog.blogType == 'Tumblr') {
+            if ($scope.configData.blog && $scope.configData.blog.tumblrUsername) {
                 $scope.valid = true;
             } else {
                 $scope.valid = false;
             }
         }
+
         if ($scope.valid) {
             $scope.showErrMsg = false;
             NavigationService.saveConfigData($scope.configData, function(data) {
@@ -1380,17 +1394,17 @@ console.log("in edit event");
                                 isFirstOpen: true
                             };
                             break;
-                        case 'Wordpress Blog':
+                        case 'Wordpress':
                             $scope.status = {
                                 open2: true
                             };
                             break;
-                        case 'Self Hosted Wordpress':
+                        case 'SelfHosted':
                             $scope.status = {
                                 open3: true
                             };
                             break;
-                        case 'Tumblr Blog':
+                        case 'Tumblr':
                             $scope.status = {
                                 open4: true
                             };
@@ -1840,12 +1854,12 @@ console.log("in edit event");
         }
     };
 
-    $scope.deleteGallery = function(id, index){
-      NavigationService.deleteGallery(id, function(data){
-        if (data.value) {
-          $scope.photogaldata.splice(index,1);
-        }
-      });
+    $scope.deleteGallery = function(id, index) {
+        NavigationService.deleteGallery(id, function(data) {
+            if (data.value) {
+                $scope.photogaldata.splice(index, 1);
+            }
+        });
     };
 
 })
@@ -2094,10 +2108,10 @@ console.log("in edit event");
         $scope.animationsEnabled = !$scope.animationsEnabled;
     };
 
-    $scope.popVideo = function(index){
-      console.log("sdflashdfkljahskljdfh");
-      console.log($scope.userForm.videos);
-      $scope.userForm.videos.splice(index, 1);
+    $scope.popVideo = function(index) {
+        console.log("sdflashdfkljahskljdfh");
+        console.log($scope.userForm.videos);
+        $scope.userForm.videos.splice(index, 1);
     };
 
     $scope.videoGallerySubmitForm = function(formValid) {
@@ -2244,10 +2258,10 @@ console.log("in edit event");
         }
     };
 
-    $scope.popVideo = function(index){
-      console.log("sdflashdfkljahskljdfh");
-      console.log($scope.userForm.videos);
-      $scope.userForm.videos.splice(index, 1);
+    $scope.popVideo = function(index) {
+        console.log("sdflashdfkljahskljdfh");
+        console.log($scope.userForm.videos);
+        $scope.userForm.videos.splice(index, 1);
     };
 
     // $scope.pushVideo = function(video) {
@@ -2357,7 +2371,7 @@ console.log("in edit event");
     });
 
     $scope.contactSubmitForm = function(formValid) {
-      console.log($scope.userForm);
+        console.log($scope.userForm);
         if (formValid.$valid) {
             NavigationService.editContactSubmit($scope.userForm, function(data) {
                 if (data.value) {
@@ -2705,12 +2719,14 @@ console.log("in edit event");
         });
     };
 
-    $scope.popSlider = function(index, id){
-      NavigationService.deleteIntroSlider(id, function(data){
-        if (data.value) {
-          $scope.userForm.splice(index, 1);
-        }
-      }, function(data){console.log(data);});
+    $scope.popSlider = function(index, id) {
+        NavigationService.deleteIntroSlider(id, function(data) {
+            if (data.value) {
+                $scope.userForm.splice(index, 1);
+            }
+        }, function(data) {
+            console.log(data);
+        });
     };
 
     $scope.sortableOptions = {
@@ -2963,7 +2979,7 @@ console.log("in edit event");
     })
 })
 
-.controller('headerctrl', function($scope, TemplateService, toastr, $uibModal) {
+.controller('headerctrl', function($scope, TemplateService, toastr, $uibModal, NavigationService) {
     $scope.template = TemplateService;
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
         $(window).scrollTop(0);
@@ -2999,6 +3015,33 @@ console.log("in edit event");
         });
         $scope.callback = callback;
     };
+
+    NavigationService.getConfig(function(data) {
+        console.log(data);
+        if (data.data && data.data.length == 0) {
+            $scope.saveConfig();
+        }
+    })
+
+    $scope.saveConfig = function() {
+        $scope.config = {
+            googleCloud: {},
+            blog: {
+                blogType: "CMS"
+            },
+            socialfeeds: {},
+            gaid: "",
+            login: {
+                hasLogin: false
+            }
+        }
+        console.log($scope.config);
+        NavigationService.saveConfigData($scope.config, function(data) {
+            console.log(data);
+        })
+    }
+
+
 
     $scope.close = function(val) {
         modalInstance.dismiss();

@@ -19,28 +19,28 @@
           <div class="col-sm-6">
             <div class="radio-opt">
               <label class="radio-inline">
-                <input type="radio" name="optradio" ng-click="status.isFirstOpen = !status.isFirstOpen" ng-model="configData.blog.blogType" >CMS
+                <input type="radio" name="optradio" ng-click="status.isFirstOpen = !status.isFirstOpen;saveConfigData()" ng-model="configData.blog.blogType" value="CMS">CMS
               </label>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="radio-opt">
               <label class="radio-inline">
-                <input type="radio" name="optradio" ng-click="status.open2 = !status.open2" ng-model="configData.blog.blogType" >Wordpress Blog
+                <input type="radio" name="optradio" ng-click="status.open2 = !status.open2;saveConfigData()" ng-model="configData.blog.blogType" value="Wordpress">Wordpress Blog
               </label>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="radio-opt">
               <label class="radio-inline">
-                <input type="radio" name="optradio" ng-click="status.open3 = !status.open3" ng-model="configData.blog.blogType">Self Hosted Wordpress
+                <input type="radio" name="optradio" ng-click="status.open3 = !status.open3;saveConfigData()" ng-model="configData.blog.blogType" value="SelfHosted">Self Hosted Wordpress
               </label>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="radio-opt">
               <label class="radio-inline">
-                <input type="radio" name="optradio" ng-click="status.open4 = !status.open4" ng-model="configData.blog.blogType">Tumblr Blog
+                <input type="radio" name="optradio" ng-click="status.open4 = !status.open4;saveConfigData()" ng-model="configData.blog.blogType" value="Tumblr">Tumblr Blog
               </label>
             </div>
           </div>
