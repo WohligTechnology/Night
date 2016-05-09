@@ -658,8 +658,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.notificationSubmitForm = function(formValid) {
         if (formValid.$valid) {
-            console.log('in navi');
             $scope.userForm.timestamp = new Date();
+            if ($scope.userForm.type === null) {
+              var serverType = $scope.userForm.link.split(" ")[0];
+              $scope.userForm.typeForApp = serverType;
+            }else {
+              var serverTypetype = $scope.userForm.type.split(" ")[0];
+              $scope.userForm.typeForApp = serverTypetype;
+            }
             NavigationService.notificationCreateSubmit($scope.userForm, function(data) {
                 if (data.value) {
                     $scope.userForm = {};
@@ -673,6 +679,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.notificationEditSubmitForm = function(noti) {
+      if ($scope.noti.type === null) {
+        var serverType = $scope.noti.link.split(" ")[0];
+        $scope.noti.typeForApp = serverType;
+      }else {
+        var serverTypetype = $scope.noti.type.split(" ")[0];
+        $scope.noti.typeForApp = serverTypetype;
+      }
         NavigationService.notificationCreateSubmit(noti, function(data) {
             if (data.value) {
                 globalfunction.successToaster();
