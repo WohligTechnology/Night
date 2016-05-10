@@ -37,9 +37,6 @@
                     <span>Login Type</span>
                   </th>
                   <th>
-                    <span>Access Level</span>
-                  </th>
-                  <th>
                     <span>Action</span>
                   </th>
                 </tr>
@@ -63,10 +60,8 @@
                     <span>{{user.email}}</span>
                   </td>
                   <td>
-                    <span>{{user.logintype}}</span>
-                  </td>
-                  <td>
-                    <span>{{user.accesslevel}}</span>
+                    <span ng-if="user.oauthLogin[0].socialProvider">{{user.oauthLogin[0].socialProvider}}</span>
+                    <span ng-if="!user.oauthLogin[0].socialProvider">Normal</span>
                   </td>
                   <td>
                     <div class="action">

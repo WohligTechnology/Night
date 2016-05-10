@@ -1,36 +1,36 @@
 <div class="max-size">
-  <div class="ionic-template mb30">
-    <div class="pull-right pd20">
-      <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
-    </div>
-    <h4 class="pad20">Photo Gallery >
+   <div class="ionic-template mb30">
+      <div class="pull-right pd20">
+         <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
+      </div>
+      <h4 class="pad20">Photo Gallery >
           Photo Gallery Detail</h4>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="home-slider form-background">
-          <!-- <div class="naming">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="home-slider form-background">
+               <!-- <div class="naming">
                   <h4>Create Photo Gallery</h4>
                </div> -->
-          <div class="google-login paddingup">
-            <div class="form-login">
-              <form name="user">
-                <div class="form-group">
-                  <label for="">Title</label>
-                  <input type="text" class="form-control" id="title" name="title" placeholder="Title" ng-model="userForm.title" required>
-                  <div class="error-msg" ng-show="user.title.$error.required && user.title.$touched">Please Enter Title
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="">Status</label>
-                  <div class="onoffswitch">
-                    <input name="status" ng-model="userForm.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch">
-                    <label class="onoffswitch-label" for="myonoffswitch">
-                      <span class="onoffswitch-inner"></span>
-                      <span class="onoffswitch-switch"></span>
-                    </label>
-                  </div>
-                </div>
-                <!-- <div class="form-group">
+               <div class="google-login paddingup">
+                  <div class="form-login">
+                     <form name="user">
+                        <div class="form-group">
+                           <label for="">Title</label>
+                           <input type="text" class="form-control" id="title" name="title" placeholder="Title" ng-model="userForm.title" required>
+                           <div class="error-msg" ng-show="user.title.$error.required && user.title.$touched">Please Enter Title
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label for="">Status</label>
+                           <div class="onoffswitch">
+                              <input name="status" ng-model="userForm.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch">
+                              <label class="onoffswitch-label" for="myonoffswitch">
+                                 <span class="onoffswitch-inner"></span>
+                                 <span class="onoffswitch-switch"></span>
+                              </label>
+                           </div>
+                        </div>
+                        <!-- <div class="form-group">
                            <label for="">Date</label>
                            <p class="input-group">
                               <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="userForm.date" is-open="popup1.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"
@@ -40,51 +40,51 @@
                              </span>
                            </p>
                         </div> -->
-                <div class="img-upload">
-                  <label for="">Upload Image</label>
-                  <div class="noti-image">
-                    <div class="img-box">
-                      <h4 ng-if="isloading">Loading...</h4>
-                      <img ng-src="{{userForm.icon|uploadpath}}" ng-if="userForm.icon">
-                      <!-- <img src="img/slider/s1.jpg" class="img-responsive"> -->
-                    </div>
-                  </div>
-                  <upload-image ng-model="userForm.icon" no-view></upload-image>
-                </div>
-                <div class="multiple-img">
-                  <label for="">Upload Gallery Images</label>
-                  <div class="image-set">
-                    <div class="image-picker">
-                      <div dnd-list="lists" class="pt15">
-                        <div class="image-set">
-                          <div class="row" ui-sortable ng-model="userForm.images">
-                            <div class="drop-image col-xs-3" ng-repeat="item in userForm.images track by $index" ng-click="open(item);">
-                              <div class="image-holder">
-                                <img ng-src="{{item.image|uploadpath:100:100:'fill'}}">
-                                <div class="caption">
-                                  <p ng-if="item.name">{{item.name}}</p>
-                                </div>
-                                <div class="delete-image">
-                                  <i class="ln ln-cross"></i>
-                                </div>
+                        <div class="img-upload">
+                           <label for="">Upload Image</label>
+                           <div class="noti-image">
+                              <div class="img-box">
+                                 <h4 ng-if="isloading">Loading...</h4>
+                                 <img ng-src="{{userForm.icon|uploadpath}}" ng-if="userForm.icon">
+                                 <!-- <img src="img/slider/s1.jpg" class="img-responsive"> -->
                               </div>
-                            </div>
-                          </div>
-                          <div class="clearfix"></div>
+                           </div>
+                           <upload-image ng-model="userForm.icon" no-view></upload-image>
                         </div>
-                      </div>
-                    </div>
-                    <upload-image ng-model="imagesArr" multiple no-view ng-callback="changeit"></upload-image>
+                        <div class="multiple-img">
+                           <label for="">Upload Gallery Images</label>
+                           <div class="image-set">
+                              <div class="image-picker">
+                                 <div dnd-list="lists" class="pt15">
+                                    <div class="image-set">
+                                       <div class="row" ui-sortable ng-model="userForm.images">
+                                          <div class="drop-image col-xs-3" ng-repeat="item in userForm.images track by $index" ng-click="open(item);">
+                                             <div class="image-holder">
+                                                <img ng-src="{{item.image|uploadpath:100:100:'fill'}}">
+                                                <div class="caption">
+                                                   <p ng-if="item.name">{{item.name}}</p>
+                                                </div>
+                                                <div class="delete-image" ng-click="popImage($index);$event.stopPropagation();">
+                                                   <i class="ln ln-cross"></i>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="clearfix"></div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <upload-image ng-model="imagesArr" multiple no-view ng-callback="changeit"></upload-image>
+                           </div>
+                           <div class="upload-img text-right">
+                              <button class="btn btn-primary btn-outline btn-small" ng-click="photogalSubmitForm(user)">Save</button>
+                              <button class="btn btn-danger btn-outline btn-small" ui-sref="photo-galleries">Cancel</button>
+                           </div>
+                     </form>
+                     </div>
                   </div>
-                  <div class="upload-img text-right">
-                    <button class="btn btn-primary btn-outline btn-small" ng-click="photogalSubmitForm(user)">Save</button>
-                    <button class="btn btn-danger btn-outline btn-small" ui-sref="photo-galleries">Cancel</button>
-                  </div>
-              </form>
-              </div>
+               </div>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>

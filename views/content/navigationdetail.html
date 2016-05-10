@@ -28,10 +28,10 @@
                               <label for="sel1">Select Icon:</label>
                               <select ng-model="userForm.iconType" class="form-control" id="sel1">
                                 <option value="">Select Icon</option>
-                                <option value="ln-chart-growth">ln-chart-growth</option>
-                                <option value="ln-home3">ln-home3</option>
+                                <option ng-repeat="icon in icons" value="ln-{{icon}}">ln-{{icon}}</option>
+                                <!-- <option value="ln-home3">ln-home3</option>
                                 <option value="ln-unlock">ln-unlock</option>
-                                <option value="ln-bell">ln-bell</option>
+                                <option value="ln-bell">ln-bell</option> -->
                                 <option value="custom">Custom Icon</option>
                               </select>
                             </div>
