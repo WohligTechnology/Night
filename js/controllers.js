@@ -1,7 +1,7 @@
 //window.uploadurl = "http://192.168.0.126:81/uploadfile/upload/";
 window.uploadurl = "http://blazen.io/uploadfile/upload/";
 var globalfunction = {};
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'toaster', 'imageupload', 'httpService', 'toastr'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'toaster', 'imageupload', 'httpService', 'toastr', 'angular-loading-bar'])
 
 .controller('AllAppsCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log, httpService) {
     //Used to name the .html file
@@ -225,9 +225,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.allHomeRecord();
 
     $scope.homeEditSubmitForm = function() {
+        _.each($scope.userForm.images, function(n) {
+            if (!n.status && n.status != false) {
+                n.status = true;
+            }
+        })
         NavigationService.insertData($scope.userForm.images, function(data) {
             if (data.value) {
                 globalfunction.successToaster();
+                $scope.allHomeRecord();
             } else {
                 globalfunction.errorToaster();
             }
@@ -305,14 +311,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     });
 
     $scope.deleteHomeSlide = function(index, item) {
-        console.log(item);
-        NavigationService.deleteHomeSlider({
-            "_id": item._id
-        }, function(data) {
-            console.log($scope.userForm.images);
-            $scope.userForm.images.splice(index, 1);
-            console.log($scope.userForm.images);
-
+        globalfunction.confDel(function(val) {
+            if (val) {
+                if (item._id) {
+                    NavigationService.deleteHomeSlider({
+                        "_id": item._id
+                    }, function(data) {
+                        if (data.value) {
+                            globalfunction.delSuccessToaster();
+                            $scope.allHomeRecord();
+                        }
+                    });
+                } else {
+                    $scope.userForm.images.splice(index, 1);
+                }
+            }
         });
     };
 
@@ -329,7 +342,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.sortableOptions = {
         update: function(e, ui) {
             NavigationService.sortArray($scope.navigationdata, 'navigation', function(data) {
-
+                globalfunction.successToaster();
             })
         }
     };
@@ -359,7 +372,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.makeDefault = function(nav) {
         console.log(nav);
         NavigationService.setDefault(nav._id, function(data) {
-
+            globalfunction.successToaster();
         });
     }
 
@@ -658,14 +671,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.notificationSubmitForm = function(formValid) {
         if (formValid.$valid) {
+            console.log('in navi');
             $scope.userForm.timestamp = new Date();
-            if ($scope.userForm.type === null) {
-              var serverType = $scope.userForm.link.split(" ")[0];
-              $scope.userForm.typeForApp = serverType;
-            }else {
-              var serverTypetype = $scope.userForm.type.split(" ")[0];
-              $scope.userForm.typeForApp = serverTypetype;
-            }
             NavigationService.notificationCreateSubmit($scope.userForm, function(data) {
                 if (data.value) {
                     $scope.userForm = {};
@@ -679,13 +686,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.notificationEditSubmitForm = function(noti) {
-      if ($scope.noti.type === null) {
-        var serverType = $scope.noti.link.split(" ")[0];
-        $scope.noti.typeForApp = serverType;
-      }else {
-        var serverTypetype = $scope.noti.type.split(" ")[0];
-        $scope.noti.typeForApp = serverTypetype;
-      }
         NavigationService.notificationCreateSubmit(noti, function(data) {
             if (data.value) {
                 globalfunction.successToaster();
@@ -1237,11 +1237,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.popVideo = function(index) {
-        $scope.userForm.videos.splice(index, 1);
+        globalfunction.confDel(function(val) {
+            if (val) {
+                $scope.userForm.videos.splice(index, 1);
+            }
+        });
     };
 
     $scope.popImage = function(index) {
-        $scope.userForm.images.splice(index, 1);
+        globalfunction.confDel(function(val) {
+            if (val) {
+                $scope.userForm.images.splice(index, 1);
+            }
+        });
     };
 
     $scope.changeit = function(data) {
@@ -1892,6 +1900,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userForm.status = true;
 
     $scope.photogalSubmitForm = function() {
+        if ($scope.userForm.images) {
+            _.each($scope.userForm.images, function(n) {
+                if (!n.status && n.status != false) {
+                    n.status = true;
+                }
+            })
+        }
         NavigationService.photogalSubmitForm($scope.userForm, function(data) {
             if (data.value) {
                 globalfunction.successToaster();
@@ -2692,21 +2707,33 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userForm = [];
     var modalInstance = '';
 
-    NavigationService.getAllIntro(function(data) {
-        console.log(data);
-        if (data.value) {
-            $scope.userForm = data.data;
-        } else {
-            $scope.userForm = [];
-        }
-    });
+    $scope.allIntroSlider = function() {
+        NavigationService.getAllIntro(function(data) {
+            console.log(data);
+            if (data.value) {
+                $scope.userForm = data.data;
+                if (data.data.length > 0) {
+                    $scope.showNoSlider = false;
+                } else {
+                    $scope.showNoSlider = true;
+                }
+            } else {
+                $scope.userForm = [];
+            }
+        });
+    }
+    $scope.allIntroSlider();
 
     $scope.saveModalData = function(modalData) {
-        console.log($scope.userForm);
+        _.each($scope.userForm, function(n) {
+            if (!n.status && n.status != false) {
+                n.status = true;
+            }
+        })
         NavigationService.saveIntroData($scope.userForm, function(data) {
             if (data.value) {
                 globalfunction.successToaster();
-                modalInstance.dismiss();
+                // modalInstance.dismiss();
             } else {
                 globalfunction.errorToaster();
             }
@@ -2741,12 +2768,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.popSlider = function(index, id) {
-        NavigationService.deleteIntroSlider(id, function(data) {
-            if (data.value) {
-                $scope.userForm.splice(index, 1);
+        globalfunction.confDel(function(val) {
+            if (val) {
+                if (id) {
+                    NavigationService.deleteIntroSlider(id, function(data) {
+                        if (data.value) {
+                            $scope.allIntroSlider();
+                        }
+                    }, function(data) {
+                        console.log(data);
+                    });
+                } else {
+                    $scope.userForm.splice(index, 1);
+                    $scope.allIntroSlider();
+                }
             }
-        }, function(data) {
-            console.log(data);
         });
     };
 
@@ -2947,9 +2983,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.oneAtATime = true;
     $scope.searchFor = [{
         name: "Theme",
-        enabled: false
-    }, {
-        name: "Home",
         enabled: false
     }, {
         name: "Notifications",

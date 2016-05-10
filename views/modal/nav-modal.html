@@ -8,12 +8,12 @@
          <div class="row">
             <div class="col-md-6">
                <div class="modal-nav">
-                  <div class="group" ng-if="modalData.home && modalData.home.length>0">
+                  <div class="group">
                      <ul class="list-unstyled">
                         <li ng-click="setTypeLink(null,'Home');">
                            Home
                         </li>
-                        <li class="makenav" ng-click="closeOthers(1);">Single Article</li>
+                        <li class="makenav" ng-click="closeOthers(1);" ng-if="modalData.home && modalData.home.length>0">Single Article</li>
                      </ul>
                      <div class="save-link" ng-show="show1">
                         <select name="" id="" class="form-control" ng-model="model.link" ng-options="link as link.name for link in modalData.home" ng-change="setTypeLink('Home',null,model.link.name);">
@@ -21,10 +21,10 @@
                         <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss()">Save</button>
                      </div>
                   </div>
-                  <div class="group" ng-if="modalData.blog && modalData.blog.length>0">
+                  <div class="group">
                      <ul class="list-unstyled">
                         <li ng-click="setTypeLink(null,'Blog');">Blog</li>
-                        <li ng-click="closeOthers(2);">Single Blog</li>
+                        <li ng-click="closeOthers(2);" ng-if="modalData.blog && modalData.blog.length>0">Single Blog</li>
                      </ul>
                      <div class="save-link" ng-show="show2">
                         <select name="" id="" class="form-control" ng-model="model.link" ng-options="link as link.blogtitle for link in modalData.blog" ng-change="setTypeLink('Blog',null,model.link.blogtitle);">

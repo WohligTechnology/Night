@@ -6,9 +6,12 @@ var firstapp = angular.module('firstapp', [
     'navigationservice'
 ]);
 
-firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, toastrConfig) {
+firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, toastrConfig, cfpLoadingBarProvider) {
 
     // for http request with session
+    cfpLoadingBarProvider.includeSpinner = false;
+    cfpLoadingBarProvider.includeBar = true;
+
     $httpProvider.defaults.withCredentials = true;
     angular.extend(toastrConfig, {
         autoDismiss: true,

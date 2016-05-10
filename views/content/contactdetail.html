@@ -8,9 +8,7 @@
       <div class="row">
          <div class="col-md-12">
             <div class="home-slider form-background">
-               <form name="user" ng-click="contactSubmitForm(user)">
-
-                 {{user.$valid}}
+               <form name="user" ng-submit="contactSubmitForm(user)">
                   <div class="naming">
                      <h4>{{page.header}}
                         </h4>
@@ -44,20 +42,20 @@
                      </div>
                      <div class="form-group">
                         <label>Latitude</label>
-                        <textarea name="maplink" ng-model="userForm.lat" type="text" class="form-control" id="" placeholder="Enter Latitude" rows="1"></textarea>
+                        <textarea name="maplink" ng-model="userForm.lat" class="form-control" id="" placeholder="Enter Latitude" rows="2"></textarea>
                      </div>
                      <div class="form-group">
                         <label>Longitude</label>
-                        <textarea name="maplink" ng-model="userForm.long" type="text" class="form-control" id="" placeholder="Enter Longitude" rows="1"></textarea>
+                        <textarea name="maplink" ng-model="userForm.long" class="form-control" id="" placeholder="Enter Longitude" rows="2"></textarea>
                      </div>
                   </div>
                   <!-- <div class="upload-img text-right">
               <button class="btn btn-primary btn-outline btn-small">Add More</button>
             </div> -->
-                <div class="upload-img text-right">
-                   <button class="btn btn-primary btn-outline btn-small" type="submit" ng-disabled="user.$invalid">Save</button>
-                   <a class="btn btn-primary btn-outline btn-small" ui-sref="contact">Cancel</a>
-                </div>
+                  <div class="upload-img text-right">
+                     <button type="submit" class="btn btn-primary btn-outline btn-small" type="submit" ng-disabled="user.$invalid">Save</button>
+                     <a class="btn btn-primary btn-outline btn-small" ui-sref="contact">Cancel</a>
+                  </div>
                </form>
             </div>
          </div>
