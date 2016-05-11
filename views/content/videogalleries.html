@@ -23,6 +23,9 @@
                                  <div class="caption">
                                     <p ng-if="videogal.title">{{videogal.title}}</p>
                                  </div>
+                                 <div class="delete-image" ng-click="deleteVideo(videogal._id, $index); $event.stopPropagation();">
+                                   <i class="ln ln-cross"></i>
+                                 </div>
                               </div>
                            </div>
                         </div>

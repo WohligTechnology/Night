@@ -194,13 +194,13 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteIntroSlider: function(id, callback, errCallback) {
-          return $http({
-            url: adminurl + 'introslider/delete',
-            method: "POST",
-            data: {
-              '_id': id
-            }
-          }).success(callback).error(errCallback);
+            return $http({
+                url: adminurl + 'introslider/delete',
+                method: "POST",
+                data: {
+                    '_id': id
+                }
+            }).success(callback).error(errCallback);
         },
         getNotificationEditDetail: function(formData, callback) {
             // console.log('form data: ', formData);
@@ -387,6 +387,16 @@ var navigationservice = angular.module('navigationservice', [])
                     "modificationTime": formData.modificationTime,
                     "status": formData.status,
                 }
+            }).success(callback);
+        },
+        deleteVideo: function(videoid, callback) {
+            $http({
+                url: adminurl + 'videogallery/delete',
+                method: 'POST',
+                data: {
+                    "_id": videoid
+                },
+                withCredentials: true
             }).success(callback);
         },
         audioGalleryCreateSubmit: function(formData, callback) {

@@ -437,6 +437,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.icons = ["home", "home2", "home3", "home4", "home5", "home6", "pencil", "pencil2", "edit", "edit2", "feather", "feather2", "pen", "brush", "paintbrush", "paint-roller", "eye-dropper", "magic", "design", "magnet", "aim", "gun", "droplet", "droplet2", "fire", "lighter", "knife", "toilet-paper", "umbrella", "sun-small", "sun", "moon", "cloud", "cloud-upload", "cloud-download", "cloud-rain", "cloud-snow", "cloud-fog", "cloud-lightning", "cloud-sync", "cloud-lock", "cloud-gear", "cloud-database", "database", "shield", "lock", "unlock", "key", "key-hole", "gear", "gear2", "wrench", "tools", "hammer", "factory", "factory2", "recycle", "trash", "trash2", "heart", "heart2", "flag", "flag2", "flag3", "at-sign", "envelope", "inbox", "paperclip", "reply", "reply-all", "paper-plane", "eye", "eye2", "binoculars", "binoculars2", "floppy-disk", "printer", "file", "folder", "copy", "scissors", "paste", "clipboard", "clipboard-check", "register", "enter", "exit", "papers", "news", "document", "document2", "license", "graduation-hat", "license2", "medal", "medal2", "medal3", "medal4", "podium", "trophy", "music-note", "music", "music2", "playlist", "shuffle", "headset", "presentation", "play", "film-play", "camera", "photo", "picture", "book", "book-closed", "bookmark", "bookmark2", "books", "library", "contacts", "profile", "user", "users", "users2", "woman", "man", "shirt", "cart", "cart-empty", "cart-full", "tag", "tags", "cash", "credit-card", "barcode", "barcode2", "barcode3", "phone", "phone2", "pin", "map-marker", "compass", "map", "location", "road-sign", "calendar", "calendar2", "calendar3", "mouse", "keyboard", "delete", "spell-check", "screen", "signal", "iphone", "smartphone", "ipad", "tablet", "laptop", "desktop", "radio", "tv", "power", "lightning-bolt", "lamp", "plug-cord", "outlet", "drawer", "drawer2", "drawer3", "archive", "archive2", "comment", "comments", "chat", "quote-open", "quote-close", "pulse", "syringe", "first-aid", "lifebuoy", "patch", "patch2", "lab", "skull", "construction", "construction-cone", "pie-chart", "pie-chart2", "graph", "chart-growth", "cake", "gift", "balloon", "rank", "rank2", "rank3", "crown", "lotus", "diamond", "diamond2", "diamond3", "diamond4", "linearicons", "teacup", "glass", "bottle", "cocktail-glass", "dinner", "dinner2", "hamburger", "dumbbell", "apple", "leaf", "pine-tree", "tree", "paw", "paw2", "footprint", "speed-slow", "speed-medium", "speed-fast", "rocket", "gamepad", "dice", "ticket", "hammer2", "balance", "briefcase", "plane", "gas", "transmission", "car", "bus", "truck", "trailer", "train", "ship", "anchor", "boat", "bicycle", "cube", "puzzle", "glasses", "accessibility", "wheelchir", "icons", "icons2", "sitemap", "earth", "happy", "smile", "grin", "tongue", "sad", "wink", "dream", "shocked", "shocked2", "tongue2", "neutral", "happy-grin", "cool", "mad", "grin-evil", "evil", "shocked3", "annoyed", "mustache", "wondering", "confused", "bell", "bullhorn", "volume-high", "volume-medium", "volume-low", "volume", "mute", "wifi", "wifi2", "wifi3", "mic", "mic2", "mic-mute", "hourglass", "loading", "loading2", "loading3", "undo", "redo", "sync", "sync2", "refresh", "refresh2", "history", "history2", "clock", "clock2", "clock3", "clock4", "clock5", "timer", "timer2", "download", "upload", "arrow-up", "arrow-down", "arrow-left", "arrow-right", "arrow-up2", "arrow-down2", "arrow-left2", "arrow-right2", "arrow-up3", "arrow-down3", "arrow-left3", "arrow-right3", "arrow-up4", "arrow-down4", "arrow-left4", "arrow-right4", "terminal", "bug", "code", "file-code", "file-image", "file-zip", "file-audio", "file-video", "link", "link2", "unlink", "link3", "unlink2", "thumbs-up", "thumbs-down", "thumbs-up2", "thumbs-down2", "thumbs-up3", "thumbs-down3", "share", "share2", "share3", "options", "list", "list2", "magnifier", "zoom-in", "zoom-out", "question", "checkmark", "cross", "chevron-up", "chevron-down", "chevron-left", "chevron-right", "arrow-up5", "arrow-down5", "arrow-left5", "arrow-right5", "expand", "shrink", "expand2", "shrink2", "move", "tab", "warning", "circle-exclamation", "circle-question", "circle-checkmark", "circle-cross", "circle-plus", "circle-minus", "circle-up", "circle-down", "circle-left", "circle-right", "circle-up2", "circle-down2", "circle-left2", "circle-right2", "circle-backward", "circle-first", "circle-previous", "circle-stop", "circle-play", "circle-pause", "circle-next", "circle-last", "circle-forward", "circle-eject", "crop", "frame", "ruler", "funnel", "flip-horizontal", "flip-vertical", "subtract", "combine", "intersect", "exclude", "align-center-vertical", "align-right", "align-bottom", "align-left", "align-center-horizontal", "align-top", "square", "circle"];
 
+    $scope.icons.sort();
+
     $scope.navigationSubmitForm = function(formValid) {
         if (formValid.$valid) {
             NavigationService.navigationCreateSubmit($scope.userForm, function(data) {
@@ -483,6 +485,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.icons = ["home", "home2", "home3", "home4", "home5", "home6", "pencil", "pencil2", "edit", "edit2", "feather", "feather2", "pen", "brush", "paintbrush", "paint-roller", "eye-dropper", "magic", "design", "magnet", "aim", "gun", "droplet", "droplet2", "fire", "lighter", "knife", "toilet-paper", "umbrella", "sun-small", "sun", "moon", "cloud", "cloud-upload", "cloud-download", "cloud-rain", "cloud-snow", "cloud-fog", "cloud-lightning", "cloud-sync", "cloud-lock", "cloud-gear", "cloud-database", "database", "shield", "lock", "unlock", "key", "key-hole", "gear", "gear2", "wrench", "tools", "hammer", "factory", "factory2", "recycle", "trash", "trash2", "heart", "heart2", "flag", "flag2", "flag3", "at-sign", "envelope", "inbox", "paperclip", "reply", "reply-all", "paper-plane", "eye", "eye2", "binoculars", "binoculars2", "floppy-disk", "printer", "file", "folder", "copy", "scissors", "paste", "clipboard", "clipboard-check", "register", "enter", "exit", "papers", "news", "document", "document2", "license", "graduation-hat", "license2", "medal", "medal2", "medal3", "medal4", "podium", "trophy", "music-note", "music", "music2", "playlist", "shuffle", "headset", "presentation", "play", "film-play", "camera", "photo", "picture", "book", "book-closed", "bookmark", "bookmark2", "books", "library", "contacts", "profile", "user", "users", "users2", "woman", "man", "shirt", "cart", "cart-empty", "cart-full", "tag", "tags", "cash", "credit-card", "barcode", "barcode2", "barcode3", "phone", "phone2", "pin", "map-marker", "compass", "map", "location", "road-sign", "calendar", "calendar2", "calendar3", "mouse", "keyboard", "delete", "spell-check", "screen", "signal", "iphone", "smartphone", "ipad", "tablet", "laptop", "desktop", "radio", "tv", "power", "lightning-bolt", "lamp", "plug-cord", "outlet", "drawer", "drawer2", "drawer3", "archive", "archive2", "comment", "comments", "chat", "quote-open", "quote-close", "pulse", "syringe", "first-aid", "lifebuoy", "patch", "patch2", "lab", "skull", "construction", "construction-cone", "pie-chart", "pie-chart2", "graph", "chart-growth", "cake", "gift", "balloon", "rank", "rank2", "rank3", "crown", "lotus", "diamond", "diamond2", "diamond3", "diamond4", "linearicons", "teacup", "glass", "bottle", "cocktail-glass", "dinner", "dinner2", "hamburger", "dumbbell", "apple", "leaf", "pine-tree", "tree", "paw", "paw2", "footprint", "speed-slow", "speed-medium", "speed-fast", "rocket", "gamepad", "dice", "ticket", "hammer2", "balance", "briefcase", "plane", "gas", "transmission", "car", "bus", "truck", "trailer", "train", "ship", "anchor", "boat", "bicycle", "cube", "puzzle", "glasses", "accessibility", "wheelchir", "icons", "icons2", "sitemap", "earth", "happy", "smile", "grin", "tongue", "sad", "wink", "dream", "shocked", "shocked2", "tongue2", "neutral", "happy-grin", "cool", "mad", "grin-evil", "evil", "shocked3", "annoyed", "mustache", "wondering", "confused", "bell", "bullhorn", "volume-high", "volume-medium", "volume-low", "volume", "mute", "wifi", "wifi2", "wifi3", "mic", "mic2", "mic-mute", "hourglass", "loading", "loading2", "loading3", "undo", "redo", "sync", "sync2", "refresh", "refresh2", "history", "history2", "clock", "clock2", "clock3", "clock4", "clock5", "timer", "timer2", "download", "upload", "arrow-up", "arrow-down", "arrow-left", "arrow-right", "arrow-up2", "arrow-down2", "arrow-left2", "arrow-right2", "arrow-up3", "arrow-down3", "arrow-left3", "arrow-right3", "arrow-up4", "arrow-down4", "arrow-left4", "arrow-right4", "terminal", "bug", "code", "file-code", "file-image", "file-zip", "file-audio", "file-video", "link", "link2", "unlink", "link3", "unlink2", "thumbs-up", "thumbs-down", "thumbs-up2", "thumbs-down2", "thumbs-up3", "thumbs-down3", "share", "share2", "share3", "options", "list", "list2", "magnifier", "zoom-in", "zoom-out", "question", "checkmark", "cross", "chevron-up", "chevron-down", "chevron-left", "chevron-right", "arrow-up5", "arrow-down5", "arrow-left5", "arrow-right5", "expand", "shrink", "expand2", "shrink2", "move", "tab", "warning", "circle-exclamation", "circle-question", "circle-checkmark", "circle-cross", "circle-plus", "circle-minus", "circle-up", "circle-down", "circle-left", "circle-right", "circle-up2", "circle-down2", "circle-left2", "circle-right2", "circle-backward", "circle-first", "circle-previous", "circle-stop", "circle-play", "circle-pause", "circle-next", "circle-last", "circle-forward", "circle-eject", "crop", "frame", "ruler", "funnel", "flip-horizontal", "flip-vertical", "subtract", "combine", "intersect", "exclude", "align-center-vertical", "align-right", "align-bottom", "align-left", "align-center-horizontal", "align-top", "square", "circle"];
+
+    $scope.icons.sort();
 
     NavigationService.getNavigationEditDetail($stateParams.id, function(data) {
         $scope.userForm = data.data;
@@ -1883,9 +1887,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.deleteGallery = function(id, index) {
-        NavigationService.deleteGallery(id, function(data) {
-            if (data.value) {
-                $scope.photogaldata.splice(index, 1);
+        globalfunction.confDel(function(val) {
+            if (val) {
+                NavigationService.deleteGallery(id, function(data) {
+                    if (data.value) {
+                        globalfunction.delSuccessToaster();
+                        $scope.photogaldata.splice(index, 1);
+                    }
+                });
             }
         });
     };
@@ -2006,6 +2015,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             })
         }
+    };
+
+    $scope.deleteVideo = function(id, index) {
+        globalfunction.confDel(function(val) {
+            if (val) {
+                NavigationService.deleteVideo(id, function(data) {
+                    if (data.value) {
+                        globalfunction.delSuccessToaster();
+                        $scope.videogalleries.splice(index, 1);
+                    }
+                });
+            }
+        });
     };
 
     // $scope.lists = [{
@@ -2158,9 +2180,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.popVideo = function(index) {
-        console.log("sdflashdfkljahskljdfh");
-        console.log($scope.userForm.videos);
-        $scope.userForm.videos.splice(index, 1);
+        globalfunction.confDel(function(val) {
+            if (val) {
+                $scope.userForm.videos.splice(index, 1);
+            }
+        });
     };
 
     $scope.videoGallerySubmitForm = function(formValid) {
@@ -2337,6 +2361,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
         modalInstances.dismiss();
         $scope.modalData = {};
+    };
+
+    $scope.popVideo = function(index) {
+        globalfunction.confDel(function(val) {
+            if (val) {
+                $scope.userForm.videos.splice(index, 1);
+            }
+        });
     };
 
 })
