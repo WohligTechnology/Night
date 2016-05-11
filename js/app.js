@@ -457,14 +457,11 @@ firstapp.directive('listType', function($uibModal, NavigationService) {
             });
 
             $scope.setTypeLink = function(type, link, data) {
-                console.log(type);
-                console.log(data);
                 if (type) {
                     $scope.model.type = type;
                     document.getElementById('linkText').value = $scope.model.type + " :: " + data;
                 }
                 if (link) {
-
                     modalInstance.dismiss();
                     $scope.model.type = null;
                     $scope.model.link = link;

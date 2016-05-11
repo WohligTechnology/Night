@@ -79,7 +79,7 @@
                      <li ng-click="setTypeLink(null,'Social Feeds');">Social Feeds</li>
                      <li ng-click="closeOthers(6);">External Link</li>
                      <div class="save-link" ng-show="show6">
-                        <input type="text" name="" id="" class="form-control" placeholder="Please Enter External Link here" ng-model="model.link" ng-change="setTypeLink('External Link',null);">
+                        <input type="text" name="" id="" class="form-control" placeholder="Please Enter External Link here" ng-model="model.link" ng-change="setTypeLink('External Link',null,model.link);">
                         <button type="button" class="btn btn-small btn-primary btn-outline" ng-click="$dismiss()">Save</button>
                      </div>
                      <li ng-click="setTypeLink(null,'Contact');">Contact Detail</li>
