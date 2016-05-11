@@ -1459,5 +1459,12 @@ upload-image {
     @include transform(translate(-50%, -50%));
   }
 }
+.comingsoon {
+  font-size: 85px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
 @import "toggle";
 @import "mobile";
