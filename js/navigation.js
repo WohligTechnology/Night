@@ -1,5 +1,5 @@
 var adminurl = "http://wohlig.biz/";
-var adminurl = "http://192.168.1.131:81/";
+var adminurl = "http://192.168.1.112:81/";
 var imgpath = adminurl + "upload/readFile";
 var uploadurl = adminurl + "upload";
 var navigationservice = angular.module('navigationservice', [])
