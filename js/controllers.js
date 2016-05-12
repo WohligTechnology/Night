@@ -227,10 +227,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.homeEditSubmitForm = function() {
         _.each($scope.userForm.images, function(n) {
-            if (!n.status && n.status != false) {
+            if (!n.status && n.status !=ConfigurationCtrl- false) {
                 n.status = true;
             }
-        })
+        });
         NavigationService.insertData($scope.userForm.images, function(data) {
             if (data.value) {
                 globalfunction.successToaster();
@@ -3011,7 +3011,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             if (data.value) {
                 globalfunction.successToaster();
             }
-        })
+        });
     };
 
     $scope.resetSearch = function() {
@@ -3020,13 +3020,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 if (val) {
                     _.each($scope.configData.search, function(n) {
                         n.enabled = false;
-                    })
+                    });
                     NavigationService.saveConfigData($scope.configData, function(data) {
                         console.log(data);
                         if (data.value) {
                             globalfunction.delSuccessToaster();
                         }
-                    })
+                    });
                 }
             });
         }
@@ -3034,9 +3034,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.oneAtATime = true;
     $scope.searchFor = [{
-        name: "Theme",
-        enabled: false
-    }, {
         name: "Notifications",
         enabled: false
     }, {
@@ -3060,9 +3057,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     }, {
         name: "Audio Gallery",
         enabled: false
-    }, {
-        name: "Users",
-        enabled: false
     }];
 
     NavigationService.getConfig(function(data) {
@@ -3082,7 +3076,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.configData = {};
             $scope.configData.socialfeeds = {};
         }
-    })
+    });
 })
 
 .controller('headerctrl', function($scope, TemplateService, toastr, $uibModal, NavigationService) {
