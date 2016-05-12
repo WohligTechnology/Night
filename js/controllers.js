@@ -1,5 +1,6 @@
 //window.uploadurl = "http://192.168.0.126:81/uploadfile/upload/";
-window.uploadurl = "http://blazen.io/uploadfile/upload/";
+var adminurl = "http://localhost:1337/";
+window.uploadurl = adminurl + "uploadfile/upload/";
 var globalfunction = {};
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'toaster', 'imageupload', 'httpService', 'toastr', 'angular-loading-bar'])
 
