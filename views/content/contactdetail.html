@@ -38,11 +38,11 @@
                                     <input name="contactno" required ng-model="userForm.contactno" type="tel" class="form-control" id="" placeholder="Contact Number" required>
                                     <div class="error-msg" ng-show="user.contactno.$error.required && user.contactno.$touched">Please enter your contact number</div>
                                 </div>
-
-                                <ng-map zoom="11" center="[40.74, -74.18]">
-                                    <marker position="[40.73, -74.19]" title="drag me" draggable="true"></marker>
-                                </ng-map>
-
+                                <div ng-if="userForm.lat" map-lazy-load="https://maps.google.com/maps/api/js?key=AIzaSyCn9ypqFNxdXt9Zu2YqLcdD1Xdt2wNul9s">
+                                    <ng-map zoom="11" center="[{{mapCenter.lat}},{{mapCenter.long}}]">
+                                        <marker on-dragend="change()" position="[{{userForm.lat}},{{userForm.long}}]" title="drag me" draggable="true"></marker>
+                                    </ng-map>
+                                </div>
 
                             </div>
                             <div class="form-group">

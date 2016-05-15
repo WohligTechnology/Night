@@ -2,7 +2,7 @@
 var adminurl = "http://localhost:1337/";
 window.uploadurl = adminurl + "uploadfile/upload/";
 var globalfunction = {};
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'toaster', 'imageupload', 'httpService', 'toastr', 'angular-loading-bar','ngMap'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'toaster', 'imageupload', 'httpService', 'toastr', 'angular-loading-bar', 'ngMap'])
 
 .controller('AllAppsCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log, httpService) {
     //Used to name the .html file
@@ -2449,8 +2449,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     NavigationService.getContactEditDetail($stateParams.id, function(data) {
         //console.log('getArticleEditDetail', data.data);
+        $scope.mapCenter = {lat:parseFloat(data.data.lat), long:parseFloat(data.data.long)};
         $scope.userForm = data.data;
+
     });
+
+    $scope.change = function(changeVal) {
+        $scope.userForm.lat= changeVal.latLng.lat();
+        $scope.userForm.long= changeVal.latLng.lng();
+
+    };
 
     $scope.contactSubmitForm = function(formValid) {
         console.log($scope.userForm);
