@@ -2,7 +2,7 @@
 var adminurl = "http://localhost:1337/";
 window.uploadurl = adminurl + "uploadfile/upload/";
 var globalfunction = {};
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'toaster', 'imageupload', 'httpService', 'toastr', 'angular-loading-bar'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'ui.sortable', 'ngAnimate', 'toaster', 'imageupload', 'httpService', 'toastr', 'angular-loading-bar','ngMap'])
 
 .controller('AllAppsCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log, httpService) {
     //Used to name the .html file
@@ -86,8 +86,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             if (data.value) {
                 $state.go('enquiry');
             }
-        })
-    }
+        });
+    };
 
 })
 
@@ -103,7 +103,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log(data);
         if (data.value)
             $scope.userForm = data.data;
-    })
+    });
 
     $scope.enquirySubmitForm = function() {
         console.log($scope.userForm);
@@ -111,8 +111,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             if (data.value) {
                 $state.go('enquiry');
             }
-        })
-    }
+        });
+    };
 
 })
 
@@ -163,7 +163,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (data.value) {
             $scope.enquirydata = data.data;
         }
-    })
+    });
 
 })
 
@@ -227,7 +227,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.homeEditSubmitForm = function() {
         _.each($scope.userForm.images, function(n) {
-            if (!n.status && n.status !=ConfigurationCtrl- false) {
+            if (!n.status && n.status !== false) {
                 n.status = true;
             }
         });
@@ -344,7 +344,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         update: function(e, ui) {
             NavigationService.sortArray($scope.navigationdata, 'navigation', function(data) {
                 globalfunction.successToaster();
-            })
+            });
         }
     };
 
@@ -375,7 +375,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         NavigationService.setDefault(nav._id, function(data) {
             globalfunction.successToaster();
         });
-    }
+    };
 
     // $scope.navigation2 = [{
     //     name: "Home",

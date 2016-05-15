@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="firstapp">
 
-<head ng-controller="headerctrl">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Blazen">
-    <meta name="author" content="WOhlig">
+    <head ng-controller="headerctrl">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Blazen">
+        <meta name="author" content="WOhlig">
+        <script src="http://maps.google.com/maps/api/js"></script>
 
-    <title ng-bind="'Blazen - '+template.title">Blazen</title>
+        <title ng-bind="'Blazen - '+template.title">Blazen</title>
 
-    <link rel="shortcut icon" href="img/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="w.css" />
-    <script src="w.js"></script>
-    <script>
-      var isproduction=true;
-    </script>
-    <!--[if IE]>
-        <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-</head>
+        <link rel="shortcut icon" href="img/favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="w.css"/>
+        <script src="w.js"></script>
+        <script>
+            var isproduction = true;
+        </script>
+        <!--[if IE]> <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script> <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script> <![endif]-->
+    </head>
 
-<body>
+    <body>
 
-    <div class="repeated-item" ui-view></div>
+        <div class="repeated-item" ui-view></div>
 
-</body>
+    </body>
 
 </html>

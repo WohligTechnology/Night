@@ -43,7 +43,8 @@
     "angular-websql": "^1.0.2",
     "jQuery-MD5": "https://github.com/placemarker/jQuery-MD5.git",
     "angular-toastr": "~1.7.0",
-    "angular-loading-bar": "^0.9.0"
+    "angular-loading-bar": "^0.9.0",
+    "ngmap": "^1.17.3"
   },
   "resolutions": {
     "angular": "~1.4.8"
