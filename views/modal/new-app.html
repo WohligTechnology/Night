@@ -1,36 +1,39 @@
 <section>
 
-      <div class="modal-content">
+    <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"  ng-click="$dismiss()"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title text-center" id="myModalLabel">Create New App</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="$dismiss()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title text-center">Create New Application</h4>
         </div>
         <div class="modal-body">
-<div class="row">
-  <div class="col-md-4">
-    <div class="icon-img text-center">
-      <div class="app-icon upload-app">
-        <img src="img/a2.png">
-      </div>
-      <div class="upload-btn">
-            <button type="button" class="btn">Upload Icon</button>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="name-submit">
-      <form action="">
-      <span> Enter App Name</span>
-      <input type="text" class="form-control">
-      </form>
-    </div>
-  </div>
-</div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <div class="app-icon upload-app">
+                            <img src="img/placeholder.jpg">
+                        </div>
+                        <div class="upload-btn">
+                          <upload-image ng-model="imageArr" no-view ng-callback="changeit"></upload-image>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="name-submit">
+                        <form action="">
+                            <span>
+                                Application Name</span>
+                            <input type="text" class="form-control" placeholder="Please enter your application name">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
 
-          <button type="button" class="btn btn-small btn-primary btn-outline">Save</button>
+            <button type="button" class="btn btn-small btn-primary btn-outline">Save</button>
         </div>
-      </div>
+    </div>
 
 </section>

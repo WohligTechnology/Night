@@ -9,12 +9,14 @@ var navigationservice = angular.module('navigationservice', [])
             classis: "active",
             anchor: "dashboard",
             icon: "ln-chart-growth",
-        }, {
-            name: "Theme",
-            classis: "active",
-            anchor: "theme",
-            icon: "ln-paintbrush",
-        }, {
+        },
+        // {
+        //     name: "Theme",
+        //     classis: "active",
+        //     anchor: "theme",
+        //     icon: "ln-paintbrush",
+        // },
+        {
             name: "App Home",
             classis: "active",
             anchor: "home",

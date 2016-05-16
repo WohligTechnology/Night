@@ -19,7 +19,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/new-app.html',
-            controller: 'NewappCtrl',
             size: size,
             resolve: {
                 items: function() {
@@ -180,7 +179,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/new-app.html',
-            controller: 'NewappCtrl',
             size: size,
             resolve: {
                 items: function() {
