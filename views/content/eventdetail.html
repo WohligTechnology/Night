@@ -89,9 +89,9 @@
                                      <div class="drop-image col-xs-3" ng-repeat="item in userForm.images track by $index" ng-click="ImageEdit(item);">
                                        <div class="image-holder">
                                          <img ng-src="{{item.image|uploadpath:100:100:'fill'}}">
-                                         <div class="caption">
+                                         <!-- <div class="caption">
                                            <p ng-if="item.name">{{item.name}}</p>
-                                         </div>
+                                         </div> -->
                                          <div class="delete-image" ng-click="popImage($index);$event.stopPropagation();">
                                            <i class="ln ln-cross"></i>
                                          </div>
@@ -120,9 +120,9 @@
                                              <div ng-click="VideoEdit(item);" class="image-holder">
                                                 <img ng-src="{{item.thumbnail}}">
                                              </div>
-                                             <div class="caption">
+                                             <!-- <div class="caption">
                                                 <p ng-if="item.name">{{item.name}}</p>
-                                             </div>
+                                             </div> -->
                                              <div class="delete-image" ng-click="popVideo($index);$event.stopPropagation();">
                                               <i class="ln ln-cross"></i>
                                              </div>

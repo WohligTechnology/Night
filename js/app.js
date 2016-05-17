@@ -288,6 +288,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, toas
     $urlRouterProvider.otherwise("/");
 
 });
+
+firstapp.filter('fromnow', function(){
+  return function(input){
+    return moment(input).fromNow();
+  };
+});
+
 firstapp.filter('uploadpath', function() {
     return function(input, width, height, style) {
         var other = "";

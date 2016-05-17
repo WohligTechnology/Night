@@ -164,6 +164,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     });
 
+    NavigationService.getCount(function(data){
+      if (data.value === true) {
+        $scope.totaluser = data.data;
+      }
+    });
+
 })
 
 
@@ -271,7 +277,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (data.value) {
             _.each(data.data, function(n) {
                 $scope.userForm.images.push({
-                    "image": n
+                    "image": n,
+                    "status":true
                 });
             });
         }
@@ -1214,9 +1221,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         } else {
             console.log("The youtube url is not valid.");
         }
-    }
+    };
 
     var modalInstances = '';
+    $scope.noTitle = '0';
     $scope.addVideo = function() {
         $scope.modalData = {};
         modalInstances = $uibModal.open({
@@ -1269,7 +1277,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (data.value) {
             _.each(data.data, function(n) {
                 $scope.userForm.images.push({
-                    image: n
+                    image: n,
+                    status:true
                 });
             });
         }
@@ -1910,6 +1919,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.userForm = {};
     $scope.userForm.status = true;
+    $scope.noTitle = '0';
 
     $scope.photogalSubmitForm = function() {
         if ($scope.userForm.images) {
@@ -1981,9 +1991,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (data.value) {
             _.each(data.data, function(n) {
                 $scope.userForm.images.push({
-                    image: n
+                    image: n,
+                    status:true
                 });
-            })
+            });
         }
     };
 
@@ -2760,6 +2771,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     var modalInstance = '';
 
     $scope.hideLink = true;
+    $scope.noTitle = '0';
 
     $scope.allIntroSlider = function() {
         NavigationService.getAllIntro(function(data) {
@@ -2799,7 +2811,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (data.value) {
             _.each(data.data, function(n) {
                 $scope.userForm.push({
-                    "image": n
+                    "image": n,
+                    "status":true
                 });
             });
         }
@@ -2884,7 +2897,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
     $scope.userForm = {};
     $scope.allUsersRecord = function() {
-        NavigationService.userViewAll($scope.userForm, function(data) {
+        NavigationService.userViewAllLatest($scope.userForm, function(data) {
             if (data.value)
                 $scope.userdata = data.data;
         });

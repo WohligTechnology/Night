@@ -3,7 +3,7 @@
       <div class="pull-right pd20">
          <a class="btn btn-primary btn-outline btn-small create-btn" href="#" target="_blank">Tutorials</a>
       </div>
-      <h4 class="pad20">Photo Gallery <i class="fa fa-angle-right"></i> 
+      <h4 class="pad20">Photo Gallery <i class="fa fa-angle-right"></i>
           Photo Gallery Detail</h4>
       <div class="row">
          <div class="col-md-12">
@@ -61,9 +61,9 @@
                                           <div class="drop-image col-xs-3" ng-repeat="item in userForm.images track by $index" ng-click="open(item);">
                                              <div class="image-holder">
                                                 <img ng-src="{{item.image|uploadpath:100:100:'fill'}}">
-                                                <div class="caption">
+                                                <!-- <div class="caption">
                                                    <p ng-if="item.name">{{item.name}}</p>
-                                                </div>
+                                                </div> -->
                                                 <div class="delete-image" ng-click="popImage($index);$event.stopPropagation();">
                                                    <i class="ln ln-cross"></i>
                                                 </div>

@@ -7,7 +7,7 @@
                <div class="panel border-left border-primary">
                   <div class="panel-body">
                      <div class="text-center">
-                        <h1>2345</h1>
+                        <h1>{{totaluser}}</h1>
                         <h5>Total Users</h5>
                      </div>
                   </div>
@@ -70,16 +70,16 @@
                      <table class="table">
                         <thead>
                            <tr>
-                              <th>#</th>
                               <th>Name</th>
                               <th>Subject</th>
+                              <th>Date Time</th>
                            </tr>
                         </thead>
                         <tbody>
                            <tr ng-repeat="enquiry in enquirydata">
-                              <th>{{$index+1}}</th>
                               <td>{{enquiry.name}}</td>
                               <td>{{enquiry.subject}}</td>
+                              <td>{{enquiry.timestamp | fromnow}}</td>
                            </tr>
                         </tbody>
                      </table>

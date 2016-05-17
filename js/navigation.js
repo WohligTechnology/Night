@@ -1,4 +1,5 @@
-
+var adminurl = "http://wohlig.biz/";
+var adminurl = "http://192.168.1.129:81/";
 var imgpath = adminurl + "upload/readFile";
 var uploadurl = adminurl + "upload";
 var navigationservice = angular.module('navigationservice', [])
@@ -466,19 +467,22 @@ var navigationservice = angular.module('navigationservice', [])
                 url: adminurl + 'user/getAll',
                 method: 'POST',
                 withCredentials: true,
-                data: {
-                    "name": formData.name,
-                    "email": formData.email,
-                    "tags": formData.tags,
-                    "logintype": formData.logintype,
-                    "socialid": formData.socialid,
-                    "contact": formData.contact,
-                    "accesslevel": formData.accesslevel,
-                    "address": formData.address,
-                    "image": formData.image,
-                    "image1": formData.image1,
-
-                }
+            }).success(callback);
+        },
+        userViewAllLatest: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'user/getLatest',
+                method: 'POST',
+                withCredentials: true,
+            }).success(callback);
+        },
+        getCount: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'user/getCategory',
+                method: 'POST',
+                withCredentials: true,
             }).success(callback);
         },
         deleteUserData: function(formData, callback) {
@@ -837,7 +841,7 @@ var navigationservice = angular.module('navigationservice', [])
         },
         getAllEnquiry: function(callback) {
             $http({
-                url: adminurl + 'enquiry/getAll',
+                url: adminurl + 'enquiry/getLatest',
                 method: 'POST',
                 withCredentials: true
             }).success(callback);
