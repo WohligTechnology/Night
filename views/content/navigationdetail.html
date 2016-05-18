@@ -1,90 +1,100 @@
 <section class="main">
-   <div class="theme">
-      <div class="chosse-theme">
-         <div class="container-fluid">
-            <div class="">
-               <div class="row">
-                  <div class="col-xs-8 max-size">
-                     <div class="ionic-template mb30">
-                        <div class="pull-right pd20">
-                           <a class="btn btn-primary btn-outline btn-small create-btn" href="#" class="btn btn-primary btn-outline btn-small create-btn" target="_blank">Tutorials</a>
-                        </div>
-                        <h4 class="pad20">Navigation <i class="fa fa-angle-right"></i> {{page.header}}</h4>
-                        <div class="row">
-                           <div class="col-md-12">
-                              <div class="home-slider form-background">
-                                 <div class="naming">
-                                    <h4>{{page.header}}</h4>
-                                 </div>
-                                 <div class="form-login paddingup">
-                                    <form name="user">
-                                       <div class="form-group">
-                                          <label for="">Name</label>
-                                          <input name="name" required ng-model="userForm.name" type="text" class="form-control" id="name" placeholder="Name" required>
-                                          <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Your Name.</div>
-                                       </div>
-                                       <div class="icon">
-                                          <div class="form-group">
-                                             <label for="sel1">Select Icon:</label>
-                                             <!-- <input list="browsers" ng-model="userForm.iconType" class="form-control">
+    <div class="theme">
+        <div class="chosse-theme">
+            <div class="container-fluid">
+                <div class="">
+                    <div class="row">
+                        <div class="col-xs-8 max-size">
+                            <div class="ionic-template mb30">
+                                <div class="pull-right pd20">
+                                    <a class="btn btn-primary btn-outline btn-small create-btn" href="#" class="btn btn-primary btn-outline btn-small create-btn" target="_blank">Tutorials</a>
+                                </div>
+                                <h4 class="pad20">Navigation <i class="fa fa-angle-right"></i> {{page.header}}</h4>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="home-slider form-background">
+                                            <div class="naming">
+                                                <h4>{{page.header}}</h4>
+                                            </div>
+                                            <div class="form-login paddingup">
+                                                <form name="user">
+                                                    <div class="form-group">
+                                                        <label for="">Name</label>
+                                                        <input name="name" required ng-model="userForm.name" type="text" class="form-control" id="name" placeholder="Name" required>
+                                                        <div class="error-msg" ng-show="user.name.$error.required && user.name.$touched">Please Enter Your Name.</div>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <div class="form-group">
+                                                            <label for="sel1">Select Icon:</label>
+                                                            <!-- <input list="browsers" ng-model="userForm.iconType" class="form-control">
                                              <datalist id="browsers">
                                                 <option ng-repeat="icon in icons" value="{{icon}}">
                                              </datalist> -->
-                                             <select ng-model="userForm.iconType" class="form-control" id="sel1">
+                                                            <!-- <select ng-model="userForm.iconType" class="form-control" id="sel1">
                                                 <option value="">Select Icon</option>
                                                 <option ng-repeat="icon in icons" value="ln-{{icon}}">ln-{{icon}}</option>
                                                 <option value="custom">Custom Icon</option>
-                                             </select>
-                                          </div>
-                                       </div>
+                                             </select> -->
+                                                            <ui-select ng-model="userForm.iconType">
+                                                                <ui-select-match>
+                                                                    <i class="icon {{$select.selected}}"></i>
+                                                                    <span ng-bind="$select.selected"></span>
+                                                                </ui-select-match>
+                                                                <ui-select-choices repeat="item in icons track by $index">
+                                                                    <i class="icon {{item}}"></i>
+                                                                    <span>{{item}}</span>
+                                                                </ui-select-choices>
+                                                            </ui-select>
+                                                        </div>
+                                                    </div>
 
-                                       <div class="form-group" ng-if="userForm.iconType=='custom'">
-                                          <label for="exampleInputFile">Image Icon</label>
-                                          <div class="noti-image">
-                                             <div class="img-box">
-                                                <h4 ng-if="isloading">Loading...</h4>
-                                                <img ng-src="{{userForm.icon|uploadpath}}" ng-if="userForm.icon">
-                                                <!-- <img src="img/slider/s1.jpg"> -->
-                                             </div>
-                                          </div>
-                                          <upload-image ng-model="userForm.icon" no-view></upload-image>
-                                       </div>
+                                                    <div class="form-group" ng-if="userForm.iconType=='custom'">
+                                                        <label for="exampleInputFile">Image Icon</label>
+                                                        <div class="noti-image">
+                                                            <div class="img-box">
+                                                                <h4 ng-if="isloading">Loading...</h4>
+                                                                <img ng-src="{{userForm.icon|uploadpath}}" ng-if="userForm.icon">
+                                                                <!-- <img src="img/slider/s1.jpg"> -->
+                                                            </div>
+                                                        </div>
+                                                        <upload-image ng-model="userForm.icon" no-view></upload-image>
+                                                    </div>
 
-                                       <div class="display-inline">
-                                          <div class="label-opt">
-                                             <label for="">Enable</label>
-                                          </div>
-                                          <div class="onoffswitch">
-                                             <input name="status" ng-model="userForm.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch">
-                                             <label class="onoffswitch-label" for="myonoffswitch">
-                                                <span class="onoffswitch-inner"></span>
-                                                <span class="onoffswitch-switch"></span>
-                                             </label>
-                                          </div>
-                                       </div>
+                                                    <div class="display-inline">
+                                                        <div class="label-opt">
+                                                            <label for="">Enable</label>
+                                                        </div>
+                                                        <div class="onoffswitch">
+                                                            <input name="status" ng-model="userForm.status" type="checkbox" name="status" class="onoffswitch-checkbox" id="myonoffswitch">
+                                                            <label class="onoffswitch-label" for="myonoffswitch">
+                                                                <span class="onoffswitch-inner"></span>
+                                                                <span class="onoffswitch-switch"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
 
-                                       <list-type ng-model="userForm" ></list-type>
+                                                    <list-type ng-model="userForm"></list-type>
 
-                                       <div class="upload-img text-right">
-                                          <button class="btn btn-primary btn-outline btn-small" ng-click="navigationSubmitForm(user)">Save</button>
+                                                    <div class="upload-img text-right">
+                                                        <button class="btn btn-primary btn-outline btn-small" ng-click="navigationSubmitForm(user)">Save</button>
 
-                                          <button class="btn btn-danger btn-outline btn-small" ui-sref="navigation">Cancel</button>
+                                                        <button class="btn btn-danger btn-outline btn-small" ui-sref="navigation">Cancel</button>
 
-                                       </div>
-                                    </form>
+                                                    </div>
+                                                </form>
 
-                                 </div>
-                              </div>
-                           </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-                  <div class="col-xs-4">
-                     <div ng-include="preview"></div>
-                  </div>
-               </div>
+                        <div class="col-xs-4">
+                            <div ng-include="preview"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-   </div>
+        </div>
+    </div>
 </section>

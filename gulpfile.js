@@ -16,6 +16,7 @@ var jsArray = [
     './bower_components/angular-ui-tinymce/src/tinymce.js',
     "./bower_components/angular-ui-sortable/sortable.js",
     "./bower_components/jquery-ui/jquery-ui.js",
+    "./bower_components/angular-ui-select/dist/select.min.js",
     "./bower_components/lodash/lodash.js",
     "./bower_components/jStorage/jStorage.js",
     "./bower_components/angularjs-toaster/toaster.js",

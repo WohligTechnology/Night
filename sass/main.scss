@@ -9,6 +9,7 @@
 @import "../bower_components/flexslider/flexslider.css";
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
 @import "../bower_components/angular-toastr/dist/angular-toastr.css";
+@import "../bower_components/angular-ui-select/dist/select.css";
 /* Bootstrap Variables Goes Here */
 $brand-primary: #1aa3eb !default;
 $brand-success: #42cd48 !default;
@@ -1476,6 +1477,21 @@ upload-image {
   position: absolute;
   left: 50%;
   top: 50%;
+}
+.select2 > .select2-choice.ui-select-match {
+  /* Because of the inclusion of Bootstrap */
+  height: 29px;
+}
+
+.selectize-control > .selectize-dropdown {
+  top: 36px;
+}
+
+.select2-search {
+  display: none;
+}
+span.btn.btn-default.form-control.ui-select-toggle {
+    margin-bottom: 0px;
 }
 @import "toggle";
 @import "mobile";
