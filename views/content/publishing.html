@@ -24,19 +24,20 @@
                               <div class="row">
                                 <div class="col-md-9">
                                   <div class="form-group">
-                                    <label for="">App Name <i class="ln-circle-question info" uib-tooltip="Please Enter Your App Name" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
+                                    <label for="">App Name <i class="ln-circle-question info" uib-tooltip="Enter your App Name. This is the title that shows up in the App Store and App Marketplace." tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                     <input type="text" class="form-control" id="" placeholder="App Name">
                                   </div>
                                 </div>
                                 <div class="col-md-3">
                                   <div class="form-group">
-                                    <label for="">App Icon Name <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
+                                    <label for="">App Icon Name <i class="ln-circle-question info" uib-tooltip="Please Enter Your Icon Name" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                     <input type="text" class="form-control" id="" placeholder="App Icon Name">
                                   </div>
                                 </div>
                                 <div class="col-md-12">
                                   <div class="form-group">
-                                    <label for="">App Keywords <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
+                                    <label for="">App Keywords <i class="ln-circle-question info" uib-tooltip="Enter keywords that describe your specific app.  Each keyword must be separated with a comma.  Avoid generic terms like \'music\', characters limit is 100.  These will be used for your iTunes App Store listing."
+                                        tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                     <input type="text" class="form-control" id="" placeholder="App Keywords">
                                   </div>
                                 </div>
@@ -44,7 +45,10 @@
                             </div>
                             <div class="col-md-3">
                               <div class="form-group">
-                                <label for="exampleInputFile">Upload App Icon</label>
+                                <label for="exampleInputFile">Upload App Icon
+                                  <i class="ln-circle-question info" uib-tooltip="Please Uplaod your app icon, show on users phones and in the App Store/Marketplace. PNG Format: (1024 x 1024px)"
+                                    tooltip-placement="top" tooltip-trigger="mouseenter"></i>
+                                </label>
                                 <div class="noti-image">
                                   <div class="img-box-icon">
                                     <img src="img/slider/s1.jpg">
@@ -58,7 +62,7 @@
                           <div class="row">
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for="">App Description <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
+                                <label for="">App Description <i class="ln-circle-question info" uib-tooltip="This description will appear in the iTunes App Store/Google Play Store and must meet high standards.  Plain text only, no HTML." tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                 <textarea type="text" class="form-control" id="" placeholder="App Description" rows="4"> </textarea>
                               </div>
                             </div>
@@ -73,19 +77,19 @@
                           <div class="row">
                             <div class="col-md-4">
                               <div class="form-group">
-                                <label for="">Emails <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
-                                <input type="email" class="form-control" id="" placeholder="Emails">
+                                <label for="">Contact Email <i class="ln-circle-question info" uib-tooltip="The contact email through which customers can reach to you." tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
+                                <input type="email" class="form-control" id="" placeholder="Contact Email">
                               </div>
                             </div>
                             <div class="col-md-4">
                               <div class="form-group">
-                                <label for="">Phone Number <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
+                                <label for="">Phone Number <i class="ln-circle-question info" uib-tooltip="Enter the Phone Number." tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                 <input type="text" class="form-control" id="" placeholder="Phone Numbers">
                               </div>
                             </div>
                             <div class="col-md-4">
                               <div class="form-group">
-                                <label for="">Offical Websites <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
+                                <label for="">Offical Websites <i class="ln-circle-question info" uib-tooltip="Enter the URL for your organization’s website here." tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                 <input type="text" class="form-control" id="" placeholder="App Keywords">
                               </div>
                             </div>
@@ -94,13 +98,13 @@
                           <div class="row">
                             <div class="col-md-4">
                               <div class="form-group">
-                                <label for="">Copyright <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
+                                <label for="">Copyright <i class="ln-circle-question info" uib-tooltip="Enter Copyright Info" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                 <input type="email" class="form-control" id="" placeholder="Emails">
                               </div>
                             </div>
                             <div class="col-md-4">
                               <div class="form-group">
-                                <label for="">App Category <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
+                                <label for="">App Category <i class="ln-circle-question info" uib-tooltip="Choose an App category." tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                 <select name="apple_app_category" id="apple_app_category" class="form-control">
                                   <option value="">Select category</option>
                                   <option value="Books">Books</option>
@@ -132,7 +136,7 @@
                             </div>
                             <div class="col-md-4">
                               <div class="form-group">
-                                <label for="">App Price <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
+                                <label for="">App Price <i class="ln-circle-question info" uib-tooltip="You can set any price you want for your app, or you can give it away for free. Most apps range from $0.99 - $4.99" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                 <select name="app_price" class="form-control">
                                   <option value="0">Free</option>
                                   <option value="0.99">0.99</option>
@@ -232,7 +236,7 @@
                           <div class="row">
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for=""> Default Language <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
+                                <label for=""> Default Language <i class="ln-circle-question info" uib-tooltip="Choose Default Language" tooltip-placement="top" tooltip-trigger="mouseenter"></i></label>
                                 <select id="app_default_language" name="app_default_language" class="form-control">
                                   <option value="">Select language</option>
                                   <option value="Australian English" selected="">Australian English</option>
@@ -270,15 +274,15 @@
                               <div class="form-group">
                                 <div class="checkbox checkbox-box mt29">
                                   <label>
-                                      <span class="select-checkbox">
+                                    <span class="select-checkbox">
                                         <span class="checkbox">
                                           <span class="custom-checkbox">
                                             <input type="checkbox" id="checkbox{{$index}}" name="checkbox" value="true" />
                                             <label for="checkbox{{$index}}"><span></span></label>
-                                          </span>
-                                        </span>
-                                      </span>Disable ALL commenting ability in your application
-                                    <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
+                                  </span>
+                                  </span>
+                                  </span>Disable ALL commenting ability in your application
+                                  <i class="ln-circle-question info" uib-tooltip="Disable commenting for all tabs except Fan Wall and Youtube in the app." tooltip-placement="top" tooltip-trigger="mouseenter"></i>
                                   </label>
                                 </div>
                               </div>
@@ -291,7 +295,7 @@
                                 </label>
                                 <label>
                                   <input type="checkbox"> Audio Background Play
-                                  <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i>
+                                  <!-- <i class="ln-circle-question info" uib-tooltip="Select All" tooltip-placement="top" tooltip-trigger="mouseenter"></i> -->
                                 </label>
                                 <!-- <label>
                                     <i class="ln-circle-question info" uib-popover="I appeared on mouse enter!" popover-trigger="mouseenter"></i> Adjust your App Store content rating
@@ -507,7 +511,7 @@
                 </uib-tab>
                 <uib-tab heading="Screen Shots">
                   <div class="home-slider form-background">
-                    <div class=" paddingup">
+                    <div>
                       <div class="naming">
                         <h4>Screen Shots</h4>
                       </div>

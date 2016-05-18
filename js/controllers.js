@@ -2984,7 +2984,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
 })
 
-.controller('PublishingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('PublishingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("publishing");
     $scope.menutitle = NavigationService.makeactive("Publishing");
