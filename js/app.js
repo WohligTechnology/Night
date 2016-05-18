@@ -28,14 +28,14 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, toas
 
     $stateProvider
 
-        .state('allapps', {
-        url: "/",
-        templateUrl: "views/template.html",
-        controller: 'AllAppsCtrl'
-    })
+    //     .state('allapps', {
+    //     url: "/",
+    //     templateUrl: "views/template.html",
+    //     controller: 'AllAppsCtrl'
+    // })
 
     .state('dashboard', {
-        url: "/dashboard",
+        url: "/",
         templateUrl: "views/template.html",
         controller: 'DashboardCtrl'
     })
