@@ -38,8 +38,7 @@
                 </div>
                 <upload-image ng-model="modalData.image" no-view></upload-image>
              </div>
-
-                     <list-type ng-model="modalData" ng-if="modalData" ng-hide="hideLink"></list-type>
+                     <list-type ng-model="modalData" ng-if="modalData && noListType == '0'" ng-hide="hideLink"></list-type>
                      <!-- <div class="slider-link">
                         <div class="form-group">
                            <label for="">Link Type</label>

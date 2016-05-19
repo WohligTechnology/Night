@@ -225,6 +225,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("App Home");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.noListType = '0';
 
     $scope.homeForm = {};
     $scope.homedata = [];
@@ -459,9 +460,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.icons = ["ln-home", "ln-home2", "ln-home3", "ln-home4", "ln-home5", "ln-home6", "ln-pencil", "ln-pencil2", "ln-edit", "ln-edit2", "ln-feather", "ln-feather2", "ln-pen", "ln-brush", "ln-paintbrush", "ln-paint-roller", "ln-eye-dropper", "ln-magic", "ln-design", "ln-magnet", "ln-aim", "ln-gun", "ln-droplet", "ln-droplet2", "ln-fire", "ln-lighter", "ln-knife", "ln-toilet-paper", "ln-umbrella", "ln-sun-small", "ln-sun", "ln-moon", "ln-cloud", "ln-cloud-upload", "ln-cloud-download", "ln-cloud-rain", "ln-cloud-snow", "ln-cloud-fog", "ln-cloud-lightning", "ln-cloud-sync", "ln-cloud-lock", "ln-cloud-gear", "ln-cloud-database", "ln-database", "ln-shield", "ln-lock", "ln-unlock", "ln-key", "ln-key-hole", "ln-gear", "ln-gear2", "ln-wrench", "ln-tools", "ln-hammer", "ln-factory", "ln-factory2", "ln-recycle", "ln-trash", "ln-trash2", "ln-heart", "ln-heart2", "ln-flag", "ln-flag2", "ln-flag3", "ln-at-sign", "ln-envelope", "ln-inbox", "ln-paperclip", "ln-reply", "ln-reply-all", "ln-paper-plane", "ln-eye", "ln-eye2", "ln-binoculars", "ln-binoculars2", "ln-floppy-disk", "ln-printer", "ln-file", "ln-folder", "ln-copy", "ln-scissors", "ln-paste", "ln-clipboard", "ln-clipboard-check", "ln-register", "ln-enter", "ln-exit", "ln-papers", "ln-news", "ln-document", "ln-document2", "ln-license", "ln-graduation-hat", "ln-license2", "ln-medal", "ln-medal2", "ln-medal3", "ln-medal4", "ln-podium", "ln-trophy", "ln-music-note", "ln-music", "ln-music2", "ln-playlist", "ln-shuffle", "ln-headset", "ln-presentation", "ln-play", "ln-film-play", "ln-camera", "ln-photo", "ln-picture", "ln-book", "ln-book-closed", "ln-bookmark", "ln-bookmark2", "ln-books", "ln-library", "ln-contacts", "ln-profile", "ln-user", "ln-users", "ln-users2", "ln-woman", "ln-man", "ln-shirt", "ln-cart", "ln-cart-empty", "ln-cart-full", "ln-tag", "ln-tags", "ln-cash", "ln-credit-card", "ln-barcode", "ln-barcode2", "ln-barcode3", "ln-phone", "ln-phone2", "ln-pin", "ln-map-marker", "ln-compass", "ln-map", "ln-location", "ln-road-sign", "ln-calendar", "ln-calendar2", "ln-calendar3", "ln-mouse", "ln-keyboard", "ln-delete", "ln-spell-check", "ln-screen", "ln-signal", "ln-iphone", "ln-smartphone", "ln-ipad", "ln-tablet", "ln-laptop", "ln-desktop", "ln-radio", "ln-tv", "ln-power", "ln-lightning-bolt", "ln-lamp", "ln-plug-cord", "ln-outlet", "ln-drawer", "ln-drawer2", "ln-drawer3", "ln-archive", "ln-archive2", "ln-comment", "ln-comments", "ln-chat", "ln-quote-open", "ln-quote-close", "ln-pulse", "ln-syringe", "ln-first-aid", "ln-lifebuoy", "ln-patch", "ln-patch2", "ln-lab", "ln-skull", "ln-construction", "ln-construction-cone", "ln-pie-chart", "ln-pie-chart2", "ln-graph", "ln-chart-growth", "ln-cake", "ln-gift", "ln-balloon", "ln-rank", "ln-rank2", "ln-rank3", "ln-crown", "ln-lotus", "ln-diamond", "ln-diamond2", "ln-diamond3", "ln-diamond4", "ln-linearicons", "ln-teacup", "ln-glass", "ln-bottle", "ln-cocktail-glass", "ln-dinner", "ln-dinner2", "ln-hamburger", "ln-dumbbell", "ln-apple", "ln-leaf", "ln-pine-tree", "ln-tree", "ln-paw", "ln-paw2", "ln-footprint", "ln-speed-slow", "ln-speed-medium", "ln-speed-fast", "ln-rocket", "ln-gamepad", "ln-dice", "ln-ticket", "ln-hammer2", "ln-balance", "ln-briefcase", "ln-plane", "ln-gas", "ln-transmission", "ln-car", "ln-bus", "ln-truck", "ln-trailer", "ln-train", "ln-ship", "ln-anchor", "ln-boat", "ln-bicycle", "ln-cube", "ln-puzzle", "ln-glasses", "ln-accessibility", "ln-wheelchir", "ln-icons", "ln-icons2", "ln-sitemap", "ln-earth", "ln-happy", "ln-smile", "ln-grin", "ln-tongue", "ln-sad", "ln-wink", "ln-dream", "ln-shocked", "ln-shocked2", "ln-tongue2", "ln-neutral", "ln-happy-grin", "ln-cool", "ln-mad", "ln-grin-evil", "ln-evil", "ln-shocked3", "ln-annoyed", "ln-mustache", "ln-wondering", "ln-confused", "ln-bell", "ln-bullhorn", "ln-volume-high", "ln-volume-medium", "ln-volume-low", "ln-volume", "ln-mute", "ln-wifi", "ln-wifi2", "ln-wifi3", "ln-mic", "ln-mic2", "ln-mic-mute", "ln-hourglass", "ln-loading", "ln-loading2", "ln-loading3", "ln-undo", "ln-redo", "ln-sync", "ln-sync2", "ln-refresh", "ln-refresh2", "ln-history", "ln-history2", "ln-clock", "ln-clock2", "ln-clock3", "ln-clock4", "ln-clock5", "ln-timer", "ln-timer2", "ln-download", "ln-upload", "ln-arrow-up", "ln-arrow-down", "ln-arrow-left", "ln-arrow-right", "ln-arrow-up2", "ln-arrow-down2", "ln-arrow-left2", "ln-arrow-right2", "ln-arrow-up3", "ln-arrow-down3", "ln-arrow-left3", "ln-arrow-right3", "ln-arrow-up4", "ln-arrow-down4", "ln-arrow-left4", "ln-arrow-right4", "ln-terminal", "ln-bug", "ln-code", "ln-file-code", "ln-file-image", "ln-file-zip", "ln-file-audio", "ln-file-video", "ln-link", "ln-link2", "ln-unlink", "ln-link3", "ln-unlink2", "ln-thumbs-up", "ln-thumbs-down", "ln-thumbs-up2", "ln-thumbs-down2", "ln-thumbs-up3", "ln-thumbs-down3", "ln-share", "ln-share2", "ln-share3", "ln-options", "ln-list", "ln-list2", "ln-magnifier", "ln-zoom-in", "ln-zoom-out", "ln-question", "ln-checkmark", "ln-cross", "ln-chevron-up", "ln-chevron-down", "ln-chevron-left", "ln-chevron-right", "ln-arrow-up5", "ln-arrow-down5", "ln-arrow-left5", "ln-arrow-right5", "ln-expand", "ln-shrink", "ln-expand2", "ln-shrink2", "ln-move", "ln-tab", "ln-warning", "ln-circle-exclamation", "ln-circle-question", "ln-circle-checkmark", "ln-circle-cross", "ln-circle-plus", "ln-circle-minus", "ln-circle-up", "ln-circle-down", "ln-circle-left", "ln-circle-right", "ln-circle-up2", "ln-circle-down2", "ln-circle-left2", "ln-circle-right2", "ln-circle-backward", "ln-circle-first", "ln-circle-previous", "ln-circle-stop", "ln-circle-play", "ln-circle-pause", "ln-circle-next", "ln-circle-last", "ln-circle-forward", "ln-circle-eject", "ln-crop", "ln-frame", "ln-ruler", "ln-funnel", "ln-flip-horizontal", "ln-flip-vertical", "ln-subtract", "ln-combine", "ln-intersect", "ln-exclude", "ln-align-center-vertical", "ln-align-right", "ln-align-bottom", "ln-align-left", "ln-align-center-horizontal", "ln-align-top", "ln-square", "ln-circle"];
 
     $scope.icons.sort();
+    $scope.isLink = false;
 
     $scope.navigationSubmitForm = function(formValid) {
         if (formValid.$valid) {
+          console.log($scope.userForm.link);
+          if ($scope.userForm.link) {
+            $scope.isLink = false;
             NavigationService.navigationCreateSubmit($scope.userForm, function(data) {
                 if (data.value) {
                     globalfunction.successToaster();
@@ -470,6 +475,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     globalfunction.errorToaster();
                 }
             });
+          }else {
+            $scope.isLink = true;
+          }
+
         }
     };
 
@@ -505,7 +514,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         header: "Edit Navigation"
     };
 
-    $scope.icons = ["ln-home", "ln-home2", "ln-home3", "ln-home4", "ln-home5", "ln-home6", "ln-pencil", "ln-pencil2", "ln-edit", "ln-edit2", "ln-feather", "ln-feather2", "ln-pen", "ln-brush", "ln-paintbrush", "ln-paint-roller", "ln-eye-dropper", "ln-magic", "ln-design", "ln-magnet", "ln-aim", "ln-gun", "ln-droplet", "ln-droplet2", "ln-fire", "ln-lighter", "ln-knife", "ln-toilet-paper", "ln-umbrella", "ln-sun-small", "ln-sun", "ln-moon", "ln-cloud", "ln-cloud-upload", "ln-cloud-download", "ln-cloud-rain", "ln-cloud-snow", "ln-cloud-fog", "ln-cloud-lightning", "ln-cloud-sync", "ln-cloud-lock", "ln-cloud-gear", "ln-cloud-database", "ln-database", "ln-shield", "ln-lock", "ln-unlock", "ln-key", "ln-key-hole", "ln-gear", "ln-gear2", "ln-wrench", "ln-tools", "ln-hammer", "ln-factory", "ln-factory2", "ln-recycle", "ln-trash", "ln-trash2", "ln-heart", "ln-heart2", "ln-flag", "ln-flag2", "ln-flag3", "ln-at-sign", "ln-envelope", "ln-inbox", "ln-paperclip", "ln-reply", "ln-reply-all", "ln-paper-plane", "ln-eye", "ln-eye2", "ln-binoculars", "ln-binoculars2", "ln-floppy-disk", "ln-printer", "ln-file", "ln-folder", "ln-copy", "ln-scissors", "ln-paste", "ln-clipboard", "ln-clipboard-check", "ln-register", "ln-enter", "ln-exit", "ln-papers", "ln-news", "ln-document", "ln-document2", "ln-license", "ln-graduation-hat", "ln-license2", "ln-medal", "ln-medal2", "ln-medal3", "ln-medal4", "ln-podium", "ln-trophy", "ln-music-note", "ln-music", "ln-music2", "ln-playlist", "ln-shuffle", "ln-headset", "ln-presentation", "ln-play", "ln-film-play", "ln-camera", "ln-photo", "ln-picture", "ln-book", "ln-book-closed", "ln-bookmark", "ln-bookmark2", "ln-books", "ln-library", "ln-contacts", "ln-profile", "ln-user", "ln-users", "ln-users2", "ln-woman", "ln-man", "ln-shirt", "ln-cart", "ln-cart-empty", "ln-cart-full", "ln-tag", "ln-tags", "ln-cash", "ln-credit-card", "ln-barcode", "ln-barcode2", "ln-barcode3", "ln-phone", "ln-phone2", "ln-pin", "ln-map-marker", "ln-compass", "ln-map", "ln-location", "ln-road-sign", "ln-calendar", "ln-calendar2", "ln-calendar3", "ln-mouse", "ln-keyboard", "ln-delete", "ln-spell-check", "ln-screen", "ln-signal", "ln-iphone", "ln-smartphone", "ln-ipad", "ln-tablet", "ln-laptop", "ln-desktop", "ln-radio", "ln-tv", "ln-power", "ln-lightning-bolt", "ln-lamp", "ln-plug-cord", "ln-outlet", "ln-drawer", "ln-drawer2", "ln-drawer3", "ln-archive", "ln-archive2", "ln-comment", "ln-comments", "ln-chat", "ln-quote-open", "ln-quote-close", "ln-pulse", "ln-syringe", "ln-first-aid", "ln-lifebuoy", "ln-patch", "ln-patch2", "ln-lab", "ln-skull", "ln-construction", "ln-construction-cone", "ln-pie-chart", "ln-pie-chart2", "ln-graph", "ln-chart-growth", "ln-cake", "ln-gift", "ln-balloon", "ln-rank", "ln-rank2", "ln-rank3", "ln-crown", "ln-lotus", "ln-diamond", "ln-diamond2", "ln-diamond3", "ln-diamond4", "ln-linearicons", "ln-teacup", "ln-glass", "ln-bottle", "ln-cocktail-glass", "ln-dinner", "ln-dinner2", "ln-hamburger", "ln-dumbbell", "ln-apple", "ln-leaf", "ln-pine-tree", "ln-tree", "ln-paw", "ln-paw2", "ln-footprint", "ln-speed-slow", "ln-speed-medium", "ln-speed-fast", "ln-rocket", "ln-gamepad", "ln-dice", "ln-ticket", "ln-hammer2", "ln-balance", "ln-briefcase", "ln-plane", "ln-gas", "ln-transmission", "ln-car", "ln-bus", "ln-truck", "ln-trailer", "ln-train", "ln-ship", "ln-anchor", "ln-boat", "ln-bicycle", "ln-cube", "ln-puzzle", "ln-glasses", "ln-accessibility", "ln-wheelchir", "ln-icons", "ln-icons2", "ln-sitemap", "ln-earth", "ln-happy", "ln-smile", "ln-grin", "ln-tongue", "ln-sad", "ln-wink", "ln-dream", "ln-shocked", "ln-shocked2", "ln-tongue2", "ln-neutral", "ln-happy-grin", "ln-cool", "ln-mad", "ln-grin-evil", "ln-evil", "ln-shocked3", "ln-annoyed", "ln-mustache", "ln-wondering", "ln-confused", "ln-bell", "ln-bullhorn", "ln-volume-high", "ln-volume-medium", "ln-volume-low", "ln-volume", "ln-mute", "ln-wifi", "ln-wifi2", "ln-wifi3", "ln-mic", "ln-mic2", "ln-mic-mute", "ln-hourglass", "ln-loading", "ln-loading2", "ln-loading3", "ln-undo", "ln-redo", "ln-sync", "ln-sync2", "ln-refresh", "ln-refresh2", "ln-history", "ln-history2", "ln-clock", "ln-clock2", "ln-clock3", "ln-clock4", "ln-clock5", "ln-timer", "ln-timer2", "ln-download", "ln-upload", "ln-arrow-up", "ln-arrow-down", "ln-arrow-left", "ln-arrow-right", "ln-arrow-up2", "ln-arrow-down2", "ln-arrow-left2", "ln-arrow-right2", "ln-arrow-up3", "ln-arrow-down3", "ln-arrow-left3", "ln-arrow-right3", "ln-arrow-up4", "ln-arrow-down4", "ln-arrow-left4", "ln-arrow-right4", "ln-terminal", "ln-bug", "ln-code", "ln-file-code", "ln-file-image", "ln-file-zip", "ln-file-audio", "ln-file-video", "ln-link", "ln-link2", "ln-unlink", "ln-link3", "ln-unlink2", "ln-thumbs-up", "ln-thumbs-down", "ln-thumbs-up2", "ln-thumbs-down2", "ln-thumbs-up3", "ln-thumbs-down3", "ln-share", "ln-share2", "ln-share3", "ln-options", "ln-list", "ln-list2", "ln-magnifier", "ln-zoom-in", "ln-zoom-out", "ln-question", "ln-checkmark", "ln-cross", "ln-chevron-up", "ln-chevron-down", "ln-chevron-left", "ln-chevron-right", "ln-arrow-up5", "ln-arrow-down5", "ln-arrow-left5", "ln-arrow-right5", "ln-expand", "ln-shrink", "ln-expand2", "ln-shrink2", "ln-move", "ln-tab", "ln-warning", "ln-circle-exclamation", "ln-circle-question", "ln-circle-checkmark", "ln-circle-cross", "ln-circle-plus", "ln-circle-minus", "ln-circle-up", "ln-circle-down", "ln-circle-left", "ln-circle-right", "ln-circle-up2", "ln-circle-down2", "ln-circle-left2", "ln-circle-right2", "ln-circle-backward", "ln-circle-first", "ln-circle-previous", "ln-circle-stop", "ln-circle-play", "ln-circle-pause", "ln-circle-next", "ln-circle-last", "ln-circle-forward", "ln-circle-eject", "ln-crop", "ln-frame", "ln-ruler", "ln-funnel", "ln-flip-horizontal", "ln-flip-vertical", "ln-subtract", "ln-combine", "ln-intersect", "ln-exclude", "ln-align-center-vertical", "ln-align-right", "ln-align-bottom", "ln-align-left", "ln-align-center-horizontal", "ln-align-top", "ln-square", "ln-circle"];
+    $scope.icons = ["ln-home", "ln-home2", "ln-home3", "ln-home4", "ln-home5", "ln-home6", "ln-pencil", "ln-pencil2", "ln-edit", "ln-edit2", "ln-feather", "ln-feather2", "ln-pen", "ln-brush", "ln-paintbrush", "ln-paint-roller", "ln-eye-dropper", "ln-magic", "ln-design", "ln-magnet", "ln-aim", "ln-gun", "ln-droplet", "ln-droplet2", "ln-fire", "ln-lighter", "ln-knife", "ln-toilet-paper", "ln-umbrella", "ln-sun-small", "ln-sun", "ln-moon", "ln-cloud", "ln-cloud-upload", "ln-cloud-download", "ln-cloud-rain", "ln-cloud-snow", "ln-cloud-fog", "ln-cloud-lightning", "ln-cloud-sync", "ln-cloud-lock", "ln-cloud-gear", "ln-cloud-database", "ln-database", "ln-shield", "ln-lock", "ln-unlock", "ln-key", "ln-key-hole", "ln-gear", "ln-gear2", "ln-wrench", "ln-tools", "ln-hammer", "ln-factory", "ln-factory2", "ln-recycle", "ln-trash", "ln-trash2", "ln-heart", "ln-heart2", "ln-flag", "ln-flag2", "ln-flag3", "ln-at-sign", "ln-envelope", "ln-inbox", "ln-paperclip", "ln-reply", "ln-reply-all", "ln-paper-plane", "ln-eye", "ln-eye2", "ln-binoculars", "ln-binoculars2", "ln-floppy-disk", "ln-printer", "ln-file", "ln-folder", "ln-copy", "ln-scissors", "ln-paste", "ln-clipboard", "ln-clipboard-check", "ln-register", "ln-enter", "ln-exit", "ln-papers", "ln-news", "ln-document", "ln-document2", "ln-license", "ln-graduation-hat", "ln-license2", "ln-medal", "ln-medal2", "ln-medal3", "ln-medal4", "ln-podium", "ln-trophy", "ln-music-note", "ln-music", "ln-music2", "ln-playlist", "ln-shuffle", "ln-headset", "ln-presentation", "ln-play", "ln-film-play", "ln-camera", "ln-photo", "ln-picture", "ln-book", "ln-book-closed", "ln-bookmark", "ln-bookmark2", "ln-books", "ln-library", "ln-contacts", "ln-profile", "ln-user", "ln-users", "ln-users2", "ln-woman", "ln-man", "ln-shirt", "ln-cart", "ln-cart-empty", "ln-cart-full", "ln-tag", "ln-tags", "ln-cash", "ln-credit-card", "ln-barcode", "ln-barcode2", "ln-barcode3", "ln-phone", "ln-phone2", "ln-pin", "ln-map-marker", "ln-compass", "ln-map", "ln-location", "ln-road-sign", "ln-calendar", "ln-calendar2", "ln-calendar3", "ln-mouse", "ln-keyboard", "ln-delete", "ln-spell-check", "ln-screen", "ln-signal", "ln-iphone", "ln-smartphone", "ln-ipad", "ln-tablet", "ln-laptop", "ln-desktop", "ln-radio", "ln-tv", "ln-power", "ln-lightning-bolt", "ln-lamp", "ln-plug-cord", "ln-outlet", "ln-drawer", "ln-drawer2", "ln-drawer3", "ln-archive", "ln-archive2", "ln-comment", "ln-comments", "ln-chat", "ln-quote-open", "ln-quote-close", "ln-pulse", "ln-syringe", "ln-first-aid", "ln-lifebuoy", "ln-patch", "ln-patch2", "ln-lab", "ln-skull", "ln-construction", "ln-construction-cone", "ln-pie-chart", "ln-pie-chart2", "ln-graph", "ln-chart-growth", "ln-cake", "ln-gift", "ln-balloon", "ln-rank", "ln-rank2", "ln-rank3", "ln-crown", "ln-lotus", "ln-diamond", "ln-diamond2", "ln-diamond3", "ln-diamond4", "ln-linearicons", "ln-teacup", "ln-glass", "ln-bottle", "ln-cocktail-glass", "ln-dinner", "ln-dinner2", "ln-hamburger", "ln-dumbbell", "ln-apple", "ln-leaf", "ln-pine-tree", "ln-tree", "ln-paw", "ln-paw2", "ln-footprint", "ln-speed-slow", "ln-speed-medium", "ln-speed-fast", "ln-rocket", "ln-gamepad", "ln-dice", "ln-ticket", "ln-hammer2", "ln-balance", "ln-briefcase", "ln-plane", "ln-gas", "ln-transmission", "ln-car", "ln-bus", "ln-truck", "ln-trailer", "ln-train", "ln-ship", "ln-anchor", "ln-boat", "ln-bicycle", "ln-cube", "ln-puzzle", "ln-glasses", "ln-accessibility", "ln-wheelchir", "ln-icons", "ln-icons2", "ln-sitemap", "ln-earth", "ln-happy", "ln-smile", "ln-grin", "ln-tongue", "ln-sad", "ln-wink", "ln-dream", "ln-shocked", "ln-shocked2", "ln-tongue2", "ln-neutral", "ln-happy-grin", "ln-cool", "ln-mad", "ln-grin-evil", "ln-evil", "ln-shocked3", "ln-annoyed", "ln-mustache", "ln-wondering", "ln-confused", "ln-bell", "ln-bullhorn", "ln-volume-high", "ln-volume-medium", "ln-volume-low", "ln-volume", "ln-mute", "ln-wifi", "ln-wifi2", "ln-wifi3", "ln-mic", "ln-mic2", "ln-mic-mute", "ln-hourglass", "ln-loading", "ln-loading2", "ln-loading3", "ln-undo", "ln-redo", "ln-sync", "ln-sync2", "ln-refresh", "ln-refresh2", "ln-history", "ln-history2", "ln-clock", "ln-clock2", "ln-clock3", "ln-clock4", "ln-clock5", "ln-timer", "ln-timer2", "ln-download", "ln-upload", "ln-arrow-up", "ln-arrow-down", "ln-arrow-left", "ln-arrow-right", "ln-arrow-up2", "ln-arrow-down2", "ln-arrow-left2", "ln-arrow-right2", "ln-arrow-up3", "ln-arrow-down3", "ln-arrow-left3", "ln-arrow-right3", "ln-arrow-up4", "ln-arrow-down4", "ln-arrow-left4", "ln-arrow-right4", "ln-terminal", "ln-bug", "ln-code", "ln-file-code", "ln-file-image", "ln-file-zip", "ln-file-audio", "ln-file-video", "ln-link", "ln-link2", "ln-unlink", "ln-link3", "ln-unlink2", "ln-thumbs-up", "ln-thumbs-down", "ln-thumbs-up2", "ln-thumbs-down2", "ln-thumbs-up3", "ln-thumbs-down3", "ln-share", "ln-share2", "ln-share3", "ln-options", "ln-list", "ln-list2", "ln-magnifier", "ln-zoom-in", "ln-zoom-out", "ln-question", "ln-checkmark", "ln-cross", "ln-chevron-up", "ln-chevron-down", "ln-chevron-left", "ln-chevron-right", "ln-arrow-up5", "ln-arrow-down5", "ln-arrow-left5", "ln-arrow-right5", "ln-expand", "ln-shrink", "ln-expand2", "ln-shrink2", "ln-move", "ln-tab", "ln-warning", "ln-circle-exclamation", "ln-circle-question", "ln-circle-checkmark", "ln-circle-cross", "ln-circle-plus", "ln-circle-minus", "ln-circle-up", "ln-circle-down", "ln-circle-left", "ln-circle-right", "ln-circle-up2", "ln-circle-down2", "ln-circle-left2", "ln-circle-right2", "ln-circle-backward", "ln-circle-first", "ln-circle-previous", "ln-circle-stop", "ln-circle-play", "ln-circle-pause", "ln-circle-next", "ln-circle-last", "ln-circle-forward", "ln-circle-eject", "ln-crop", "ln-frame", "ln-ruler", "ln-funnel", "ln-flip-horizontal", "ln-flip-vertical", "ln-subtract", "ln-combine", "ln-intersect", "ln-exclude", "ln-align-center-vertical", "ln-align-right", "ln-align-bottom", "ln-align-left", "ln-align-center-horizontal", "ln-align-top", "ln-square", "ln-circle", "custom"];
     $scope.icons.sort();
 
     NavigationService.getNavigationEditDetail($stateParams.id, function(data) {
@@ -516,10 +525,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.userForm.status = false;
         }
     });
+    $scope.isLink = false;
 
     $scope.navigationSubmitForm = function(formValid) {
         if (formValid.$valid) {
             console.log($scope.userForm);
+            if ($scope.userForm.link) {
+              $scope.isLink = false;
             NavigationService.editNavigationSubmit($scope.userForm, function(data) {
                 if (data.value) {
                     globalfunction.successToaster();
@@ -528,6 +540,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     globalfunction.errorToaster();
                 }
             });
+          }else {
+            $scope.isLink = true;
+          }
         }
     };
 
@@ -657,6 +672,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.userForm.status = true;
     $scope.notificationForm = {};
     $scope.config = {};
+    $scope.isLink = false;
     var modalInstance = '';
 
     NavigationService.getConfig(function(data) {
@@ -700,20 +716,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.notificationSubmitForm = function(formValid) {
         if (formValid.$valid) {
             console.log('in navi');
-            $scope.userForm.timestamp = new Date();
-            NavigationService.notificationCreateSubmit($scope.userForm, function(data) {
-                if (data.value) {
-                    $scope.userForm = {};
-                    $scope.allNotificationRecord();
-                    globalfunction.successToaster();
-                } else {
-                    globalfunction.errorToaster();
-                }
-            });
+            if ($scope.userForm.link) {
+              $scope.isLink = false;
+              $scope.userForm.timestamp = new Date();
+              NavigationService.notificationCreateSubmit($scope.userForm, function(data) {
+                  if (data.value) {
+                      $scope.userForm = {};
+                      $scope.allNotificationRecord();
+                      globalfunction.successToaster();
+                  } else {
+                      globalfunction.errorToaster();
+                  }
+              });
+            }else {
+              $scope.isLink = true;
+            }
+
         }
     };
 
     $scope.notificationEditSubmitForm = function(noti) {
+      if (noti.link) {
+        $scope.isLink = false;
         NavigationService.notificationCreateSubmit(noti, function(data) {
             if (data.value) {
                 globalfunction.successToaster();
@@ -723,6 +747,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 globalfunction.errorToaster();
             }
         });
+      }else {
+        $scope.isLink = true;
+      }
+
     };
 
     $scope.animationsEnabled = true;
@@ -1006,8 +1034,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     }
 
     var modalInstances = '';
+    $scope.noTitle = '0';
+
     $scope.addVideo = function() {
-        $scope.modalData = {};
+        $scope.modalData = {"status":true};
         modalInstances = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/video-edit.html',
@@ -1299,7 +1329,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.addVideo = function() {
-        $scope.modalData = {};
+        $scope.modalData = {"status":true};
         modalInstances = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/video-edit.html',

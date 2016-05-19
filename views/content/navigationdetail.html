@@ -40,7 +40,7 @@
                                                                     <i class="icon {{$select.selected}}"></i>
                                                                     <span ng-bind="$select.selected"></span>
                                                                 </ui-select-match>
-                                                                <ui-select-choices repeat="item in icons track by $index">
+                                                                <ui-select-choices repeat="item in (icons | filter: $select.search) track by $index">
                                                                     <i class="icon {{item}}"></i>
                                                                     <span>{{item}}</span>
                                                                 </ui-select-choices>
@@ -72,8 +72,8 @@
                                                             </label>
                                                         </div>
                                                     </div>
-
                                                     <list-type ng-model="userForm"></list-type>
+                                                    <p class="error-msg" ng-if="isLink">Please provide link.</p>
 
                                                     <div class="upload-img text-right">
                                                         <button class="btn btn-primary btn-outline btn-small" ng-click="navigationSubmitForm(user)">Save</button>
