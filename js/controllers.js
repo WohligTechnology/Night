@@ -758,6 +758,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.open = function(noti) {
         console.log(noti);
         $scope.noti = noti;
+        $scope.isLink = false;
         modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/notificationdetail.html',
