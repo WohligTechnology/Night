@@ -1,8 +1,10 @@
 var jsArray = [
     './bower_components/jquery/dist/jquery.min.js',
-    './bower_components/ngmap/build/scripts/ng-map.min.js',
+
     './bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
-    './bower_components/angular/angular.min.js',
+    './bower_components/angular/angular.js',
+    './bower_components/ngmap/build/scripts/ng-map.min.js',
+
     './bower_components/flexslider/jquery.flexslider-min.js',
     './bower_components/angular-animate/angular-animate.js',
     './bower_components/moment/min/moment.min.js',
@@ -18,7 +20,7 @@ var jsArray = [
     "./bower_components/jquery-ui/jquery-ui.js",
     "./bower_components/angular-ui-select/dist/select.min.js",
     "./bower_components/lodash/lodash.js",
-    "./bower_components/jStorage/jStorage.js",
+    "./bower_components/jStorage/jstorage.js",
     "./bower_components/angularjs-toaster/toaster.js",
     './bower_components/angularjs-imageupload-directive/public/javascripts/imageupload.js',
     './bower_components/highcharts-ng/dist/highcharts-ng.min.js',
