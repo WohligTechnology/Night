@@ -25,6 +25,7 @@ var jsArray = [
     './bower_components/angular-websql/angular-websql.js',
     './bower_components/jQuery-MD5/jquery.md5.js',
     './bower_components/angular-toastr/dist/angular-toastr.tpls.js',
+    './bower_components/angular-loading-bar/build/loading-bar.min.js',
 
     './js/app.js',
     './js/controllers.js',
