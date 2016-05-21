@@ -121,6 +121,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Dashboard");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.normal = 0;
+    $scope.ios = 0;
+    $scope.android = 0;
+    $scope.totaluser = 0;
 
     $scope.pieData = [{
         name: "Microsoft Internet Explorer",
@@ -178,7 +182,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.android = n.count;
               break;
             default:
-
           }
           $scope.totaluser = $scope.totaluser + parseInt(n.count);
         });
