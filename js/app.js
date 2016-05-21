@@ -6,7 +6,7 @@ var firstapp = angular.module('firstapp', [
     'navigationservice'
 ]);
 
-firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, toastrConfig, cfpLoadingBarProvider) {
+firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, toastrConfig, cfpLoadingBarProvider,$locationProvider) {
 
     // for http request with session
     cfpLoadingBarProvider.includeSpinner = false;
@@ -286,6 +286,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, toas
         });
 
     $urlRouterProvider.otherwise("/");
+    $locationProvider.html5Mode(isproduction);
 
 });
 
@@ -298,13 +299,13 @@ firstapp.filter('fromnow', function(){
 firstapp.filter('uploadpath', function() {
     return function(input, width, height, style) {
         var other = "";
-        if (width && width != "") {
+        if (width && width !== "") {
             other += "&width=" + width;
         }
-        if (height && height != "") {
+        if (height && height !== "") {
             other += "&height=" + height;
         }
-        if (style && style != "") {
+        if (style && style !== "") {
             other += "&style=" + style;
         }
         if (input) {
