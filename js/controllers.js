@@ -124,7 +124,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.normal = 0;
     $scope.ios = 0;
     $scope.android = 0;
-    $scope.totaluser = 0;
+    $scope.totaluser = 0; 
 
     $scope.pieData = [{
         name: "Microsoft Internet Explorer",
