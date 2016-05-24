@@ -41,7 +41,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, toas
     })
 
     .state('dashboard2', {
-        url: "/:key",
+        url: "/key/:key",
         templateUrl: "views/template.html",
         controller: 'DashboardCtrl'
     })
