@@ -50,8 +50,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             if (data.value) {
                 $scope.enquirydata = data.data;
             }
-        })
-    }
+        });
+    };
     $scope.allEnquiry();
 
     $scope.deleteEnquiry = function(formValid) {
