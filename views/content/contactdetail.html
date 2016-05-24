@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Address</label>
-                                    <textarea name="address" required type="text" class="form-control" ui-tinymce ng-model="userForm.address"></textarea>
+                                    <textarea name="address" required type="text" class="form-control" ui-tinymce="template.tinymceconfig" ng-model="userForm.address"></textarea>
                                 </div>
                                 <div class="error-msg" ng-show="user.address.$error.required && user.address.$touched">Please enter your address</div>
                                 <div class="form-group">

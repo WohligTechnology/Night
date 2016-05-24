@@ -17,7 +17,7 @@
                      </div>
                      <div class="form-group">
                         <label for="">Content</label>
-                        <textarea name="content" required class="form-control" ui-tinymce ng-model="userForm.content"></textarea>
+                        <textarea name="content" required class="form-control" ui-tinymce="template.tinymceconfig" ng-model="userForm.content"></textarea>
                      </div>
                      <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content</div>
                      <div class="form-group">

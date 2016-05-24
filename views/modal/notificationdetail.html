@@ -50,7 +50,7 @@
                      </div>
                      <div class="form-group mt25">
                         <label for="">Content</label>
-                        <textarea ui-tinymce name="content" required ng-model="noti.content" class="form-control resize" rows="3"></textarea>
+                        <textarea ui-tinymce="template.tinymceconfig" name="content" required ng-model="noti.content" class="form-control resize" rows="3"></textarea>
                         <div class="error-msg" ng-show="user.content.$error.required && user.content.$touched">Please Enter Content.</div>
                      </div>
                </div>

@@ -10,6 +10,15 @@ templateservicemod.service('TemplateService', function() {
     this.init = function() {
         this.header = "views/header.html";
         this.menu = "views/menu.html";
+        this.tinymceconfig = {
+    onChange: function(e) {
+      // put logic here for keypress and cut/paste changes
+    },
+    inline: false,
+    plugins : 'advlist autolink link image lists charmap print preview',
+    skin: 'lightgray',
+    theme : 'modern'
+  };
         this.slider = "views/slider.html";
         this.content = "views/content/content.html";
         this.sidemenu = "views/sidemenu.html";
