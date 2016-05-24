@@ -115,7 +115,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 })
 
-.controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
+.controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $stateParams) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("dashboard");
     $scope.menutitle = NavigationService.makeactive("Dashboard");
@@ -124,7 +124,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.normal = 0;
     $scope.ios = 0;
     $scope.android = 0;
-    $scope.totaluser = 0; 
+    $scope.totaluser = 0;
+
+    if ($stateParams.key) {
+        console.log("call authenticate");
+    }
 
     $scope.pieData = [{
         name: "Microsoft Internet Explorer",
@@ -156,7 +160,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
             ]
         },
-
         series: [{
             data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
         }]
@@ -168,24 +171,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
     });
     $scope.totaluser = 0;
-    NavigationService.getCount(function(data){
-      if (data.value === true) {
-        _.each(data.data, function(n){
-          switch (n._id) {
-            case "Normal":
-              $scope.normal = n.count;
-              break;
-            case "iOS":
-            $scope.ios = n.count;
-              break;
-            case "Android":
-            $scope.android = n.count;
-              break;
-            default:
-          }
-          $scope.totaluser = $scope.totaluser + parseInt(n.count);
-        });
-      }
+    NavigationService.getCount(function(data) {
+        if (data.value === true) {
+            _.each(data.data, function(n) {
+                switch (n._id) {
+                    case "Normal":
+                        $scope.normal = n.count;
+                        break;
+                    case "iOS":
+                        $scope.ios = n.count;
+                        break;
+                    case "Android":
+                        $scope.android = n.count;
+                        break;
+                    default:
+                }
+                $scope.totaluser = $scope.totaluser + parseInt(n.count);
+            });
+        }
     });
 
 })
@@ -297,7 +300,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             _.each(data.data, function(n) {
                 $scope.userForm.images.push({
                     "image": n,
-                    "status":true
+                    "status": true
                 });
             });
         }
@@ -467,20 +470,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.navigationSubmitForm = function(formValid) {
         if (formValid.$valid) {
-          console.log($scope.userForm.link);
-          if ($scope.userForm.link) {
-            $scope.isLink = false;
-            NavigationService.navigationCreateSubmit($scope.userForm, function(data) {
-                if (data.value) {
-                    globalfunction.successToaster();
-                    $state.go("navigation");
-                } else {
-                    globalfunction.errorToaster();
-                }
-            });
-          }else {
-            $scope.isLink = true;
-          }
+            console.log($scope.userForm.link);
+            if ($scope.userForm.link) {
+                $scope.isLink = false;
+                NavigationService.navigationCreateSubmit($scope.userForm, function(data) {
+                    if (data.value) {
+                        globalfunction.successToaster();
+                        $state.go("navigation");
+                    } else {
+                        globalfunction.errorToaster();
+                    }
+                });
+            } else {
+                $scope.isLink = true;
+            }
 
         }
     };
@@ -534,18 +537,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (formValid.$valid) {
             console.log($scope.userForm);
             if ($scope.userForm.link) {
-              $scope.isLink = false;
-            NavigationService.editNavigationSubmit($scope.userForm, function(data) {
-                if (data.value) {
-                    globalfunction.successToaster();
-                    $state.go("navigation");
-                } else {
-                    globalfunction.errorToaster();
-                }
-            });
-          }else {
-            $scope.isLink = true;
-          }
+                $scope.isLink = false;
+                NavigationService.editNavigationSubmit($scope.userForm, function(data) {
+                    if (data.value) {
+                        globalfunction.successToaster();
+                        $state.go("navigation");
+                    } else {
+                        globalfunction.errorToaster();
+                    }
+                });
+            } else {
+                $scope.isLink = true;
+            }
         }
     };
 
@@ -720,39 +723,39 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         if (formValid.$valid) {
             console.log('in navi');
             if ($scope.userForm.link) {
-              $scope.isLink = false;
-              $scope.userForm.timestamp = new Date();
-              NavigationService.notificationCreateSubmit($scope.userForm, function(data) {
-                  if (data.value) {
-                      $scope.userForm = {};
-                      $scope.allNotificationRecord();
-                      globalfunction.successToaster();
-                  } else {
-                      globalfunction.errorToaster();
-                  }
-              });
-            }else {
-              $scope.isLink = true;
+                $scope.isLink = false;
+                $scope.userForm.timestamp = new Date();
+                NavigationService.notificationCreateSubmit($scope.userForm, function(data) {
+                    if (data.value) {
+                        $scope.userForm = {};
+                        $scope.allNotificationRecord();
+                        globalfunction.successToaster();
+                    } else {
+                        globalfunction.errorToaster();
+                    }
+                });
+            } else {
+                $scope.isLink = true;
             }
 
         }
     };
 
     $scope.notificationEditSubmitForm = function(noti) {
-      if (noti.link) {
-        $scope.isLink = false;
-        NavigationService.notificationCreateSubmit(noti, function(data) {
-            if (data.value) {
-                globalfunction.successToaster();
-                modalInstance.dismiss();
-                $scope.allNotificationRecord();
-            } else {
-                globalfunction.errorToaster();
-            }
-        });
-      }else {
-        $scope.isLink = true;
-      }
+        if (noti.link) {
+            $scope.isLink = false;
+            NavigationService.notificationCreateSubmit(noti, function(data) {
+                if (data.value) {
+                    globalfunction.successToaster();
+                    modalInstance.dismiss();
+                    $scope.allNotificationRecord();
+                } else {
+                    globalfunction.errorToaster();
+                }
+            });
+        } else {
+            $scope.isLink = true;
+        }
 
     };
 
@@ -1041,7 +1044,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.noTitle = '0';
 
     $scope.addVideo = function() {
-        $scope.modalData = {"status":true};
+        $scope.modalData = {
+            "status": true
+        };
         modalInstances = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/video-edit.html',
@@ -1326,14 +1331,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             _.each(data.data, function(n) {
                 $scope.userForm.images.push({
                     image: n,
-                    status:true
+                    status: true
                 });
             });
         }
     };
 
     $scope.addVideo = function() {
-        $scope.modalData = {"status":true};
+        $scope.modalData = {
+            "status": true
+        };
         modalInstances = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/video-edit.html',
@@ -2040,7 +2047,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             _.each(data.data, function(n) {
                 $scope.userForm.images.push({
                     image: n,
-                    status:true
+                    status: true
                 });
             });
         }
@@ -2506,14 +2513,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     NavigationService.getContactEditDetail($stateParams.id, function(data) {
         //console.log('getArticleEditDetail', data.data);
-        $scope.mapCenter = {lat:parseFloat(data.data.lat), long:parseFloat(data.data.long)};
+        $scope.mapCenter = {
+            lat: parseFloat(data.data.lat),
+            long: parseFloat(data.data.long)
+        };
         $scope.userForm = data.data;
 
     });
 
     $scope.change = function(changeVal) {
-        $scope.userForm.lat= changeVal.latLng.lat();
-        $scope.userForm.long= changeVal.latLng.lng();
+        $scope.userForm.lat = changeVal.latLng.lat();
+        $scope.userForm.long = changeVal.latLng.lng();
 
     };
 
@@ -2860,7 +2870,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             _.each(data.data, function(n) {
                 $scope.userForm.push({
                     "image": n,
-                    "status":true
+                    "status": true
                 });
             });
         }

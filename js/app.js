@@ -40,6 +40,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, toas
         controller: 'DashboardCtrl'
     })
 
+    .state('dashboard2', {
+        url: "/:key",
+        templateUrl: "views/template.html",
+        controller: 'DashboardCtrl'
+    })
+
     .state('enquiry', {
         url: "/enquiry",
         templateUrl: "views/template-sidemenu.html",
