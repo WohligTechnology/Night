@@ -1,5 +1,5 @@
-var adminurl = "http://192.168.1.129:1337/";
-// var adminurl = "http://app.blazen.io:10001/";
+var adminurl = "http://192.168.1.129$$$&&&/";
+// var adminurl = "http://app.blazen.io$$$&&&/";
 var imgpath = adminurl + "upload/readFile";
 var uploadurl = adminurl + "upload";
 var navigationservice = angular.module('navigationservice', [])
@@ -120,6 +120,15 @@ var navigationservice = angular.module('navigationservice', [])
     return {
         getnav: function() {
             return navigation;
+        },
+        checkUser: function(key, callback) {
+            $http({
+                url: adminurl + 'config/checkUser',
+                method: 'POST',
+                data: {
+                    "key": key
+                }
+            }).success(callback);
         },
         homeViewAll: function(callback) {
             $http({

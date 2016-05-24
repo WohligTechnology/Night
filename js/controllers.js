@@ -193,6 +193,84 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 })
 
+.controller('KeyCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $stateParams) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("dashboard");
+    $scope.menutitle = NavigationService.makeactive("Dashboard");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.normal = 0;
+    $scope.ios = 0;
+    $scope.android = 0;
+    $scope.totaluser = 0;
+    console.log($stateParams.key);
+
+    NavigationService.checkUser($stateParams.key, function(data) {
+        console.log(data);
+    })
+
+    $scope.pieData = [{
+        name: "Microsoft Internet Explorer",
+        y: 56.33
+    }, {
+        name: "Chrome",
+        y: 24.03,
+        sliced: true,
+        selected: true
+    }, {
+        name: "Firefox",
+        y: 10.38
+    }, {
+        name: "Safari",
+        y: 4.77
+    }, {
+        name: "Opera",
+        y: 0.91
+    }, {
+        name: "Proprietary or Undetectable",
+        y: 0.2
+    }];
+    $scope.chartOptions = {
+        title: {
+            text: 'User data'
+        },
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+            ]
+        },
+        series: [{
+            data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+        }]
+    };
+
+    NavigationService.getAllEnquiry(function(data) {
+        if (data.value) {
+            $scope.enquirydata = data.data;
+        }
+    });
+    $scope.totaluser = 0;
+    NavigationService.getCount(function(data) {
+        if (data.value === true) {
+            _.each(data.data, function(n) {
+                switch (n._id) {
+                    case "Normal":
+                        $scope.normal = n.count;
+                        break;
+                    case "iOS":
+                        $scope.ios = n.count;
+                        break;
+                    case "Android":
+                        $scope.android = n.count;
+                        break;
+                    default:
+                }
+                $scope.totaluser = $scope.totaluser + parseInt(n.count);
+            });
+        }
+    });
+
+})
 
 .controller('ThemeCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $log) {
     //Used to name the .html file
