@@ -3168,13 +3168,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     globalfunction.successToaster = function() {
         toastr.success('Saved Successfully');
-    }
+    };
     globalfunction.delSuccessToaster = function() {
         toastr.success('Deleted Successfully');
-    }
+    };
     globalfunction.errorToaster = function() {
         toastr.error('Something went wrong', 'Sorry');
-    }
+    };
     var modalInstance = '';
     $scope.callback = "";
     globalfunction.confDel = function(callback) {
@@ -3195,10 +3195,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     NavigationService.getConfig(function(data) {
         console.log(data);
-        if (data.data && data.data.length == 0) {
+        if (data.data && data.data.length === 0) {
             $scope.saveConfig();
         }
-    })
+    });
 
     $scope.saveConfig = function() {
         $scope.config = {
@@ -3211,18 +3211,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             login: {
                 hasLogin: false
             }
-        }
+        };
         console.log($scope.config);
         NavigationService.saveConfigData($scope.config, function(data) {
             console.log(data);
-        })
-    }
+        });
+    };
 
 
 
     $scope.close = function(val) {
         modalInstance.dismiss();
         $scope.callback(val);
-    }
+    };
 
 });
