@@ -3331,13 +3331,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.callback(val);
     };
 
-    NavigationService.getProfile(function(data) {
-        if (data.value == false) {
-            globalfunction.messageModal("Sorry! Your session key is invalid. Please login again.");
-            $timeout(function() {
-                window.location.href = "https://blazen.io/login";
-            }, 5000);
-        }
-    });
+    $timeout(function() {
+        NavigationService.getProfile(function(data) {
+            if (data.value == false) {
+                globalfunction.messageModal("Sorry! Your session key is invalid. Please login again.");
+                $timeout(function() {
+                    window.location.href = "https://blazen.io/login";
+                }, 5000);
+            }
+        });
+    }, 3000);
 
 });
