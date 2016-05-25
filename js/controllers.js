@@ -193,7 +193,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 })
 
-.controller('KeyCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $stateParams) {
+.controller('KeyCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $stateParams, $state) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("dashboard");
     $scope.menutitle = NavigationService.makeactive("Dashboard");
@@ -207,6 +207,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     NavigationService.checkUser($stateParams.key, function(data) {
         console.log(data);
+        if (data.value == false) {
+            globalfunction.messageModal("Sorry! Your session key is invalid. Please login again.");
+        } else if (data.value == true) {
+            $state.go('dashboard');
+        }
     })
 
     $scope.pieData = [{
@@ -3234,7 +3239,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     });
 })
 
-.controller('headerctrl', function($scope, TemplateService, toastr, $uibModal, NavigationService) {
+.controller('headerctrl', function($scope, TemplateService, toastr, $uibModal, NavigationService, $timeout) {
     $scope.template = TemplateService;
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
         $(window).scrollTop(0);
@@ -3271,6 +3276,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.callback = callback;
     };
 
+    globalfunction.messageModal = function(text) {
+        console.log("here");
+        $scope.modalText = text;
+        $scope.animationsEnabled = true;
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/modal-message.html',
+            size: 'sm',
+            scope: $scope
+        });
+
+        modalInstance.result.then(function(selectedItem) {
+            $scope.selected = selectedItem;
+        }, function() {
+
+        });
+
+        $timeout(function() {
+            modalInstance.close();
+        }, 5000);
+    };
+
     NavigationService.getConfig(function(data) {
         console.log(data);
         if (data.data && data.data.length === 0) {
@@ -3295,8 +3322,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log(data);
         });
     };
-
-
 
     $scope.close = function(val) {
         modalInstance.dismiss();
