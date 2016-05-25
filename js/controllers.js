@@ -209,6 +209,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log(data);
         if (data.value == false) {
             globalfunction.messageModal("Sorry! Your session key is invalid. Please login again.");
+            $timeout(function() {
+                window.location.href = "https://blazen.io/login";
+            }, 5000);
         } else if (data.value == true) {
             $state.go('dashboard');
         }
@@ -3327,5 +3330,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         modalInstance.dismiss();
         $scope.callback(val);
     };
+
+    NavigationService.getProfile(function(data) {
+        if (data.value == false) {
+            globalfunction.messageModal("Sorry! Your session key is invalid. Please login again.");
+            $timeout(function() {
+                window.location.href = "https://blazen.io/login";
+            }, 5000);
+        }
+    });
 
 });
