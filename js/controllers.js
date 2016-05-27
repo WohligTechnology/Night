@@ -45,6 +45,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
+    globalfunction.getProfile();
+
     $scope.allEnquiry = function() {
         NavigationService.getAllEnquiry(function(data) {
             if (data.value) {
@@ -79,6 +81,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.navigation = NavigationService.getnav();
     $scope.userForm = {};
 
+    globalfunction.getProfile();
+
     $scope.enquirySubmitForm = function() {
         console.log($scope.userForm);
         NavigationService.submitEnquiry($scope.userForm, function(data) {
@@ -97,6 +101,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.userForm = {};
+
+    globalfunction.getProfile();
 
     NavigationService.getOneEnquiry($stateParams.id, function(data) {
         console.log(data);
@@ -124,7 +130,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.normal = 0;
     $scope.ios = 0;
     $scope.android = 0;
-    $scope.totaluser = 0;
+    $scope.totaluser = 0
+
+    globalfunction.getProfile();
 
     if ($stateParams.key) {
         console.log("call authenticate");
@@ -287,6 +295,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
+    globalfunction.getProfile();
+
     $scope.animationsEnabled = true;
     $scope.open = function(size) {
         var modalInstance = $uibModal.open({
@@ -318,6 +328,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
     $scope.noListType = '0';
+
+    globalfunction.getProfile();
 
     $scope.homeForm = {};
     $scope.homedata = [];
@@ -452,6 +464,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
 
+    globalfunction.getProfile();
+
     $scope.eventForm = {};
     $scope.sortableOptions = {
         update: function(e, ui) {
@@ -543,6 +557,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Navigation");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    globalfunction.getProfile();
+
     $scope.userForm = {};
     $scope.userForm.status = true;
     $scope.page = {
@@ -601,6 +618,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Navigation");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    globalfunction.getProfile();
+
     $scope.userForm = {};
     $scope.page = {
         header: "Edit Navigation"
@@ -646,6 +666,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Login & Signup");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    globalfunction.getProfile();
 
     $scope.login = {};
     $scope.login.googleCredentials = {};
@@ -760,6 +782,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Notifications");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    globalfunction.getProfile();
+
     $scope.userForm = {};
     $scope.userForm.status = true;
     $scope.notificationForm = {};
@@ -916,6 +941,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Events");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    globalfunction.getProfile();
+
     $scope.eventForm = {};
 
     $scope.allEventsRecord = function() {
@@ -951,6 +979,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Events");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    globalfunction.getProfile();
+
     $scope.userForm = {};
     $scope.userForm.images = [];
     $scope.page = {
@@ -1230,6 +1261,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Events");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    globalfunction.getProfile();
+
     $scope.userForm = {};
     $scope.page = {
         header: "Edit Event"
@@ -1489,6 +1523,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Blogs");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    globalfunction.getProfile();
+
     $scope.userForm = {};
 
     $scope.oneAtATime = true;
@@ -1619,6 +1656,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Blogs");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    globalfunction.getProfile();
+
     $scope.userForm = {};
     $scope.page = {
         header: "Create Blog"
@@ -1694,6 +1734,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Blogs");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    globalfunction.getProfile();
+
     $scope.userForm = {};
     $scope.page = {
         header: "Edit Blog"
@@ -1773,6 +1816,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Articles");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    globalfunction.getProfile();
+
     $scope.articleForm = {};
     $scope.allArticlesRecord = function() {
         NavigationService.articleViewAll($scope.articleForm, function(data) {
@@ -1807,6 +1853,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Articles");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    globalfunction.getProfile();
+
     $scope.userForm = {};
     $scope.userForm.status = true;
     //$scope.userForm.status=1;
@@ -1881,6 +1930,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Articles");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    globalfunction.getProfile();
+
     $scope.userForm = {};
     $scope.page = {
         header: "Edit Article"
@@ -1965,6 +2017,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Photo Galleries");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
 
     $scope.photogalForm = {};
     $scope.photogaldata = [];
@@ -2056,6 +2109,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Photo Galleries");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
     var modalInstance = '';
 
     $scope.userForm = {};
@@ -2155,6 +2209,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Video Galleries");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
     $scope.articleForm = {};
     NavigationService.videoGalleriesViewAll(function(data) {
         $scope.videogalleries = data.data;
@@ -2209,6 +2264,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Video Galleries");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
     $scope.header = {};
     $scope.header.name = 'Create Video Gallery';
     $scope.userForm = {};
@@ -2358,6 +2414,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Video Galleries");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
     $scope.header = {};
     $scope.header.name = 'Edit Video Gallery';
     $scope.userForm = {};
@@ -2531,7 +2588,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Contact");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-
+    globalfunction.getProfile();
 
     $scope.contactForm = {};
     $scope.allContactRecord = function() {
@@ -2566,6 +2623,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Contact");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
     $scope.userForm = {};
     $scope.page = {
         header: "Create Contact"
@@ -2592,6 +2650,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Contact");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
     $scope.userForm = {};
     $scope.page = {
         header: "Edit Contact"
@@ -2643,6 +2702,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Audio Gallery");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
 
     $scope.audio = {};
 
@@ -2687,6 +2747,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Audio Galleries");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
     $scope.userForm = {};
     $scope.page = {
         header: "CREATE AUDIO GALLERY"
@@ -2795,6 +2856,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Audio Galleries");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
     $scope.userForm = {};
     $scope.page = {
         header: "EDIT AUDIO GALLERY"
@@ -2911,6 +2973,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Intro Slider");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
     $scope.userForm = [];
     var modalInstance = '';
 
@@ -3039,6 +3102,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Users");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
     $scope.userForm = {};
     $scope.allUsersRecord = function() {
         NavigationService.userViewAllLatest($scope.userForm, function(data) {
@@ -3067,6 +3131,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Users");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
     $scope.userForm = {};
     $scope.page = {
         header: "Create User"
@@ -3092,6 +3157,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Users");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
     $scope.userForm = {};
     $scope.page = {
         header: "Edit User"
@@ -3118,6 +3184,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Billing");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
 })
 
 .controller('AccountCtrl', function($scope, TemplateService, NavigationService, $timeout, $log) {
@@ -3126,6 +3193,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Account");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
 })
 
 .controller('PublishingCtrl', function($scope, TemplateService, NavigationService, $timeout, $log, $uibModal) {
@@ -3134,6 +3202,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Publishing");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
     $scope.animationsEnabled = true;
     $scope.lists = [{
         "image": "img/t1.jpg"
@@ -3166,6 +3235,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.menutitle = NavigationService.makeactive("Configuration");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    globalfunction.getProfile();
     $scope.userForm = {};
 
     $scope.saveConfigData = function() {
@@ -3331,7 +3401,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.callback(val);
     };
 
-    $timeout(function() {
+    globalfunction.getProfile = function() {
         NavigationService.getProfile(function(data) {
             if (data.value == false) {
                 globalfunction.messageModal("Sorry! Your session key is invalid. Please login again.");
@@ -3340,6 +3410,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }, 5000);
             }
         });
-    }, 3000);
+    }
 
 });
